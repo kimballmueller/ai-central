@@ -1,0 +1,17 @@
+{
+  "name": "Kimball Mueller",
+  "role": "Your Chief AI Officer",
+  "tagline": ["AI so simple your mom gets it.", "Useful in your business."],
+  "avatar": "assets/headshot.png",
+  "buttons": [
+    { "label": "Free Resource Guide", "url": "resources.html",                     "icon": "gift",     "primary": true },
+    { "label": "YouTube",             "url": "#",                                  "icon": "youtube",  "comingSoon": true },
+    { "label": "Book a Call",         "url": "YOUR_BOOKING_URL",                   "icon": "calendar" },
+    { "label": "Disruptors Media",    "url": "https://disruptorsmedia.com",        "icon": "building" },
+    { "label": "Email",               "url": "mailto:kimball@disruptorsmedia.com", "icon": "mail"     },
+    { "label": "Skool Community",     "url": "#",                                  "icon": "users",    "comingSoon": true }
+  ],
+  "socials": [
+    { "platform": "instagram", "url": "https://instagram.com/kimball.ai" }
+  ]
+}

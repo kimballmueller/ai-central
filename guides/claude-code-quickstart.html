@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a1a">
+  <title>Claude Code: Steps 1-5 — Kimball Mueller</title>
+  <meta name="description" content="A no-fluff, 5-step setup guide for installing Claude Code and getting your first session running. Beginner-friendly.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="stylesheet" href="../assets/guide.css">
+
+  <meta property="og:title" content="Claude Code: Steps 1-5">
+  <meta property="og:description" content="A no-fluff, 5-step setup guide. Zero to your first Claude Code session in ~30 minutes.">
+  <meta property="og:image" content="../assets/guides/hero.png">
+  <meta property="og:type" content="article">
+</head>
+<body>
+  <div class="mesh" aria-hidden="true"><span></span></div>
+
+  <main class="guide">
+
+    <nav class="guide-nav" aria-label="breadcrumb">
+      <a href="../index.html">← Home</a>
+      <span class="sep">·</span>
+      <a href="../resources.html">Resources</a>
+    </nav>
+
+    <div class="hero">
+      <img src="../assets/guides/hero.png" alt="" onerror="this.style.display='none'">
+    </div>
+
+    <h1 class="guide-title">Claude Code: Steps 1-5</h1>
+    <p class="guide-subtitle">A no-fluff, 5-step setup guide. Zero to your first Claude Code session.</p>
+    <p class="guide-meta"><span>⏱ ~30 minutes</span><span>🌱 Beginner-friendly</span><span>🖥️ Mac &amp; Windows</span></p>
+
+    <p>Claude Code is an AI coding partner that lives in your computer's terminal. It reads your files, writes code, runs commands — you describe what you want, it does it. By the end of this guide you'll have it installed, logged in, and running on your machine. No coding background required.</p>
+
+    <p>Pick your computer up top once we hit the install step and the whole guide will follow along.</p>
+
+    <hr>
+
+    <!-- =============== STEP 1 =============== -->
+    <h2><span class="step-num">Step 1</span> Subscribe to Claude</h2>
+
+    <p>Claude Code rides on top of your Claude account. Easiest path:</p>
+
+    <ol>
+      <li>Go to <a class="inline" href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> and sign up (free).</li>
+      <li>Click your name (bottom-left) → <strong>Settings</strong> → <strong>Billing</strong> → <strong>Upgrade</strong>.</li>
+      <li>Pick <strong>Claude Pro</strong> — $20/month. That's all you need to start.</li>
+    </ol>
+
+    <div class="callout tip">
+      <span class="ico">💡</span>
+      <span class="body"><strong>Pro vs. Max?</strong> Pro is plenty when you're learning. If you start using Claude Code all day every day, you'll outgrow Pro in a few weeks — that's when to bump up to Max ($100/mo) for way more usage.</span>
+    </div>
+
+    <div class="callout tip">
+      <span class="ico">🔑</span>
+      <span class="body"><strong>No API keys needed.</strong> Claude Code logs in through your normal Claude.ai account in a browser pop-up. You don't have to mess with API keys or billing dashboards.</span>
+    </div>
+
+    <figure class="shot-fig">
+      <img class="shot-img" src="../assets/guides/step1-claude-pricing.png" alt="The Claude.ai pricing page showing Free, Pro, and Max plans">
+      <figcaption>The Claude pricing page — Pro is the middle option.</figcaption>
+    </figure>
+
+    <!-- =============== STEP 2 =============== -->
+    <h2><span class="step-num">Step 2</span> Install VS Code</h2>
+
+    <p>VS Code is a free code editor from Microsoft. It's where you'll see your files and where Claude Code's nicer features show up (inline diffs, file previews, that kind of thing).</p>
+
+    <ol>
+      <li>Go to <a class="inline" href="https://code.visualstudio.com" target="_blank" rel="noopener">code.visualstudio.com</a>.</li>
+      <li>Click the big <strong>Download</strong> button — it auto-detects Mac or Windows.</li>
+      <li>Open the downloaded file and install it like any other app.</li>
+      <li>Launch VS Code. You can close any welcome tabs that pop up.</li>
+    </ol>
+
+    <figure class="shot-fig">
+      <img class="shot-img" src="../assets/guides/step2-vscode-download.png" alt="The VS Code download page with a big Download button">
+      <figcaption>code.visualstudio.com — the Download button auto-detects your OS.</figcaption>
+    </figure>
+
+    <p>Now grab the Claude Code extension (optional but recommended):</p>
+
+    <ol>
+      <li>In VS Code, click the <strong>Extensions</strong> icon in the left sidebar (looks like four squares).</li>
+      <li>Search <code class="inline">Claude Code</code>.</li>
+      <li>Click <strong>Install</strong> on the one published by Anthropic.</li>
+    </ol>
+
+    <figure class="shot-fig">
+      <img class="shot-img" src="../assets/guides/step2-vscode-extension.png" alt="Claude Code for VS Code listing on the Visual Studio Marketplace">
+      <figcaption>The Claude Code extension by Anthropic, on the VS Code Marketplace.</figcaption>
+    </figure>
+
+    <div class="callout tip">
+      <span class="ico">💡</span>
+      <span class="body"><strong>You don't <em>have</em> to use VS Code.</strong> Claude Code works in any terminal. But pairing them gives you a much nicer experience, especially when you're starting out.</span>
+    </div>
+
+    <!-- =============== STEP 3 =============== -->
+    <h2><span class="step-num">Step 3</span> Install Claude Code</h2>
+
+    <p>This is the actual Claude Code program. One command — copy, paste, hit Enter.</p>
+
+    <p>Pick your computer:</p>
+
+    <div class="os-tabs">
+      <div class="tabs" role="tablist" aria-label="Operating system">
+        <button class="tab" data-os="mac" role="tab" aria-selected="false">🍎 Mac</button>
+        <button class="tab" data-os="windows" role="tab" aria-selected="false">🪟 Windows</button>
+      </div>
+
+      <div class="os-content" data-os="mac">
+        <p style="margin-top:12px">Open the <strong>Terminal</strong> app (search Spotlight with <code class="inline">⌘+Space</code> and type "Terminal"). Then paste this and hit Enter:</p>
+        <div class="code"><pre>curl -fsSL https://claude.ai/install.sh | bash</pre></div>
+        <p>When it's done, close Terminal completely and reopen it. Then check it worked:</p>
+        <div class="code"><pre>claude --version</pre></div>
+        <p>If you see a version number print out, you're good.</p>
+      </div>
+
+      <div class="os-content" data-os="windows">
+        <p style="margin-top:12px">Open <strong>PowerShell</strong> (click Start, type "PowerShell", hit Enter). Then paste this and hit Enter:</p>
+        <div class="code"><pre>irm https://claude.ai/install.ps1 | iex</pre></div>
+        <p>When it's done, close PowerShell completely and reopen it. Then check it worked:</p>
+        <div class="code"><pre>claude --version</pre></div>
+        <p>If you see a version number print out, you're good.</p>
+      </div>
+    </div>
+
+    <div class="callout warn">
+      <span class="ico">⚠️</span>
+      <span class="body"><strong>"command not found" after install?</strong> Close every Terminal/PowerShell window and open a fresh one. The install adds Claude Code to your system PATH, and that only takes effect in new windows.</span>
+    </div>
+
+    <div class="callout tip">
+      <span class="ico">🛠️</span>
+      <span class="body"><strong>On Windows: install Git too.</strong> Grab it at <a class="inline" href="https://git-scm.com/downloads/win" target="_blank" rel="noopener">git-scm.com/downloads/win</a>. Click through the installer with the defaults. This lets Claude Code run shell commands properly.</span>
+    </div>
+
+    <p>When the install finishes and you've reopened your terminal, here's what you should see when you run <code class="inline">claude --version</code>:</p>
+
+    <div class="term" aria-label="Terminal example">
+      <div class="bar">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="title">~ — bash</span>
+      </div>
+      <div class="body">
+<pre><span class="prompt">$</span> <span class="user">claude --version</span>
+<span class="out">2.0.41 (Claude Code)</span>
+<span class="prompt">$</span> <span class="cursor"></span></pre>
+      </div>
+    </div>
+
+    <!-- =============== STEP 4 =============== -->
+    <h2><span class="step-num">Step 4</span> Your First Run</h2>
+
+    <p>Time to actually run it.</p>
+
+    <ol>
+      <li>Open <strong>VS Code</strong>.</li>
+      <li><strong>File → Open Folder…</strong> and pick (or create) a folder anywhere on your computer. <code class="inline">Documents/my-first-claude-project</code> is a great default — it doesn't need any code in it yet.</li>
+      <li>Open the built-in terminal: <strong>View → Terminal</strong> (or hit <code class="inline">Ctrl+`</code> — that's the backtick key, top-left of the keyboard).</li>
+      <li>Type <code class="inline">claude</code> and hit Enter.</li>
+    </ol>
+
+    <p>A browser window opens. Log in with your Claude account → click <strong>Allow</strong>. The browser will tell you it's done; you can close it.</p>
+
+    <p>Back in VS Code, Claude Code is now alive in the terminal panel. Try this:</p>
+
+    <div class="code"><pre>Hi! Who are you and what can you help me with?</pre></div>
+
+    <p>Hit Enter. Claude introduces itself. That's it — you're running Claude Code. Your terminal will look something like this:</p>
+
+    <div class="term" aria-label="Claude Code session example">
+      <div class="bar">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="title">my-first-claude-project — claude</span>
+      </div>
+      <div class="body">
+<pre><span class="accent">✻ Welcome to Claude Code!</span>
+<span class="dim">  /help for help, /status for your current setup</span>
+
+<span class="prompt">&gt;</span> <span class="user">Hi! Who are you and what can you help me with?</span>
+
+<span class="out">I'm Claude Code — an AI coding partner that runs in your
+terminal. I can read your files, write new ones, run commands,
+and help you build pretty much anything you can describe.</span>
+
+<span class="out">What would you like to work on?</span>
+
+<span class="prompt">&gt;</span> <span class="cursor"></span></pre>
+      </div>
+    </div>
+
+    <!-- =============== STEP 5 =============== -->
+    <h2><span class="step-num">Step 5</span> Let Claude Build Your CLAUDE.md</h2>
+
+    <p>Last thing — and this is where it gets fun.</p>
+
+    <p>CLAUDE.md is a magic file. Drop one in your project folder and Claude reads it at the start of every conversation, so you don't have to keep explaining who you are and what you want.</p>
+
+    <p><strong>The cool part:</strong> you don't have to write it. Just ask Claude Code to interview you and write it <em>for</em> you. Paste this prompt in:</p>
+
+    <div class="code"><pre>Create a markdown file. I'm brand new to Claude Code.
+Help me create an About Me MD — ask me questions one
+at a time so you can learn about me, my goals, my
+work, and how I like writing.</pre></div>
+
+    <p>Hit Enter. Claude will start asking you questions one at a time. Just answer them honestly. When it's done, it'll write the file and save it to your project folder.</p>
+
+    <div class="callout tip">
+      <span class="ico">✨</span>
+      <span class="body"><strong>This is the moment it clicks.</strong> You're not typing commands at a robot — you're having a conversation, and the robot is building something useful out of it. Welcome to working with AI as a partner instead of a tool.</span>
+    </div>
+
+    <p>Once Claude saves the file, restart your session (type <code class="inline">/exit</code>, then run <code class="inline">claude</code> again) so it picks up the new CLAUDE.md. From here on out, Claude knows you.</p>
+
+    <div class="callout tip">
+      <span class="ico">🧠</span>
+      <span class="body"><strong>Skills</strong> are like CLAUDE.md but reusable across every project. Drop a folder at <code class="inline">~/.claude/skills/&lt;name&gt;/SKILL.md</code> and Claude can call on it anywhere. More on that in a later guide — for now, your About Me is plenty.</span>
+    </div>
+
+    <hr>
+
+    <!-- =============== BONUS =============== -->
+    <h2 style="background:linear-gradient(135deg,#3b82f6,#a78bfa);-webkit-background-clip:text;background-clip:text;color:transparent;">🚀 Off to the Races: 2 Power Tips</h2>
+
+    <h3>Tip 1 — Use Plan Mode for big asks</h3>
+    <p>Before sending a chunky request ("rebuild my landing page", "set up my whole automation"), press <strong>Shift+Tab twice</strong>. You'll see "PLAN MODE" appear at the bottom of the terminal:</p>
+
+    <div class="term" aria-label="Plan Mode indicator example">
+      <div class="bar">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="title">my-project — claude</span>
+      </div>
+      <div class="body">
+<pre><span class="prompt">&gt;</span> <span class="user">Rebuild my landing page with a new hero section
+  and a pricing grid.</span>
+
+<span class="accent">⏸  Planning before I touch any files…</span>
+<span class="out">  1. Read existing index.html and styles.css
+  2. Design the new hero (gradient + headline + CTA)
+  3. Add a 3-tier pricing grid below
+  4. Update mobile breakpoints
+  5. Show you a diff before writing</span>
+
+<span class="dim">  Press </span><span class="ok">y</span><span class="dim"> to approve, </span><span class="ok">n</span><span class="dim"> to revise.</span>
+
+<span class="prompt">&gt;</span> <span class="cursor"></span></pre>
+      </div>
+      <div class="footer">
+        <span>⏸ Plan Mode</span>
+        <span class="right">shift+tab to toggle</span>
+      </div>
+    </div>
+
+    <p>Now Claude will <em>plan</em> the work first instead of just diving in. You read the plan, approve it, then it executes. It's the difference between "go fast and break things" and "go fast and don't break things."</p>
+
+    <h3>Tip 2 — Use <code class="inline">/init</code> to auto-write CLAUDE.md</h3>
+    <p>Got a folder with actual files in it? Type <code class="inline">/init</code> and hit Enter. Claude reads everything in the folder and writes a CLAUDE.md tailored to that project — way faster than writing one from scratch.</p>
+    <p>Try it on any existing project right now. Then tweak the file by hand.</p>
+
+    <hr>
+
+    <h2 style="background:linear-gradient(135deg,#3b82f6,#a78bfa);-webkit-background-clip:text;background-clip:text;color:transparent;">You're set.</h2>
+    <p>If you got this far — congrats, you're running Claude Code. Mess around. Break stuff. Ask it weird questions. The best way to learn what it can do is to use it on real work you're already doing.</p>
+
+    <div class="ctas">
+      <a class="cta primary" href="../index.html">📅 Book a Call With Me</a>
+      <a class="cta" href="../resources.html">📦 More Resources</a>
+    </div>
+
+  </main>
+
+  <script src="../assets/guide.js" defer></script>
+</body>
+</html>
