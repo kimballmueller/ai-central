@@ -121,6 +121,7 @@ button { font: inherit; }
 }
 .tagline {
   margin: 0;
+  margin-top: -24px;
   font-size: 15px;
   text-align: center;
   color: rgba(245,243,255,0.78);

@@ -1,7 +1,7 @@
 {
   "name": "Kimball Mueller",
   "role": "Your Chief AI Officer",
-  "tagline": ["AI so simple your mom gets it.", "Useful in your business."],
+  "tagline": "AI so simple your mom gets it.",
   "avatar": "assets/headshot.png",
   "buttons": [
     { "label": "Free Resource Guide", "url": "resources.html",                     "icon": "gift",     "primary": true },
