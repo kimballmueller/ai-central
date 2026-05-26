@@ -1,6 +1,15 @@
 {
   "videos": [
     {
+      "title": "GoodMode v2 — The Prompt That Supercharges ChatGPT",
+      "youtubeUrl": "",
+      "publishedAt": "2026-05-25",
+      "description": "Turn ChatGPT into a cross-disciplinary strategist with 100x the critical thinking. Paste once into your custom instructions and every chat from then on runs through the framework — sharper questions, structured reasoning, and real sources instead of vibes.",
+      "resources": [
+        { "label": "Get the full GoodMode v2 prompt", "url": "guides/godmode-v2-prompt.html", "type": "Prompt" }
+      ]
+    },
+    {
       "title": "Claude Code: Steps 1-5",
       "youtubeUrl": "",
       "publishedAt": "2026-05-21",
