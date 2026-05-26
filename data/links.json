@@ -5,13 +5,14 @@
   "avatar": "assets/headshot.jpg",
   "buttons": [
     { "label": "Free Resource Guide", "url": "resources.html",                     "icon": "gift",     "primary": true },
-    { "label": "YouTube",             "url": "#",                                  "icon": "youtube",  "comingSoon": true },
+    { "label": "YouTube",             "url": "https://www.youtube.com/@KimballAI",  "icon": "youtube" },
     { "label": "Book a Call",         "url": "https://api.leadconnectorhq.com/widget/booking/5ks0F7kYGq2TIkyisWnx", "icon": "calendar" },
     { "label": "Disruptors Media",    "url": "https://disruptorsmedia.com",        "icon": "building" },
     { "label": "Email",               "url": "mailto:kimball@disruptorsmedia.com", "icon": "mail"     },
     { "label": "Skool Community",     "url": "#",                                  "icon": "users",    "comingSoon": true }
   ],
   "socials": [
-    { "platform": "instagram", "url": "https://instagram.com/kimball.ai" }
+    { "platform": "instagram", "url": "https://instagram.com/kimball.ai" },
+    { "platform": "youtube",   "url": "https://www.youtube.com/@KimballAI" }
   ]
 }
