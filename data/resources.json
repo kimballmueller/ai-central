@@ -10,6 +10,15 @@
       ]
     },
     {
+      "title": "200+ AI Models, One Studio — Open Generative AI",
+      "youtubeUrl": "",
+      "publishedAt": "2026-05-27",
+      "description": "Flux, Kling, Veo 3, Sora, Imagen 4 — every major image and video model in one open-source studio. One muapi API key unlocks all of them. Runs in your browser in under 5 minutes, no subscription.",
+      "resources": [
+        { "label": "Read the setup guide", "url": "guides/open-generative-ai.html", "type": "Guide" }
+      ]
+    },
+    {
       "title": "GoodMode v2 — The Prompt That Supercharges ChatGPT",
       "youtubeUrl": "",
       "publishedAt": "2026-05-25",

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a1a">
+  <title>200+ AI Models, One Studio — Kimball Mueller</title>
+  <meta name="description" content="Open Generative AI gives you Flux, Kling, Veo 3, Sora, and 200+ more image and video models in one open-source studio. Setup takes under 5 minutes.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="stylesheet" href="../assets/guide.css">
+
+  <meta property="og:title" content="200+ AI Models, One Studio">
+  <meta property="og:description" content="Open Generative AI: Flux, Kling, Veo 3, Sora and 200+ more — one API key, one interface. Free to start.">
+  <meta property="og:type" content="article">
+</head>
+<body>
+  <div class="mesh" aria-hidden="true"><span></span"></div>
+
+  <main class="guide">
+
+    <nav class="guide-nav" aria-label="breadcrumb">
+      <a href="../index.html">← Home</a>
+      <span class="sep">·</span>
+      <a href="../resources.html">Resources</a>
+    </nav>
+
+    <h1 class="guide-title">200+ AI Models, One Studio</h1>
+    <p class="guide-subtitle">Flux, Kling, Veo 3, Sora, Imagen 4 — every major image and video model in one open-source interface.</p>
+    <p class="guide-meta"><span>⏱ ~5 minutes</span><span>🌱 No install required</span><span>🎬 Image &amp; Video</span></p>
+
+    <p>Higgsfield locks you into one set of models. Open Generative AI is the open-source alternative — it pulls 200+ image and video models into a single studio so you can swap between Flux, Seedance, Kling, Veo 3, Sora, or Nano Banana without leaving the interface.</p>
+
+    <p>Runs in your browser in under 5 minutes. You only pay for what you generate — no subscription.</p>
+
+    <hr>
+
+    <!-- =============== STEP 1 =============== -->
+    <h2><span class="step-num">Step 1</span> Open the studio</h2>
+
+    <p>No install, no command line. The whole thing runs in your browser:</p>
+
+    <p><a class="inline" href="https://dev.muapi.ai/open-generative-ai" target="_blank" rel="noopener">dev.muapi.ai/open-generative-ai</a></p>
+
+    <p>You'll see four studio modes: <strong>Image</strong>, <strong>Video</strong>, <strong>Lip Sync</strong>, and <strong>Cinema Studio</strong>. It'll ask for an API key before you can do anything — that's the next step.</p>
+
+    <hr>
+
+    <!-- =============== STEP 2 =============== -->
+    <h2><span class="step-num">Step 2</span> Create a muapi account</h2>
+
+    <p>muapi is the cloud gateway that powers all the models. Sign up at <a class="inline" href="https://muapi.ai" target="_blank" rel="noopener">muapi.ai</a> — takes about 30 seconds. No credit card required to create the account.</p>
+
+    <hr>
+
+    <!-- =============== STEP 3 =============== -->
+    <h2><span class="step-num">Step 3</span> Generate your API key</h2>
+
+    <p>In your muapi dashboard, go to <strong>Access Keys</strong>. Give your key a name (e.g. "Open Generative AI"), hit <strong>Generate Key</strong>, and copy it immediately — you only see it once. Treat it like a password.</p>
+
+    <div class="callout warn">
+      <span class="ico">⚠️</span>
+      <span class="body">Copy the key right away. muapi doesn't show it again after you close the modal — you'd have to generate a new one.</span>
+    </div>
+
+    <hr>
+
+    <!-- =============== STEP 4 =============== -->
+    <h2><span class="step-num">Step 4</span> Paste the key and start creating</h2>
+
+    <p>Back in the studio, paste your key into the <strong>API Key Required</strong> prompt and hit <strong>Connect &amp; Start Creating</strong>. That unlocks all 200+ cloud models in one go.</p>
+
+    <p>Pick a studio mode, choose your model from the dropdown, write a prompt, and generate. Same workflow you know from other tools — just way more model choices.</p>
+
+    <hr>
+
+    <!-- =============== MODELS =============== -->
+    <h2>What's in there</h2>
+
+    <p>The model list covers every major name plus a lot of others you haven't tried yet:</p>
+
+    <h3>Image</h3>
+    <ul>
+      <li><strong>Flux</strong> — fast, high quality, great for photorealism</li>
+      <li><strong>Nano Banana</strong> — stylized, cinematic output</li>
+      <li><strong>Imagen 4</strong> — Google's latest image model</li>
+      <li><strong>Midjourney</strong> — via API</li>
+    </ul>
+
+    <h3>Video</h3>
+    <ul>
+      <li><strong>Seedance 2.0</strong> — high quality video generation</li>
+      <li><strong>Kling</strong> — smooth motion, strong character consistency</li>
+      <li><strong>Veo 3</strong> — Google's video model</li>
+      <li><strong>Sora</strong> — OpenAI's video model</li>
+      <li><strong>Runway</strong></li>
+    </ul>
+
+    <div class="callout tip">
+      <span class="ico">💡</span>
+      <span class="body">Browse the full model list and per-model pricing at <a class="inline" href="https://muapi.ai/playground" target="_blank" rel="noopener">muapi.ai/playground</a>. Expect a few cents per image and up to a couple of dollars for heavy video models like Seedance 2.0.</span>
+    </div>
+
+    <hr>
+
+    <!-- =============== SELF-HOST =============== -->
+    <h2>Optional: self-host it</h2>
+
+    <p>If you want full ownership, the repo is MIT licensed. Clone it, run it locally, and the desktop app includes a local engine (<code class="inline">stable-diffusion.cpp</code>) for offline image generation with no API key at all.</p>
+
+    <p><a class="inline" href="https://github.com/Anil-matcha/Open-Generative-AI" target="_blank" rel="noopener">github.com/Anil-matcha/Open-Generative-AI</a></p>
+
+    <p>For power users: muapi also ships a ComfyUI integration, a CLI, and an MCP server — drop it into whatever you're already using.</p>
+
+    <hr>
+
+    <div class="ctas">
+      <a class="cta primary" href="https://dev.muapi.ai/open-generative-ai" target="_blank" rel="noopener">Open the Studio</a>
+      <a class="cta" href="https://muapi.ai" target="_blank" rel="noopener">Create muapi Account</a>
+    </div>
+
+  </main>
+
+  <script src="../assets/guide.js" defer></script>
+</body>
+</html>
