@@ -1,6 +1,15 @@
 {
   "videos": [
     {
+      "title": "Run Claude Code Free with Ollama",
+      "youtubeUrl": "",
+      "publishedAt": "2026-05-27",
+      "description": "Use Claude Code with open-source models through Ollama's Anthropic-compatible API — no Claude subscription, no API bill. One command gets you running in under 5 minutes.",
+      "resources": [
+        { "label": "Read the setup guide", "url": "guides/ollama-claude-code.html", "type": "Guide" }
+      ]
+    },
+    {
       "title": "GoodMode v2 — The Prompt That Supercharges ChatGPT",
       "youtubeUrl": "",
       "publishedAt": "2026-05-25",
