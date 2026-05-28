@@ -1,6 +1,15 @@
 {
   "videos": [
     {
+      "title": "How to Use Claude (Basically) for Free",
+      "youtubeUrl": "https://www.youtube.com/watch?v=U6gg_bi1I70",
+      "publishedAt": "2026-05-28",
+      "description": "Three proven methods to run Claude Code with no subscription: OpenRouter (pennies per session), NVIDIA NIM (free credits), and Ollama (fully local, forever free). Pick the one that fits you and be up and running in under 10 minutes.",
+      "resources": [
+        { "label": "Read the setup guide", "url": "guides/claude-free-methods.html", "type": "Guide" }
+      ]
+    },
+    {
       "title": "Run Claude Code Free with Ollama",
       "youtubeUrl": "",
       "publishedAt": "2026-05-27",

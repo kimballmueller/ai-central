@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a1a">
+  <title>How to Use Claude (Basically) for Free — Kimball Mueller</title>
+  <meta name="description" content="Three proven methods to run Claude Code for free or near-free: OpenRouter, NVIDIA NIM, and Ollama. Step-by-step setup for each.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="stylesheet" href="../assets/guide.css">
+
+  <meta property="og:title" content="How to Use Claude (Basically) for Free">
+  <meta property="og:description" content="Three methods: OpenRouter, NVIDIA NIM, and Ollama. Pick the one that fits you.">
+  <meta property="og:type" content="article">
+</head>
+<body>
+  <div class="mesh" aria-hidden="true"><span></span></div>
+
+  <main class="guide">
+
+    <nav class="guide-nav" aria-label="breadcrumb">
+      <a href="../index.html">← Home</a>
+      <span class="sep">·</span>
+      <a href="../resources.html">Resources</a>
+    </nav>
+
+    <h1 class="guide-title">How to Use Claude (Basically) for Free</h1>
+    <p class="guide-subtitle">Three methods to run Claude Code with no subscription and near-zero cost — pick the one that fits you.</p>
+    <p class="guide-meta">
+      <span>⏱ ~10 minutes</span>
+      <span>🌱 Beginner-friendly</span>
+      <span>🖥️ Mac, Linux &amp; Windows</span>
+    </p>
+
+    <p>Claude Code normally bills against your Anthropic account. But it's built on an open API standard, which means you can swap in other model providers as the backend. This guide covers the three best free (or near-free) options in 2026, based on <a class="inline" href="https://www.youtube.com/watch?v=U6gg_bi1I70" target="_blank" rel="noopener">Nick Saraev's breakdown</a>.</p>
+
+    <div class="callout tip">
+      <span class="ico">🗺️</span>
+      <span class="body">
+        <strong>Which method should I pick?</strong><br>
+        <strong>OpenRouter</strong> — Best for most people. Pennies per session, massive model selection.<br>
+        <strong>NVIDIA NIM</strong> — Best if you want genuinely free credits and don't mind signing up.<br>
+        <strong>Ollama</strong> — Best if you want zero cost forever and have a reasonably modern Mac or PC.
+      </span>
+    </div>
+
+    <hr>
+
+    <!-- =============== PREREQ =============== -->
+    <h2><span class="step-num">Before you start</span> Install Claude Code</h2>
+
+    <p>All three methods need the Claude Code CLI installed first. If you already have it, skip ahead.</p>
+
+    <div class="os-tabs">
+      <div class="tabs" role="tablist">
+        <button class="tab" data-os="mac" role="tab" aria-selected="false">macOS / Linux</button>
+        <button class="tab" data-os="windows" role="tab" aria-selected="false">Windows</button>
+      </div>
+
+      <div class="os-content" data-os="mac">
+        <div class="code"><pre>curl -fsSL https://claude.ai/install.sh | bash</pre></div>
+        <p>Run in Terminal. Installs the <code class="inline">claude</code> command globally.</p>
+      </div>
+
+      <div class="os-content" data-os="windows">
+        <div class="code"><pre>npm install -g @anthropic-ai/claude-code</pre></div>
+        <p>Requires Node.js 18+. Run in PowerShell or Command Prompt.</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- =============== METHOD 1: OPENROUTER =============== -->
+    <h2>Method 1 — OpenRouter <span style="font-size:0.7em;font-weight:400;opacity:0.6">(cheapest &amp; easiest)</span></h2>
+
+    <p>OpenRouter is a routing layer that gives Claude Code access to dozens of models — including DeepSeek V3, Gemini, and Llama — for pennies. A $5 credit lasts most people weeks of regular use.</p>
+
+    <figure class="guide-figure">
+      <img src="../assets/guides/openrouter-homepage.png" alt="OpenRouter homepage" loading="lazy">
+      <figcaption>OpenRouter's model library — hundreds of models, pay only for what you use.</figcaption>
+    </figure>
+
+    <h3>Step 1 — Create a free OpenRouter account</h3>
+    <p>Go to <a class="inline" href="https://openrouter.ai" target="_blank" rel="noopener">openrouter.ai</a>, sign up with Google or email, and add a small credit (even $5 is plenty to start).</p>
+
+    <h3>Step 2 — Get your API key</h3>
+    <p>Go to <strong>Keys</strong> in your dashboard and create a new key. Copy it — you'll use it in the next step.</p>
+
+    <h3>Step 3 — Point Claude Code at OpenRouter</h3>
+    <p>Set these two environment variables before launching Claude Code. The easiest way is to put them in your shell config (<code class="inline">~/.zshrc</code> or <code class="inline">~/.bashrc</code>):</p>
+
+    <div class="code"><pre>export ANTHROPIC_API_KEY="sk-or-v1-YOUR_KEY_HERE"
+export ANTHROPIC_BASE_URL="https://openrouter.ai/api/v1"</pre></div>
+
+    <p>Reload your shell, then launch Claude Code with any OpenRouter model:</p>
+
+    <div class="code"><pre>claude --model deepseek/deepseek-chat-v3-0324</pre></div>
+
+    <div class="callout tip">
+      <span class="ico">💡</span>
+      <span class="body"><strong>Best models on OpenRouter for coding:</strong> <code class="inline">deepseek/deepseek-chat-v3-0324</code> (DeepSeek V3 Flash — fast and cheap), <code class="inline">google/gemini-2.5-pro</code>, or <code class="inline">anthropic/claude-opus-4-5</code> if you want real Claude at reduced cost.</span>
+    </div>
+
+    <div class="callout warn">
+      <span class="ico">⚠️</span>
+      <span class="body">OpenRouter is not free — it's <em>very cheap</em>. DeepSeek V3 Flash runs about $0.07 per million input tokens. A typical Claude Code session uses ~50k tokens, so you're looking at fractions of a cent per session.</span>
+    </div>
+
+    <hr>
+
+    <!-- =============== METHOD 2: NVIDIA NIM =============== -->
+    <h2>Method 2 — NVIDIA NIM <span style="font-size:0.7em;font-weight:400;opacity:0.6">(actually free credits)</span></h2>
+
+    <p>NVIDIA gives every new account 1,000 free API credits to use on their hosted model catalog — including DeepSeek R1, Llama, and Mistral. It's hosted inference, so no local GPU needed.</p>
+
+    <figure class="guide-figure">
+      <img src="../assets/guides/nvidia-nim-homepage.png" alt="NVIDIA NIM model catalog" loading="lazy">
+      <figcaption>NVIDIA NIM's catalog — powerful hosted models, free credits for new accounts.</figcaption>
+    </figure>
+
+    <h3>Step 1 — Create an NVIDIA account</h3>
+    <p>Go to <a class="inline" href="https://build.nvidia.com" target="_blank" rel="noopener">build.nvidia.com</a> and sign up. It's free — no credit card required for the initial credits.</p>
+
+    <h3>Step 2 — Generate an API key</h3>
+    <p>Navigate to <strong>API Keys</strong> in the top right, click <strong>Generate Key</strong>, and copy it.</p>
+
+    <h3>Step 3 — Configure Claude Code</h3>
+
+    <div class="code"><pre>export ANTHROPIC_API_KEY="nvapi-YOUR_KEY_HERE"
+export ANTHROPIC_BASE_URL="https://integrate.api.nvidia.com/v1"</pre></div>
+
+    <p>Then launch Claude Code with a NVIDIA NIM model:</p>
+
+    <div class="code"><pre>claude --model deepseek-ai/deepseek-r1</pre></div>
+
+    <div class="callout tip">
+      <span class="ico">💡</span>
+      <span class="body"><strong>Good models to try:</strong> <code class="inline">deepseek-ai/deepseek-r1</code> for reasoning-heavy tasks, <code class="inline">meta/llama-3.3-70b-instruct</code> for general coding, or <code class="inline">mistralai/mistral-large-2-instruct</code>. Check the full list at <a class="inline" href="https://build.nvidia.com/explore/discover" target="_blank" rel="noopener">build.nvidia.com/explore</a>.</span>
+    </div>
+
+    <div class="callout warn">
+      <span class="ico">⚠️</span>
+      <span class="body">NVIDIA NIM credits do expire and are limited. Once you exhaust them, you'll need to switch to a paid plan or one of the other methods here.</span>
+    </div>
+
+    <hr>
+
+    <!-- =============== METHOD 3: OLLAMA =============== -->
+    <h2>Method 3 — Ollama <span style="font-size:0.7em;font-weight:400;opacity:0.6">(100% free, runs locally)</span></h2>
+
+    <p>Ollama runs models directly on your machine — no API key, no credits, no bills. The trade-off is that local models are slower and require a capable Mac or PC (8GB+ RAM recommended, 16GB+ for the best models).</p>
+
+    <h3>Step 1 — Install Ollama</h3>
+    <p>Download from <a class="inline" href="https://ollama.com/download" target="_blank" rel="noopener">ollama.com/download</a> and run the installer.</p>
+
+    <h3>Step 2 — Launch with one command</h3>
+    <p>Ollama has a built-in launcher that wires everything up automatically:</p>
+
+    <div class="code"><pre>ollama launch claude</pre></div>
+
+    <p>This opens a model picker. To skip it and jump straight in:</p>
+
+    <div class="code"><pre>ollama launch claude --model kimi-k2.5:cloud</pre></div>
+
+    <div class="callout tip">
+      <span class="ico">💡</span>
+      <span class="body">Models tagged <code class="inline">:cloud</code> run on the provider's servers (still free through Ollama). Pure local models like <code class="inline">qwen3.5</code> run entirely on your machine with no internet at all. We have a full Ollama guide — <a class="inline" href="ollama-claude-code.html">read it here</a>.</span>
+    </div>
+
+    <hr>
+
+    <!-- =============== COMPARISON =============== -->
+    <h2>Side-by-side comparison</h2>
+
+    <table class="guide-table">
+      <thead>
+        <tr>
+          <th>Method</th>
+          <th>Cost</th>
+          <th>Model quality</th>
+          <th>Setup time</th>
+          <th>Requires GPU?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>OpenRouter</strong></td>
+          <td>~$0.001/session</td>
+          <td>Excellent (DeepSeek, Gemini)</td>
+          <td>5 min</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td><strong>NVIDIA NIM</strong></td>
+          <td>Free (credits)</td>
+          <td>Very good (DeepSeek R1, Llama)</td>
+          <td>5 min</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td><strong>Ollama</strong></td>
+          <td>Free forever</td>
+          <td>Good (depends on your hardware)</td>
+          <td>10 min</td>
+          <td>Optional</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr>
+
+    <!-- =============== WATCH THE VIDEO =============== -->
+    <div class="callout tip">
+      <span class="ico">▶️</span>
+      <span class="body">This guide is based on Nick Saraev's walkthrough video. <a class="inline" href="https://www.youtube.com/watch?v=U6gg_bi1I70" target="_blank" rel="noopener">Watch the full video here</a> if you prefer seeing it done live (125K views, ~30 min).</span>
+    </div>
+
+    <hr>
+
+    <div class="ctas">
+      <a class="cta primary" href="https://openrouter.ai" target="_blank" rel="noopener">Get Started with OpenRouter</a>
+      <a class="cta" href="https://build.nvidia.com" target="_blank" rel="noopener">NVIDIA NIM Free Credits</a>
+      <a class="cta" href="ollama-claude-code.html">Ollama Full Setup Guide</a>
+    </div>
+
+  </main>
+
+  <script src="../assets/guide.js" defer></script>
+</body>
+</html>
