@@ -38,8 +38,8 @@
     },
     {
       "title": "Claude Code: Steps 1-5",
-      "youtubeUrl": "",
-      "publishedAt": "2026-05-21",
+      "youtubeUrl": "https://www.youtube.com/watch?v=prIL_3O3KNE",
+      "publishedAt": "2026-05-29",
       "description": "Total-beginner setup guide — from zero to your first Claude Code session in about 30 minutes. Mac and Windows covered.",
       "resources": [
         { "label": "Read the 5-step guide", "url": "guides/claude-code-quickstart.html", "type": "Guide" }
