@@ -239,12 +239,16 @@ table.ct tr.ct-total td{font-weight:700}
 .tier-price span{font-size:15px;font-weight:500;color:var(--muted);letter-spacing:0}
 .tier-tag{font-size:14px;color:var(--muted);margin:12px 0 22px;line-height:1.5}
 .tier-inc{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border)}
-.tier-feats{list-style:none;display:flex;flex-direction:column;gap:12px;flex-grow:1}
+.tier-feats{list-style:none;display:flex;flex-direction:column;gap:10px}
 .tier-feat{display:flex;gap:10px;font-size:14px;color:var(--dark);line-height:1.45}
 .tier-feat svg{flex-shrink:0;margin-top:3px}
 .tier-feat.lead{font-weight:600;color:var(--blue)}
 .tier-feat.star{font-weight:600;color:#1D1D1F}
 .tier-feat.star svg{stroke:var(--purple)}
+.tier-setup{font-size:12px;font-weight:600;color:var(--blue);margin-top:8px}
+.tier-block{margin-top:18px;padding-top:16px;border-top:1px solid var(--border)}
+.tier-block-h{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.tier-block p{font-size:13px;color:var(--muted);line-height:1.5}
 
 /* ── RECOMMENDATION ── */
 .rec-box{max-width:780px;margin:36px auto 0;padding:24px 30px;background:var(--white);border:1px solid rgba(0,113,227,.22);border-left:4px solid var(--blue);border-radius:14px;box-shadow:0 4px 24px rgba(0,113,227,.08)}
@@ -867,55 +871,87 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
       <div class="tier-card reveal d1">
         <div class="tier-name">Systems</div>
         <div class="tier-price">$3,500<span> / mo</span></div>
-        <div class="tier-tag">We build the systems and hand them over. Your team runs the day-to-day.</div>
+        <div class="tier-setup">+ $2,500 one-time setup</div>
+        <div class="tier-tag">Ongoing systems strategy, AI implementation, and operational optimization. We find the bottleneck, fix it, and refine month over month.</div>
         <div class="tier-inc">What's included</div>
         <ul class="tier-feats">
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>New website built + SEO/GEO foundation set up</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Core AI systems built in your accounts</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Social toolkit + playbook — your content lead runs it</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Plain-English training so your team can drive it</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Strategy call twice a month for direction</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>You own everything — your team does the legwork</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Ongoing bottleneck analysis + prioritization</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Website, SEO &amp; GEO optimization</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>CRM structure + systems oversight</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>AI workflow + automation implementation</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Social systems + content workflows</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>AI-assisted content research + ideas</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Team training + documentation</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Two strategic working sessions / month</li>
         </ul>
+        <div class="tier-block">
+          <div class="tier-block-h">Social media</div>
+          <p>Your team handles day-to-day posting &amp; execution; we provide the strategy, systems, and optimization behind it.</p>
+        </div>
+        <div class="tier-block">
+          <div class="tier-block-h">Best for</div>
+          <p>Companies with staff who can execute, but want stronger systems, strategy, and operational guidance.</p>
+        </div>
       </div>
 
       <!-- Tier 2 (featured) -->
       <div class="tier-card featured reveal d2">
         <div class="tier-flag">★ Recommended</div>
         <div class="tier-name">Fractional Chief AI Officer</div>
-        <div class="tier-price">$5,000<span> / mo</span></div>
-        <div class="tier-tag">We stop handing you tools and start doing the work — hands-on in your CRM every week.</div>
+        <div class="tier-price">$5,500<span> / mo</span></div>
+        <div class="tier-setup">+ $3,500 one-time deployment</div>
+        <div class="tier-tag">Strategic leadership plus hands-on execution. We move beyond advising and work directly inside the systems alongside your team.</div>
         <div class="tier-inc">Everything in Systems, plus</div>
         <ul class="tier-feats">
           <li class="tier-feat lead"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Everything in Systems</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>We're <em>in</em> your CRM — building, automating, maintaining it</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>We run your social + handle the editing — higher volume</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Hands-on in your projects, not just handed off</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>A new system or automation built every month</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Weekly access to Kimball, directly</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Hands-on CRM management + optimization</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Automation architecture + implementation</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Social media editing, posting &amp; management</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Higher-volume content production</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Weekly implementation + strategy touchpoints</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>One major system or automation initiative / month</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Direct access to Kimball</li>
         </ul>
+        <div class="tier-block">
+          <div class="tier-block-h">Social media</div>
+          <p>Your team captures the content; we handle editing, posting, workflows, and optimization. ~6+ pieces/week at a daily cadence.</p>
+        </div>
+        <div class="tier-block">
+          <div class="tier-block-h">Best for</div>
+          <p>Growth-stage companies that need both strategic leadership and operational execution across the business.</p>
+        </div>
       </div>
 
       <!-- Tier 3 -->
       <div class="tier-card reveal d3">
-        <div class="tier-name">Full Partner</div>
-        <div class="tier-price">$7,500<span> / mo</span></div>
-        <div class="tier-tag">Unlimited. Everything at the CAIO level — plus the moves most firms never offer.</div>
-        <div class="tier-inc">Everything in CAIO, plus</div>
+        <div class="tier-name">Growth Partner</div>
+        <div class="tier-price">$8,000<span> / mo</span></div>
+        <div class="tier-setup">Custom onboarding &amp; deployment</div>
+        <div class="tier-tag">Embedded growth, AI, and operational leadership — the closest thing to an in-house AI &amp; growth department without hiring one.</div>
+        <div class="tier-inc">Everything in Fractional CAIO, plus</div>
         <ul class="tier-feats">
-          <li class="tier-feat lead"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Everything in Fractional CAIO, unlimited</li>
-          <li class="tier-feat star"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Paid advertising — campaigns for the garden &amp; planter box line</li>
-          <li class="tier-feat star"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>EOS-style weekly leadership session — we run a standing meeting on your bottlenecks and what it takes to clear them</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Weekly live AI training for the whole team</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Custom CRM + KPI dashboards on every dollar</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Any project, no scope ceiling — priority access, anytime</li>
+          <li class="tier-feat lead"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Everything in Fractional CAIO</li>
+          <li class="tier-feat star"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Paid advertising + multi-channel campaign management</li>
+          <li class="tier-feat star"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Weekly leadership + bottleneck strategy sessions</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Weekly live AI training for the full team</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Executive KPI dashboards + reporting</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Sales process + recruiting / onboarding systems</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Priority execution + turnaround across departments</li>
         </ul>
+        <div class="tier-block">
+          <div class="tier-block-h">Social media</div>
+          <p>An embedded growth &amp; content team. 10+ pieces/week, daily multi-platform posting, paid amplification at scale.</p>
+        </div>
+        <div class="tier-block">
+          <div class="tier-block-h">Best for</div>
+          <p>Companies that want aggressive growth and operational leverage without building a full internal department.</p>
+        </div>
       </div>
     </div>
 
     <div class="rec-box reveal d4">
-      <h4><span>★ Our recommendation:</span> start at $5,000.</h4>
-      <p>It's the line between <strong>getting the tools and getting them used.</strong> At $3,500 we build the systems and hand them to your team — but you told us your people are already stretched. At $5,000 we're the ones in your CRM, running your social, and shipping a new system every month. For a team growing 25–35% a year, that's what actually turns the systems into results — without adding to anyone's plate.</p>
+      <h4><span>★ Our recommendation:</span> start at $5,500.</h4>
+      <p>It's the line between <strong>getting the tools and getting them used.</strong> At $3,500 we build the systems and hand them to your team — but you told us your people are already stretched. At $5,500 we're the ones in your CRM, running your social, and shipping a new system every month. For a team growing 25–35% a year, that's what actually turns the systems into results — without adding to anyone's plate.</p>
     </div>
 
     <p class="reveal d4" style="margin-top:24px;font-size:14px;color:var(--muted);">Month-to-month · platform costs billed to your own accounts · you own 100% of everything we build.</p>
@@ -986,7 +1022,7 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
         <div class="step-n">2</div>
         <div class="step-b">
           <h4>Pick a starting tier</h4>
-          <p>Systems, Fractional CAIO, or Full Partner — we'd suggest starting at the $5,000 CAIO level. No wrong answer; we can always move up as the wins stack. A 1-page agreement, no surprises in the fine print.</p>
+          <p>Systems, Fractional CAIO, or Growth Partner — we'd suggest starting at the $5,500 CAIO level. No wrong answer; we can always move up as the wins stack. A 1-page agreement, no surprises in the fine print.</p>
         </div>
       </li>
       <li>
