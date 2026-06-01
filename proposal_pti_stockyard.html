@@ -168,6 +168,16 @@ table.st td.warn{color:var(--orange);font-weight:700}
 .dash-illustrative{padding:12px 24px;background:#F8F8FA;border-top:1px solid #E8E8EC;font-size:12px;color:var(--muted);display:flex;align-items:center;gap:8px}
 .dash-illustrative::before{content:'ⓘ';font-size:13px;flex-shrink:0}
 
+/* ── STITCH SCREENSHOT FRAME ── */
+.stitch-frame{max-width:780px;margin:48px auto 0;background:#fff;border:1px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.12)}
+.stitch-bar{display:flex;align-items:center;gap:7px;padding:11px 16px;background:#F5F5F7;border-bottom:1px solid var(--border)}
+.stitch-dot{width:11px;height:11px;border-radius:50%;background:#DDD}
+.stitch-bar-title{margin-left:10px;font-size:12px;color:var(--muted);font-weight:500}
+.stitch-frame img{width:100%;display:block}
+.stitch-cap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;max-width:780px;margin:18px auto 0}
+.stitch-cap p{font-size:13px;color:var(--muted);margin:0}
+.stitch-cap a{font-size:14px;font-weight:600;color:var(--blue);text-decoration:none;white-space:nowrap}
+
 /* ── STACK ── */
 .stack-wrap{display:flex;flex-direction:column;align-items:center;gap:0;margin-top:52px}
 .stack-node{width:100%;max-width:660px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:26px 30px}
@@ -605,48 +615,22 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
 <section id="dashboard" class="section section--light">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow">05 — The KPI Dashboard</div>
-      <h2>"Where's all our money coming from? Where's it going?"</h2>
+      <div class="eyebrow">05 — Your Command Center</div>
+      <h2>One screen to run the whole yard.</h2>
       <div class="divider"></div>
-      <p style="max-width:660px;">On the call I said I could build you a custom app to see all your KPIs at a glance. Here's the shape of it. The figures below are illustrative — your real numbers populate here once the systems are live.</p>
+      <p style="max-width:660px;">On the call I said I could spin up a custom app to run the operation from one place. So we did — here's the <strong>PTI Stock Yard Command Center</strong>, already built and clickable. Inventory, equipment rentals, the bulk-order calculator, live delivery tracking, project status, and your KPIs — all in one place. The data is illustrative for now; your real numbers flow in once it's live.</p>
     </div>
 
-    <div class="dash-outer reveal d1">
-      <div class="dash-header">
-        <div class="dash-wordmark">
-          <div class="dash-logo">PTI Stockyard</div>
-          <div class="dash-sub">Executive KPI Dashboard</div>
-        </div>
-        <div class="dash-live-badge">Live</div>
+    <div class="stitch-frame reveal d1">
+      <div class="stitch-bar">
+        <span class="stitch-dot"></span><span class="stitch-dot"></span><span class="stitch-dot"></span>
+        <span class="stitch-bar-title">PTI Stock Yard Command — Dashboard</span>
       </div>
-      <div class="dash-panels">
-        <div class="dash-panel">
-          <div class="dash-panel-title">Revenue by Product Line</div>
-          <table class="st">
-            <thead><tr><th>Line</th><th>Avg Order</th><th>Margin</th><th>Trend</th></tr></thead>
-            <tbody>
-              <tr><td><span class="src-dot" style="background:#0071E3;"></span>Stockyard Equipment</td><td>$4,200</td><td class="good">41%</td><td><span class="metric-pill pill-g">↑ 12%</span></td></tr>
-              <tr><td><span class="src-dot" style="background:#34C759;"></span>Garden Boxes</td><td>$680</td><td class="good">38%</td><td><span class="metric-pill pill-g">↑ 28%</span></td></tr>
-              <tr><td><span class="src-dot" style="background:#A855F7;"></span>Greenhouses</td><td>$3,100</td><td>34%</td><td><span class="metric-pill pill-b">New</span></td></tr>
-              <tr><td><span class="src-dot" style="background:#FF9F0A;"></span>Lawn &amp; Garden</td><td>$540</td><td>32%</td><td><span class="metric-pill pill-g">↑ 9%</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="dash-panel">
-          <div class="dash-panel-title">Lead Source Performance</div>
-          <table class="st">
-            <thead><tr><th>Source</th><th>Close %</th><th>Avg Order</th><th>Status</th></tr></thead>
-            <tbody>
-              <tr><td><span class="src-dot" style="background:#0071E3;"></span>Facebook</td><td>22%</td><td>$1,180</td><td><span class="metric-pill pill-g">Strong</span></td></tr>
-              <tr><td><span class="src-dot" style="background:#A855F7;"></span>Instagram</td><td>18%</td><td>$960</td><td><span class="metric-pill pill-g">Strong</span></td></tr>
-              <tr><td><span class="src-dot" style="background:#1D1D1F;"></span>TikTok</td><td>14%</td><td>$720</td><td><span class="metric-pill pill-b">Growing</span></td></tr>
-              <tr><td><span class="src-dot" style="background:#FF9F0A;"></span>Google / AI Search</td><td>9%</td><td>$1,640</td><td><span class="metric-pill pill-o">Opportunity</span></td></tr>
-              <tr><td><span class="src-dot" style="background:#34C759;"></span>Word of Mouth</td><td>34%</td><td>$2,050</td><td><span class="metric-pill pill-g">Strong</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="dash-illustrative">Illustrative target metrics — real numbers sync here once your systems are live. Note the Google / AI line: highest avg order, lowest close rate. That's the gap we close first.</div>
+      <img src="assets/pti-stitch-dashboard.png" alt="PTI Stock Yard Command Center dashboard — inventory, equipment rentals, bulk calculator, delivery tracking, and site conditions" loading="lazy">
+    </div>
+    <div class="stitch-cap reveal d2">
+      <p>Built in Google Stitch · fully interactive · 4 connected screens (Dashboard · Inventory &amp; Calculator · Equipment Rentals · Community Hub).</p>
+      <a href="https://stitch.withgoogle.com/projects/7929680521423114532" target="_blank" rel="noopener">→ Explore the live prototype</a>
     </div>
   </div>
 </section>
