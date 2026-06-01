@@ -108,6 +108,10 @@ p{font-size:17px;line-height:1.65;color:var(--muted)}
 .outcome:hover{background:rgba(255,255,255,.09)}
 .outcome-num{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#64A5FF;margin-bottom:14px}
 .outcome h3{color:#fff;font-size:18px;margin-bottom:10px}
+.section--light .outcome{background:#fff;border:1px solid var(--border)}
+.section--light .outcome:hover{background:#fff;box-shadow:0 8px 28px rgba(0,0,0,.07)}
+.section--light .outcome h3{color:var(--dark)}
+.section--light .outcome-num{color:var(--blue)}
 
 /* ── TIMELINE ── */
 .tl-wrap{position:relative;padding:8px 0 0}
@@ -239,6 +243,22 @@ table.ct tr.ct-total td{font-weight:700}
 .tier-feat{display:flex;gap:10px;font-size:14px;color:var(--dark);line-height:1.45}
 .tier-feat svg{flex-shrink:0;margin-top:3px}
 .tier-feat.lead{font-weight:600;color:var(--blue)}
+.tier-feat.star{font-weight:600;color:#1D1D1F}
+.tier-feat.star svg{stroke:var(--purple)}
+
+/* ── THREE LEVERS ── */
+.levers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:820px;margin:40px auto 0}
+.lever{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:18px 20px;text-align:center}
+.lever-ico{margin-bottom:8px}
+.lever h5{font-size:13px;font-weight:700;color:var(--dark);margin-bottom:4px}
+.lever p{font-size:12px;color:var(--muted);line-height:1.5}
+
+/* ── RECOMMENDATION ── */
+.rec-box{max-width:780px;margin:36px auto 0;padding:24px 30px;background:var(--white);border:1px solid rgba(0,113,227,.22);border-left:4px solid var(--blue);border-radius:14px;box-shadow:0 4px 24px rgba(0,113,227,.08)}
+.rec-box h4{font-size:16px;color:var(--dark);margin-bottom:8px}
+.rec-box h4 span{color:var(--blue)}
+.rec-box p{font-size:14px;color:var(--muted);line-height:1.65}
+.rec-box p strong{color:var(--dark)}
 
 /* ── CHECKLIST ── */
 .cl{list-style:none;margin-top:44px}
@@ -298,6 +318,7 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
   .gap-arrow{font-size:22px}
   .tier-grid{grid-template-columns:1fr;gap:30px;margin-top:44px}
   .tier-card.featured{order:-1}
+  .levers{grid-template-columns:1fr;gap:10px}
 }
 @media(max-width:700px){
   .stats-row{grid-template-columns:1fr;gap:24px}
@@ -404,35 +425,67 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
       <div class="quote-attr">— James Clear, Atomic Habits</div>
     </div>
 
-    <p class="reveal d3" style="max-width:680px;">That growth came from hustle. The next chapter is different. Right now your best people spend a large amount of their time on low-value work — and the channels where new customers actually search haven't caught up to how good the product is. Three gaps stood out on the call:</p>
+    <p class="reveal d3" style="max-width:680px;">That growth came from hustle — and hustle has a ceiling. At 25–35% a year, the cracks start to show: your most valuable people lose hours to work a system should handle, and the customers worth the most are the ones you're least visible to. Three gaps surfaced on the call — and each one is quietly costing you every week:</p>
 
     <div class="pain-grid reveal d4">
       <div class="pain-card">
         <div class="pain-icon">🔍</div>
-        <h4>"We need to be stronger in Google."</h4>
-        <p>Strong on Facebook, TikTok, Instagram — thin on Google, and invisible when someone asks ChatGPT "where do I get the best planter box?" That's where the next customers are looking.</p>
+        <h4>Invisible where it pays most.</h4>
+        <p>Strong on Facebook and Instagram — thin on Google, and absent when someone asks ChatGPT "where do I get the best planter box?" Those Google &amp; AI buyers place your <strong>biggest orders</strong> — and they're the ones you're hardest to find.</p>
       </div>
       <div class="pain-card">
         <div class="pain-icon">⚙️</div>
-        <h4>A great team on low-value work.</h4>
-        <p>"Really valuable people spend a large amount of their time doing less-than-valuable things." You want them elevated — working on the business, not in it.</p>
+        <h4>Your best people on the wrong work.</h4>
+        <p>"Really valuable people spend a large amount of their time doing less-than-valuable things." Every hour lost to busywork is an hour off the work that actually grows PTI — and you feel it more as you scale.</p>
       </div>
       <div class="pain-card">
-        <div class="pain-icon">🖥️</div>
-        <h4>The website &amp; the tools.</h4>
-        <p>Wade's a legend, but the site needs a rebuild. And your content lead understands the brand cold — she just needs the tools to know how to optimize it.</p>
+        <div class="pain-icon">🧠</div>
+        <h4>A business that lives in a few heads.</h4>
+        <p>Wade built it from his brain; your content lead carries the brand in hers. Brilliant — and fragile. Little is documented or systemized, so almost nothing runs without them in the room.</p>
+      </div>
+    </div>
+
+    <p class="reveal d4" style="max-width:680px;margin-top:32px;text-align:center;font-size:18px;color:var(--dark);font-weight:600;">None of this is a revenue problem. It's a systems problem — and systems are fixable.</p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════ 02 — WHY DISRUPTORS ══════════════════════════ -->
+<section id="why" class="section section--dark">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">02 — Why Disruptors Media</div>
+      <h2 style="color:#fff;">The agency model is dead. This is what replaces it.</h2>
+      <div class="divider"></div>
+      <p style="max-width:620px;">Every firm you've talked to wants $10,000 a month to rent you their systems and "maybe it'll work." You said it on the call. We do the opposite: we build the systems <em>inside</em> your company, do the work, and hand you the keys. Here's what makes that different.</p>
+    </div>
+    <div class="why-grid reveal d1">
+      <div class="why-card">
+        <div class="why-num">01</div>
+        <h3>You talk to Kimball. Every call.</h3>
+        <p>No account managers, no handoffs. Every strategy call, every build decision — a direct line to the person doing the work. And someone who already knows PTI.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">02</div>
+        <h3>We build systems you own.</h3>
+        <p>Other firms rent you access and you're stuck paying forever. We build infrastructure inside your business. Each month compounds — and it all belongs to you.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">03</div>
+        <h3>AI moves fast. We move with it.</h3>
+        <p>When the tools shift — and they will — we adapt your systems. You don't rebuild from scratch or pay to migrate. We keep you ahead of it, like you said you need to be.</p>
       </div>
     </div>
   </div>
 </section>
 
 
-<!-- ══════════════════════════ 02 — VISION ══════════════════════════ -->
-<section id="vision" class="section section--dark">
+<!-- ══════════════════════════ 03 — VISION ══════════════════════════ -->
+<section id="vision" class="section section--light">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow">02 — Where You're Going</div>
-      <h2 style="color:#fff;">What we build toward, together.</h2>
+      <div class="eyebrow">03 — Where You're Going</div>
+      <h2>What we build toward, together.</h2>
       <div class="divider"></div>
       <p style="max-width:600px;">Not vague "AI transformation." Specific, operational systems that make PTI more self-sufficient — so the company gets more out of every tool, every dollar, and every person on the team.</p>
     </div>
@@ -461,7 +514,7 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
 <section id="roadmap" class="section">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow">03 — The Roadmap</div>
+      <div class="eyebrow">04 — The Roadmap</div>
       <h2>One piece at a time. Prove it. Then hunt the next.</h2>
       <div class="divider"></div>
       <p style="max-width:620px;">Exactly the way you framed it on the call: take a piece, make it successful, see the return, then move to the next. We start with what's already top of your list — the website and marketing — then layer in systems and team as the wins stack up.</p>
@@ -556,7 +609,7 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
 <section id="dashboard" class="section section--light">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow">04 — The KPI Dashboard</div>
+      <div class="eyebrow">05 — The KPI Dashboard</div>
       <h2>"Where's all our money coming from? Where's it going?"</h2>
       <div class="divider"></div>
       <p style="max-width:660px;">On the call I said I could build you a custom app to see all your KPIs at a glance. Here's the shape of it. The figures below are illustrative — your real numbers populate here once the systems are live.</p>
@@ -607,7 +660,7 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
 <section id="stack" class="section section--dark">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow">05 — How We Build</div>
+      <div class="eyebrow">06 — How We Build</div>
       <h2 style="color:#fff;">The technical architecture.</h2>
       <div class="divider"></div>
       <p style="max-width:600px;">Nothing proprietary, nothing locked to us. We connect to what Wade already built and add the AI layer on top. You own every subscription, every account, every line of code.</p>
@@ -651,7 +704,7 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
 <section id="buildout" class="section">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow">06 — The Foundation in Detail</div>
+      <div class="eyebrow">07 — The Foundation in Detail</div>
       <h2>Where we start: the website &amp; getting found.</h2>
       <div class="divider"></div>
       <p style="max-width:640px;">You told me this is top of your list — and it's the fastest way to prove the return. Four pieces, all yours to keep, all built to make PTI show up where the next customer is already looking.</p>
@@ -693,7 +746,7 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
 <section id="platforms" class="section section--light">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow">07 — Platform Cost Transparency</div>
+      <div class="eyebrow">08 — Platform Cost Transparency</div>
       <h2>Every tool you'll need. What it costs.</h2>
       <div class="divider"></div>
       <p style="max-width:620px;">We set up every subscription in PTI's name. You own these accounts outright. Here's the full picture of what running the systems costs — separate from our fee, no surprises.</p>
@@ -758,7 +811,7 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
 <section id="shift" class="section section--dark">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow">08 — The Shift</div>
+      <div class="eyebrow">09 — The Shift</div>
       <h2 style="color:#fff;">Where you are. Where you're going.</h2>
       <div class="divider"></div>
     </div>
@@ -811,65 +864,88 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
 <section id="investment" class="section section--light">
   <div class="wrap--wide">
     <div class="reveal" style="text-align:center;">
-      <div class="eyebrow">09 — Investment</div>
+      <div class="eyebrow">10 — Investment</div>
       <h2>Pick your level of engagement.</h2>
       <div class="divider divider--c"></div>
-      <p style="max-width:560px;margin:0 auto;">Three ways to work together — month-to-month, no lock-in. Start where it makes sense, move up when it pays off. Each tier includes everything in the one before it.</p>
+      <p style="max-width:600px;margin:0 auto;">Three ways to work together — month-to-month, no lock-in. The difference between them comes down to three levers: how much we produce, how deep we get into your work, and how much of me you get.</p>
+    </div>
+
+    <div class="levers reveal d1">
+      <div class="lever">
+        <div class="lever-ico">📈</div>
+        <h5>Volume</h5>
+        <p>How much content — and advertising — we produce each month.</p>
+      </div>
+      <div class="lever">
+        <div class="lever-ico">🔧</div>
+        <h5>Involvement</h5>
+        <p>Whether we hand you the systems or get hands-on and run them for you.</p>
+      </div>
+      <div class="lever">
+        <div class="lever-ico">📞</div>
+        <h5>Access to Kimball</h5>
+        <p>From a call when you need direction to priority, anytime.</p>
+      </div>
     </div>
 
     <div class="tier-grid">
       <!-- Tier 1 -->
       <div class="tier-card reveal d1">
-        <div class="tier-name">Marketing &amp; Visibility</div>
+        <div class="tier-name">Systems</div>
         <div class="tier-price">$3,500<span> / mo</span></div>
-        <div class="tier-tag">Get found everywhere your customers look — Google, ChatGPT, and social.</div>
+        <div class="tier-tag">We build the systems and hand them over. Your team runs the day-to-day.</div>
         <div class="tier-inc">What's included</div>
         <ul class="tier-feats">
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>New website, rebuilt &amp; AI-maintained</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Google SEO — rank where buyers search</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>GEO — get pulled into ChatGPT answers</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Social content engine + team tools</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Plain-English explainers for your team</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Weekly strategy call — Kimball, directly</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>New website built + SEO/GEO foundation set up</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Core AI systems built in your accounts</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Social toolkit + playbook — your content lead runs it</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Plain-English training so your team can drive it</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Strategy call twice a month for direction</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>You own everything — your team does the legwork</li>
         </ul>
       </div>
 
       <!-- Tier 2 (featured) -->
       <div class="tier-card featured reveal d2">
-        <div class="tier-flag">Most Popular</div>
+        <div class="tier-flag">★ Recommended</div>
         <div class="tier-name">Fractional Chief AI Officer</div>
         <div class="tier-price">$5,000<span> / mo</span></div>
-        <div class="tier-tag">Everything in Marketing — plus AI built into how the company actually runs.</div>
-        <div class="tier-inc">Everything above, plus</div>
+        <div class="tier-tag">We stop handing you tools and start doing the work — hands-on in your CRM every week.</div>
+        <div class="tier-inc">Everything in Systems, plus</div>
         <ul class="tier-feats">
-          <li class="tier-feat lead"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Everything in Marketing &amp; Visibility</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>We map every system &amp; find the bottlenecks</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>AI automations built into your operations</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Internal workflows: orders, ops, back-office</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>One new automation live every month</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Direct CAIO access — bring the bottleneck, we build it</li>
+          <li class="tier-feat lead"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Everything in Systems</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>We're <em>in</em> your CRM — building, automating, maintaining it</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>We run your social + handle the editing — higher volume</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Hands-on in your projects, not just handed off</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>A new system or automation built every month</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Weekly access to Kimball, directly</li>
         </ul>
       </div>
 
       <!-- Tier 3 -->
       <div class="tier-card reveal d3">
-        <div class="tier-name">Full Transformation</div>
+        <div class="tier-name">Full Partner</div>
         <div class="tier-price">$7,500<span> / mo</span></div>
-        <div class="tier-tag">Everything — plus we train your team and build the dashboards you run on.</div>
-        <div class="tier-inc">Everything above, plus</div>
+        <div class="tier-tag">Unlimited. Everything at the CAIO level — plus the moves most firms never offer.</div>
+        <div class="tier-inc">Everything in CAIO, plus</div>
         <ul class="tier-feats">
-          <li class="tier-feat lead"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Everything in Fractional CAIO</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Weekly live AI trainings for your team</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Custom CRM built for PTI</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>KPI dashboards — every dollar in and out</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Metric tools across all product lines</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Your team elevated — not replaced</li>
+          <li class="tier-feat lead"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Everything in Fractional CAIO, unlimited</li>
+          <li class="tier-feat star"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Paid advertising — campaigns for the garden &amp; planter box line</li>
+          <li class="tier-feat star"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>EOS-style weekly leadership session — we run a standing meeting on your bottlenecks and what it takes to clear them</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Weekly live AI training for the whole team</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Custom CRM + KPI dashboards on every dollar</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Any project, no scope ceiling — priority access, anytime</li>
         </ul>
       </div>
     </div>
 
-    <div class="exec-note reveal d4" style="max-width:760px;margin:44px auto 0;background:rgba(0,113,227,.06);border-color:rgba(0,113,227,.15);color:var(--muted);">
-      <strong style="color:var(--dark);">On prepping your people:</strong> you flagged the worry that some will think AI is here to take their job. The training tier is the answer — AI makes your team <em>more</em> valuable, not redundant. We bring them along, so nobody's working against the change.
+    <div class="rec-box reveal d4">
+      <h4><span>★ Our recommendation:</span> start at $5,000.</h4>
+      <p>It's the line between <strong>getting the tools and getting them used.</strong> At $3,500 we build the systems and hand them to your team — but you told us your people are already stretched. At $5,000 we're the ones in your CRM, running your social, and shipping a new system every month. For a team growing 25–35% a year, that's what actually turns the systems into results — without adding to anyone's plate.</p>
+    </div>
+
+    <div class="exec-note reveal d4" style="max-width:780px;margin:28px auto 0;background:rgba(0,113,227,.06);border-color:rgba(0,113,227,.15);color:var(--muted);">
+      <strong style="color:var(--dark);">On prepping your people:</strong> you flagged the worry that some will think AI is here to take their job. The team training in the Full Partner tier is the answer — AI makes your people <em>more</em> valuable, not redundant. We bring them along, so nobody's working against the change.
     </div>
 
     <p class="reveal d4" style="text-align:center;margin-top:24px;font-size:14px;color:var(--muted);">Month-to-month · platform costs billed to your own accounts · you own 100% of everything we build.</p>
@@ -881,7 +957,7 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
 <section id="how" class="section">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow">10 — How Every Engagement Runs</div>
+      <div class="eyebrow">11 — How Every Engagement Runs</div>
       <h2>The same promises at every tier.</h2>
       <div class="divider"></div>
       <p style="max-width:580px;">Whichever level you start at, the way we work doesn't change. A fractional Chief AI Officer who shows up every week and never hands you off.</p>
@@ -920,36 +996,6 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
 </section>
 
 
-<!-- ══════════════════════════ 11 — WHY DISRUPTORS ══════════════════════════ -->
-<section id="why" class="section section--dark">
-  <div class="wrap">
-    <div class="reveal">
-      <div class="eyebrow">11 — Why Disruptors Media</div>
-      <h2 style="color:#fff;">The agency model is dead. This is what replaces it.</h2>
-      <div class="divider"></div>
-      <p style="max-width:600px;">Not a firm that rents you their systems and bills $10,000 a month hoping it works. We build the systems inside your company — and they're yours.</p>
-    </div>
-    <div class="why-grid reveal d1">
-      <div class="why-card">
-        <div class="why-num">01</div>
-        <h3>You talk to Kimball. Every call.</h3>
-        <p>No account managers, no handoffs. Every strategy call, every build decision — a direct line to the person doing the work. And someone who already knows PTI.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-num">02</div>
-        <h3>We build systems you own.</h3>
-        <p>Other firms rent you access and you're stuck paying forever. We build infrastructure inside your business. Each month compounds — and it all belongs to you.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-num">03</div>
-        <h3>AI moves fast. We move with it.</h3>
-        <p>When the tools shift — and they will — we adapt your systems. You don't rebuild from scratch or pay to migrate. We keep you ahead of it, like you said you need to be.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
 <!-- ══════════════════════════ 12 — NEXT STEPS ══════════════════════════ -->
 <section id="next" class="section section--light" style="text-align:center;">
   <div class="wrap">
@@ -970,7 +1016,7 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
         <div class="step-n">2</div>
         <div class="step-b">
           <h4>Pick a starting tier</h4>
-          <p>Marketing, Fractional CAIO, or Full Transformation. No wrong answer — we can always move up as the wins stack. A 1-page agreement, no surprises in the fine print.</p>
+          <p>Systems, Fractional CAIO, or Full Partner — we'd suggest starting at the $5,000 CAIO level. No wrong answer; we can always move up as the wins stack. A 1-page agreement, no surprises in the fine print.</p>
         </div>
       </li>
       <li>
