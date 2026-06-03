@@ -1,6 +1,26 @@
 {
   "videos": [
     {
+      "title": "PewDiePie Just Changed Coding Forever (Odysseus Setup Guide)",
+      "youtubeUrl": "https://www.youtube.com/watch?v=OEV_nEZ28Tk",
+      "embed": true,
+      "publishedAt": "2026-06-03",
+      "description": "PewDiePie's Odysseus setup, walked through step by step. Here's how to get it running yourself.",
+      "resources": []
+    },
+    {
+      "title": "AI Systems Playbooks for Ag & Operators",
+      "youtubeUrl": "",
+      "publishedAt": "2026-06-02",
+      "description": "Plain-English playbooks for getting the busywork out of a working operation — order intake, inventory, scheduling, compliance, and follow-up. Start with the 12-point audit to find your biggest leak, then grab the playbook that fits your business.",
+      "resources": [
+        { "label": "The Ag Operator's AI Systems Audit", "url": "guides/ag-systems-audit.html", "type": "Guide" },
+        { "label": "DTC Ranch & Creamery Operating System", "url": "guides/dtc-ranch-creamery-os.html", "type": "Guide" },
+        { "label": "Grower & Packer Back-Office Playbook", "url": "guides/grower-packer-playbook.html", "type": "Guide" },
+        { "label": "Ag Dealership AI Playbook", "url": "guides/ag-dealership-playbook.html", "type": "Guide" }
+      ]
+    },
+    {
       "title": "How to Use Claude (Basically) for Free",
       "youtubeUrl": "https://www.youtube.com/watch?v=U6gg_bi1I70",
       "publishedAt": "2026-05-28",

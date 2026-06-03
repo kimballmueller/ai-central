@@ -33,6 +33,12 @@ function escapeHtml(s) {
   }[c]));
 }
 
+// Pull the 11-char video id out of any YouTube URL form.
+function youtubeId(url) {
+  const m = String(url || '').match(/(?:v=|youtu\.be\/|embed\/)([\w-]{11})/);
+  return m ? m[1] : '';
+}
+
 // ---------- Homepage ----------
 function renderHomepage(root, data) {
   // Probe the image: only swap in the photo if it actually loads.
@@ -111,6 +117,15 @@ function renderResources(root, data) {
     const meta = v.publishedAt ? `<p class="video-meta">Posted ${escapeHtml(v.publishedAt)}</p>` : '';
     const desc = v.description ? `<p class="video-desc">${escapeHtml(v.description)}</p>` : '';
 
+    const embedId = v.embed ? youtubeId(v.youtubeUrl) : '';
+    const embed = embedId
+      ? `<div class="video-embed"><iframe src="https://www.youtube.com/embed/${escapeHtml(embedId)}" title="${escapeHtml(v.title)}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>`
+      : '';
+
+    const list = items
+      ? `<div class="divider"></div><ul class="resource-list">${items}</ul>`
+      : '';
+
     return `
       <article class="video-card">
         <div class="video-head">
@@ -118,11 +133,11 @@ function renderResources(root, data) {
             <h2 class="video-title">${escapeHtml(v.title)}</h2>
             ${meta}
           </div>
-          ${yt}
+          ${embed ? '' : yt}
         </div>
         ${desc}
-        <div class="divider"></div>
-        <ul class="resource-list">${items}</ul>
+        ${embed}
+        ${list}
       </article>`;
   }).join('');
 
