@@ -1,6 +1,14 @@
 {
   "videos": [
     {
+      "title": "I Tried PewDiePie's AI OS So You Don't Have To (Part 2)",
+      "youtubeUrl": "https://www.youtube.com/watch?v=7WWSRlqgGKM",
+      "embed": true,
+      "publishedAt": "2026-06-04",
+      "description": "Part 2 of the deep dive into PewDiePie's AI operating system — what it actually does, where it shines, and whether it's worth setting up yourself.",
+      "resources": []
+    },
+    {
       "title": "PewDiePie Just Changed Coding Forever (Odysseus Setup Guide)",
       "youtubeUrl": "https://www.youtube.com/watch?v=OEV_nEZ28Tk",
       "embed": true,
