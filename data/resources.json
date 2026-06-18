@@ -1,6 +1,15 @@
 {
   "videos": [
     {
+      "title": "20 Free AI Tools Every Student Should Activate (.edu)",
+      "youtubeUrl": "",
+      "publishedAt": "2026-06-18",
+      "description": "Five free subscriptions every student needs before graduation — GitHub Student Pack, Cursor Pro, Notion, Figma, and Perplexity — plus 15 more you can unlock free (or near-free) with your .edu email. Every link from the video in one place.",
+      "resources": [
+        { "label": "Get all 20 student tools + links", "url": "guides/free-ai-tools-students.html", "type": "Guide" }
+      ]
+    },
+    {
       "title": "I Tried PewDiePie's AI OS So You Don't Have To (Part 2)",
       "youtubeUrl": "https://www.youtube.com/watch?v=7WWSRlqgGKM",
       "embed": true,
