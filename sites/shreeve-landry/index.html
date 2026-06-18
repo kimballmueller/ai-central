@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shreeve Landry CPA — Tax, Accounting & CFO Advisory in Utah</title>
+<meta name="description" content="Shreeve Landry is a Utah CPA firm with 30+ years of experience delivering tax strategy, bookkeeping, payroll, and CFO advisory. 98.7% client satisfaction. Offices in Woods Cross, Salt Lake City & Orem." />
+<meta name="theme-color" content="#02112E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2302112E'/%3E%3Crect x='14' y='14' width='22' height='22' rx='3' fill='none' stroke='%23ffffff' stroke-width='3'/%3E%3Crect x='26' y='26' width='22' height='22' rx='3' fill='none' stroke='%2367C2B5' stroke-width='3'/%3E%3C/svg%3E" />
+<meta property="og:title" content="Shreeve Landry CPA — Unlock Maximum Savings" />
+<meta property="og:description" content="Expert tax, accounting, and financial advisory for Utah businesses and individuals. Sit back and let us tackle the numbers." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#02112E;          /* deep navy */
+    --ink-2:#0A1A38;
+    --ink-3:#13254A;
+    --mint:#67C2B5;         /* brand teal */
+    --mint-deep:#3FA193;
+    --mint-soft:#E3F2EF;
+    --coral:#F2525A;        /* brand coral */
+    --paper:#FAF8F3;        /* warm cream */
+    --paper-2:#F2EEE5;
+    --card:#FFFFFF;
+    --text:#1B2436;
+    --muted:#5C6678;
+    --line:#E7E2D6;
+    --line-dark:rgba(255,255,255,.12);
+    --shadow-sm:0 1px 2px rgba(2,17,46,.06), 0 4px 16px rgba(2,17,46,.05);
+    --shadow-md:0 10px 40px rgba(2,17,46,.10);
+    --shadow-lg:0 30px 80px rgba(2,17,46,.18);
+    --r:18px;
+    --maxw:1180px;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--text);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.08;letter-spacing:-.01em;color:var(--ink)}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-family:'Inter',sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--mint-deep);display:inline-flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1.5px;background:var(--mint-deep);display:inline-block}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    font-weight:600;font-size:.97rem;padding:15px 26px;border-radius:999px;
+    border:1.5px solid transparent;cursor:pointer;transition:.3s var(--ease);white-space:nowrap;
+  }
+  .btn-primary{background:var(--coral);color:#fff;box-shadow:0 10px 26px rgba(242,82,90,.32)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(242,82,90,.42)}
+  .btn-dark{background:var(--ink);color:#fff}
+  .btn-dark:hover{background:var(--ink-3);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--ink);background:var(--ink);color:#fff}
+  .btn-light{background:#fff;color:var(--ink)}
+  .btn-light:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+  .btn-outline-light{background:transparent;color:#fff;border-color:var(--line-dark)}
+  .btn-outline-light:hover{background:rgba(255,255,255,.08);border-color:#fff}
+
+  /* ============ TOP UTILITY BAR ============ */
+  .topbar{background:var(--ink);color:#cfd6e4;font-size:.82rem}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:18px;height:42px}
+  .topbar a{display:inline-flex;align-items:center;gap:7px;transition:.2s}
+  .topbar a:hover{color:#fff}
+  .topbar .tb-left{display:flex;gap:22px}
+  .topbar .tb-right{display:flex;gap:18px;align-items:center}
+  .topbar svg{width:14px;height:14px;stroke:var(--mint);flex:none}
+  .topbar .portal{color:var(--mint);font-weight:600}
+  .topbar a{white-space:nowrap}
+  @media(max-width:780px){.topbar .tb-left .hours{display:none}.topbar .tb-right a:not(.portal){display:none}.topbar{font-size:.78rem}.topbar .wrap{height:40px}}
+
+  /* ============ HEADER ============ */
+  header.nav{position:sticky;top:0;z-index:90;background:rgba(250,248,243,.82);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:.3s}
+  header.nav.scrolled{border-bottom-color:var(--line);box-shadow:0 6px 24px rgba(2,17,46,.05)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px;gap:18px}
+  .logo img{height:38px;width:auto}
+  .navlinks{display:flex;align-items:center;gap:30px}
+  .navlinks a{font-weight:500;font-size:.95rem;color:var(--ink);position:relative;padding:6px 0}
+  .navlinks a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--mint-deep);transition:width .3s var(--ease)}
+  .navlinks a:hover::after{width:100%}
+  .nav-cta{display:flex;align-items:center;gap:14px}
+  .nav-call{font-weight:700;color:var(--ink);display:inline-flex;align-items:center;gap:8px}
+  .nav-call svg{width:16px;height:16px;stroke:var(--mint-deep)}
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
+  .burger span{width:24px;height:2px;background:var(--ink);transition:.3s}
+  @media(max-width:980px){
+    .navlinks,.nav-call{display:none}
+    .burger{display:flex}
+  }
+  /* mobile drawer */
+  .drawer{position:fixed;inset:0;z-index:100;background:var(--ink);color:#fff;transform:translateX(100%);transition:transform .4s var(--ease);display:flex;flex-direction:column;padding:28px 28px 40px}
+  .drawer.open{transform:translateX(0)}
+  .drawer-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:34px}
+  .drawer-top .x{background:none;border:0;color:#fff;font-size:2rem;cursor:pointer;line-height:1}
+  .drawer a{font-family:'Fraunces',serif;font-size:1.5rem;padding:14px 0;border-bottom:1px solid var(--line-dark);color:#fff}
+  .drawer .dcall{margin-top:auto;display:flex;flex-direction:column;gap:12px}
+
+  /* ============ HERO ============ */
+  .hero{position:relative;padding:78px 0 90px;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+  .hero h1{font-size:clamp(2.6rem,5.2vw,4.3rem);font-weight:600}
+  .hero h1 em{font-style:normal;color:var(--mint-deep);position:relative}
+  .hero .lede{font-size:1.18rem;color:var(--muted);margin:24px 0 18px;max-width:30em}
+  .hero-tag{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 16px 8px 8px;font-size:.85rem;font-weight:600;color:var(--ink);box-shadow:var(--shadow-sm);margin-bottom:26px}
+  .hero-tag b{background:var(--mint-soft);color:var(--mint-deep);border-radius:999px;padding:4px 11px;font-size:.78rem}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+  .hero-trust{display:flex;gap:30px;margin-top:42px;flex-wrap:wrap}
+  .hero-trust .ht{display:flex;flex-direction:column}
+  .hero-trust .ht b{font-family:'Fraunces',serif;font-size:1.9rem;color:var(--ink);font-weight:600}
+  .hero-trust .ht span{font-size:.84rem;color:var(--muted)}
+  /* decorative squares */
+  .sq{position:absolute;border:2px solid;border-radius:6px;opacity:.5;pointer-events:none}
+  .hero .sq1{width:120px;height:120px;border-color:var(--mint);top:60px;right:46%;opacity:.25}
+  .hero .sq2{width:70px;height:70px;border-color:var(--coral);bottom:80px;left:42%;opacity:.2}
+
+  /* hero visual card */
+  .hero-visual{position:relative}
+  .dash{background:var(--card);border-radius:24px;box-shadow:var(--shadow-lg);padding:26px;position:relative;z-index:2}
+  .dash-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+  .dash-top .dt-title{font-weight:700;font-size:.95rem;color:var(--ink)}
+  .dash-top .dt-sub{font-size:.76rem;color:var(--muted)}
+  .dash-pill{background:var(--mint-soft);color:var(--mint-deep);font-weight:700;font-size:.74rem;padding:5px 11px;border-radius:999px;display:inline-flex;gap:6px;align-items:center}
+  .dash-hero-num{font-family:'Fraunces',serif;font-size:2.7rem;font-weight:600;color:var(--ink);line-height:1;margin:4px 0 2px}
+  .dash-hero-num span{color:var(--mint-deep)}
+  .dash-cap{font-size:.82rem;color:var(--muted);margin-bottom:20px}
+  .bars{display:flex;align-items:flex-end;gap:10px;height:96px;margin-bottom:8px}
+  .bar{flex:1;background:var(--paper-2);border-radius:7px 7px 4px 4px;position:relative;overflow:hidden}
+  .bar i{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(180deg,var(--mint),var(--mint-deep));border-radius:7px 7px 0 0;height:var(--h)}
+  .bar:last-child i{background:linear-gradient(180deg,#F88,#F2525A)}
+  .bars-x{display:flex;gap:10px;font-size:.66rem;color:var(--muted)}
+  .bars-x span{flex:1;text-align:center}
+  .dash-row{display:flex;gap:12px;margin-top:18px}
+  .dash-mini{flex:1;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:13px 14px}
+  .dash-mini .dm-l{font-size:.72rem;color:var(--muted)}
+  .dash-mini .dm-v{font-family:'Fraunces',serif;font-weight:600;font-size:1.25rem;color:var(--ink)}
+  .float-card{position:absolute;background:#fff;border-radius:14px;box-shadow:var(--shadow-md);padding:13px 16px;display:flex;align-items:center;gap:11px;z-index:3;font-size:.84rem}
+  .float-card .fc-ic{width:36px;height:36px;border-radius:10px;background:var(--mint-soft);display:grid;place-items:center;flex:none}
+  .float-card .fc-ic svg{width:18px;height:18px;stroke:var(--mint-deep)}
+  .float-card b{display:block;color:var(--ink);font-size:.9rem}
+  .float-card small{color:var(--muted)}
+  .fc-1{top:-22px;left:-26px}
+  .fc-2{bottom:-24px;right:-18px}
+  .hero-visual .vsq{width:180px;height:180px;background:linear-gradient(135deg,var(--mint),var(--mint-deep));border-radius:26px;position:absolute;top:-30px;right:-30px;z-index:0;opacity:.16;filter:blur(2px)}
+  @media(max-width:980px){
+    .hero-grid{grid-template-columns:1fr;gap:64px}
+    .hero{padding:48px 0 70px}
+    .fc-1{left:-8px}.fc-2{right:0}
+    .hero .sq1,.hero .sq2{display:none}
+  }
+
+  /* ============ CREDENTIAL STRIP ============ */
+  .creds{background:var(--ink);color:#fff;padding:30px 0}
+  .creds .wrap{display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap}
+  .creds .ct{font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:#9fb0c9;font-weight:600;flex:none}
+  .creds-list{display:flex;gap:34px;flex-wrap:wrap;align-items:center;flex:1;justify-content:flex-end}
+  .creds-list .ci{display:flex;align-items:center;gap:10px;font-weight:600;font-size:.95rem;color:#eef2f8}
+  .creds-list .ci svg{width:20px;height:20px;stroke:var(--mint);flex:none}
+
+  /* ============ SECTION SHELL ============ */
+  section{position:relative}
+  .sec{padding:96px 0}
+  .sec-head{max-width:680px;margin-bottom:54px}
+  .sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+  .sec-head.center .eyebrow{justify-content:center}
+  .sec-head h2{font-size:clamp(2rem,4vw,3rem);margin:16px 0 14px}
+  .sec-head p{font-size:1.08rem;color:var(--muted)}
+
+  /* ============ SERVICES ============ */
+  .services{background:linear-gradient(180deg,var(--paper) 0%,var(--paper-2) 100%)}
+  .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .svc{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px 24px 22px;transition:.35s var(--ease);position:relative;overflow:hidden}
+  .svc::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--mint);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+  .svc:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);border-color:transparent}
+  .svc:hover::before{transform:scaleX(1)}
+  .svc-ic{width:52px;height:52px;border-radius:14px;background:var(--mint-soft);display:grid;place-items:center;margin-bottom:18px;transition:.35s}
+  .svc:hover .svc-ic{background:var(--ink)}
+  .svc-ic svg{width:25px;height:25px;stroke:var(--mint-deep);transition:.35s}
+  .svc:hover .svc-ic svg{stroke:var(--mint)}
+  .svc h3{font-size:1.18rem;margin-bottom:8px}
+  .svc p{font-size:.92rem;color:var(--muted);line-height:1.55}
+  .svc .more{margin-top:14px;font-weight:600;font-size:.86rem;color:var(--mint-deep);display:inline-flex;gap:6px;align-items:center;opacity:0;transform:translateX(-6px);transition:.3s}
+  .svc:hover .more{opacity:1;transform:translateX(0)}
+  .svc.wide{grid-column:span 2;background:var(--ink);color:#fff;display:flex;flex-direction:column;justify-content:center}
+  .svc.wide h3{color:#fff;font-size:1.4rem}
+  .svc.wide p{color:#bcc7d8}
+  .svc.wide .svc-ic{background:rgba(255,255,255,.1)}
+  .svc.wide .svc-ic svg{stroke:var(--mint)}
+  .svc.wide::before{display:none}
+  @media(max-width:980px){.svc-grid{grid-template-columns:repeat(2,1fr)}.svc.wide{grid-column:span 2}}
+  @media(max-width:560px){.svc-grid{grid-template-columns:1fr}.svc.wide{grid-column:span 1}}
+
+  /* ============ VALUES (3 P's) ============ */
+  .values{background:var(--ink);color:#fff;overflow:hidden}
+  .values .sec-head h2{color:#fff}
+  .values .sec-head p{color:#aab6c9}
+  .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .vcard{border:1px solid var(--line-dark);border-radius:var(--r);padding:32px 28px;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,0));transition:.35s}
+  .vcard:hover{background:linear-gradient(180deg,rgba(103,194,181,.12),rgba(255,255,255,.02));border-color:rgba(103,194,181,.4)}
+  .vnum{font-family:'Fraunces',serif;font-size:1rem;color:var(--mint);font-weight:600;letter-spacing:.1em}
+  .vcard h3{color:#fff;font-size:1.5rem;margin:14px 0 10px}
+  .vcard p{color:#aab6c9;font-size:.96rem}
+  .vsq-deco{position:absolute;border:2px solid var(--mint);opacity:.12;border-radius:8px}
+  @media(max-width:860px){.vgrid{grid-template-columns:1fr}}
+
+  /* ============ PROCESS ============ */
+  .proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:step}
+  .step{position:relative;padding-top:22px}
+  .step::before{counter-increment:step;content:"0" counter(step);font-family:'Fraunces',serif;font-size:3.4rem;font-weight:600;color:var(--paper-2);line-height:.8;display:block;margin-bottom:8px}
+  .step h3{font-size:1.2rem;margin-bottom:8px}
+  .step p{font-size:.92rem;color:var(--muted)}
+  .step .stepline{position:absolute;top:14px;left:0;width:38px;height:3px;background:var(--mint);border-radius:2px}
+  @media(max-width:860px){.proc-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.proc-grid{grid-template-columns:1fr}}
+
+  /* ============ STATS BAND ============ */
+  .stats{background:linear-gradient(120deg,var(--mint-deep),#2E8C80);color:#fff;text-align:center}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .stat b{font-family:'Fraunces',serif;font-size:clamp(2.4rem,5vw,3.4rem);font-weight:600;display:block;line-height:1}
+  .stat span{font-size:.95rem;color:#dff3ef;margin-top:8px;display:block}
+  @media(max-width:680px){.stats-grid{grid-template-columns:1fr 1fr;gap:34px 20px}}
+
+  /* ============ TEAM ============ */
+  .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .person{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px;transition:.35s var(--ease)}
+  .person:hover{box-shadow:var(--shadow-md);transform:translateY(-4px)}
+  .avatar{width:64px;height:64px;border-radius:16px;display:grid;place-items:center;font-family:'Fraunces',serif;font-weight:600;font-size:1.4rem;color:#fff;margin-bottom:16px;position:relative}
+  .person h3{font-size:1.22rem;margin-bottom:2px}
+  .person .role{font-size:.85rem;font-weight:600;color:var(--mint-deep);margin-bottom:12px;letter-spacing:.02em}
+  .person p{font-size:.9rem;color:var(--muted)}
+  .person .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+  .person .tags span{font-size:.72rem;background:var(--paper-2);color:var(--muted);padding:4px 10px;border-radius:999px;font-weight:500}
+  .team-note{text-align:center;margin-top:32px;color:var(--muted);font-size:.95rem}
+  @media(max-width:880px){.team-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.team-grid{grid-template-columns:1fr}}
+
+  /* ============ TESTIMONIALS ============ */
+  .testi{background:var(--paper-2)}
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .quote{background:var(--card);border-radius:var(--r);padding:30px 28px;box-shadow:var(--shadow-sm);position:relative}
+  .quote .stars{color:var(--coral);font-size:1rem;letter-spacing:2px;margin-bottom:14px}
+  .quote p{font-size:1rem;color:var(--text);font-style:italic;margin-bottom:20px}
+  .quote .who{display:flex;align-items:center;gap:12px}
+  .quote .who .av{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:.95rem;flex:none}
+  .quote .who b{display:block;font-size:.95rem;color:var(--ink)}
+  .quote .who small{color:var(--muted);font-size:.8rem}
+  @media(max-width:880px){.testi-grid{grid-template-columns:1fr}}
+
+  /* ============ LOCATIONS ============ */
+  .loc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .loc{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:.35s}
+  .loc:hover{box-shadow:var(--shadow-md);transform:translateY(-4px)}
+  .loc-map{height:120px;background:
+     linear-gradient(135deg,rgba(103,194,181,.18),rgba(2,17,46,.06)),
+     repeating-linear-gradient(0deg,transparent,transparent 18px,rgba(2,17,46,.05) 18px,rgba(2,17,46,.05) 19px),
+     repeating-linear-gradient(90deg,transparent,transparent 18px,rgba(2,17,46,.05) 18px,rgba(2,17,46,.05) 19px);
+     position:relative}
+  .loc-map::after{content:"";position:absolute;left:50%;top:50%;width:14px;height:14px;background:var(--coral);border-radius:50% 50% 50% 0;transform:translate(-50%,-70%) rotate(-45deg);box-shadow:0 4px 10px rgba(242,82,90,.5)}
+  .loc-body{padding:22px 24px 24px}
+  .loc-body h3{font-size:1.2rem;margin-bottom:10px}
+  .loc-body .addr{font-size:.92rem;color:var(--muted);margin-bottom:14px}
+  .loc-body a{font-weight:600;color:var(--mint-deep);font-size:.92rem;display:inline-flex;gap:7px;align-items:center}
+  .loc-body a svg{width:15px;height:15px;stroke:var(--mint-deep)}
+  @media(max-width:880px){.loc-grid{grid-template-columns:1fr}}
+
+  /* ============ FAQ ============ */
+  .faq{max-width:820px;margin:0 auto}
+  .qa{border-bottom:1px solid var(--line)}
+  .qa summary{width:100%;text-align:left;list-style:none;padding:24px 0;display:flex;justify-content:space-between;align-items:center;gap:20px;cursor:pointer;font-family:'Fraunces',serif;font-size:1.18rem;font-weight:600;color:var(--ink)}
+  .qa summary::-webkit-details-marker{display:none}
+  .qa .ic{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;flex:none;transition:.3s;font-size:1.2rem;color:var(--mint-deep)}
+  .qa[open] .ic{background:var(--mint-deep);border-color:var(--mint-deep);color:#fff;transform:rotate(45deg)}
+  .qa .ans{font-size:.98rem;color:var(--muted);padding:0 0 26px;max-width:62ch}
+
+  /* ============ FINAL CTA ============ */
+  .cta{background:var(--ink);color:#fff;text-align:center;overflow:hidden;position:relative}
+  .cta h2{color:#fff;font-size:clamp(2.1rem,4.4vw,3.2rem);max-width:16ch;margin:0 auto 18px}
+  .cta p{color:#aab6c9;font-size:1.1rem;max-width:46ch;margin:0 auto 32px}
+  .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .cta .csq{width:300px;height:300px;border:2px solid var(--mint);opacity:.08;border-radius:30px;position:absolute;top:-90px;left:-60px;transform:rotate(12deg)}
+  .cta .csq2{width:200px;height:200px;border:2px solid var(--coral);opacity:.1;border-radius:24px;position:absolute;bottom:-70px;right:-30px;transform:rotate(-8deg)}
+
+  /* ============ FOOTER ============ */
+  footer{background:#020C1F;color:#9fb0c9;padding:64px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:36px;padding-bottom:44px;border-bottom:1px solid var(--line-dark)}
+  .foot-logo img{height:34px;margin-bottom:18px}
+  .foot-grid p{font-size:.9rem;line-height:1.7}
+  .foot-grid h4{color:#fff;font-family:'Inter',sans-serif;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px;font-weight:600}
+  .foot-grid ul{list-style:none}
+  .foot-grid li{margin-bottom:11px}
+  .foot-grid a{font-size:.92rem;transition:.2s}
+  .foot-grid a:hover{color:var(--mint)}
+  .foot-contact div{margin-bottom:13px;font-size:.9rem;display:flex;gap:10px}
+  .foot-contact svg{width:16px;height:16px;stroke:var(--mint);flex:none;margin-top:3px}
+  .socials{display:flex;gap:12px;margin-top:18px}
+  .socials a{width:38px;height:38px;border-radius:10px;border:1px solid var(--line-dark);display:grid;place-items:center;transition:.3s}
+  .socials a:hover{background:var(--mint);border-color:var(--mint)}
+  .socials svg{width:17px;height:17px;stroke:#fff}
+  .foot-bottom{padding-top:26px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:.82rem;color:#6b7a93}
+  .foot-bottom a:hover{color:#fff}
+  @media(max-width:880px){.foot-grid{grid-template-columns:1fr 1fr;gap:32px}}
+  @media(max-width:520px){.foot-grid{grid-template-columns:1fr}}
+
+  /* ============ REVEAL ANIM ============ */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}
+  }
+  :focus-visible{outline:3px solid var(--mint-deep);outline-offset:2px;border-radius:4px}
+</style>
+</head>
+<body>
+
+<!-- ====== TOP UTILITY BAR ====== -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="tb-left">
+      <a href="tel:18016839232"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>(801) 683-9232</a>
+      <span class="hours"><a href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Mon–Fri · 9AM–5PM MT</a></span>
+    </div>
+    <div class="tb-right">
+      <a href="#locations">3 Utah Offices</a>
+      <a href="https://shreevelandry.clientportal.com/" class="portal" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Client Portal Login</a>
+    </div>
+  </div>
+</div>
+
+<!-- ====== HEADER ====== -->
+<header class="nav" id="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Shreeve Landry CPA home"><img src="assets/logo-trans.png" alt="Shreeve Landry Certified Public Accountants" /></a>
+    <nav class="navlinks" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#why">Why Us</a>
+      <a href="#team">Team</a>
+      <a href="#locations">Locations</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="nav-call" href="tel:18016839232"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>(801) 683-9232</a>
+      <a class="btn btn-primary" href="#contact">Make Appointment</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ====== MOBILE DRAWER ====== -->
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-top">
+    <img src="assets/logo-white.png" alt="Shreeve Landry" style="height:30px" />
+    <button class="x" id="closeDrawer" aria-label="Close menu">&times;</button>
+  </div>
+  <a href="#services">Services</a>
+  <a href="#why">Why Us</a>
+  <a href="#team">Team</a>
+  <a href="#locations">Locations</a>
+  <a href="#faq">FAQ</a>
+  <div class="dcall">
+    <a class="btn btn-primary" href="#contact">Make Appointment</a>
+    <a class="btn btn-outline-light" href="tel:18016839232">Call (801) 683-9232</a>
+  </div>
+</div>
+
+<!-- ====== HERO ====== -->
+<section class="hero">
+  <span class="sq sq1"></span><span class="sq sq2"></span>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="hero-tag reveal"><b>Dave Ramsey ELP</b> Trusted by Utah for 30+ years</span>
+      <h1 class="reveal">Unlock <em>maximum savings</em> with Shreeve&nbsp;Landry</h1>
+      <p class="lede reveal">Expert tax strategy, accounting, and CFO-level advisory for Utah businesses and individuals. Sit back and let us tackle the numbers — with professionalism, proactivity, and peace of mind.</p>
+      <div class="hero-cta reveal">
+        <a class="btn btn-primary" href="#contact">Book a Free Consultation</a>
+        <a class="btn btn-ghost" href="#services">Explore Services</a>
+      </div>
+      <div class="hero-trust reveal">
+        <div class="ht"><b data-count="30" data-suffix="+">30+</b><span>Years serving Utah</span></div>
+        <div class="ht"><b data-count="98.7" data-suffix="%">98.7%</b><span>Client satisfaction</span></div>
+        <div class="ht"><b data-count="3" data-suffix="">3</b><span>Offices statewide</span></div>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <span class="vsq"></span>
+      <div class="float-card fc-1">
+        <span class="fc-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+        <span><b>Return filed</b><small>Maximized deductions</small></span>
+      </div>
+      <div class="dash">
+        <div class="dash-top">
+          <div><div class="dt-title">Tax Savings Snapshot</div><div class="dt-sub">FY 2026 · Sample client</div></div>
+          <span class="dash-pill"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg>+24%</span>
+        </div>
+        <div class="dash-hero-num">$<span class="counter" data-count="42850">0</span></div>
+        <div class="dash-cap">Identified in deductions &amp; strategy this year</div>
+        <div class="bars">
+          <div class="bar"><i style="--h:38%"></i></div>
+          <div class="bar"><i style="--h:54%"></i></div>
+          <div class="bar"><i style="--h:46%"></i></div>
+          <div class="bar"><i style="--h:70%"></i></div>
+          <div class="bar"><i style="--h:62%"></i></div>
+          <div class="bar"><i style="--h:100%"></i></div>
+        </div>
+        <div class="bars-x"><span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span><span>Plan</span><span>Saved</span></div>
+        <div class="dash-row">
+          <div class="dash-mini"><div class="dm-l">Bookkeeping</div><div class="dm-v">Current</div></div>
+          <div class="dash-mini"><div class="dm-l">Payroll runs</div><div class="dm-v">On&nbsp;time</div></div>
+        </div>
+      </div>
+      <div class="float-card fc-2">
+        <span class="fc-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+        <span><b>$42,850 saved</b><small>vs. prior filing</small></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== CREDENTIALS STRIP ====== -->
+<div class="creds">
+  <div class="wrap">
+    <div class="ct">Credentials &amp; Trust</div>
+    <div class="creds-list">
+      <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5z"/></svg>Licensed Utah CPAs</div>
+      <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="m12 2 2.4 7.4H22l-6 4.4 2.3 7.2L12 16.6 5.7 21l2.3-7.2-6-4.4h7.6z"/></svg>Dave Ramsey ELP</div>
+      <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v16"/></svg>QuickBooks Certified</div>
+      <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M16 8a6 6 0 0 1-7.7 5.7L5 17H3v-2l3.3-3.3A6 6 0 1 1 16 8z"/></svg>Bilingual (EN/ES)</div>
+      <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>Film Incentive Specialists</div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== SERVICES ====== -->
+<section class="sec services" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">What We Do</span>
+      <h2>Full-service accounting, built around your goals</h2>
+      <p>From day-to-day bookkeeping to strategic CFO guidance, we cover every number so you can focus on running your business.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc reveal">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M9 11H5a2 2 0 0 0-2 2v7h6zM15 7H9v13h6zM21 3h-6v17h6z"/></svg></div>
+        <h3>Tax Strategy &amp; Filing</h3>
+        <p>Proactive planning that minimizes liability — individual, business, and multi-state returns filed the smart way.</p>
+        <span class="more">Learn more →</span>
+      </article>
+      <article class="svc reveal">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M3 3v18h18"/><path d="m7 14 3-4 3 3 5-6"/></svg></div>
+        <h3>Controller &amp; CFO</h3>
+        <p>Outsourced financial leadership — forecasting, cash-flow strategy, and the insight to scale with confidence.</p>
+        <span class="more">Learn more →</span>
+      </article>
+      <article class="svc reveal">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg></div>
+        <h3>Accounting &amp; Bookkeeping</h3>
+        <p>Clean, current books every month — reconciled, organized, and ready for any decision or deadline.</p>
+        <span class="more">Learn more →</span>
+      </article>
+      <article class="svc reveal">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+        <h3>Small Business Consulting</h3>
+        <p>Entity structure, growth planning, and hands-on advice from CPAs who think like business owners.</p>
+        <span class="more">Learn more →</span>
+      </article>
+      <article class="svc wide reveal">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>Film &amp; Entertainment Accounting</h3>
+        <p>One of Utah's go-to firms for the State Motion Picture Incentive Program — production accounting, incentive maximization, and audit-ready reporting for studios and independents.</p>
+        <span class="more" style="color:var(--mint)">Talk to a film specialist →</span>
+      </article>
+      <article class="svc reveal">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></div>
+        <h3>Payroll Services</h3>
+        <p>Accurate, on-time payroll with filings handled — so your team gets paid and you stay compliant.</p>
+        <span class="more">Learn more →</span>
+      </article>
+      <article class="svc reveal">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></div>
+        <h3>1099 Filing</h3>
+        <p>Contractor reporting done right — accurate, deadline-proof 1099 preparation for small businesses.</p>
+        <span class="more">Learn more →</span>
+      </article>
+      <article class="svc reveal">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
+        <h3>Financial Planning</h3>
+        <p>A clear roadmap for the future — budgeting, retirement, and wealth strategy aligned to your goals.</p>
+        <span class="more">Learn more →</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ====== VALUES (3 P's) ====== -->
+<section class="sec values" id="why">
+  <span class="vsq-deco" style="width:160px;height:160px;top:50px;right:6%"></span>
+  <span class="vsq-deco" style="width:90px;height:90px;bottom:60px;left:4%;border-color:var(--coral)"></span>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Why Shreeve Landry</span>
+      <h2>Three promises behind every number</h2>
+      <p>For three decades, Utah businesses have trusted us because we lead with the same principles on every engagement.</p>
+    </div>
+    <div class="vgrid">
+      <div class="vcard reveal">
+        <div class="vnum">/ 01</div>
+        <h3>Professionalism</h3>
+        <p>Licensed CPAs with deep expertise in audit, tax, and consulting. Your finances are handled with precision, discretion, and the highest standards.</p>
+      </div>
+      <div class="vcard reveal">
+        <div class="vnum">/ 02</div>
+        <h3>Proactivity</h3>
+        <p>We don't wait for tax season. We look ahead — spotting savings, flagging risks, and giving you guidance before you need to ask.</p>
+      </div>
+      <div class="vcard reveal">
+        <div class="vnum">/ 03</div>
+        <h3>Peace of Mind</h3>
+        <p>Quick to respond, never overpriced, always in your corner. Hand us the numbers and get back the time and confidence to grow.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== PROCESS ====== -->
+<section class="sec" id="process">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">How It Works</span>
+      <h2>Getting started is simple</h2>
+      <p>A straightforward path from first call to ongoing peace of mind.</p>
+    </div>
+    <div class="proc-grid">
+      <div class="step reveal"><span class="stepline"></span><h3>Free Consultation</h3><p>Book a no-pressure call. We learn your situation, goals, and where money may be slipping away.</p></div>
+      <div class="step reveal"><span class="stepline"></span><h3>Tailored Plan</h3><p>We map a strategy — the right services, structure, and savings opportunities for you.</p></div>
+      <div class="step reveal"><span class="stepline"></span><h3>We Execute</h3><p>Books, payroll, filings, and strategy handled by your dedicated CPA team — accurately and on time.</p></div>
+      <div class="step reveal"><span class="stepline"></span><h3>Ongoing Advisory</h3><p>Year-round guidance and a client portal that keeps you informed, organized, and ahead.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== STATS ====== -->
+<section class="sec stats">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat reveal"><b><span class="counter" data-count="30">0</span>+</b><span>Years of experience</span></div>
+      <div class="stat reveal"><b><span class="counter" data-count="98.7" data-dec="1">0</span>%</b><span>Client satisfaction</span></div>
+      <div class="stat reveal"><b><span class="counter" data-count="3">0</span></b><span>Utah office locations</span></div>
+      <div class="stat reveal"><b><span class="counter" data-count="20">0</span>+</b><span>CPAs &amp; specialists</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== TEAM ====== -->
+<section class="sec" id="team">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Meet the Partners</span>
+      <h2>Real CPAs who know your name</h2>
+      <p>You're trusting someone with your financial life — so you should know exactly who's behind the numbers.</p>
+    </div>
+    <div class="team-grid">
+      <article class="person reveal">
+        <div class="avatar" style="background:linear-gradient(135deg,#3FA193,#67C2B5)">TS</div>
+        <h3>Travis Shreeve, CPA</h3>
+        <div class="role">Partner</div>
+        <p>BYU-Idaho &amp; University of Utah (M.Acc). A decade-plus in audit and tax, with a passion for small-business consulting and Utah film accounting.</p>
+        <div class="tags"><span>Film Incentives</span><span>Small Business</span><span>Tax</span></div>
+      </article>
+      <article class="person reveal">
+        <div class="avatar" style="background:linear-gradient(135deg,#13254A,#3A5B8C)">TL</div>
+        <h3>Travis Landry, CPA</h3>
+        <div class="role">Partner</div>
+        <p>M.Acc with a taxation emphasis and bilingual (EN/ES). Over a decade focused on tax planning, budgeting, and small-business strategy.</p>
+        <div class="tags"><span>Tax Planning</span><span>Bilingual</span><span>Budgeting</span></div>
+      </article>
+      <article class="person reveal">
+        <div class="avatar" style="background:linear-gradient(135deg,#C44A52,#F2525A)">AB</div>
+        <h3>Allison Blood, CPA</h3>
+        <div class="role">Partner</div>
+        <p>University of Utah M.Acc (taxation). 10+ years across individual and business taxation, consolidations, and multi-state returns.</p>
+        <div class="tags"><span>Multi-State</span><span>Business Tax</span><span>Consolidations</span></div>
+      </article>
+      <article class="person reveal">
+        <div class="avatar" style="background:linear-gradient(135deg,#2E8C80,#67C2B5)">SM</div>
+        <h3>Shaun Morrow, CPA</h3>
+        <div class="role">Certified Public Accountant</div>
+        <p>In public accounting since 2017, specializing in small-business accounting and proactive tax management.</p>
+        <div class="tags"><span>Small Business</span><span>Tax Management</span></div>
+      </article>
+      <article class="person reveal">
+        <div class="avatar" style="background:linear-gradient(135deg,#1B3A6B,#4E97D8)">JK</div>
+        <h3>Jamie Kartchner, CPA</h3>
+        <div class="role">Certified Public Accountant</div>
+        <p>Utah State University (BS &amp; MBA) with 20 years of experience across bookkeeping, payroll, and taxes.</p>
+        <div class="tags"><span>Bookkeeping</span><span>Payroll</span><span>Tax</span></div>
+      </article>
+      <article class="person reveal" style="background:var(--ink);color:#fff;border-color:transparent">
+        <div class="avatar" style="background:rgba(255,255,255,.1)"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#67C2B5" stroke-width="1.8" stroke-linecap="round"><circle cx="9" cy="8" r="3.5"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6"/><circle cx="18" cy="9" r="2.5"/><path d="M16.5 14.2c2.6.4 4.5 2.4 4.5 5.3"/></svg></div>
+        <h3 style="color:#fff">+ A full team behind them</h3>
+        <div class="role">Senior &amp; Staff Accountants</div>
+        <p style="color:#aab6c9">Heather, Quincey, Jeff, Clark, Jacob, Brayden, Sam, Robyn, Kim, Carol &amp; Mandy — bilingual staff, bookkeepers, and a client-care crew that keeps everything running.</p>
+      </article>
+    </div>
+    <p class="team-note reveal">Multilingual support available in English, Spanish &amp; Portuguese.</p>
+  </div>
+</section>
+
+<!-- ====== TESTIMONIALS ====== -->
+<section class="sec testi" id="testimonials">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Client Stories</span>
+      <h2>Utah businesses, real results</h2>
+    </div>
+    <div class="testi-grid">
+      <figure class="quote reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Quick to respond and not overpriced like the previous accounting firms we worked with. Such a relief to finally have a team we trust."</p>
+        <figcaption class="who"><span class="av" style="background:#3FA193">JW</span><span><b>Joslyn Wray</b><small>Small business owner</small></span></figcaption>
+      </figure>
+      <figure class="quote reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Found them through Dave Ramsey's ELP program. They saved us $500 by catching an item we'd completely missed. Highly recommend."</p>
+        <figcaption class="who"><span class="av" style="background:#13254A">GB</span><span><b>Greg B.</b><small>Dave Ramsey ELP client</small></span></figcaption>
+      </figure>
+      <figure class="quote reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Amazing to work with. They saved us money by figuring out the best way to file our taxes. We won't go anywhere else."</p>
+        <figcaption class="who"><span class="av" style="background:#F2525A">ET</span><span><b>Erin Twede</b><small>Individual tax client</small></span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ====== LOCATIONS ====== -->
+<section class="sec" id="locations">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Find Us</span>
+      <h2>Three offices across the Wasatch Front</h2>
+      <p>Local CPAs in your community — Woods Cross, Salt Lake City, and Orem.</p>
+    </div>
+    <div class="loc-grid">
+      <article class="loc reveal">
+        <div class="loc-map"></div>
+        <div class="loc-body">
+          <h3>Woods Cross HQ</h3>
+          <div class="addr">1350 W 2600 S<br>Woods Cross, UT 84087</div>
+          <a href="tel:18016839232"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>(801) 683-9232</a>
+        </div>
+      </article>
+      <article class="loc reveal">
+        <div class="loc-map"></div>
+        <div class="loc-body">
+          <h3>Salt Lake County</h3>
+          <div class="addr">4543 S 700 E #100<br>Salt Lake City, UT 84107</div>
+          <a href="tel:18016839232"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>(801) 683-9232</a>
+        </div>
+      </article>
+      <article class="loc reveal">
+        <div class="loc-map"></div>
+        <div class="loc-body">
+          <h3>Utah County (Orem)</h3>
+          <div class="addr">247 E 930 S<br>Orem, UT 84058</div>
+          <a href="tel:18016839239"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>(801) 683-9239</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ====== FAQ ====== -->
+<section class="sec testi" id="faq">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Good to Know</span>
+      <h2>Frequently asked questions</h2>
+    </div>
+    <div class="faq">
+      <details class="qa reveal"><summary>Do you offer a free initial consultation?<span class="ic">+</span></summary><div class="ans">Yes. Every relationship starts with a free, no-pressure consultation where we learn about your situation and show you where we can help — and what it would cost. Book one anytime.</div></details>
+      <details class="qa reveal"><summary>What size businesses do you work with?<span class="ic">+</span></summary><div class="ans">From solo entrepreneurs and 1099 contractors to growing companies that need controller and CFO-level support. We tailor our services to your stage — and grow with you.</div></details>
+      <details class="qa reveal"><summary>Are you really a Dave Ramsey Endorsed Local Provider?<span class="ic">+</span></summary><div class="ans">We are. Clients frequently find us through Dave Ramsey's ELP program, and we hold ourselves to the standards of service and integrity that endorsement requires.</div></details>
+      <details class="qa reveal"><summary>Do you do film and entertainment accounting?<span class="ic">+</span></summary><div class="ans">Yes — it's a specialty. We work with productions on Utah's State Motion Picture Incentive Program, handling production accounting, incentive maximization, and audit-ready reporting.</div></details>
+      <details class="qa reveal"><summary>Do you offer services in Spanish?<span class="ic">+</span></summary><div class="ans">We do. Several team members are fluent in Spanish (and Portuguese), so we can serve you comfortably in your preferred language.</div></details>
+      <details class="qa reveal"><summary>How do I share documents securely?<span class="ic">+</span></summary><div class="ans">Through our secure client portal, you can exchange documents, e-sign, and stay organized year-round. New clients can request access in seconds.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ====== FINAL CTA ====== -->
+<section class="sec cta" id="contact">
+  <span class="csq"></span><span class="csq2"></span>
+  <div class="wrap">
+    <span class="eyebrow reveal" style="color:var(--mint);justify-content:center">Let's Talk</span>
+    <h2 class="reveal">Ready to keep more of what you earn?</h2>
+    <p class="reveal">Book a free consultation and discover the savings hiding in your numbers. Sit back — we'll tackle the rest.</p>
+    <div class="cta-btns reveal">
+      <a class="btn btn-primary" href="https://shreevelandry.com/make-appointment/" target="_blank" rel="noopener">Make an Appointment</a>
+      <a class="btn btn-light" href="tel:18016839232">Call (801) 683-9232</a>
+    </div>
+  </div>
+</section>
+
+<!-- ====== FOOTER ====== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-logo">
+        <img src="assets/logo-white.png" alt="Shreeve Landry CPA" />
+        <p>A Utah CPA firm delivering expert tax, accounting, and financial advisory services to empower businesses and individuals. Professionalism, proactivity, peace of mind.</p>
+        <div class="socials">
+          <a href="https://facebook.com/ShreeveLandry/" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://instagram.com/shreevelandrycpas/" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none"/></svg></a>
+          <a href="https://linkedin.com/company/shreevelandry" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 13v4" stroke-linecap="round"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Tax Strategy &amp; Filing</a></li>
+          <li><a href="#services">Controller &amp; CFO</a></li>
+          <li><a href="#services">Bookkeeping</a></li>
+          <li><a href="#services">Payroll</a></li>
+          <li><a href="#services">Film Accounting</a></li>
+          <li><a href="#services">1099 Filing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#why">Why Us</a></li>
+          <li><a href="#team">Our Team</a></li>
+          <li><a href="#locations">Locations</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="https://shreevelandry.clientportal.com/" target="_blank" rel="noopener">Client Portal</a></li>
+          <li><a href="#contact">Make Appointment</a></li>
+        </ul>
+      </div>
+      <div class="foot-contact">
+        <h4>Get in Touch</h4>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>(801) 683-9232</span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Woods Cross · Salt Lake City · Orem</span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Mon–Fri · 9AM–5PM MT</span></div>
+        <a class="btn btn-primary" href="#contact" style="margin-top:8px">Book a Consultation</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Shreeve Landry CPA. All rights reserved.</span>
+      <span><a href="https://shreevelandry.com/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a> · Licensed Certified Public Accountants in Utah</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Sticky header shadow
+  const nav = document.querySelector('header.nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 10);
+  onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+
+  // Mobile drawer
+  const drawer = document.getElementById('drawer');
+  const burger = document.getElementById('burger');
+  const closeBtn = document.getElementById('closeDrawer');
+  const setDrawer = (open) => {
+    drawer.classList.toggle('open', open);
+    drawer.setAttribute('aria-hidden', String(!open));
+    burger.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+  burger.addEventListener('click', () => setDrawer(true));
+  closeBtn.addEventListener('click', () => setDrawer(false));
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setDrawer(false)));
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Animated counters
+  const animateCount = (el) => {
+    const target = parseFloat(el.dataset.count);
+    const dec = parseInt(el.dataset.dec || '0', 10);
+    const dur = 1400; const start = performance.now();
+    const fmt = (n) => dec ? n.toFixed(dec) : Math.round(n).toLocaleString('en-US');
+    const tick = (now) => {
+      const p = Math.min((now - start)/dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(target * eased);
+      if (p < 1) requestAnimationFrame(tick); else el.textContent = fmt(target);
+    };
+    requestAnimationFrame(tick);
+  };
+  const cio = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting){ animateCount(e.target); cio.unobserve(e.target); } });
+  }, {threshold:0.6});
+  document.querySelectorAll('.counter').forEach(el => cio.observe(el));
+
+  // FAQ: native <details> — close siblings for accordion feel
+  const faqs = document.querySelectorAll('.faq details');
+  faqs.forEach(d => d.addEventListener('toggle', () => {
+    if (d.open) faqs.forEach(o => { if (o !== d) o.open = false; });
+  }));
+</script>
+</body>
+</html>
