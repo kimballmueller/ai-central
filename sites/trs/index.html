@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Trader Orton &amp; Spangler, PLLC — Tax, Accounting &amp; Advisory | Bountiful, Utah</title>
+<meta name="description" content="A boutique CPA firm in Bountiful, Utah. Ex–KPMG and Deloitte partners providing tax, accounting, and consulting counsel to closely-held and family-owned businesses for over 95 combined years." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#002647;
+    --navy-2:#003768;
+    --navy-deep:#001a30;
+    --gold:#b0894e;
+    --gold-light:#c9a86a;
+    --gold-ink:#876733;
+    --ivory:#f7f4ee;
+    --cream:#fbfaf6;
+    --ink:#1b232c;
+    --muted:#5c6873;
+    --line:rgba(27,35,44,.12);
+    --line-light:rgba(255,255,255,.16);
+    --shadow:0 24px 60px -28px rgba(0,38,71,.45);
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    font-size:17px;
+  }
+  h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;line-height:1.08;letter-spacing:.005em}
+  ::selection{background:var(--gold);color:#fff}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+  .eyebrow{
+    font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--gold-ink);margin-bottom:18px;display:inline-flex;align-items:center;gap:12px;
+  }
+  .eyebrow::before{content:"";width:28px;height:1px;background:var(--gold-ink);display:inline-block}
+  .eyebrow.center{justify-content:center}
+  .eyebrow.center::after{content:"";width:28px;height:1px;background:var(--gold-ink);display:inline-block}
+  /* Brighter gold for eyebrows on dark backgrounds (better contrast) */
+  .hero .eyebrow,.partners .eyebrow,.payment .eyebrow{color:var(--gold-light)}
+  .hero .eyebrow::before,.partners .eyebrow::before,.payment .eyebrow::before,
+  .hero .eyebrow::after,.partners .eyebrow::after,.payment .eyebrow::after{background:var(--gold-light)}
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;
+    font-size:14px;font-weight:600;letter-spacing:.04em;padding:15px 30px;border-radius:2px;
+    transition:all .35s var(--ease);cursor:pointer;border:1px solid transparent;white-space:nowrap;
+  }
+  .btn-gold{background:var(--gold);color:#fff}
+  .btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(176,137,78,.7)}
+  .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
+  .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+  .btn-dark{background:var(--navy);color:#fff}
+  .btn-dark:hover{background:var(--navy-2);transform:translateY(-2px);box-shadow:var(--shadow)}
+  .btn-arrow::after{content:"→";font-size:15px;transition:transform .35s var(--ease)}
+  .btn:hover .btn-arrow::after,.btn-arrow:hover::after{transform:translateX(4px)}
+
+  /* ---------- Header ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    transition:all .4s var(--ease);
+    background:transparent;padding:20px 0;
+  }
+  header.scrolled{background:rgba(0,26,48,.96);backdrop-filter:blur(12px);padding:13px 0;box-shadow:0 10px 40px -20px rgba(0,0,0,.6)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .nav-logo img{height:26px;width:auto}
+  .nav-links{display:flex;align-items:center;gap:34px;list-style:none}
+  .nav-links a{
+    font-size:13.5px;font-weight:500;letter-spacing:.05em;color:rgba(255,255,255,.86);
+    text-transform:uppercase;position:relative;transition:color .3s;
+  }
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--gold);transition:width .3s var(--ease)}
+  .nav-links a:hover{color:#fff}
+  .nav-links a:hover::after{width:100%}
+  .nav-cta{display:flex;align-items:center;gap:16px}
+  .nav-pay{font-size:13px;font-weight:600;letter-spacing:.04em;color:rgba(255,255,255,.8);text-transform:uppercase}
+  .nav-pay:hover{color:var(--gold-light)}
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+  .burger span{width:24px;height:2px;background:#fff;transition:.3s}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;min-height:100vh;display:flex;align-items:center;
+    background:linear-gradient(180deg,rgba(0,26,48,.62) 0%,rgba(0,26,48,.45) 45%,rgba(0,26,48,.82) 100%),url('assets/hero-capture3.jpg');
+    background-size:cover;background-position:center 30%;color:#fff;
+    padding:140px 0 80px;overflow:hidden;
+  }
+  .hero-inner{max-width:820px}
+  .hero h1{font-size:clamp(44px,6.2vw,78px);font-weight:500;margin:22px 0 0;letter-spacing:-.01em}
+  .hero h1 em{font-style:italic;color:var(--gold-light)}
+  .hero-sub{font-size:clamp(17px,2vw,20px);color:rgba(255,255,255,.88);font-weight:300;max-width:600px;margin:28px 0 40px;line-height:1.6}
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+  .hero-meta{
+    position:absolute;left:0;right:0;bottom:0;border-top:1px solid var(--line-light);
+    background:linear-gradient(180deg,transparent,rgba(0,20,38,.5));
+  }
+  .hero-meta-grid{display:flex;justify-content:space-between;gap:20px;padding:26px 0;flex-wrap:wrap}
+  .hero-meta-item{font-size:13px;letter-spacing:.04em;color:rgba(255,255,255,.78);display:flex;align-items:center;gap:10px}
+  .hero-meta-item strong{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--gold-light);font-weight:600;line-height:1}
+
+  /* ---------- Sections ---------- */
+  section{position:relative}
+  .sec{padding:120px 0}
+  .sec-head{max-width:720px;margin-bottom:64px}
+  .sec-head.center{margin:0 auto 64px;text-align:center}
+  .sec-head h2{font-size:clamp(34px,4.5vw,52px);color:var(--navy);margin-bottom:20px}
+  .sec-head p{font-size:18px;color:var(--muted);font-weight:300}
+  .lead{font-size:21px;line-height:1.7;color:var(--ink);font-weight:300}
+  .lead strong{font-weight:500;color:var(--navy)}
+
+  /* Approach / intro split */
+  .approach{background:var(--cream)}
+  .approach-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  .approach-copy p{margin-bottom:22px;color:var(--muted)}
+  .approach-copy p:first-of-type{color:var(--ink)}
+  .approach-aside{
+    background:var(--navy);color:#fff;padding:56px 48px;border-radius:4px;position:relative;
+    box-shadow:var(--shadow);overflow:hidden;
+  }
+  .approach-aside::before{content:"";position:absolute;top:0;left:0;width:4px;height:100%;background:var(--gold)}
+  .approach-aside .serif{font-size:30px;line-height:1.3;font-style:italic;color:#fff;margin-bottom:28px;font-weight:400}
+  .approach-aside .attrib{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-light);font-weight:600}
+  .approach-aside .attrib span{display:block;color:rgba(255,255,255,.6);letter-spacing:.04em;text-transform:none;font-weight:400;font-size:13px;margin-top:4px}
+
+  /* Stats band */
+  .band{background:var(--navy);color:#fff;padding:0}
+  .band-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+  .band-cell{padding:56px 36px;text-align:center;border-right:1px solid var(--line-light)}
+  .band-cell:last-child{border-right:none}
+  .band-cell .num{font-family:'Cormorant Garamond',serif;font-size:60px;font-weight:600;color:var(--gold-light);line-height:1}
+  .band-cell .lbl{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-top:14px}
+
+  /* Services */
+  .services{background:var(--ivory)}
+  .svc-cats{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:8px}
+  .svc-card{
+    background:#fff;border:1px solid var(--line);border-radius:4px;padding:48px 44px;
+    transition:all .4s var(--ease);position:relative;overflow:hidden;
+  }
+  .svc-card::after{content:"";position:absolute;left:0;top:0;height:3px;width:0;background:var(--gold);transition:width .5s var(--ease)}
+  .svc-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:transparent}
+  .svc-card:hover::after{width:100%}
+  .svc-card .cat-label{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-ink);font-weight:600;margin-bottom:22px}
+  .svc-list{list-style:none}
+  .svc-item{padding:22px 0;border-bottom:1px solid var(--line)}
+  .svc-item:last-child{border-bottom:none;padding-bottom:0}
+  .svc-item h3{font-size:25px;color:var(--navy);margin-bottom:8px}
+  .svc-item p{font-size:15px;color:var(--muted);line-height:1.6}
+
+  /* Audience strip */
+  .audiences{background:var(--cream)}
+  .aud-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:8px}
+  .aud{padding:34px 28px;border:1px solid var(--line);border-radius:4px;background:#fff;transition:.35s var(--ease)}
+  .aud:hover{border-color:var(--gold);transform:translateY(-4px)}
+  .aud .ic{width:40px;height:40px;color:var(--gold);margin-bottom:18px}
+  .aud h3{font-size:21px;color:var(--navy);margin-bottom:8px}
+  .aud p{font-size:14px;color:var(--muted)}
+
+  /* Partners */
+  .partners{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  .partners .sec-head h2{color:#fff}
+  .partners .sec-head p{color:rgba(255,255,255,.7)}
+  .ptr-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+  .ptr{
+    background:rgba(255,255,255,.04);border:1px solid var(--line-light);border-radius:4px;
+    padding:40px;display:flex;gap:26px;transition:.4s var(--ease);
+  }
+  .ptr:hover{background:rgba(255,255,255,.07);border-color:rgba(176,137,78,.5);transform:translateY(-4px)}
+  .ptr-mono{
+    flex:0 0 76px;width:76px;height:76px;border-radius:50%;border:1.5px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;
+    font-size:28px;color:var(--gold-light);font-weight:600;letter-spacing:.02em;
+  }
+  .ptr-body h3{font-size:26px;color:#fff;margin-bottom:3px}
+  .ptr-cred{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-light);font-weight:600;margin-bottom:16px}
+  .ptr-bio{font-size:14.5px;color:rgba(255,255,255,.74);line-height:1.6;margin-bottom:18px}
+  .ptr-bio strong{color:#fff;font-weight:500}
+  .ptr-contact{display:flex;flex-direction:column;gap:6px;font-size:13px;color:rgba(255,255,255,.6)}
+  .ptr-contact a{display:inline-flex;align-items:center;gap:8px;transition:color .3s}
+  .ptr-contact a:hover{color:var(--gold-light)}
+  .ptr-contact svg{width:14px;height:14px;opacity:.7}
+
+  /* Memberships */
+  .members{background:var(--ivory);text-align:center}
+  .member-logos{display:flex;align-items:center;justify-content:center;gap:64px;flex-wrap:wrap;margin-top:8px}
+  .member-logos img{height:74px;width:auto;filter:grayscale(1);opacity:.55;transition:.4s var(--ease)}
+  .member-logos img:hover{filter:grayscale(0);opacity:1}
+
+  /* Payment CTA */
+  .payment{background:var(--navy-deep);color:#fff;text-align:center;position:relative;overflow:hidden}
+  .payment::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(176,137,78,.16),transparent 60%)}
+  .payment .inner{position:relative;max-width:620px;margin:0 auto}
+  .payment .lock{width:60px;height:60px;color:var(--gold);margin:0 auto 28px}
+  .payment h2{font-size:clamp(32px,4vw,46px);margin-bottom:18px}
+  .payment p{color:rgba(255,255,255,.72);font-size:18px;font-weight:300;margin-bottom:36px}
+
+  /* Contact */
+  .contact{background:var(--cream)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:72px}
+  .contact-info .row{display:flex;gap:18px;padding:24px 0;border-bottom:1px solid var(--line)}
+  .contact-info .row:first-of-type{padding-top:0}
+  .contact-info .ic{flex:0 0 22px;width:22px;height:22px;color:var(--gold);margin-top:3px}
+  .contact-info .row h3{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:5px;font-family:'Inter',sans-serif}
+  .contact-info .row p,.contact-info .row a{font-size:18px;color:var(--ink);font-weight:400}
+  .contact-info .row a:hover{color:var(--gold)}
+  form .frow{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  form label{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:8px}
+  .field{margin-bottom:22px}
+  input,textarea,select{
+    width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:3px;background:#fff;
+    font-family:'Inter',sans-serif;font-size:16px;color:var(--ink);transition:.3s;
+  }
+  input:focus,textarea:focus,select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(176,137,78,.14)}
+  textarea{resize:vertical;min-height:120px}
+  .form-card{background:#fff;padding:44px;border:1px solid var(--line);border-radius:4px;box-shadow:0 30px 60px -40px rgba(0,38,71,.3)}
+  .form-card h3{font-size:28px;color:var(--navy);margin-bottom:8px}
+  .form-card .fnote{font-size:14px;color:var(--muted);margin-bottom:28px}
+
+  /* Footer */
+  footer{background:var(--navy-deep);color:rgba(255,255,255,.6);padding:72px 0 0}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;padding-bottom:56px;border-bottom:1px solid var(--line-light)}
+  .foot-logo img{height:24px;margin-bottom:22px}
+  .foot-about{font-size:14.5px;line-height:1.7;max-width:340px}
+  .foot-col h4{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-light);font-weight:600;margin-bottom:20px}
+  .foot-col ul{list-style:none}
+  .foot-col li{margin-bottom:12px}
+  .foot-col a{font-size:14.5px;transition:color .3s}
+  .foot-col a:hover{color:#fff}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding:26px 0;flex-wrap:wrap;gap:14px;font-size:13px}
+  .foot-bottom a:hover{color:#fff}
+
+  /* Reveal animation */
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- Responsive ---------- */
+  @media(max-width:980px){
+    .approach-grid,.contact-grid{grid-template-columns:1fr;gap:48px}
+    .band-grid{grid-template-columns:repeat(2,1fr)}
+    .band-cell:nth-child(2){border-right:none}
+    .band-cell{border-bottom:1px solid var(--line-light)}
+    .ptr-grid,.svc-cats{grid-template-columns:1fr}
+    .aud-grid{grid-template-columns:repeat(2,1fr)}
+    .foot-grid{grid-template-columns:1fr 1fr;gap:36px}
+  }
+  @media(max-width:760px){
+    body{font-size:16px}
+    .wrap{padding:0 22px}
+    .sec{padding:84px 0}
+    .nav-links,.nav-pay{display:none}
+    .burger{display:flex}
+    .nav-links.open{
+      display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;
+      background:var(--navy);padding:28px 22px;gap:20px;box-shadow:var(--shadow);
+    }
+    .nav-links.open a{color:#fff}
+    .hero{min-height:auto;padding:130px 0 60px}
+    .hero-meta{position:static;margin-top:48px}
+    .hero-meta-grid{justify-content:flex-start;gap:28px}
+    .member-logos{gap:36px}
+    .member-logos img{height:56px}
+    .form-card,.approach-aside{padding:32px 26px}
+    .ptr{flex-direction:column;gap:18px;padding:30px}
+    .aud-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr}
+    .foot-bottom{flex-direction:column;text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header id="header">
+  <div class="wrap nav">
+    <a href="#top" class="nav-logo" aria-label="Trader Orton &amp; Spangler home">
+      <img src="assets/TOS-logo-white.svg" alt="Trader Orton &amp; Spangler, PLLC" />
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#approach">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#partners">Our Partners</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="https://portal.bizpayo.com/traderortonandspangler/make_payment" class="nav-pay" target="_blank" rel="noopener">Make a Payment</a>
+      <a href="#contact" class="btn btn-gold">Schedule a Consultation</a>
+      <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <div class="wrap hero-inner reveal">
+    <span class="eyebrow">Bountiful, Utah · Serving Clients Worldwide</span>
+    <h1>Trusted counsel for the families and <em>closely-held businesses</em> that build lasting wealth.</h1>
+    <p class="hero-sub">A boutique CPA firm led by former KPMG and Deloitte partners — delivering tax, accounting, and advisory work with the depth of a Big Four practice and the access of a personal relationship.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-gold btn-arrow">Schedule a Consultation</a>
+      <a href="#services" class="btn btn-ghost">Explore Our Services</a>
+    </div>
+  </div>
+  <div class="hero-meta">
+    <div class="wrap hero-meta-grid">
+      <div class="hero-meta-item"><strong>95+</strong> Combined years in practice</div>
+      <div class="hero-meta-item"><strong>3</strong> Generations of client relationships</div>
+      <div class="hero-meta-item"><strong>4</strong> Partners, former Big Four leaders</div>
+      <div class="hero-meta-item"><strong>∞</strong> Worldwide reach from Utah</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== APPROACH ===== -->
+<section class="sec approach" id="approach">
+  <div class="wrap approach-grid">
+    <div class="approach-copy reveal">
+      <span class="eyebrow">Who We Are</span>
+      <h2 style="font-size:clamp(32px,4vw,46px);color:var(--navy);margin-bottom:26px;">A team you can trust — for decades, not seasons.</h2>
+      <p class="lead" style="margin-bottom:26px;">For <strong>over 95 combined years</strong>, the partners of Trader Orton &amp; Spangler have provided quality, personalized tax, accounting, and consulting services to closely-held and family-owned businesses.</p>
+      <p>We now serve the third generation of some of our original clients — a continuity that reflects our dedication to high standards, seasoned tax professionals, and a relentless work ethic.</p>
+      <p>Whether you are an individual, a partnership, an LLC, a corporation, an S-corporation, a trust, or an estate, our goal is the same: make the process simple, minimize your tax liability through careful planning, and stand beside you as a long-term advisor.</p>
+    </div>
+    <aside class="approach-aside reveal">
+      <p class="serif">"We bring the technical depth of the world's largest firms to a practice small enough to know your name, your family, and your business."</p>
+      <div class="attrib">The TOS Standard
+        <span>Strategic planning · Year-round counsel · Partner-level access</span>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ===== STATS BAND ===== -->
+<section class="band">
+  <div class="band-grid">
+    <div class="band-cell reveal"><div class="num">95+</div><div class="lbl">Combined Years of Experience</div></div>
+    <div class="band-cell reveal"><div class="num">KPMG</div><div class="lbl">&amp; Deloitte Partner Pedigree</div></div>
+    <div class="band-cell reveal"><div class="num">3<sup style="font-size:24px">rd</sup></div><div class="lbl">Generation Clients Served</div></div>
+    <div class="band-cell reveal"><div class="num">100%</div><div class="lbl">Personalized, Partner-Led Work</div></div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="sec services" id="services">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow center">What We Do</span>
+      <h2>Comprehensive tax, accounting &amp; advisory services.</h2>
+      <p>Two practices, one standard of care — from the return on your desk to the strategy behind your enterprise.</p>
+    </div>
+    <div class="svc-cats">
+      <div class="svc-card reveal">
+        <div class="cat-label">Tax &amp; Accounting</div>
+        <ul class="svc-list">
+          <li class="svc-item"><h3>Tax Preparation</h3><p>Individual and business returns across every entity type, estates and trusts, and multi-state work — prepared to make the process effortless and minimize your liability through careful planning.</p></li>
+          <li class="svc-item"><h3>Tax Representation</h3><p>Year-round monitoring of an ever-changing tax landscape, plus experienced representation before the IRS and state authorities when it matters most.</p></li>
+          <li class="svc-item"><h3>International Taxation</h3><p>Cross-border counsel for corporations with overseas operations and for U.S. residents working abroad or foreign citizens working in the U.S.</p></li>
+          <li class="svc-item"><h3>Cost Segregation Studies</h3><p>Identifying and separating personal-property assets to accelerate depreciation, improve cash flow, and reduce current tax burden.</p></li>
+        </ul>
+      </div>
+      <div class="svc-card reveal">
+        <div class="cat-label">Business Consulting</div>
+        <ul class="svc-list">
+          <li class="svc-item"><h3>Entity Selection &amp; Restructuring</h3><p>Your entity shapes your taxes and liabilities. We advise from inception through every stage of growth and transition.</p></li>
+          <li class="svc-item"><h3>Accounting Services</h3><p>Compilations and reviews, general ledger, bookkeeping, payroll, cash-flow analysis, and personal financial statements — clarity that surfaces opportunity.</p></li>
+          <li class="svc-item"><h3>CFO &amp; Advisory Services</h3><p>A cost-effective way to add senior financial expertise: projections, M&amp;A support, debt advising, and cash-flow strategy, virtual or in person.</p></li>
+          <li class="svc-item"><h3>Benefits, Pension &amp; Retirement Plans</h3><p>Develop, implement, and administer benefit, retirement, and profit-sharing plans designed to maximize tax advantage.</p></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AUDIENCES ===== -->
+<section class="sec audiences">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow center">Who We Serve</span>
+      <h2>Built around the people behind the business.</h2>
+    </div>
+    <div class="aud-grid">
+      <div class="aud reveal">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 21V8l9-5 9 5v13M9 21v-6h6v6"/></svg>
+        <h3>Family Businesses</h3><p>Stewardship across generations, succession, and the wealth a family builds together.</p>
+      </div>
+      <div class="aud reveal">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h.01M15 9h.01M9 13h.01M15 13h.01"/></svg>
+        <h3>Closely-Held Companies</h3><p>Owner-operators who need a CFO's perspective without a full-time seat to fill.</p>
+      </div>
+      <div class="aud reveal">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3v18M5 8l7-5 7 5M5 8v8l7 5 7-5V8"/></svg>
+        <h3>Private Wealth &amp; Estates</h3><p>Trust, individual, and estate taxation handled with discretion and depth.</p>
+      </div>
+      <div class="aud reveal">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M2 12h20M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18"/></svg>
+        <h3>Global Operators</h3><p>Businesses and individuals navigating taxation across borders.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PARTNERS ===== -->
+<section class="sec partners" id="partners">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow center">Our Partners</span>
+      <h2>Decades of Big Four experience, at your table.</h2>
+      <p>The names on the door are the people who do the work. Each partner brings the pedigree of the nation's largest firms to a practice that still answers its own phone.</p>
+    </div>
+    <div class="ptr-grid">
+
+      <article class="ptr reveal">
+        <div class="ptr-mono">CT</div>
+        <div class="ptr-body">
+          <h3>Curtis Trader</h3>
+          <div class="ptr-cred">CPA, CFP</div>
+          <p class="ptr-bio">Eleven years at <strong>KPMG</strong> as senior manager before founding his private practice in 2006. Recognized as an industry leader in trust and individual taxation. Past president of the Salt Lake Estate Planning Council and nominated to chair Utah's Tax Review Commission. Masters of Accounting in Taxation, Brigham Young University.</p>
+          <div class="ptr-contact">
+            <a href="tel:18013350353"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>(801) 335-0353</a>
+            <a href="mailto:curtis@cpa-trs.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>curtis@cpa-trs.com</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="ptr reveal">
+        <div class="ptr-mono">RS</div>
+        <div class="ptr-body">
+          <h3>Robert Spangler</h3>
+          <div class="ptr-cred">CPA · Licensed UT &amp; CA</div>
+          <p class="ptr-bio">Eleven years across <strong>KPMG</strong> and <strong>Deloitte</strong>, followed by six years as VP of Finance &amp; Tax and CFO at XanGo. That blend of public-accounting rigor and in-the-seat corporate leadership gives clients a rare operator's view of their finances.</p>
+          <div class="ptr-contact">
+            <a href="tel:18013350356"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>(801) 335-0356</a>
+            <a href="mailto:rob@cpa-trs.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>rob@cpa-trs.com</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="ptr reveal">
+        <div class="ptr-mono">MO</div>
+        <div class="ptr-body">
+          <h3>Matthew Orton</h3>
+          <div class="ptr-cred">CPA · Partner since 2020</div>
+          <p class="ptr-bio">Seasoned across Cooper Norman, Dixon Hughes Goodman, and Tanner LLC. Known for being genuinely easy to work with — and for explaining complex tax and accounting concepts in plain English. Bachelor of Arts in Accountancy, Boise State University.</p>
+          <div class="ptr-contact">
+            <a href="tel:18016838913"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>(801) 683-8913</a>
+            <a href="mailto:matt@cpa-trs.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>matt@cpa-trs.com</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="ptr reveal">
+        <div class="ptr-mono">RH</div>
+        <div class="ptr-body">
+          <h3>Randall Hill</h3>
+          <div class="ptr-cred">CPA · Joined 2021</div>
+          <p class="ptr-bio">More than <strong>23 years at KPMG</strong> as a Tax Managing Director, with deep specialization in alternative investments, venture capital, and private equity. Masters of Accountancy with a tax emphasis, Utah State University.</p>
+          <div class="ptr-contact">
+            <a href="tel:18016838912"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>(801) 683-8912</a>
+            <a href="mailto:randall@cpa-trs.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>randall@cpa-trs.com</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== MEMBERSHIPS ===== -->
+<section class="sec members">
+  <div class="wrap">
+    <div class="sec-head center reveal" style="margin-bottom:48px">
+      <span class="eyebrow center">Affiliations</span>
+      <h2>Credentialed. Connected. Accountable.</h2>
+      <p>Proud members of the professional organizations that hold our work to the highest standard.</p>
+    </div>
+    <div class="member-logos reveal">
+      <img src="assets/aicpa.png" alt="AICPA member" />
+      <img src="assets/CFP-Logo.png" alt="Certified Financial Planner" />
+      <img src="assets/chamber.png" alt="Chamber of Commerce member" />
+    </div>
+  </div>
+</section>
+
+<!-- ===== PAYMENT ===== -->
+<section class="sec payment">
+  <div class="wrap inner reveal">
+    <svg class="lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4M12 15v2"/></svg>
+    <span class="eyebrow center">For Clients</span>
+    <h2>Secure Payment Portal</h2>
+    <p>Settle your invoice from anywhere, anytime, through our encrypted payment portal.</p>
+    <a href="https://portal.bizpayo.com/traderortonandspangler/make_payment" class="btn btn-gold btn-arrow" target="_blank" rel="noopener">Make a Payment</a>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="sec contact" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <span class="eyebrow">Get in Touch</span>
+        <h2 style="font-size:clamp(32px,4vw,46px);color:var(--navy);margin-bottom:14px;">Let's start a conversation.</h2>
+        <p style="color:var(--muted);font-size:18px;font-weight:300;margin-bottom:38px;">Tell us about your situation and a partner will personally follow up. Every relationship begins with a confidential consultation.</p>
+        <div class="row">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><h3>Office</h3><p>3263 South Highway 89, Suite 100<br>Bountiful, UT 84010</p></div>
+        </div>
+        <div class="row">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>
+          <div><h3>Phone &amp; Fax</h3><p><a href="tel:18012982190">(801) 298-2190</a> &nbsp;·&nbsp; Fax (801) 335-0351</p></div>
+        </div>
+        <div class="row">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+          <div><h3>Email</h3><p><a href="mailto:info@cpa-trs.com">info@cpa-trs.com</a></p></div>
+        </div>
+      </div>
+
+      <div class="form-card reveal">
+        <h3>Request a Consultation</h3>
+        <p class="fnote">We respond promptly — most inquiries hear back the same business day.</p>
+        <form onsubmit="return handleSubmit(event)">
+          <div class="frow">
+            <div class="field"><label for="fn">Full Name</label><input id="fn" name="name" type="text" required placeholder="Jane Doe" /></div>
+            <div class="field"><label for="fp">Phone</label><input id="fp" name="phone" type="tel" placeholder="(801) 555-0123" /></div>
+          </div>
+          <div class="field"><label for="fe">Email</label><input id="fe" name="email" type="email" required placeholder="jane@company.com" /></div>
+          <div class="field"><label for="fs">How can we help?</label>
+            <select id="fs" name="subject">
+              <option>Tax preparation &amp; planning</option>
+              <option>Business consulting &amp; CFO services</option>
+              <option>International taxation</option>
+              <option>Estates, trusts &amp; private wealth</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="field"><label for="fm">Message</label><textarea id="fm" name="message" placeholder="Tell us a little about your situation..."></textarea></div>
+          <button type="submit" class="btn btn-dark btn-arrow" style="width:100%;justify-content:center">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo"><img src="assets/TOS-logo-white.svg" alt="Trader Orton &amp; Spangler, PLLC" /></div>
+        <p class="foot-about">A boutique CPA firm in Bountiful, Utah, providing a wide array of tax, accounting, and consulting services to closely-held and family-owned businesses throughout the world.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#approach">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#partners">Our Partners</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="https://portal.bizpayo.com/traderortonandspangler/make_payment" target="_blank" rel="noopener">Make a Payment</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="https://maps.google.com/?q=3263+South+Highway+89+Suite+100+Bountiful+UT+84010" target="_blank" rel="noopener">3263 S Highway 89, Ste 100<br>Bountiful, UT 84010</a></li>
+          <li><a href="tel:18012982190">(801) 298-2190</a></li>
+          <li><a href="mailto:info@cpa-trs.com">info@cpa-trs.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Trader Orton &amp; Spangler, PLLC. All rights reserved.</span>
+      <span style="display:flex;gap:24px">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Header scroll state
+  const header = document.getElementById('header');
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 60);
+  window.addEventListener('scroll', onScroll); onScroll();
+
+  // Mobile menu
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open'); burger.setAttribute('aria-expanded', false);
+  }));
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = (i % 4 * 0.08) + 's';
+    io.observe(el);
+  });
+
+  // Form (front-end stub)
+  function handleSubmit(e){
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type=submit]');
+    btn.textContent = '✓ Thank you — we\'ll be in touch';
+    btn.style.background = '#1e7a52';
+    setTimeout(() => { e.target.reset(); btn.innerHTML = 'Send Message'; btn.style.background=''; }, 3500);
+    return false;
+  }
+</script>
+</body>
+</html>
