@@ -1,6 +1,15 @@
 {
   "videos": [
     {
+      "title": "Set Up Hermes Agent Desktop (No Terminal Needed)",
+      "youtubeUrl": "",
+      "publishedAt": "2026-06-18",
+      "description": "Nous Research's open-source self-improving AI agent now has a desktop app — no terminal required. This quick start walks you through downloading it, connecting a model, and chatting in about 10 minutes (Mac, Windows & Linux).",
+      "resources": [
+        { "label": "Read the Hermes Desktop setup guide", "url": "guides/hermes-desktop-setup.html", "type": "Guide" }
+      ]
+    },
+    {
       "title": "20 Free AI Tools Every Student Should Activate (.edu)",
       "youtubeUrl": "",
       "publishedAt": "2026-06-18",

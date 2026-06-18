@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a1a">
+  <title>Set Up Hermes Agent Desktop (Quick Start) — Kimball Mueller</title>
+  <meta name="description" content="Install and run Nous Research's Hermes Agent desktop app — no terminal required. Download, pick a model, and start chatting in about 10 minutes.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="stylesheet" href="../assets/guide.css">
+
+  <meta property="og:title" content="Set Up Hermes Agent Desktop (Quick Start)">
+  <meta property="og:description" content="The no-terminal way to run Nous Research's self-improving AI agent — installed and chatting in ~10 minutes.">
+  <meta property="og:type" content="article">
+</head>
+<body>
+  <div class="mesh" aria-hidden="true"><span></span></div>
+
+  <main class="guide">
+
+    <nav class="guide-nav" aria-label="breadcrumb">
+      <a href="../index.html">← Home</a>
+      <span class="sep">·</span>
+      <a href="../resources.html">Resources</a>
+    </nav>
+
+    <h1 class="guide-title">Set Up Hermes Agent Desktop</h1>
+    <p class="guide-subtitle">The no-terminal way to run Nous Research's self-improving AI agent. Download the app, point it at a model, and you're chatting in about 10 minutes.</p>
+    <p class="guide-meta">
+      <span>⏱ ~10 minutes</span>
+      <span>🌱 Beginner-friendly</span>
+      <span>🖥️ Mac, Windows &amp; Linux</span>
+    </p>
+
+    <p><strong>Hermes Agent</strong> is Nous Research's open-source AI agent — it remembers your projects, writes its own reusable skills, runs tasks on a schedule, and connects to tools like web search, browser automation, and image generation. Until recently it was terminal-only. As of <strong>June 2026</strong>, the official <strong>Hermes Desktop</strong> app puts the whole thing behind a clean GUI. It's free and open source under the MIT license.</p>
+
+    <div class="callout tip">
+      <span class="ico">🎒</span>
+      <span class="body">
+        <strong>What you'll need.</strong> A Mac, Windows, or Linux machine; about 10 minutes; and a way to power the agent — either an <strong>API key</strong> from a model provider (OpenAI, Anthropic, xAI, etc.) <em>or</em> a free <strong>Nous Portal</strong> account, which is the fastest path if you don't already have a key.
+      </span>
+    </div>
+
+    <hr>
+
+    <!-- =============== STEP 1: DOWNLOAD =============== -->
+    <h2><span class="step-num">Step 1</span> Download the app</h2>
+
+    <p>Grab the installer for your operating system. All downloads come straight from <a class="inline" href="https://hermes-agent.nousresearch.com/" target="_blank" rel="noopener">hermes-agent.nousresearch.com</a>.</p>
+
+    <div class="os-tabs">
+      <div class="tabs" role="tablist">
+        <button class="tab" data-os="mac" role="tab" aria-selected="false">macOS</button>
+        <button class="tab" data-os="windows" role="tab" aria-selected="false">Windows</button>
+        <button class="tab" data-os="linux" role="tab" aria-selected="false">Linux</button>
+      </div>
+
+      <div class="os-content" data-os="mac">
+        <p>macOS 12 or newer. Download the <code class="inline">.dmg</code> installer:</p>
+        <div class="code"><pre>https://hermes-assets.nousresearch.com/Hermes-Setup.dmg</pre></div>
+        <p>Or just click <strong>Download for macOS</strong> on the homepage.</p>
+      </div>
+
+      <div class="os-content" data-os="windows">
+        <p>Windows 10 or 11. Download the <code class="inline">.exe</code> installer:</p>
+        <div class="code"><pre>https://hermes-assets.nousresearch.com/Hermes-Setup.exe</pre></div>
+        <p>Or click <strong>Download for Windows</strong> on the homepage.</p>
+      </div>
+
+      <div class="os-content" data-os="linux">
+        <p>Any modern distro — install from the terminal:</p>
+        <div class="code"><pre>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</pre></div>
+      </div>
+    </div>
+
+    <div class="callout shot">
+      <span class="ico">📸</span>
+      <span class="body">Screenshot slot — the Hermes homepage with the "Download for macOS / Windows" buttons.</span>
+    </div>
+
+    <hr>
+
+    <!-- =============== STEP 2: INSTALL & FIRST LAUNCH =============== -->
+    <h2><span class="step-num">Step 2</span> Install &amp; open it</h2>
+
+    <p><strong>macOS:</strong> open the <code class="inline">.dmg</code> and drag <strong>Hermes</strong> into your Applications folder, then launch it.<br>
+    <strong>Windows:</strong> run <code class="inline">Hermes-Setup.exe</code> and follow the installer, then open Hermes from the Start menu.</p>
+
+    <p>On first launch, Hermes installs its agent runtime in the background (into a folder it calls <code class="inline">HERMES_HOME</code>). Give it a moment — then you'll land on the onboarding screen.</p>
+
+    <div class="callout shot">
+      <span class="ico">📸</span>
+      <span class="body">Screenshot slot — the first-run onboarding overlay (the welcome / "Choose provider" screen).</span>
+    </div>
+
+    <div class="callout warn">
+      <span class="ico">⚠️</span>
+      <span class="body">On macOS, if you see "Hermes can't be opened because it is from an unidentified developer," right-click the app → <strong>Open</strong> → <strong>Open</strong> again. You only have to do this once.</span>
+    </div>
+
+    <hr>
+
+    <!-- =============== STEP 3: CONNECT A MODEL =============== -->
+    <h2><span class="step-num">Step 3</span> Connect a model</h2>
+
+    <p>The agent needs a brain. During onboarding you'll be asked to <strong>Choose a provider</strong> — pick whichever AI service you have access to and paste in your API key.</p>
+
+    <h3>Option A — Use your own API key</h3>
+    <p>Open the <strong>Providers</strong> settings pane, choose your provider (OpenAI, Anthropic, xAI/Grok, and others are all listed), and paste your key. For xAI Grok you can sign in with a browser <strong>OAuth</strong> flow instead of a key.</p>
+
+    <h3>Option B — Fastest path: Nous Portal</h3>
+    <p>No key handy? Use Nous Portal and you'll be running in seconds. If you also installed the CLI, this is one command:</p>
+    <div class="code"><pre>hermes setup --portal</pre></div>
+
+    <div class="callout tip">
+      <span class="ico">⏭️</span>
+      <span class="body">In a hurry to look around first? The onboarding lets you pick <strong>"Choose provider later"</strong> and skip straight into the app. You can add a key any time from Settings.</span>
+    </div>
+
+    <div class="callout shot">
+      <span class="ico">📸</span>
+      <span class="body">Screenshot slot — the Providers settings pane with the API-key field.</span>
+    </div>
+
+    <hr>
+
+    <!-- =============== STEP 4: PICK A MODEL =============== -->
+    <h2><span class="step-num">Step 4</span> Pick your model</h2>
+
+    <p>The <strong>model picker</strong> lives right in the chat composer — just to the left of the microphone icon. Click it to choose your model, set the reasoning effort, and toggle fast mode. Your choice is remembered per device and carries across new chats and restarts.</p>
+
+    <div class="callout shot">
+      <span class="ico">📸</span>
+      <span class="body">Screenshot slot — the composer with the model picker open (left of the mic).</span>
+    </div>
+
+    <hr>
+
+    <!-- =============== STEP 5: START CHATTING =============== -->
+    <h2><span class="step-num">Step 5</span> Start chatting</h2>
+
+    <p>That's it — type your first message and the agent goes to work. A few things worth exploring once you're in:</p>
+    <ul>
+      <li><strong>Left sidebar</strong> — run several agent conversations at once and switch between projects.</li>
+      <li><strong>Preview pane &amp; file browser</strong> — watch tool output stream live and browse the files the agent creates.</li>
+      <li><strong>Voice I/O</strong> — talk to the agent and have it talk back.</li>
+      <li><strong>Memory &amp; skills</strong> — it learns how it solved a problem so the next similar task is faster.</li>
+    </ul>
+
+    <div class="callout shot">
+      <span class="ico">📸</span>
+      <span class="body">Screenshot slot — your first chat, with the sidebar and preview pane visible.</span>
+    </div>
+
+    <hr>
+
+    <!-- =============== CLI ALTERNATIVE =============== -->
+    <h2>Prefer the terminal? (optional)</h2>
+
+    <p>The desktop app and the CLI share the same agent core, config, and API keys — set up one and the other just works. To install the CLI:</p>
+
+    <div class="os-tabs">
+      <div class="tabs" role="tablist">
+        <button class="tab" data-os="mac" role="tab" aria-selected="false">macOS / Linux</button>
+        <button class="tab" data-os="windows" role="tab" aria-selected="false">Windows</button>
+      </div>
+      <div class="os-content" data-os="mac">
+        <div class="code"><pre>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</pre></div>
+      </div>
+      <div class="os-content" data-os="windows">
+        <div class="code"><pre>iex (irm https://hermes-agent.nousresearch.com/install.ps1)</pre></div>
+      </div>
+    </div>
+
+    <p>Then reload your shell and start chatting:</p>
+    <div class="code"><pre>hermes</pre></div>
+
+    <div class="callout tip">
+      <span class="ico">🛠️</span>
+      <span class="body">Handy commands: <code class="inline">hermes setup</code> (full setup wizard), <code class="inline">hermes model</code> (switch provider/model), <code class="inline">hermes desktop</code> (launch the GUI), and <code class="inline">hermes doctor</code> — which tells you exactly what's missing and how to fix it.</span>
+    </div>
+
+    <hr>
+
+    <div class="callout warn">
+      <span class="ico">🔒</span>
+      <span class="body"><strong>A couple of notes.</strong> Hermes Desktop is in public preview, so expect rapid updates. It can run tools and code, so review what you let it do — and for risky tasks use one of its sandboxed backends (local, Docker, SSH). Treat your API keys like passwords; never share a screenshot with a key visible.</span>
+    </div>
+
+    <hr>
+
+    <div class="ctas">
+      <a class="cta primary" href="https://hermes-agent.nousresearch.com/" target="_blank" rel="noopener">Download Hermes Desktop</a>
+      <a class="cta" href="https://hermes-agent.nousresearch.com/docs/user-guide/desktop" target="_blank" rel="noopener">Read the Docs</a>
+      <a class="cta" href="../resources.html">More Free Resources</a>
+    </div>
+
+  </main>
+
+  <script src="../assets/guide.js" defer></script>
+</body>
+</html>
