@@ -257,6 +257,19 @@ table.ct tr.ct-total td{font-weight:700}
 .tier-block-h{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
 .tier-block p{font-size:13px;color:var(--muted);line-height:1.5}
 
+/* ── SINGLE PRICE ── */
+.single-price{max-width:620px;margin:56px auto 0;background:var(--white);border:2px solid var(--blue);border-radius:24px;padding:44px 40px;box-shadow:0 12px 48px rgba(0,113,227,.14);position:relative;text-align:center}
+.sp-flag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);background:rgba(0,113,227,.08);padding:6px 16px;border-radius:100px;margin-bottom:22px}
+.sp-price{font-size:60px;font-weight:700;letter-spacing:-.03em;color:var(--dark);line-height:1}
+.sp-price span{font-size:18px;font-weight:500;color:var(--muted);letter-spacing:0}
+.sp-setup{font-size:13px;font-weight:600;color:var(--blue);margin-top:10px}
+.sp-tag{font-size:16px;color:var(--muted);margin:18px auto 0;line-height:1.6;max-width:460px}
+.sp-inc{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin:30px 0 18px;padding-top:26px;border-top:1px solid var(--border)}
+.sp-feats{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:13px 24px;text-align:left}
+.sp-feat{display:flex;gap:10px;font-size:14px;color:var(--dark);line-height:1.45}
+.sp-feat svg{flex-shrink:0;margin-top:3px}
+@media(max-width:600px){.single-price{padding:34px 24px}.sp-price{font-size:46px}.sp-feats{grid-template-columns:1fr}}
+
 /* ── RECOMMENDATION ── */
 .rec-box{max-width:780px;margin:36px auto 0;padding:24px 30px;background:var(--white);border:1px solid rgba(0,113,227,.22);border-left:4px solid var(--blue);border-radius:14px;box-shadow:0 4px 24px rgba(0,113,227,.08)}
 .rec-box h4{font-size:16px;color:var(--dark);margin-bottom:8px}
@@ -390,8 +403,8 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
 
     <div class="exec-stats reveal d1">
       <div class="exec-stat">
-        <div class="exec-stat-num" style="color:#4ADE80;">3 ways in</div>
-        <div class="exec-stat-lbl">Start at the level that fits.<br>Scale when it pays off</div>
+        <div class="exec-stat-num" style="color:#4ADE80;">1 partner</div>
+        <div class="exec-stat-lbl">A Chief AI &amp; Growth Officer<br>building inside your company</div>
       </div>
       <div class="exec-stat">
         <div class="exec-stat-num" style="color:#fff;">100%</div>
@@ -514,10 +527,10 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
 <section id="roadmap" class="section">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow">04 — The Roadmap</div>
-      <h2>One piece at a time. Prove it. Then scale.</h2>
+      <div class="eyebrow">04 — What We'll Build Together</div>
+      <h2>This is what we'll build inside Powerhouse.</h2>
       <div class="divider"></div>
-      <p style="max-width:620px;">We don't dump everything on you at once. We take a piece, make it work, show the return, then move to the next. We start with getting found and capturing the leads you already have — then layer in the engine and the team as the wins stack up.</p>
+      <p style="max-width:640px;">Not a menu to pick from — a plan to build together. These are the systems we know drive success for a roofing company, built directly into your accounts, with your team alongside us. We do it one piece at a time: build it, prove the return, then move to the next.</p>
     </div>
 
     <div class="tl-wrap" style="margin-top:60px;">
@@ -555,10 +568,14 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
       <div class="tl-phase p2 reveal d2">
         <div class="tl-label">
           <div class="tl-badge">Then</div>
-          <h3>Engine</h3>
-          <div class="tl-dur">Ads + content + follow-up</div>
+          <h3>The Engine</h3>
+          <div class="tl-dur">AI agent + ads + content</div>
         </div>
         <div class="tl-card">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div><h4>A Custom AI Agent, Built for Powerhouse</h4><p>The piece you're most excited to build — and we're with you on it. A custom AI agent on the latest models (Claude / open agent frameworks), living in your stack: answering homeowner questions around the clock, qualifying and routing leads, drafting follow-ups and estimates, and acting as an internal copilot your team can ask anything. You own it outright, and we keep extending it as you grow.</p></div>
+          </div>
           <div class="tl-item">
             <div class="tl-dot"></div>
             <div><h4>Paid Advertising That Generates Jobs</h4><p>Campaigns built and managed to generate qualified roofing opportunities from homeowners actively seeking service — optimized for qualified leads, lower cost per acquisition, and a predictable pipeline.</p></div>
@@ -721,61 +738,11 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
 </section>
 
 
-<!-- ══════════════════════════ 07 — WHAT'S INCLUDED DETAIL ══════════════════════════ -->
-<section id="buildout" class="section">
-  <div class="wrap">
-    <div class="reveal">
-      <div class="eyebrow">07 — What's Included</div>
-      <h2>The core of the partnership.</h2>
-      <div class="divider"></div>
-      <p style="max-width:640px;">Five systems working together — all built in your accounts, all yours to keep, all designed to generate residential roofing opportunities and make your team more capable over time.</p>
-    </div>
-    <div class="card-grid reveal d1">
-      <div class="dcard">
-        <div class="dcard-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
-        <h3>Video Content &amp; Creative Production</h3>
-        <p>AI-enhanced editing workflows dramatically increase production speed without sacrificing quality — so we create and repurpose content efficiently at a standard that reflects your brand and builds homeowner trust.</p>
-        <div class="refine">↗ Ongoing: weekly content, job-site footage, ad creative, social cuts</div>
-      </div>
-      <div class="dcard">
-        <div class="dcard-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 9l-5 5-3-3-4 4"/></svg></div>
-        <h3>Paid Advertising</h3>
-        <p>Campaigns designed to generate residential roofing opportunities from homeowners actively seeking service — optimized to produce qualified leads, raise brand awareness, improve cost per acquisition, and create a predictable pipeline.</p>
-        <div class="refine">↗ Ongoing: creative testing, audience tuning, budget pacing, CPA optimization</div>
-      </div>
-      <div class="dcard">
-        <div class="dcard-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-        <h3>SEO &amp; GEO Optimization</h3>
-        <p>Our SEO and Generative Engine Optimization systems improve visibility across traditional search engines and AI-powered platforms — positioning Powerhouse where homeowners search today and where search behavior is heading.</p>
-        <div class="refine">↗ Ongoing: content, local pages, schema, AI answer optimization</div>
-      </div>
-      <div class="dcard">
-        <div class="dcard-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-        <h3>Website Visitor Retargeting</h3>
-        <p>We implement tracking infrastructure across your site, including Google and Meta pixels. Anyone who visits can be retargeted with relevant advertising across social platforms — keeping you top-of-mind and recovering leads that would otherwise be lost.</p>
-        <div class="refine">↗ Ongoing: audience building, retargeting creative, recovery campaigns</div>
-      </div>
-    </div>
-    <div class="card-grid reveal d2" style="margin-top:24px;grid-template-columns:1fr;">
-      <div class="dcard">
-        <div class="dcard-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-        <h3>Weekly AI &amp; Strategy Session</h3>
-        <p>A standing one-hour weekly session with your leadership team — fully customizable, covering AI implementation, marketing strategy, sales processes, automation opportunities, team productivity, operational efficiency, and emerging AI tools. AI literacy is becoming a competitive advantage; these sessions keep Powerhouse ahead of the curve.</p>
-        <div class="refine">↗ Ongoing: a working session every week, agenda set by your priorities</div>
-      </div>
-    </div>
-    <p class="reveal" style="margin-top:26px;font-size:15px;color:var(--muted);">
-      <strong style="color:var(--dark);">You own everything we build.</strong> Every account, every app, every automation, every ad account and asset — cancel and it all stays yours.
-    </p>
-  </div>
-</section>
-
-
-<!-- ══════════════════════════ 08 — PLATFORM COSTS ══════════════════════════ -->
+<!-- ══════════════════════════ 07 — PLATFORM COSTS ══════════════════════════ -->
 <section id="platforms" class="section section--light">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow">08 — Platform Cost Transparency</div>
+      <div class="eyebrow">07 — Platform Cost Transparency</div>
       <h2>Every tool you'll need. What it costs.</h2>
       <div class="divider"></div>
       <p style="max-width:620px;">We set up every subscription in Powerhouse Roofing's name. You own these accounts outright. Here's the full picture of what running the systems costs — separate from our fee, no surprises.</p>
@@ -836,168 +803,50 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
 </section>
 
 
-<!-- ══════════════════════════ 09 — THE SHIFT ══════════════════════════ -->
-<section id="shift" class="section section--dark">
-  <div class="wrap">
-    <div class="reveal">
-      <div class="eyebrow">09 — The Shift</div>
-      <h2 style="color:#fff;">Where you are. Where you're going.</h2>
-      <div class="divider"></div>
-    </div>
-
-    <div class="gap-grid reveal d1">
-      <div class="gap-card">
-        <div class="gap-label">Powerhouse Today</div>
-        <div class="gap-items">
-          <div class="gap-item gap-bad">Thin on Google &amp; invisible to AI search</div>
-          <div class="gap-item gap-bad">Website visitors leaving without converting</div>
-          <div class="gap-item gap-bad">Ad spend with no clear cost per job</div>
-          <div class="gap-item gap-bad">Content &amp; follow-up that stall when crews get busy</div>
-        </div>
-      </div>
-
-      <div class="gap-mid">
-        <div class="gap-arrow">→</div>
-        <div class="gap-diff">Systems<br><span>the difference</span></div>
-      </div>
-
-      <div class="gap-card">
-        <div class="gap-label">Powerhouse Systemized</div>
-        <div class="gap-items">
-          <div class="gap-item gap-good">Found on Google <em>and</em> recommended by AI</div>
-          <div class="gap-item gap-good">Visitors retargeted and recovered</div>
-          <div class="gap-item gap-good">A live view of cost per acquisition</div>
-          <div class="gap-item gap-good">Content &amp; follow-up that run on autopilot</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="pain-section reveal d2">
-      <div class="pain-section-title">What's keeping Powerhouse on the left side</div>
-      <div class="pain-list">
-        <div class="pain-row"><div class="pain-x">✗</div><div><strong>Weak search presence</strong> — the channels where homeowners now start their search aren't pulling their weight.</div></div>
-        <div class="pain-row"><div class="pain-x">✗</div><div><strong>No retargeting</strong> — the homeowners who visit and leave are gone for good instead of being followed up with.</div></div>
-        <div class="pain-row"><div class="pain-x">✗</div><div><strong>Marketing you can't measure</strong> — without proper tracking, "what's working?" is a guess, not a number on a screen.</div></div>
-        <div class="pain-row"><div class="pain-x">✗</div><div><strong>Output tied to bandwidth</strong> — content and follow-up depend on people having time, so they stop the moment the team gets busy.</div></div>
-      </div>
-    </div>
-
-    <div class="bet-box reveal d3">
-      <p><strong style="color:#fff;">Our systems resolve each of these directly.</strong> You show up on Google and in AI answers. The pixels capture and retarget every visitor. The dashboards make every dollar visible. AI-enhanced content and automated follow-up keep running no matter how slammed the crews are. We do it one piece at a time — prove the return, then move to the next.</p>
-    </div>
-  </div>
-</section>
-
-
-<!-- ══════════════════════════ 10 — INVESTMENT (THREE TIERS) ══════════════════════════ -->
+<!-- ══════════════════════════ 08 — INVESTMENT (SINGLE) ══════════════════════════ -->
 <section id="investment" class="section section--light">
-  <div class="wrap--wide">
+  <div class="wrap">
     <div class="reveal" style="text-align:center;">
-      <div class="eyebrow">10 — Investment</div>
-      <h2>Pick your level of engagement.</h2>
+      <div class="eyebrow">08 — The Investment</div>
+      <h2>One partnership. One number.</h2>
       <div class="divider divider--c"></div>
-      <p style="max-width:600px;margin:0 auto;">Three ways to work together — month-to-month, no lock-in. They differ on how much we produce, how hands-on we get, and how much direct access you have to me.</p>
+      <p style="max-width:600px;margin:0 auto;">No tiers to weigh, no à la carte menu. One monthly partnership that covers the full build — and everything in it belongs to you.</p>
     </div>
 
-    <div class="tier-grid">
-      <!-- Tier 1 -->
-      <div class="tier-card reveal d1">
-        <div class="tier-name">Systems</div>
-        <div class="tier-price">$3,500<span> / mo</span></div>
-        <div class="tier-setup">+ $2,500 one-time setup</div>
-        <div class="tier-tag">We build the marketing systems and hand them over; your team runs the day-to-day. Strategy and optimization, month over month.</div>
-        <div class="tier-inc">What's included</div>
-        <ul class="tier-feats">
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Website, SEO &amp; GEO optimization</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Visitor retargeting + tracking setup (Google &amp; Meta pixels)</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>CRM structure + systems oversight</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>AI workflow + automation implementation</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Content systems + creative workflows</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Team training + documentation</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Two strategic working sessions / month</li>
-        </ul>
-        <div class="tier-block">
-          <div class="tier-block-h">Advertising</div>
-          <p>We build campaign structure &amp; strategy; your team manages the day-to-day spend and optimization.</p>
-        </div>
-        <div class="tier-block">
-          <div class="tier-block-h">Best for</div>
-          <p>Companies with staff who can execute, but want stronger systems, strategy, and visibility.</p>
-        </div>
-      </div>
+    <div class="single-price reveal d1">
+      <div class="sp-flag">Fractional Chief AI &amp; Growth Officer</div>
+      <div class="sp-price">$5,500<span> / month</span></div>
+      <div class="sp-setup">+ one-time deployment &amp; onboarding</div>
+      <p class="sp-tag">Strategic leadership plus hands-on execution — we build and run the growth engine inside Powerhouse, alongside your team.</p>
 
-      <!-- Tier 2 (featured) -->
-      <div class="tier-card featured reveal d2">
-        <div class="tier-flag">★ Recommended</div>
-        <div class="tier-name">Fractional Chief AI &amp; Growth Officer</div>
-        <div class="tier-price">$5,500<span> / mo</span></div>
-        <div class="tier-setup">+ $3,500 one-time deployment</div>
-        <div class="tier-tag">Strategic leadership plus hands-on execution. We run the growth engine alongside your team — exactly the partnership scoped for Powerhouse.</div>
-        <div class="tier-inc">Everything in Systems, plus</div>
-        <ul class="tier-feats">
-          <li class="tier-feat lead"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Everything in Systems</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Paid advertising — built &amp; managed for you</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Video content &amp; creative production (AI-enhanced)</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Hands-on CRM + automated lead follow-up</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Active retargeting campaign management</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Weekly one-hour AI &amp; strategy session</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Direct access to Kimball</li>
-        </ul>
-        <div class="tier-block">
-          <div class="tier-block-h">Advertising</div>
-          <p>We build, manage, and optimize your Google &amp; Meta campaigns end-to-end — qualified leads at a lower cost per acquisition.</p>
-        </div>
-        <div class="tier-block">
-          <div class="tier-block-h">Best for</div>
-          <p>Roofing companies that want a done-for-them growth engine plus strategic leadership across the business.</p>
-        </div>
-      </div>
-
-      <!-- Tier 3 -->
-      <div class="tier-card reveal d3">
-        <div class="tier-name">Growth Partner</div>
-        <div class="tier-price">$8,000<span> / mo</span></div>
-        <div class="tier-setup">Custom onboarding &amp; deployment</div>
-        <div class="tier-tag">An embedded growth, AI, and marketing department — the closest thing to in-house without hiring one.</div>
-        <div class="tier-inc">Everything in Fractional CAIO, plus</div>
-        <ul class="tier-feats">
-          <li class="tier-feat lead"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Everything in Fractional CAIO</li>
-          <li class="tier-feat star"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Higher ad volume + multi-channel campaign management</li>
-          <li class="tier-feat star"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Weekly live AI training for the full team</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Higher-volume video &amp; content production</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Executive KPI dashboards + reporting</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Sales process + recruiting / onboarding systems</li>
-          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Priority execution + turnaround across departments</li>
-        </ul>
-        <div class="tier-block">
-          <div class="tier-block-h">Advertising</div>
-          <p>Full multi-channel paid program at scale — Google, Meta, retargeting, and emerging channels with aggressive optimization.</p>
-        </div>
-        <div class="tier-block">
-          <div class="tier-block-h">Best for</div>
-          <p>Companies that want aggressive growth and operational leverage without building a full internal marketing department.</p>
-        </div>
-      </div>
+      <div class="sp-inc">What we build &amp; run together</div>
+      <ul class="sp-feats">
+        <li class="sp-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>A custom AI agent built for Powerhouse — owned by you</li>
+        <li class="sp-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Paid advertising — built, managed &amp; optimized for you</li>
+        <li class="sp-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Video content &amp; AI-enhanced creative production</li>
+        <li class="sp-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>SEO &amp; GEO — found on Google and in AI search</li>
+        <li class="sp-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Website visitor retargeting (Google &amp; Meta pixels)</li>
+        <li class="sp-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>CRM + automated lead follow-up, hands-on</li>
+        <li class="sp-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Live marketing &amp; KPI dashboards</li>
+        <li class="sp-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Weekly one-hour AI &amp; strategy session with leadership</li>
+        <li class="sp-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Team training so AI literacy becomes in-house</li>
+        <li class="sp-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Direct access to Kimball — every call, no handoffs</li>
+      </ul>
     </div>
 
-    <div class="rec-box reveal d4">
-      <h4><span>★ Our recommendation:</span> start at $5,500.</h4>
-      <p>It's the line between <strong>getting the tools and getting them used.</strong> At $3,500 we build the systems and hand them to your team — but most roofing teams are already stretched between the office and the roof. At $5,500 we're the ones running your ads, producing your content, managing the CRM, and meeting your leadership every week. That's the full partnership you scoped — and what actually turns systems into booked jobs without adding to anyone's plate.</p>
-    </div>
-
-    <p class="reveal d4" style="margin-top:24px;font-size:14px;color:var(--muted);">Month-to-month · platform costs billed to your own accounts · you own 100% of everything we build.</p>
+    <p class="reveal d2" style="margin-top:28px;font-size:14px;color:var(--muted);text-align:center;max-width:680px;margin-left:auto;margin-right:auto;">Month-to-month · platform &amp; ad costs billed to your own accounts · you own 100% of everything we build. We don't lock you in — we earn the next month every month.</p>
   </div>
 </section>
 
 
-<!-- ══════════════════════════ 11 — HOW WE WORK ══════════════════════════ -->
+<!-- ══════════════════════════ 09 — HOW WE WORK ══════════════════════════ -->
 <section id="how" class="section">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow">11 — How Every Engagement Runs</div>
-      <h2>The same promises at every tier.</h2>
+      <div class="eyebrow">09 — How We Work Together</div>
+      <h2>How the partnership runs.</h2>
       <div class="divider"></div>
-      <p style="max-width:580px;">Whichever level you start at, the way we work doesn't change. A fractional Chief AI &amp; Growth Officer who shows up every week and never hands you off.</p>
+      <p style="max-width:580px;">A fractional Chief AI &amp; Growth Officer who shows up every week, builds alongside your team, and never hands you off.</p>
     </div>
     <ul class="cl reveal d1">
       <li class="cl-item">
@@ -1037,7 +886,7 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
 <section id="next" class="section section--light" style="text-align:center;">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow">12 — Next Steps</div>
+      <div class="eyebrow">10 — Next Steps</div>
       <h2>Here's what happens next.</h2>
       <div class="divider divider--c"></div>
     </div>
@@ -1045,22 +894,22 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
       <li>
         <div class="step-n">1</div>
         <div class="step-b">
-          <h4>Review this with your <span class="step-highlight">leadership team</span></h4>
+          <h4>Review this with your <span class="step-highlight">team</span></h4>
           <p>Read it over together. Come with every question — the harder the better. That's exactly what the next call is for.</p>
         </div>
       </li>
       <li>
         <div class="step-n">2</div>
         <div class="step-b">
-          <h4>Pick a starting tier</h4>
-          <p>Systems, Fractional CAIO, or Growth Partner — we'd suggest starting at the $5,500 CAIO level. No wrong answer; we can always move up as the wins stack. A 1-page agreement, no surprises in the fine print.</p>
+          <h4>Say go</h4>
+          <p>One partnership, $5,500/month, month-to-month. A 1-page agreement, no surprises in the fine print — and you own everything we build from day one.</p>
         </div>
       </li>
       <li>
         <div class="step-n">3</div>
         <div class="step-b">
           <h4>Kick off within 48 hours of signing</h4>
-          <p>We start with getting found and capturing the leads you already have. No "onboarding month" — we get to work immediately.</p>
+          <p>We start with getting found and capturing the leads you already have — and scope the AI agent right away. No "onboarding month," we get to work immediately.</p>
         </div>
       </li>
     </ol>
