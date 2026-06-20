@@ -1,12 +1,29 @@
 {
   "videos": [
     {
+      "title": "Run Claude Code Free Forever (Claude Code Router)",
+      "youtubeUrl": "",
+      "publishedAt": "2026-06-19",
+      "description": "A free open-source GitHub tool, Claude Code Router, sits between Claude Code and the model and routes every request to free models like DeepSeek, Kimi, and GLM. You keep the full Claude Code experience at zero cost. Five-minute setup on Mac, Windows & Linux.",
+      "resources": [
+        {
+          "label": "Read the Claude Code Router setup guide",
+          "url": "guides/claude-code-router-free.html",
+          "type": "Guide"
+        }
+      ]
+    },
+    {
       "title": "Set Up Hermes Agent Desktop (No Terminal Needed)",
       "youtubeUrl": "",
       "publishedAt": "2026-06-18",
       "description": "Nous Research's open-source self-improving AI agent now has a desktop app — no terminal required. This quick start walks you through downloading it, connecting a model, and chatting in about 10 minutes (Mac, Windows & Linux).",
       "resources": [
-        { "label": "Read the Hermes Desktop setup guide", "url": "guides/hermes-desktop-setup.html", "type": "Guide" }
+        {
+          "label": "Read the Hermes Desktop setup guide",
+          "url": "guides/hermes-desktop-setup.html",
+          "type": "Guide"
+        }
       ]
     },
     {
@@ -15,7 +32,11 @@
       "publishedAt": "2026-06-18",
       "description": "Five free subscriptions every student needs before graduation — GitHub Student Pack, Cursor Pro, Notion, Figma, and Perplexity — plus 15 more you can unlock free (or near-free) with your .edu email. Every link from the video in one place.",
       "resources": [
-        { "label": "Get all 20 student tools + links", "url": "guides/free-ai-tools-students.html", "type": "Guide" }
+        {
+          "label": "Get all 20 student tools + links",
+          "url": "guides/free-ai-tools-students.html",
+          "type": "Guide"
+        }
       ]
     },
     {
@@ -40,10 +61,26 @@
       "publishedAt": "2026-06-02",
       "description": "Plain-English playbooks for getting the busywork out of a working operation — order intake, inventory, scheduling, compliance, and follow-up. Start with the 12-point audit to find your biggest leak, then grab the playbook that fits your business.",
       "resources": [
-        { "label": "The Ag Operator's AI Systems Audit", "url": "guides/ag-systems-audit.html", "type": "Guide" },
-        { "label": "DTC Ranch & Creamery Operating System", "url": "guides/dtc-ranch-creamery-os.html", "type": "Guide" },
-        { "label": "Grower & Packer Back-Office Playbook", "url": "guides/grower-packer-playbook.html", "type": "Guide" },
-        { "label": "Ag Dealership AI Playbook", "url": "guides/ag-dealership-playbook.html", "type": "Guide" }
+        {
+          "label": "The Ag Operator's AI Systems Audit",
+          "url": "guides/ag-systems-audit.html",
+          "type": "Guide"
+        },
+        {
+          "label": "DTC Ranch & Creamery Operating System",
+          "url": "guides/dtc-ranch-creamery-os.html",
+          "type": "Guide"
+        },
+        {
+          "label": "Grower & Packer Back-Office Playbook",
+          "url": "guides/grower-packer-playbook.html",
+          "type": "Guide"
+        },
+        {
+          "label": "Ag Dealership AI Playbook",
+          "url": "guides/ag-dealership-playbook.html",
+          "type": "Guide"
+        }
       ]
     },
     {
@@ -52,7 +89,11 @@
       "publishedAt": "2026-05-28",
       "description": "Three proven methods to run Claude Code with no subscription: OpenRouter (pennies per session), NVIDIA NIM (free credits), and Ollama (fully local, forever free). Pick the one that fits you and be up and running in under 10 minutes.",
       "resources": [
-        { "label": "Read the setup guide", "url": "guides/claude-free-methods.html", "type": "Guide" }
+        {
+          "label": "Read the setup guide",
+          "url": "guides/claude-free-methods.html",
+          "type": "Guide"
+        }
       ]
     },
     {
@@ -61,7 +102,11 @@
       "publishedAt": "2026-05-27",
       "description": "Use Claude Code with open-source models through Ollama's Anthropic-compatible API — no Claude subscription, no API bill. One command gets you running in under 5 minutes.",
       "resources": [
-        { "label": "Read the setup guide", "url": "guides/ollama-claude-code.html", "type": "Guide" }
+        {
+          "label": "Read the setup guide",
+          "url": "guides/ollama-claude-code.html",
+          "type": "Guide"
+        }
       ]
     },
     {
@@ -70,7 +115,11 @@
       "publishedAt": "2026-05-27",
       "description": "Flux, Kling, Veo 3, Sora, Imagen 4 — every major image and video model in one open-source studio. One muapi API key unlocks all of them. Runs in your browser in under 5 minutes, no subscription.",
       "resources": [
-        { "label": "Read the setup guide", "url": "guides/open-generative-ai.html", "type": "Guide" }
+        {
+          "label": "Read the setup guide",
+          "url": "guides/open-generative-ai.html",
+          "type": "Guide"
+        }
       ]
     },
     {
@@ -79,7 +128,11 @@
       "publishedAt": "2026-05-25",
       "description": "Turn ChatGPT into a cross-disciplinary strategist with 100x the critical thinking. Paste once into your custom instructions and every chat from then on runs through the framework — sharper questions, structured reasoning, and real sources instead of vibes.",
       "resources": [
-        { "label": "Get the full GoodMode v2 prompt", "url": "guides/godmode-v2-prompt.html", "type": "Prompt" }
+        {
+          "label": "Get the full GoodMode v2 prompt",
+          "url": "guides/godmode-v2-prompt.html",
+          "type": "Prompt"
+        }
       ]
     },
     {
@@ -88,7 +141,11 @@
       "publishedAt": "2026-05-29",
       "description": "Total-beginner setup guide — from zero to your first Claude Code session in about 30 minutes. Mac and Windows covered.",
       "resources": [
-        { "label": "Read the 5-step guide", "url": "guides/claude-code-quickstart.html", "type": "Guide" }
+        {
+          "label": "Read the 5-step guide",
+          "url": "guides/claude-code-quickstart.html",
+          "type": "Guide"
+        }
       ]
     }
   ]

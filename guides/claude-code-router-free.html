@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a1a">
+  <title>Run Claude Code Free Forever (Claude Code Router) — Kimball Mueller</title>
+  <meta name="description" content="A free open-source GitHub tool routes Claude Code to free AI models — DeepSeek, Kimi, and GLM — so you get the Claude Code experience at zero cost. Five-minute setup.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="stylesheet" href="../assets/guide.css">
+
+  <meta property="og:title" content="Run Claude Code Free Forever (Claude Code Router)">
+  <meta property="og:description" content="An open-source proxy routes Claude Code to free models like DeepSeek, Kimi, and GLM. Set it up in five minutes.">
+  <meta property="og:type" content="article">
+</head>
+<body>
+  <div class="mesh" aria-hidden="true"><span></span></div>
+
+  <main class="guide">
+
+    <nav class="guide-nav" aria-label="breadcrumb">
+      <a href="../index.html">← Home</a>
+      <span class="sep">·</span>
+      <a href="../resources.html">Resources</a>
+    </nav>
+
+    <h1 class="guide-title">Run Claude Code Free — Forever</h1>
+    <p class="guide-subtitle">One free open-source tool routes Claude Code to free AI models, so you get the full Claude Code experience without an Anthropic bill. Setup takes about five minutes.</p>
+    <p class="guide-meta">
+      <span>⏱ ~5 minutes</span>
+      <span>🌱 Beginner-friendly</span>
+      <span>🖥️ Mac, Linux &amp; Windows</span>
+    </p>
+
+    <p>Claude Code is the best coding agent out there — but it normally bills against your Anthropic account. There's a free, open-source GitHub tool called <strong>Claude Code Router</strong> that sits between Claude Code and the model. It makes Claude Code <em>think</em> it's talking to Anthropic, while actually routing every request to whatever model you choose — including free ones like DeepSeek, Kimi, and GLM. Over 20,000 developers already run it this way.</p>
+
+    <div class="callout tip">
+      <span class="ico">🎯</span>
+      <span class="body">
+        <strong>The honest version:</strong> Free models are roughly <strong>80–90% as capable</strong> as Claude on most coding tasks — excellent for everyday work, prototyping, and learning. For mission-critical or large refactors you'll still want real Claude. The beauty of the router is you can switch between free and paid models per task with one config line.
+      </span>
+    </div>
+
+    <hr>
+
+    <!-- =============== PREREQ =============== -->
+    <h2><span class="step-num">Before you start</span> Install Claude Code</h2>
+
+    <p>The router wraps Claude Code, so you need the Claude Code CLI installed first. If you already have it, skip ahead.</p>
+
+    <div class="os-tabs">
+      <div class="tabs" role="tablist">
+        <button class="tab" data-os="mac" role="tab" aria-selected="false">macOS / Linux</button>
+        <button class="tab" data-os="windows" role="tab" aria-selected="false">Windows</button>
+      </div>
+
+      <div class="os-content" data-os="mac">
+        <div class="code"><pre>npm install -g @anthropic-ai/claude-code</pre></div>
+        <p>Requires Node.js 18+. Run in Terminal.</p>
+      </div>
+
+      <div class="os-content" data-os="windows">
+        <div class="code"><pre>npm install -g @anthropic-ai/claude-code</pre></div>
+        <p>Requires Node.js 18+. Run in PowerShell or Command Prompt.</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- =============== STEP 1: INSTALL ROUTER =============== -->
+    <h2><span class="step-num">Step 1</span> Install Claude Code Router</h2>
+
+    <p>This is the free GitHub tool that does the magic. One command installs it globally:</p>
+
+    <div class="code"><pre>npm install -g @musistudio/claude-code-router</pre></div>
+
+    <p>That's it — you now have a new command called <code class="inline">ccr</code>. The project lives at <a class="inline" href="https://github.com/musistudio/claude-code-router" target="_blank" rel="noopener">github.com/musistudio/claude-code-router</a> if you want to read the source.</p>
+
+    <hr>
+
+    <!-- =============== STEP 2: GET A FREE KEY =============== -->
+    <h2><span class="step-num">Step 2</span> Grab a free API key</h2>
+
+    <p>The router needs <em>somewhere</em> to send requests. Both options below give you free access to top open models. Pick one — you can add both later.</p>
+
+    <div class="os-tabs">
+      <div class="tabs" role="tablist">
+        <button class="tab" data-os="openrouter" role="tab" aria-selected="false">OpenRouter (easiest)</button>
+        <button class="tab" data-os="nvidia" role="tab" aria-selected="false">NVIDIA NIM (free credits)</button>
+      </div>
+
+      <div class="os-content" data-os="openrouter">
+        <p>Go to <a class="inline" href="https://openrouter.ai" target="_blank" rel="noopener">openrouter.ai</a>, sign up, then open <strong>Keys → Create Key</strong>. OpenRouter hosts dozens of <strong><code class="inline">:free</code></strong>-tagged models (DeepSeek, Kimi, GLM and more) that cost literally nothing. Copy your key — it starts with <code class="inline">sk-or-v1-</code>.</p>
+      </div>
+
+      <div class="os-content" data-os="nvidia">
+        <p>Go to <a class="inline" href="https://build.nvidia.com" target="_blank" rel="noopener">build.nvidia.com</a>, sign up (no card needed), then <strong>API Keys → Generate Key</strong>. New accounts get 1,000 free credits on NVIDIA's hosted catalog — DeepSeek, Llama, Mistral and more. Copy your key — it starts with <code class="inline">nvapi-</code>.</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- =============== STEP 3: CONFIGURE =============== -->
+    <h2><span class="step-num">Step 3</span> Drop in a config file</h2>
+
+    <p>The router reads a single JSON file at <code class="inline">~/.claude-code-router/config.json</code>. Create it and paste the matching config below, swapping in your key.</p>
+
+    <h3>Option A — OpenRouter (free models)</h3>
+    <div class="code"><pre>{
+  "Providers": [
+    {
+      "name": "openrouter",
+      "api_base_url": "https://openrouter.ai/api/v1/chat/completions",
+      "api_key": "sk-or-v1-YOUR_KEY_HERE",
+      "models": [
+        "deepseek/deepseek-chat-v3-0324:free",
+        "moonshotai/kimi-k2:free",
+        "z-ai/glm-4.5-air:free"
+      ],
+      "transformer": { "use": ["openrouter"] }
+    }
+  ],
+  "Router": {
+    "default": "openrouter,deepseek/deepseek-chat-v3-0324:free",
+    "background": "openrouter,z-ai/glm-4.5-air:free",
+    "think": "openrouter,deepseek/deepseek-chat-v3-0324:free",
+    "longContext": "openrouter,moonshotai/kimi-k2:free",
+    "longContextThreshold": 60000
+  }
+}</pre></div>
+
+    <h3>Option B — NVIDIA NIM (free credits)</h3>
+    <div class="code"><pre>{
+  "Providers": [
+    {
+      "name": "nvidia",
+      "api_base_url": "https://integrate.api.nvidia.com/v1/chat/completions",
+      "api_key": "nvapi-YOUR_KEY_HERE",
+      "models": [
+        "deepseek-ai/deepseek-r1",
+        "meta/llama-3.3-70b-instruct"
+      ]
+    }
+  ],
+  "Router": {
+    "default": "nvidia,deepseek-ai/deepseek-r1",
+    "background": "nvidia,meta/llama-3.3-70b-instruct"
+  }
+}</pre></div>
+
+    <div class="callout tip">
+      <span class="ico">💡</span>
+      <span class="body"><strong>What the Router section does:</strong> Claude Code uses different models for different jobs. <code class="inline">default</code> handles your main coding, <code class="inline">background</code> handles quick low-stakes tasks (cheaper/faster model), <code class="inline">think</code> handles deep reasoning, and <code class="inline">longContext</code> kicks in past <code class="inline">longContextThreshold</code> tokens. Point each line at whatever model you like — format is always <code class="inline">provider,model</code>.</span>
+    </div>
+
+    <hr>
+
+    <!-- =============== STEP 4: RUN =============== -->
+    <h2><span class="step-num">Step 4</span> Launch Claude Code through the router</h2>
+
+    <p>Instead of typing <code class="inline">claude</code>, you now start your session with:</p>
+
+    <div class="code"><pre>ccr code</pre></div>
+
+    <p>That boots the router and opens Claude Code wired to your free model. Everything you know about Claude Code — slash commands, file editing, the agent loop — works exactly the same. If you ever change <code class="inline">config.json</code>, apply it with:</p>
+
+    <div class="code"><pre>ccr restart</pre></div>
+
+    <div class="callout tip">
+      <span class="ico">✅</span>
+      <span class="body">To confirm it's working, run <code class="inline">/status</code> inside Claude Code — you should see your routed model name, not an Anthropic model.</span>
+    </div>
+
+    <hr>
+
+    <!-- =============== BEST FREE MODELS =============== -->
+    <h2>Best free models to route to</h2>
+
+    <table class="guide-table">
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Best for</th>
+          <th>OpenRouter ID</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>DeepSeek V3</strong></td>
+          <td>All-around coding — the default pick</td>
+          <td><code class="inline">deepseek/deepseek-chat-v3-0324:free</code></td>
+        </tr>
+        <tr>
+          <td><strong>Kimi K2</strong></td>
+          <td>Long files &amp; large context</td>
+          <td><code class="inline">moonshotai/kimi-k2:free</code></td>
+        </tr>
+        <tr>
+          <td><strong>GLM 4.5 Air</strong></td>
+          <td>Fast background tasks</td>
+          <td><code class="inline">z-ai/glm-4.5-air:free</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout warn">
+      <span class="ico">⚠️</span>
+      <span class="body">Free tiers have rate limits (OpenRouter caps free-model requests per day; NVIDIA credits run out). If you hit a wall, either wait for the reset, add a few dollars of OpenRouter credit to unlock higher limits, or route to a paid model just for that session — the router makes switching a one-line change.</span>
+    </div>
+
+    <hr>
+
+    <!-- =============== RELATED =============== -->
+    <div class="callout tip">
+      <span class="ico">🔀</span>
+      <span class="body"><strong>Prefer no extra tool?</strong> You can also point Claude Code at a provider directly with environment variables — no router needed. See <a class="inline" href="claude-free-methods.html">How to Use Claude (Basically) for Free</a> for that approach, plus a fully-local Ollama option in our <a class="inline" href="ollama-claude-code.html">Ollama guide</a>.</span>
+    </div>
+
+    <hr>
+
+    <div class="ctas">
+      <a class="cta primary" href="https://github.com/musistudio/claude-code-router" target="_blank" rel="noopener">Get Claude Code Router</a>
+      <a class="cta" href="https://openrouter.ai" target="_blank" rel="noopener">Free Keys on OpenRouter</a>
+      <a class="cta" href="https://build.nvidia.com" target="_blank" rel="noopener">NVIDIA NIM Free Credits</a>
+    </div>
+
+  </main>
+
+  <script src="../assets/guide.js" defer></script>
+</body>
+</html>
