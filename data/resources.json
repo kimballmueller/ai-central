@@ -1,6 +1,19 @@
 {
   "videos": [
     {
+      "title": "Build Your Own Jarvis (The AI Daily Brief)",
+      "youtubeUrl": "",
+      "publishedAt": "2026-06-21",
+      "description": "\"Good evening, sir.\" The compiled list of everything from the Jarvis daily-brief demo — every MCP and Claude Code feature, with the link to set each one up. RevenueCat, Buffer, Meta Ads, Gmail, ElevenLabs, Claude for Chrome, custom sub-agents, and the routine that has your whole-business brief waiting every morning.",
+      "resources": [
+        {
+          "label": "Get the full Jarvis build list",
+          "url": "guides/build-your-own-jarvis.html",
+          "type": "Guide"
+        }
+      ]
+    },
+    {
       "title": "Run Claude Code Free Forever (Claude Code Router)",
       "youtubeUrl": "",
       "publishedAt": "2026-06-19",

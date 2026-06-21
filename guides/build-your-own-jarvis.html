@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a1a">
+  <title>Build Your Own Jarvis — Kimball Mueller</title>
+  <meta name="description" content="The compiled list of everything in the Jarvis daily-brief demo — every MCP, every Claude Code feature, and the links to set each one up so you can run your whole business from one AI assistant.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="stylesheet" href="../assets/guide.css">
+
+  <meta property="og:title" content="Build Your Own Jarvis">
+  <meta property="og:description" content="Every MCP and Claude Code feature from the daily-brief demo, compiled — with the links to set each one up.">
+  <meta property="og:type" content="article">
+</head>
+<body>
+  <div class="mesh" aria-hidden="true"><span></span></div>
+
+  <main class="guide">
+
+    <nav class="guide-nav" aria-label="breadcrumb">
+      <a href="../index.html">← Home</a>
+      <span class="sep">·</span>
+      <a href="../resources.html">Resources</a>
+    </nav>
+
+    <h1 class="guide-title">Build Your Own Jarvis</h1>
+    <p class="guide-subtitle">"Good evening, sir." Here's the compiled list of everything in the daily-brief demo — every MCP, every Claude Code feature, and the link to set each one up. Wire these together and your whole business reports to you the moment you sit down to work.</p>
+    <p class="guide-meta">
+      <span>⏱ A weekend to wire up</span>
+      <span>🤖 Claude Code or Claude Desktop</span>
+      <span>🔌 ~8 connectors</span>
+    </p>
+
+    <p>The demo you just watched isn't a single app — it's Claude Code with a stack of <strong>MCP connectors</strong> (the plugs that let Claude reach your real tools), a couple of built-in features, a set of <strong>custom sub-agents</strong>, and one <strong>scheduled routine</strong> that assembles the brief for you every morning. Below is each piece in the order it appeared, what it does, and where to get it.</p>
+
+    <div class="callout tip">
+      <span class="ico">🎯</span>
+      <span class="body"><strong>Start small.</strong> You don't need all of this on day one. Add one connector, confirm Claude can read from it, then add the next. The magic isn't any single MCP — it's that your <em>main</em> agent can pull from all of them at once and write you a single brief.</span>
+    </div>
+
+    <hr>
+
+    <!-- =============== 1. REFERENCE IMAGE =============== -->
+    <h2><span class="step-num">1</span> One-shot the dashboard from a reference image</h2>
+    <p>"Give Claude a reference image of what you want, and it'll pretty much one-shot it." Screenshot a dashboard you like — or sketch one — drop it into Claude Code, and ask it to build the UI to match. No connector needed; this is just Claude reading an image and writing the front-end. The whole dashboard in the demo took about five minutes.</p>
+
+    <div class="callout tip">
+      <span class="ico">🖼️</span>
+      <span class="body">Paste the image straight into the prompt and say <em>"build this as a single-page dashboard, wire the numbers to live data later."</em> Iterate by screenshotting the result and pasting it back with notes.</span>
+    </div>
+
+    <hr>
+
+    <!-- =============== 2. VOICE MODE =============== -->
+    <h2><span class="step-num">2</span> Voice mode — talk instead of type</h2>
+    <p>Talking to your agent instead of typing is a big productivity boost. Use your OS dictation or a voice front-end so you can fire off instructions hands-free while you're doing other things.</p>
+
+    <hr>
+
+    <!-- =============== 3. ELEVENLABS =============== -->
+    <h2><span class="step-num">3</span> ElevenLabs — the British Jarvis voice</h2>
+    <p>Want the replies spoken back in that calm British-butler voice? Connect <strong>ElevenLabs</strong> for text-to-speech and you've officially become Tony Stark. Pick a voice, grab an API key, and pipe Claude's responses through it.</p>
+    <p>→ <a class="inline" href="https://elevenlabs.io" target="_blank" rel="noopener">elevenlabs.io</a></p>
+
+    <hr>
+
+    <!-- =============== 4. CLAUDE IN CHROME =============== -->
+    <h2><span class="step-num">4</span> Claude for Chrome — give it your browser</h2>
+    <p>"Clouding Chrome to give it access to your browser." With the Claude for Chrome extension, your agent can actually see and act in web pages — pull up dashboards, read stats, click through tools that don't have an API.</p>
+    <p>→ <a class="inline" href="https://www.anthropic.com/claude/chrome" target="_blank" rel="noopener">Claude for Chrome</a></p>
+
+    <hr>
+
+    <!-- =============== 5. REVENUECAT =============== -->
+    <h2><span class="step-num">5</span> RevenueCat MCP — app revenue</h2>
+    <p>"Over the last 7 days, we had 2,459 new downloads and $4,289 in revenue." That line came straight from the <strong>RevenueCat MCP</strong>, which lets Claude read your app's subscription and revenue numbers on demand.</p>
+    <p>→ <a class="inline" href="https://www.revenuecat.com/docs/integrations/mcp" target="_blank" rel="noopener">RevenueCat MCP</a></p>
+
+    <hr>
+
+    <!-- =============== 6. BUFFER =============== -->
+    <h2><span class="step-num">6</span> Buffer MCP — publish everywhere at once</h2>
+    <p>"I'm still posting 3 short-form videos a day." The <strong>Buffer MCP</strong> lets your agent publish to all your social platforms with a single command, so the content engine keeps running without you touching each app.</p>
+    <p>→ <a class="inline" href="https://buffer.com" target="_blank" rel="noopener">Buffer</a></p>
+
+    <hr>
+
+    <!-- =============== 7. META ADS =============== -->
+    <h2><span class="step-num">7</span> Meta Ads MCP — run campaigns</h2>
+    <p>"You spent $475 at a 1.5% return on ad spend." Meta launched an <strong>official Ads MCP</strong> so Claude can read performance and spin up more campaigns — letting you give Mark more of your money, faster.</p>
+    <p>→ <a class="inline" href="https://developers.facebook.com/docs/marketing-apis" target="_blank" rel="noopener">Meta Marketing / Ads MCP</a></p>
+
+    <hr>
+
+    <!-- =============== 8. GMAIL =============== -->
+    <h2><span class="step-num">8</span> Gmail MCP + an FAQ file = 90% of support</h2>
+    <p>"You received 16 customer emails. I resolved 13 automatically." That's the <strong>Gmail MCP</strong> giving Claude read/write access to your inbox. The trick to the auto-resolution: <strong>organize all your FAQs in a markdown file</strong> and point the agent at it. Claude handles roughly 90% of customer service — common questions and account issues — and escalates the rest to you.</p>
+
+    <div class="callout tip">
+      <span class="ico">📝</span>
+      <span class="body"><strong>The FAQ file is the secret.</strong> A plain <code class="inline">faqs.md</code> with your top 20–30 questions and the approved answers turns the inbox connector into a real support agent. Update the file, and your support gets smarter — no retraining.</span>
+    </div>
+    <p>→ <a class="inline" href="https://developers.google.com/workspace/gmail/api" target="_blank" rel="noopener">Gmail MCP</a></p>
+
+    <hr>
+
+    <!-- =============== 9. SUB-AGENTS =============== -->
+    <h2><span class="step-num">9</span> Custom sub-agents — Tom, Scout & the team</h2>
+    <p>"I handed it to Tom, the developer agent." This is the part that turns a chatbot into a company. You define <strong>custom sub-agents</strong>, equip each with the right <strong>skills</strong> and <strong>connectors</strong>, and your main agent hands off work to whichever specialist fits the job:</p>
+    <ul>
+      <li><strong>Tom</strong> — the developer agent. Gets the coding task and the backend PR.</li>
+      <li><strong>Scout</strong> — research agent. Tasked with finding the next organic content angles to test.</li>
+      <li>…and any other role you need — a support agent, an ads analyst, a bookkeeper.</li>
+    </ul>
+    <p>Each sub-agent runs in its own context with only the tools it needs, so handoffs stay clean and focused.</p>
+    <p>→ <a class="inline" href="https://docs.claude.com/en/docs/claude-code/sub-agents" target="_blank" rel="noopener">Claude Code sub-agents</a> · <a class="inline" href="https://docs.claude.com/en/docs/claude-code/skills" target="_blank" rel="noopener">Skills</a></p>
+
+    <hr>
+
+    <!-- =============== 10. ROUTINE =============== -->
+    <h2><span class="step-num">10</span> Save it as a routine — the daily brief</h2>
+    <p>The final move: take the entire brief — revenue, content, ads, support, recommendations — and <strong>set it as a scheduled routine</strong>. Claude assembles it on a cron schedule and has it waiting for you by the time you sit down to work. "Good evening, sir" becomes automatic.</p>
+
+    <div class="callout tip">
+      <span class="ico">⏰</span>
+      <span class="body">Write the brief as a single prompt that pulls from every connector above, then schedule it to run each morning. The output is your standup: the numbers, what got handled automatically, and a short list of what actually needs <em>you</em>.</span>
+    </div>
+
+    <hr>
+
+    <!-- =============== CHECKLIST =============== -->
+    <h2>The compiled checklist</h2>
+    <table class="guide-table">
+      <thead>
+        <tr>
+          <th>Piece</th>
+          <th>What it does in the brief</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Reference image</strong></td><td>One-shot the dashboard UI</td></tr>
+        <tr><td><strong>Voice mode</strong></td><td>Talk instead of type</td></tr>
+        <tr><td><strong>ElevenLabs</strong></td><td>British Jarvis voice on the replies</td></tr>
+        <tr><td><strong>Claude for Chrome</strong></td><td>Browser access — read any dashboard</td></tr>
+        <tr><td><strong>RevenueCat MCP</strong></td><td>Downloads &amp; revenue</td></tr>
+        <tr><td><strong>Buffer MCP</strong></td><td>Publish content to all platforms</td></tr>
+        <tr><td><strong>Meta Ads MCP</strong></td><td>Ad spend, ROAS &amp; new campaigns</td></tr>
+        <tr><td><strong>Gmail MCP + FAQ.md</strong></td><td>Auto-resolve ~90% of support</td></tr>
+        <tr><td><strong>Custom sub-agents</strong></td><td>Hand off to Tom, Scout &amp; co.</td></tr>
+        <tr><td><strong>Scheduled routine</strong></td><td>The brief, ready every morning</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout warn">
+      <span class="ico">⚠️</span>
+      <span class="body">Every connector here touches a real account — your inbox, your ad spend, your published posts. Start each new agent in read-only / draft mode, watch what it does for a few days, and only then let it act on its own. Trust is earned one task at a time.</span>
+    </div>
+
+    <hr>
+
+    <div class="ctas">
+      <a class="cta primary" href="https://docs.claude.com/en/docs/claude-code/mcp" target="_blank" rel="noopener">How to add MCP connectors</a>
+      <a class="cta" href="https://docs.claude.com/en/docs/claude-code/sub-agents" target="_blank" rel="noopener">Build sub-agents</a>
+      <a class="cta" href="../resources.html">More free guides</a>
+    </div>
+
+  </main>
+
+  <script src="../assets/guide.js" defer></script>
+</body>
+</html>
