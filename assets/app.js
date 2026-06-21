@@ -112,7 +112,7 @@ function renderResources(root, data) {
 
     const yt = v.youtubeUrl
       ? `<a class="yt-link" href="${escapeHtml(v.youtubeUrl)}" target="_blank" rel="noopener">${svg('youtube')}Watch</a>`
-      : '';
+      : (v.comingSoon ? `<span class="yt-link soon">${svg('youtube')}Coming Soon</span>` : '');
 
     const meta = v.publishedAt ? `<p class="video-meta">Posted ${escapeHtml(v.publishedAt)}</p>` : '';
     const desc = v.description ? `<p class="video-desc">${escapeHtml(v.description)}</p>` : '';

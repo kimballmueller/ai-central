@@ -316,6 +316,14 @@ button { font: inherit; }
   flex-shrink: 0;
 }
 .video-card .yt-link:hover { background: linear-gradient(135deg, rgba(59,130,246,0.5), rgba(139,92,246,0.45)); }
+.video-card .yt-link.soon {
+  background: rgba(255,255,255,0.08);
+  color: rgba(245,243,255,0.7);
+  cursor: default;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 11px;
+}
 
 .video-embed {
   position: relative;
