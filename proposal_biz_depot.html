@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Video Proposal — BizDepot</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * { font-family: 'Montserrat', sans-serif; }
+
+    :root {
+      --navy: #162A3D;
+      --navy-deep: #04213E;
+      --cyan: #6AD5EF;
+      --cyan-light: #A4F4F7;
+      --bg: #F5FAFF;
+    }
+
+    body { background-color: var(--bg); color: #162A3D; }
+
+    .btn-primary {
+      background: var(--navy);
+      color: white;
+      border-radius: 9999px;
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+      font-size: 0.875rem;
+      letter-spacing: 0.03em;
+      transition: background 0.3s ease;
+      display: inline-block;
+      text-decoration: none;
+    }
+    .btn-primary:hover { background: var(--cyan); color: var(--navy-deep); }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.10);
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--cyan);
+    }
+
+    .trip-number {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #00000020, transparent);
+    }
+
+    .highlight-bar {
+      background: linear-gradient(135deg, var(--navy) 0%, #1e3f5c 100%);
+      border-radius: 15px;
+    }
+
+    .cyan-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--cyan);
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+
+    .option-badge {
+      background: var(--cyan);
+      color: var(--navy-deep);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 9999px;
+      padding: 0.25rem 0.75rem;
+    }
+
+    .price-tag {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .included-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .stat-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--cyan);
+    }
+    .stat-value { font-size: 0.82rem; font-weight: 600; color: var(--navy); }
+
+    a.work-link {
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 2px solid var(--cyan);
+      padding-bottom: 1px;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+    a.work-link:hover { color: var(--cyan); border-color: var(--navy); }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header style="background: var(--navy);" class="px-8 py-5 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div style="width:36px;height:36px;background:var(--cyan);border-radius:8px;display:flex;align-items:center;justify-content:center;">
+        <span style="color:var(--navy-deep);font-weight:800;font-size:1rem;">B</span>
+      </div>
+      <span style="color:white;font-weight:700;font-size:1.1rem;letter-spacing:0.03em;">BizDepot</span>
+    </div>
+    <span style="color:var(--cyan);font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;">Video Proposal</span>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-6 py-16">
+
+    <!-- Hero -->
+    <div class="mb-14">
+      <div class="section-label mb-4">Prepared for BizDepot</div>
+      <h1 style="font-size:2.6rem;font-weight:800;line-height:1.1;letter-spacing:-0.03em;color:var(--navy);" class="mb-5">
+        Seller Testimonial<br>Video Tour
+      </h1>
+      <p style="font-size:1.05rem;color:#4a6070;line-height:1.7;" class="max-w-xl">
+        Twelve sellers across eleven states — captured on location and grouped into six smart regional trips, so the whole country gets covered without the whole country's travel bill. Long-form and short-form, delivered ready to publish.
+      </p>
+    </div>
+
+    <div class="divider mb-14"></div>
+
+    <!-- Trip Breakdown -->
+    <div class="mb-14">
+      <div class="section-label mb-2">The Route</div>
+      <h2 style="font-size:1.5rem;font-weight:700;color:var(--navy);" class="mb-2">Trip Breakdown</h2>
+      <p style="font-size:0.9rem;color:#4a6070;line-height:1.6;" class="mb-8">Twelve sellers grouped by geography and closing date into six regional swings out of Salt Lake City. Each trip captures everyone in that part of the country in one pass — nothing back-to-back, nothing wasted.</p>
+
+      <div class="flex flex-col gap-4">
+
+        <!-- Trip 1 -->
+        <div class="card p-6 flex gap-5 items-start">
+          <div class="trip-number">1</div>
+          <div class="flex-1">
+            <div class="flex items-center justify-between flex-wrap gap-2 mb-1">
+              <span style="font-weight:700;font-size:1rem;color:var(--navy);">Arizona — Scottsdale</span>
+              <span style="font-size:0.8rem;font-weight:600;color:#4a6070;">2 days · target late June</span>
+            </div>
+            <p style="font-size:0.85rem;color:#6a8090;line-height:1.6;">SLC → PHX, a quick hop. <strong style="color:var(--navy);">Long Established Property Maintenance.</strong> Arrive, film seller interview + B-roll, depart next morning.</p>
+            <div class="flex gap-6 mt-3 flex-wrap">
+              <div><span class="stat-label">Sellers</span><p class="stat-value">1</p></div>
+              <div><span class="stat-label">Filming</span><p class="stat-value">1 day</p></div>
+              <div><span class="stat-label">Total Trip</span><p class="stat-value">2 days</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trip 2 -->
+        <div class="card p-6 flex gap-5 items-start">
+          <div class="trip-number">2</div>
+          <div class="flex-1">
+            <div class="flex items-center justify-between flex-wrap gap-2 mb-1">
+              <span style="font-weight:700;font-size:1rem;color:var(--navy);">Southern California — Ventura County</span>
+              <span style="font-size:0.8rem;font-weight:600;color:#4a6070;">4 days · target late Aug</span>
+            </div>
+            <p style="font-size:0.85rem;color:#6a8090;line-height:1.6;"><strong style="color:var(--navy);">Crumbl</strong> (Newbury Park + Westlake Village), <strong style="color:var(--navy);">Westoaks Glass &amp; Mirror</strong>, and <strong style="color:var(--navy);">A Cut Above Woodworks</strong> — all within ~20 miles. Fly into Burbank and film all three over two days. The tightest, most efficient swing of the tour.</p>
+            <div class="flex gap-6 mt-3 flex-wrap">
+              <div><span class="stat-label">Sellers</span><p class="stat-value">3</p></div>
+              <div><span class="stat-label">Filming</span><p class="stat-value">2 days</p></div>
+              <div><span class="stat-label">Total Trip</span><p class="stat-value">4 days</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trip 3 -->
+        <div class="card p-6 flex gap-5 items-start">
+          <div class="trip-number">3</div>
+          <div class="flex-1">
+            <div class="flex items-center justify-between flex-wrap gap-2 mb-1">
+              <span style="font-weight:700;font-size:1rem;color:var(--navy);">Texas — Amarillo + Hill Country</span>
+              <span style="font-size:0.8rem;font-weight:600;color:#4a6070;">4 days · target mid-Aug</span>
+            </div>
+            <p style="font-size:0.85rem;color:#6a8090;line-height:1.6;"><strong style="color:var(--navy);">Amarillo Landscaping</strong> in the panhandle, then <strong style="color:var(--navy);">Kerville Automotive</strong> in the hill country near San Antonio. One Texas loop — best combined if the two closing dates can flex toward each other (see below).</p>
+            <div class="flex gap-6 mt-3 flex-wrap">
+              <div><span class="stat-label">Sellers</span><p class="stat-value">2</p></div>
+              <div><span class="stat-label">Filming</span><p class="stat-value">2 days</p></div>
+              <div><span class="stat-label">Total Trip</span><p class="stat-value">4 days</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trip 4 -->
+        <div class="card p-6 flex gap-5 items-start">
+          <div class="trip-number">4</div>
+          <div class="flex-1">
+            <div class="flex items-center justify-between flex-wrap gap-2 mb-1">
+              <span style="font-weight:700;font-size:1rem;color:var(--navy);">Southeast — Carolinas + Florida</span>
+              <span style="font-size:0.8rem;font-weight:600;color:#4a6070;">5 days · target mid–late Aug</span>
+            </div>
+            <p style="font-size:0.85rem;color:#6a8090;line-height:1.6;"><strong style="color:var(--navy);">A1 Dumpster</strong> (Charlotte + Lexington) and <strong style="color:var(--navy);">Carols Electric</strong> (Mebane) cluster in the Carolinas, then a short hop down to <strong style="color:var(--navy);">SourceLink Communications</strong> in Sanford, FL. Four locations, one swing.</p>
+            <div class="flex gap-6 mt-3 flex-wrap">
+              <div><span class="stat-label">Sellers</span><p class="stat-value">3</p></div>
+              <div><span class="stat-label">Filming</span><p class="stat-value">3 days</p></div>
+              <div><span class="stat-label">Total Trip</span><p class="stat-value">5 days</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trip 5 -->
+        <div class="card p-6 flex gap-5 items-start">
+          <div class="trip-number">5</div>
+          <div class="flex-1">
+            <div class="flex items-center justify-between flex-wrap gap-2 mb-1">
+              <span style="font-weight:700;font-size:1rem;color:var(--navy);">Northeast — Upstate NY + Maine</span>
+              <span style="font-size:0.8rem;font-weight:600;color:#4a6070;">4 days · target late Aug</span>
+            </div>
+            <p style="font-size:0.85rem;color:#6a8090;line-height:1.6;">Fly into Albany for <strong style="color:var(--navy);">Porpiglia Electrical</strong> (Milton, NY), then up the coast to <strong style="color:var(--navy);">Motivated Mechanical</strong> in Bath, ME. Both close the same week, so they ride together naturally.</p>
+            <div class="flex gap-6 mt-3 flex-wrap">
+              <div><span class="stat-label">Sellers</span><p class="stat-value">2</p></div>
+              <div><span class="stat-label">Filming</span><p class="stat-value">2 days</p></div>
+              <div><span class="stat-label">Total Trip</span><p class="stat-value">4 days</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trip 6 -->
+        <div class="card p-6 flex gap-5 items-start">
+          <div class="trip-number">6</div>
+          <div class="flex-1">
+            <div class="flex items-center justify-between flex-wrap gap-2 mb-1">
+              <span style="font-weight:700;font-size:1rem;color:var(--navy);">Iowa — Des Moines</span>
+              <span style="font-size:0.8rem;font-weight:600;color:#4a6070;">2 days · target late Aug</span>
+            </div>
+            <p style="font-size:0.85rem;color:#6a8090;line-height:1.6;">SLC → DSM, central and quick. <strong style="color:var(--navy);">Iowa Dumpster.</strong> Arrive, film seller interview + B-roll, depart next morning.</p>
+            <div class="flex gap-6 mt-3 flex-wrap">
+              <div><span class="stat-label">Sellers</span><p class="stat-value">1</p></div>
+              <div><span class="stat-label">Filming</span><p class="stat-value">1 day</p></div>
+              <div><span class="stat-label">Total Trip</span><p class="stat-value">2 days</p></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Total days summary -->
+      <div class="highlight-bar p-6 mt-6 flex items-center justify-between flex-wrap gap-4">
+        <div>
+          <div style="color:var(--cyan);font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;" class="mb-1">Total Production Time</div>
+          <div style="color:white;font-size:1.5rem;font-weight:800;">21 days on the road</div>
+          <div style="color:#8ab8cc;font-size:0.82rem;margin-top:4px;">6 trips · 14 locations · 12 sellers</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="color:var(--cyan);font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;" class="mb-1">Full Tour</div>
+          <div style="color:white;font-size:1.5rem;font-weight:800;">$26,400</div>
+          <div style="color:#8ab8cc;font-size:0.82rem;margin-top:4px;">~$2,200 / video · filming + editing</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider mb-14"></div>
+
+    <!-- Pricing -->
+    <div class="mb-14">
+      <div class="section-label mb-2">Investment</div>
+      <h2 style="font-size:1.5rem;font-weight:700;color:var(--navy);" class="mb-2">What It Costs</h2>
+      <p style="font-size:0.9rem;color:#4a6070;line-height:1.6;" class="mb-8">Each trip is priced on three things: the days I'm filming, the days I'm on the road getting there, and the editing for each finished video. Travel — flights, hotels, rental cars — is billed straight through to BizDepot at cost, no markup.</p>
+
+      <!-- Rate cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+        <div class="card p-6 text-center">
+          <div class="price-tag" style="font-size:2rem;">$1,200<span style="font-size:0.8rem;font-weight:600;color:#4a6070;"> /day</span></div>
+          <div style="font-weight:700;font-size:0.95rem;color:var(--navy);margin-top:10px;">Production day</div>
+          <p style="font-size:0.78rem;color:#6a8090;margin-top:4px;line-height:1.5;">A full day on location — interviews, B-roll, everything captured.</p>
+        </div>
+        <div class="card p-6 text-center">
+          <div class="price-tag" style="font-size:2rem;">$600<span style="font-size:0.8rem;font-weight:600;color:#4a6070;"> /day</span></div>
+          <div style="font-weight:700;font-size:0.95rem;color:var(--navy);margin-top:10px;">Travel day</div>
+          <p style="font-size:0.78rem;color:#6a8090;margin-top:4px;line-height:1.5;">Days on the road between shoots, at half the production rate.</p>
+        </div>
+        <div class="card p-6 text-center">
+          <div class="price-tag" style="font-size:2rem;">$600<span style="font-size:0.8rem;font-weight:600;color:#4a6070;"> /video</span></div>
+          <div style="font-weight:700;font-size:0.95rem;color:var(--navy);margin-top:10px;">Post-production</div>
+          <p style="font-size:0.78rem;color:#6a8090;margin-top:4px;line-height:1.5;">Edit, color, audio, captions, short-form cuts, one revision.</p>
+        </div>
+      </div>
+
+      <!-- Per-trip cost card -->
+      <div class="card p-8">
+        <div style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#4a6070;" class="mb-5">Cost per trip</div>
+
+        <div class="flex flex-col gap-3">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:12px;border-bottom:1px solid #e8f0f5;">
+            <div><p style="font-size:0.9rem;font-weight:600;color:var(--navy);">Arizona — Scottsdale</p><p style="font-size:0.78rem;color:#6a8090;">1 seller · 2 days on the road</p></div>
+            <span style="font-size:1rem;font-weight:700;color:var(--navy);">$2,400</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:12px;border-bottom:1px solid #e8f0f5;">
+            <div><p style="font-size:0.9rem;font-weight:600;color:var(--navy);">Southern California — Ventura County</p><p style="font-size:0.78rem;color:#6a8090;">3 sellers · 4 days on the road</p></div>
+            <span style="font-size:1rem;font-weight:700;color:var(--navy);">$5,400</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:12px;border-bottom:1px solid #e8f0f5;">
+            <div><p style="font-size:0.9rem;font-weight:600;color:var(--navy);">Texas — Amarillo + Kerville</p><p style="font-size:0.78rem;color:#6a8090;">2 sellers · 4 days on the road</p></div>
+            <span style="font-size:1rem;font-weight:700;color:var(--navy);">$4,800</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:12px;border-bottom:1px solid #e8f0f5;">
+            <div><p style="font-size:0.9rem;font-weight:600;color:var(--navy);">Southeast — Carolinas + Florida</p><p style="font-size:0.78rem;color:#6a8090;">3 sellers · 5 days on the road</p></div>
+            <span style="font-size:1rem;font-weight:700;color:var(--navy);">$6,600</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:12px;border-bottom:1px solid #e8f0f5;">
+            <div><p style="font-size:0.9rem;font-weight:600;color:var(--navy);">Northeast — Upstate NY + Maine</p><p style="font-size:0.78rem;color:#6a8090;">2 sellers · 4 days on the road</p></div>
+            <span style="font-size:1rem;font-weight:700;color:var(--navy);">$4,800</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div><p style="font-size:0.9rem;font-weight:600;color:var(--navy);">Iowa — Des Moines</p><p style="font-size:0.78rem;color:#6a8090;">1 seller · 2 days on the road</p></div>
+            <span style="font-size:1rem;font-weight:700;color:var(--navy);">$2,400</span>
+          </div>
+        </div>
+
+        <div style="background:var(--navy);border-radius:12px;padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;" class="mt-6">
+          <div>
+            <p style="color:var(--cyan);font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;">Full Tour · 12 Videos</p>
+            <p style="color:white;font-size:1.6rem;font-weight:800;line-height:1;">$26,400</p>
+          </div>
+          <div style="text-align:right;">
+            <p style="color:var(--cyan);font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;">Per Video</p>
+            <p style="color:white;font-size:1.6rem;font-weight:800;line-height:1;">~$2,200</p>
+          </div>
+        </div>
+        <p style="font-size:0.8rem;color:#6a8090;line-height:1.6;" class="mt-4">Production fee only. Travel reimbursed at cost (~$8–10K est. across the tour). Trips can be booked individually if you'd rather start with one region — Scottsdale closes first, so it's the natural opener.</p>
+      </div>
+    </div>
+
+    <!-- Batching note -->
+    <div class="card p-8 mb-14" style="border-left: 4px solid var(--cyan);">
+      <div class="section-label mb-2">Why Batching Pays</div>
+      <h2 style="font-size:1.25rem;font-weight:700;color:var(--navy);" class="mb-4">The more we group, the less each video costs.</h2>
+      <p style="font-size:0.9rem;color:#4a6070;line-height:1.7;" class="mb-4">The travel days on a trip get split across every seller filmed on it. The Southern California trip carries three sellers, so each of those videos lands around <strong style="color:var(--navy);">$1,800</strong>. A lone shoot in its own state has to carry the whole trip itself — closer to <strong style="color:var(--navy);">$2,400</strong>. Same quality either way; the difference is purely how many we can group together.</p>
+      <div style="background:var(--bg);border-radius:12px;padding:1.25rem 1.5rem;">
+        <p style="font-size:0.85rem;color:var(--navy);line-height:1.7;"><strong>The one ask that saves money:</strong> a couple of sellers close a month off from their neighbors — Amarillo and Mebane, mainly. If those escrow dates can flex a week or two toward the rest of their region, Texas and the Southeast each collapse into a single trip instead of two — saving travel and roughly <strong style="color:var(--navy);">$1,200</strong> in fees for the exact same twelve videos.</p>
+      </div>
+    </div>
+
+    <div class="divider mb-14"></div>
+
+    <!-- Editing Breakdown -->
+    <div class="mb-14">
+      <div class="section-label mb-2">Post-Production</div>
+      <h2 style="font-size:1.5rem;font-weight:700;color:var(--navy);" class="mb-3">What Every Video Includes</h2>
+      <p style="font-size:0.9rem;color:#4a6070;line-height:1.6;" class="mb-8">Editing is bundled into the per-video price — not a separate line item. Each of the twelve sellers comes back as a complete package: the long-form story plus short, vertical cuts built for social.</p>
+
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+
+        <div class="card p-6">
+          <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--cyan);" class="mb-2">Full Testimonial</div>
+          <div style="font-weight:700;font-size:1rem;color:var(--navy);" class="mb-3">2–5 min video</div>
+          <div class="flex flex-col gap-2">
+            <div class="included-item"><div class="cyan-dot"></div><p style="font-size:0.82rem;color:#4a6070;">Rough cut + story structure</p></div>
+            <div class="included-item"><div class="cyan-dot"></div><p style="font-size:0.82rem;color:#4a6070;">Color grade</p></div>
+            <div class="included-item"><div class="cyan-dot"></div><p style="font-size:0.82rem;color:#4a6070;">Audio mix + cleanup</p></div>
+            <div class="included-item"><div class="cyan-dot"></div><p style="font-size:0.82rem;color:#4a6070;">B-roll integration</p></div>
+            <div class="included-item"><div class="cyan-dot"></div><p style="font-size:0.82rem;color:#4a6070;">Lower thirds / titles</p></div>
+            <div class="included-item"><div class="cyan-dot"></div><p style="font-size:0.82rem;color:#4a6070;">1 round of revisions</p></div>
+          </div>
+        </div>
+
+        <div class="card p-6">
+          <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--cyan);" class="mb-2">Short-Form Cuts</div>
+          <div style="font-weight:700;font-size:1rem;color:var(--navy);" class="mb-3">30–90 sec clips</div>
+          <div class="flex flex-col gap-2">
+            <div class="included-item"><div class="cyan-dot"></div><p style="font-size:0.82rem;color:#4a6070;">2–3 cuts per video</p></div>
+            <div class="included-item"><div class="cyan-dot"></div><p style="font-size:0.82rem;color:#4a6070;">Vertical (9:16) format</p></div>
+            <div class="included-item"><div class="cyan-dot"></div><p style="font-size:0.82rem;color:#4a6070;">Captions / subtitles</p></div>
+            <div class="included-item"><div class="cyan-dot"></div><p style="font-size:0.82rem;color:#4a6070;">Hook-led structure</p></div>
+            <div class="included-item"><div class="cyan-dot"></div><p style="font-size:0.82rem;color:#4a6070;">Ready for Reels / LinkedIn</p></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="divider mb-14"></div>
+
+    <!-- Work Samples -->
+    <div class="mb-14">
+      <div class="section-label mb-2">Portfolio</div>
+      <h2 style="font-size:1.5rem;font-weight:700;color:var(--navy);" class="mb-3">Review My Work</h2>
+      <p style="font-size:0.9rem;color:#4a6070;line-height:1.6;" class="mb-8">Examples of past testimonial and brand video work.</p>
+
+      <div class="flex flex-col gap-4">
+
+        <div class="card p-6 flex items-center justify-between flex-wrap gap-4">
+          <div>
+            <div style="font-weight:700;font-size:0.95rem;color:var(--navy);" class="mb-1">Website &amp; Reel</div>
+            <div style="font-size:0.82rem;color:#4a6070;">kimballmueller.com</div>
+          </div>
+          <a href="https://kimballmueller.com" target="_blank" class="btn-primary">View Site</a>
+        </div>
+
+        <div class="card p-6 flex items-center justify-between flex-wrap gap-4">
+          <div>
+            <div style="font-weight:700;font-size:0.95rem;color:var(--navy);" class="mb-1">Testimonial Work — Drive Folder</div>
+            <div style="font-size:0.82rem;color:#4a6070;">Google Drive · Video samples</div>
+          </div>
+          <a href="https://drive.google.com/drive/folders/1HSxoZmRIi8RUg4QETjICciy3RqHXtrsP?usp=sharing" target="_blank" class="btn-primary">View Folder</a>
+        </div>
+
+        <div class="card p-6 flex items-center justify-between flex-wrap gap-4">
+          <div>
+            <div style="font-weight:700;font-size:0.95rem;color:var(--navy);" class="mb-1">Additional Work Samples</div>
+            <div style="font-size:0.82rem;color:#4a6070;">Google Drive · More examples</div>
+          </div>
+          <a href="https://drive.google.com/drive/folders/1kqdRVCHETqD66JVbb_I9Lk0S42sbrAi3?usp=sharing" target="_blank" class="btn-primary">View Folder</a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="divider mb-14"></div>
+
+    <!-- CTA -->
+    <div class="highlight-bar p-10 text-center">
+      <div style="color:var(--cyan);font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;" class="mb-3">Ready to move forward?</div>
+      <h2 style="color:white;font-size:1.75rem;font-weight:800;letter-spacing:-0.02em;line-height:1.2;" class="mb-4">Let's get your sellers on camera.</h2>
+      <p style="color:#8ab8cc;font-size:0.9rem;line-height:1.7;max-width:440px;margin:0 auto 2rem;">Confirm the full tour or pick a region to start. Send me your firm-up closing dates and a contact at each business, and I'll build the shoot calendar.</p>
+      <a href="mailto:create@kimballmueller.com" class="btn-primary" style="background:var(--cyan);color:var(--navy-deep);">Get in Touch</a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer style="background:var(--navy-deep);" class="px-8 py-6 mt-12 text-center">
+    <p style="color:#4a6a80;font-size:0.8rem;">Prepared by Kimball Mueller · <a href="https://kimballmueller.com" style="color:var(--cyan);text-decoration:none;">kimballmueller.com</a></p>
+  </footer>
+
+</body>
+</html>
