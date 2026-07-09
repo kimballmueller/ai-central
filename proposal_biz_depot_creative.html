@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creative Treatment — BizDepot Seller Testimonials</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * { font-family: 'Montserrat', sans-serif; }
+
+    :root {
+      --navy: #162A3D;
+      --navy-deep: #04213E;
+      --cyan: #6AD5EF;
+      --cyan-light: #A4F4F7;
+      --bg: #F5FAFF;
+    }
+
+    body { background-color: var(--bg); color: #162A3D; }
+
+    .btn-primary {
+      background: var(--navy);
+      color: white;
+      border-radius: 9999px;
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+      font-size: 0.875rem;
+      letter-spacing: 0.03em;
+      transition: background 0.3s ease;
+      display: inline-block;
+      text-decoration: none;
+    }
+    .btn-primary:hover { background: var(--cyan); color: var(--navy-deep); }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.10);
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--cyan);
+    }
+
+    .beat-number {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #00000020, transparent);
+    }
+
+    .highlight-bar {
+      background: linear-gradient(135deg, var(--navy) 0%, #1e3f5c 100%);
+      border-radius: 15px;
+    }
+
+    .cyan-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--cyan);
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+
+    .revenue-tag {
+      display: inline-block;
+      background: var(--cyan);
+      color: var(--navy-deep);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 9999px;
+      padding: 0.2rem 0.7rem;
+    }
+
+    .timecode {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #8aa5b5;
+      letter-spacing: 0.05em;
+    }
+
+    .quote-block {
+      background: var(--bg);
+      border-left: 3px solid var(--cyan);
+      border-radius: 0 10px 10px 0;
+      padding: 0.9rem 1.2rem;
+      font-size: 0.84rem;
+      color: #34526a;
+      line-height: 1.65;
+      font-style: italic;
+    }
+
+    .stat-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--cyan);
+    }
+    .stat-value { font-size: 0.82rem; font-weight: 600; color: var(--navy); }
+
+    .included-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .step-line {
+      width: 2px;
+      flex: 1;
+      background: #d8e8f2;
+      margin: 6px auto 0;
+      min-height: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header style="background: var(--navy);" class="px-8 py-5 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div style="width:36px;height:36px;background:var(--cyan);border-radius:8px;display:flex;align-items:center;justify-content:center;">
+        <span style="color:var(--navy-deep);font-weight:800;font-size:1rem;">B</span>
+      </div>
+      <span style="color:white;font-weight:700;font-size:1.1rem;letter-spacing:0.03em;">BizDepot</span>
+    </div>
+    <span style="color:var(--cyan);font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;">Creative Treatment</span>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-6 py-16">
+
+    <!-- Hero -->
+    <div class="mb-14">
+      <div class="section-label mb-4">Script &amp; Scene Structure · Prepared for BizDepot</div>
+      <h1 style="font-size:2.6rem;font-weight:800;line-height:1.1;letter-spacing:-0.03em;color:var(--navy);" class="mb-5">
+        A Script Built to<br>Sell the Next Business
+      </h1>
+      <p style="font-size:1.05rem;color:#4a6070;line-height:1.7;" class="max-w-xl">
+        A seller testimonial isn't a highlight reel — it's your best salesperson. The real audience is the owner who hasn't called you yet: skeptical of brokers, scared of the process, wondering if their life's work is worth anything to anyone. Every scene below is designed to answer one of those doubts, in the seller's own words. That's what turns a video into listings, and listings into commissions.
+      </p>
+    </div>
+
+    <div class="divider mb-14"></div>
+
+    <!-- Revenue logic -->
+    <div class="mb-14">
+      <div class="section-label mb-2">The Premise</div>
+      <h2 style="font-size:1.5rem;font-weight:700;color:var(--navy);" class="mb-2">Three Jobs Every Video Has to Do</h2>
+      <p style="font-size:0.9rem;color:#4a6070;line-height:1.6;" class="mb-8">Before I write a single question, I know exactly what the footage needs to accomplish for your pipeline. Beautiful isn't the goal — beautiful is the baseline. These are the goals:</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="card p-6">
+          <div style="font-size:1.6rem;font-weight:800;color:var(--cyan);line-height:1;" class="mb-3">01</div>
+          <div style="font-weight:700;font-size:0.95rem;color:var(--navy);" class="mb-2">Win the listing</div>
+          <p style="font-size:0.8rem;color:#6a8090;line-height:1.6;">A seller trusts another seller more than any pitch deck. When a fence-sitting owner watches someone just like them say "I was skeptical too, and here's what actually happened," your listing call gets ten times easier.</p>
+        </div>
+        <div class="card p-6">
+          <div style="font-size:1.6rem;font-weight:800;color:var(--cyan);line-height:1;" class="mb-3">02</div>
+          <div style="font-weight:700;font-size:0.95rem;color:var(--navy);" class="mb-2">De-risk the buyer</div>
+          <p style="font-size:0.8rem;color:#6a8090;line-height:1.6;">Buyers pay more and close faster when they can see the business, the operation, and a seller who has nothing to hide. B-roll of a real, running operation is due-diligence confidence you can't fake.</p>
+        </div>
+        <div class="card p-6">
+          <div style="font-size:1.6rem;font-weight:800;color:var(--cyan);line-height:1;" class="mb-3">03</div>
+          <div style="font-weight:700;font-size:0.95rem;color:var(--navy);" class="mb-2">Feed the machine</div>
+          <p style="font-size:0.8rem;color:#6a8090;line-height:1.6;">Every interview is engineered so the answers cut cleanly into standalone shorts — ad creative, listing-page proof, outreach clips. One shoot day should feed your marketing for months, not one post.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider mb-14"></div>
+
+    <!-- Script architecture -->
+    <div class="mb-14">
+      <div class="section-label mb-2">The Script</div>
+      <h2 style="font-size:1.5rem;font-weight:700;color:var(--navy);" class="mb-2">Five-Beat Story Architecture</h2>
+      <p style="font-size:0.9rem;color:#4a6070;line-height:1.6;" class="mb-8">Every testimonial follows the same spine — a real narrative arc, not a string of compliments. Each beat has a job in your sales funnel, sample questions from the actual interview doc, and a note on what's on screen while it plays. Runtimes are for the 3–4 minute flagship cut.</p>
+
+      <div class="flex flex-col gap-4">
+
+        <!-- Beat 1 -->
+        <div class="card p-6 flex gap-5 items-start">
+          <div class="beat-number">1</div>
+          <div class="flex-1">
+            <div class="flex items-center justify-between flex-wrap gap-2 mb-1">
+              <span style="font-weight:700;font-size:1rem;color:var(--navy);">The Cold Open</span>
+              <span class="timecode">0:00 – 0:15</span>
+            </div>
+            <div class="mb-3"><span class="revenue-tag">Job: stop the scroll</span></div>
+            <p style="font-size:0.85rem;color:#6a8090;line-height:1.6;" class="mb-3">We open on the single most emotional line of the entire interview, pulled forward from wherever it happened. Not "Hi, I'm Dave from Dave's Dumpsters" — that's where testimonials go to die. Something like:</p>
+            <div class="quote-block mb-3">"I built this company for 31 years. I figured nobody could sell it but me — and I was wrong."</div>
+            <p style="font-size:0.85rem;color:#6a8090;line-height:1.6;"><strong style="color:var(--navy);">On screen:</strong> tight interview frame, then a hard cut to the best B-roll of the operation with the seller's name, business, and sale keyed over it.</p>
+          </div>
+        </div>
+
+        <!-- Beat 2 -->
+        <div class="card p-6 flex gap-5 items-start">
+          <div class="beat-number">2</div>
+          <div class="flex-1">
+            <div class="flex items-center justify-between flex-wrap gap-2 mb-1">
+              <span style="font-weight:700;font-size:1rem;color:var(--navy);">The Life's Work</span>
+              <span class="timecode">0:15 – 0:55</span>
+            </div>
+            <div class="mb-3"><span class="revenue-tag">Job: earn trust through stakes</span></div>
+            <p style="font-size:0.85rem;color:#6a8090;line-height:1.6;" class="mb-3">Who they are and what they built. This is short — but it can't be skipped, because the viewer needs to feel that this person had everything on the line. A testimonial only carries weight when the stakes are real.</p>
+            <div class="quote-block mb-3">"Take me back to the day you started this business — what did it look like then?" · "What did this company mean to your family?"</div>
+            <p style="font-size:0.85rem;color:#6a8090;line-height:1.6;"><strong style="color:var(--navy);">On screen:</strong> B-roll of the operation at work — hands, machines, crews, the sign out front. Old photos if the seller has them (I ask for these in pre-production, not on the day).</p>
+          </div>
+        </div>
+
+        <!-- Beat 3 -->
+        <div class="card p-6 flex gap-5 items-start">
+          <div class="beat-number">3</div>
+          <div class="flex-1">
+            <div class="flex items-center justify-between flex-wrap gap-2 mb-1">
+              <span style="font-weight:700;font-size:1rem;color:var(--navy);">The Crossroads</span>
+              <span class="timecode">0:55 – 1:40</span>
+            </div>
+            <div class="mb-3"><span class="revenue-tag">Job: mirror the prospect's fear</span></div>
+            <p style="font-size:0.85rem;color:#6a8090;line-height:1.6;" class="mb-3">Why sell — and what scared them about it. This is the beat most videographers cut, and it's the most valuable one you have. When your seller admits "I didn't trust brokers" or "I was afraid I'd get lowballed," the owner watching hears their own doubt said out loud — and then watches it get resolved. That's objection handling you didn't have to do on a call.</p>
+            <div class="quote-block mb-3">"What almost stopped you from selling?" · "Be honest — what did you think of business brokers before this?" · "What was the number you were afraid you'd hear?"</div>
+            <p style="font-size:0.85rem;color:#6a8090;line-height:1.6;"><strong style="color:var(--navy);">On screen:</strong> we slow down here — hold the interview frame, let the pauses breathe. Vulnerability doesn't need B-roll over it.</p>
+          </div>
+        </div>
+
+        <!-- Beat 4 -->
+        <div class="card p-6 flex gap-5 items-start">
+          <div class="beat-number">4</div>
+          <div class="flex-1">
+            <div class="flex items-center justify-between flex-wrap gap-2 mb-1">
+              <span style="font-weight:700;font-size:1rem;color:var(--navy);">The BizDepot Chapter</span>
+              <span class="timecode">1:40 – 2:50</span>
+            </div>
+            <div class="mb-3"><span class="revenue-tag">Job: prove the process</span></div>
+            <p style="font-size:0.85rem;color:#6a8090;line-height:1.6;" class="mb-3">The experience itself, walked through as specific moments rather than adjectives. "They were great to work with" is worthless on camera. "They called me back the same day the buyer flinched, and had it solved by Friday" is a closing tool. My questions are engineered to pull the specifics — valuation, finding the buyer, the negotiation, the moment it closed.</p>
+            <div class="quote-block mb-3">"Walk me through the moment you got the valuation — what did you expect, and what did they say?" · "Tell me about a moment in the deal where you thought it might fall apart." · "What surprised you most about how BizDepot handled it?"</div>
+            <p style="font-size:0.85rem;color:#6a8090;line-height:1.6;"><strong style="color:var(--navy);">On screen:</strong> interview intercut with operational B-roll. If the buyer is present, this is where their voice enters — the deal from the other side of the table.</p>
+          </div>
+        </div>
+
+        <!-- Beat 5 -->
+        <div class="card p-6 flex gap-5 items-start">
+          <div class="beat-number">5</div>
+          <div class="flex-1">
+            <div class="flex items-center justify-between flex-wrap gap-2 mb-1">
+              <span style="font-weight:700;font-size:1rem;color:var(--navy);">The Other Side</span>
+              <span class="timecode">2:50 – 3:45</span>
+            </div>
+            <div class="mb-3"><span class="revenue-tag">Job: close the viewer</span></div>
+            <p style="font-size:0.85rem;color:#6a8090;line-height:1.6;" class="mb-3">Life after the sale — and the seller's advice to the owner watching. This is your call to action, and it lands a hundred times harder because it doesn't come from your brand. It comes from someone who was standing exactly where the viewer is standing.</p>
+            <div class="quote-block mb-3">"What does a Tuesday look like for you now?" · "If an owner is watching this and they've been thinking about selling for two years but haven't made the call — what would you tell them?"</div>
+            <p style="font-size:0.85rem;color:#6a8090;line-height:1.6;"><strong style="color:var(--navy);">On screen:</strong> the warmest footage of the day — seller relaxed, with family or the buyer if present, handing over keys, walking the lot one last time. End card: BizDepot logo + one line + where to call.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Buyer-present variant -->
+      <div class="card p-8 mt-6" style="border-left: 4px solid var(--cyan);">
+        <div class="section-label mb-2">When the Buyer Is There</div>
+        <h3 style="font-size:1.1rem;font-weight:700;color:var(--navy);" class="mb-3">The Handoff Cut</h3>
+        <p style="font-size:0.88rem;color:#4a6070;line-height:1.7;">Same five-beat spine, but I interview seller and buyer separately, then weave them — the seller's fear in beat three answered by the buyer's excitement in beat four. The money shot is the two of them together in beat five: the handshake, the walkthrough, the "it's in good hands" moment. One extra hour of shooting, and it doubles the story: now the video sells owners on listing <strong style="color:var(--navy);">and</strong> shows buyers that BizDepot deals actually close.</p>
+      </div>
+    </div>
+
+    <div class="divider mb-14"></div>
+
+    <!-- Question craft -->
+    <div class="mb-14">
+      <div class="section-label mb-2">The Craft</div>
+      <h2 style="font-size:1.5rem;font-weight:700;color:var(--navy);" class="mb-2">How the Questions Get Written</h2>
+      <p style="font-size:0.9rem;color:#4a6070;line-height:1.6;" class="mb-8">About 100 interviews in, I've learned the script is a floor, not a ceiling. Here's what goes into every question doc — and when I throw it out.</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="card p-6">
+          <div style="font-weight:700;font-size:0.95rem;color:var(--navy);" class="mb-2">Every question targets an objection</div>
+          <p style="font-size:0.82rem;color:#6a8090;line-height:1.6;">Before the shoot I list the reasons a seller doesn't call BizDepot — don't trust brokers, afraid of a low number, worried about employees, "not ready yet." Every question in the doc exists to make the seller dismantle one of them on camera.</p>
+        </div>
+        <div class="card p-6">
+          <div style="font-weight:700;font-size:0.95rem;color:var(--navy);" class="mb-2">Answers built to stand alone</div>
+          <p style="font-size:0.82rem;color:#6a8090;line-height:1.6;">I coach every subject to fold the question into their answer — "the thing that surprised me most was…" — so each response cuts cleanly into a short with zero context needed. That's how one interview becomes fifteen pieces of ad creative.</p>
+        </div>
+        <div class="card p-6">
+          <div style="font-weight:700;font-size:0.95rem;color:var(--navy);" class="mb-2">Scripted structure, unscripted instincts</div>
+          <p style="font-size:0.82rem;color:#6a8090;line-height:1.6;">The doc keeps the story on its spine — but when a seller drops a thread the script never saw coming, I follow it, conversationally, and steer back when it's mined out. The best line of the video is almost never on the page. You only catch it if you know the structure well enough to leave it.</p>
+        </div>
+        <div class="card p-6">
+          <div style="font-weight:700;font-size:0.95rem;color:var(--navy);" class="mb-2">Comfort is engineered, not lucky</div>
+          <p style="font-size:0.82rem;color:#6a8090;line-height:1.6;">These are business owners, not actors. We start rolling on ten minutes of easy conversation that's never meant to be used — the business, the town, anything but the sale. By the time we hit the real questions, the camera has disappeared and I'm just a guy who's genuinely curious. Because I am.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider mb-14"></div>
+
+    <!-- Pre-production -->
+    <div class="mb-14">
+      <div class="section-label mb-2">Before I Ever Board a Plane</div>
+      <h2 style="font-size:1.5rem;font-weight:700;color:var(--navy);" class="mb-2">The Pre-Production System</h2>
+      <p style="font-size:0.9rem;color:#4a6070;line-height:1.6;" class="mb-8">The interview is won before it starts. This is the week leading into every shoot — it's why I walk in asking questions that sound like I've known the seller for years.</p>
+
+      <div class="flex flex-col">
+
+        <div class="flex gap-5">
+          <div class="flex flex-col items-center">
+            <div class="beat-number" style="width:36px;height:36px;font-size:0.8rem;">T-7</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="pb-6 flex-1">
+            <div style="font-weight:700;font-size:0.95rem;color:var(--navy);" class="mb-1">AI deep research</div>
+            <p style="font-size:0.84rem;color:#6a8090;line-height:1.6;">I run deep research on the seller, the business, the industry, and the local market — history, press, reviews, the competitive picture, what a sale like this means in that trade. This surfaces the story angles a generic question list never finds.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-5">
+          <div class="flex flex-col items-center">
+            <div class="beat-number" style="width:36px;height:36px;font-size:0.8rem;">T-5</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="pb-6 flex-1">
+            <div style="font-weight:700;font-size:0.95rem;color:var(--navy);" class="mb-1">Human validation</div>
+            <p style="font-size:0.84rem;color:#6a8090;line-height:1.6;">AI gets things wrong, so I verify every fact I plan to reference before it goes anywhere near a question. Nothing kills an interview faster than "so tell me about your three locations" when they have two. Every detail in my doc is confirmed real.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-5">
+          <div class="flex flex-col items-center">
+            <div class="beat-number" style="width:36px;height:36px;font-size:0.8rem;">T-3</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="pb-6 flex-1">
+            <div style="font-weight:700;font-size:0.95rem;color:var(--navy);" class="mb-1">Group text with the seller + BizDepot</div>
+            <p style="font-size:0.84rem;color:#6a8090;line-height:1.6;">A quick three-way thread to confirm a few details, set expectations for the day, and start the relationship before I'm standing in their shop with a camera. By shoot day I'm not a stranger — I'm the guy from the text thread. It also means zero surprises for your team.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-5">
+          <div class="flex flex-col items-center">
+            <div class="beat-number" style="width:36px;height:36px;font-size:0.8rem;">DAY</div>
+          </div>
+          <div class="flex-1">
+            <div style="font-weight:700;font-size:0.95rem;color:var(--navy);" class="mb-1">Shoot day, solo</div>
+            <p style="font-size:0.84rem;color:#6a8090;line-height:1.6;">Roughly 45 minutes to a full two-camera cinematic interview setup — key light, backlight, clean audio, that Netflix-documentary look. Warm-up conversation, 60–90 minutes of interview, then B-roll of the operation keyed to the script beats. In and out without disrupting a business that's mid-transition — which the sellers, and the buyers, notice.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="divider mb-14"></div>
+
+    <!-- Scene / shot structure -->
+    <div class="mb-14">
+      <div class="section-label mb-2">The Look</div>
+      <h2 style="font-size:1.5rem;font-weight:700;color:var(--navy);" class="mb-2">Scene &amp; Shot Structure</h2>
+      <p style="font-size:0.9rem;color:#4a6070;line-height:1.6;" class="mb-8">One person, full cinematic package. My kit is built specifically so a solo operator loses nothing against a three-person crew — except the cost and the crowd.</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+        <div class="card p-6">
+          <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--cyan);" class="mb-2">The Interview</div>
+          <div style="font-weight:700;font-size:1rem;color:var(--navy);" class="mb-3">Two-camera documentary setup</div>
+          <div class="flex flex-col gap-2">
+            <div class="included-item"><div class="cyan-dot"></div><p style="font-size:0.82rem;color:#4a6070;">A-cam straight-on, B-cam 45° side angle — every answer covered from two looks, which makes tight editing invisible</p></div>
+            <div class="included-item"><div class="cyan-dot"></div><p style="font-size:0.82rem;color:#4a6070;">Soft key + backlight, location shaped for depth — the seller's own space, elevated</p></div>
+            <div class="included-item"><div class="cyan-dot"></div><p style="font-size:0.82rem;color:#4a6070;">Lav + boom redundant audio on every subject</p></div>
+            <div class="included-item"><div class="cyan-dot"></div><p style="font-size:0.82rem;color:#4a6070;">Framed off-axis, eyes to me — conversational, never "hostage video"</p></div>
+          </div>
+        </div>
+
+        <div class="card p-6">
+          <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--cyan);" class="mb-2">The B-Roll</div>
+          <div style="font-weight:700;font-size:1rem;color:var(--navy);" class="mb-3">Shot list keyed to script beats</div>
+          <div class="flex flex-col gap-2">
+            <div class="included-item"><div class="cyan-dot"></div><p style="font-size:0.82rem;color:#4a6070;"><strong style="color:var(--navy);">Beat 2:</strong> the craft — hands working, equipment running, signage, crew</p></div>
+            <div class="included-item"><div class="cyan-dot"></div><p style="font-size:0.82rem;color:#4a6070;"><strong style="color:var(--navy);">Beat 4:</strong> proof of a healthy operation — the footage that quietly reassures buyers</p></div>
+            <div class="included-item"><div class="cyan-dot"></div><p style="font-size:0.82rem;color:#4a6070;"><strong style="color:var(--navy);">Beat 5:</strong> the human close — seller at ease, handoff moments, the walk-away shot</p></div>
+            <div class="included-item"><div class="cyan-dot"></div><p style="font-size:0.82rem;color:#4a6070;">Nothing decorative — every clip exists because a script beat needs it</p></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="divider mb-14"></div>
+
+    <!-- Deliverables mapped to funnel -->
+    <div class="mb-14">
+      <div class="section-label mb-2">The Payoff</div>
+      <h2 style="font-size:1.5rem;font-weight:700;color:var(--navy);" class="mb-2">One Shoot, a Funnel's Worth of Assets</h2>
+      <p style="font-size:0.9rem;color:#4a6070;line-height:1.6;" class="mb-8">Because the interview is structured in beats and the answers stand alone, each seller comes back as a package mapped to where it makes you money:</p>
+
+      <div class="card p-8">
+        <div class="flex flex-col gap-3">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding-bottom:12px;border-bottom:1px solid #e8f0f5;" class="flex-wrap">
+            <div style="flex:1;min-width:220px;"><p style="font-size:0.9rem;font-weight:600;color:var(--navy);">Flagship testimonial · 3–4 min</p><p style="font-size:0.78rem;color:#6a8090;">The full five-beat story</p></div>
+            <span class="revenue-tag">Listing appointments · website · sales calls</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding-bottom:12px;border-bottom:1px solid #e8f0f5;" class="flex-wrap">
+            <div style="flex:1;min-width:220px;"><p style="font-size:0.9rem;font-weight:600;color:var(--navy);">Hook shorts · 30–60 sec vertical</p><p style="font-size:0.78rem;color:#6a8090;">Beat 3 fear + beat 5 advice, cut for cold audiences</p></div>
+            <span class="revenue-tag">Paid ads · Reels · LinkedIn</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding-bottom:12px;border-bottom:1px solid #e8f0f5;" class="flex-wrap">
+            <div style="flex:1;min-width:220px;"><p style="font-size:0.9rem;font-weight:600;color:var(--navy);">Process proof clips · 60–90 sec</p><p style="font-size:0.78rem;color:#6a8090;">Beat 4 specifics — valuation, negotiation, closing</p></div>
+            <span class="revenue-tag">Email nurture · objection handling</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;" class="flex-wrap">
+            <div style="flex:1;min-width:220px;"><p style="font-size:0.9rem;font-weight:600;color:var(--navy);">Buyer-confidence cut <span style="font-weight:500;color:#6a8090;">(when buyer participates)</span></p><p style="font-size:0.78rem;color:#6a8090;">The handoff story from the buyer's side</p></div>
+            <span class="revenue-tag">Buyer outreach · deal rooms</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight-bar p-6 mt-6">
+        <p style="color:#c9e8f4;font-size:0.92rem;line-height:1.75;"><strong style="color:white;">How we'll know it's working:</strong> put the flagship video in front of every listing prospect before the first call, and track it. Which videos get watched, which shorts drive booked calls, which clips buyers respond to. Then the next round of scripts leans into what's converting. This is a system that compounds — not twelve videos, twelve experiments that make the thirteenth better.</p>
+      </div>
+    </div>
+
+    <div class="divider mb-14"></div>
+
+    <!-- Why me -->
+    <div class="mb-14">
+      <div class="section-label mb-2">Why This Works With One Person</div>
+      <h2 style="font-size:1.5rem;font-weight:700;color:var(--navy);" class="mb-2">The Solo-Crew Advantage</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+        <div class="card p-6 text-center">
+          <div style="font-size:2rem;font-weight:800;color:var(--navy);line-height:1;">~100</div>
+          <div style="font-weight:700;font-size:0.85rem;color:var(--navy);margin-top:10px;">interviews conducted</div>
+          <p style="font-size:0.76rem;color:#6a8090;margin-top:4px;line-height:1.5;">The instincts to leave the script at the right moment only come from reps.</p>
+        </div>
+        <div class="card p-6 text-center">
+          <div style="font-size:2rem;font-weight:800;color:var(--navy);line-height:1;">1</div>
+          <div style="font-weight:700;font-size:0.85rem;color:var(--navy);margin-top:10px;">person on site</div>
+          <p style="font-size:0.76rem;color:#6a8090;margin-top:4px;line-height:1.5;">One flight, one hotel, one rental car per trip — and a nervous seller facing a conversation, not a crew.</p>
+        </div>
+        <div class="card p-6 text-center">
+          <div style="font-size:2rem;font-weight:800;color:var(--navy);line-height:1;">~45</div>
+          <div style="font-weight:700;font-size:0.85rem;color:var(--navy);margin-top:10px;">minutes to camera-ready</div>
+          <p style="font-size:0.76rem;color:#6a8090;margin-top:4px;line-height:1.5;">Full cinematic two-camera setup, refined across a hundred shoots.</p>
+        </div>
+      </div>
+
+      <div class="card p-8">
+        <p style="font-size:0.92rem;color:#4a6070;line-height:1.8;">Here's the honest pitch: plenty of videographers can make a pretty interview. The difference is that I treat every one of these as a revenue asset with a job to do — researched like a journalist, scripted like a story, shot like a documentary, and cut so your sales team can actually use the pieces. A seller who just signed the biggest deal of their life deserves someone who makes that moment feel important. Your pipeline deserves someone who makes it convert. I'm built to do both, and the solo model means you're not paying a production company's overhead to get it.</p>
+      </div>
+    </div>
+
+    <div class="divider mb-14"></div>
+
+    <!-- Work Samples -->
+    <div class="mb-14">
+      <div class="section-label mb-2">Portfolio</div>
+      <h2 style="font-size:1.5rem;font-weight:700;color:var(--navy);" class="mb-3">Review My Work</h2>
+      <p style="font-size:0.9rem;color:#4a6070;line-height:1.6;" class="mb-8">Examples of past testimonial and brand video work.</p>
+
+      <div class="flex flex-col gap-4">
+
+        <div class="card p-6 flex items-center justify-between flex-wrap gap-4">
+          <div>
+            <div style="font-weight:700;font-size:0.95rem;color:var(--navy);" class="mb-1">Website &amp; Reel</div>
+            <div style="font-size:0.82rem;color:#4a6070;">kimballmueller.com</div>
+          </div>
+          <a href="https://kimballmueller.com" target="_blank" class="btn-primary">View Site</a>
+        </div>
+
+        <div class="card p-6 flex items-center justify-between flex-wrap gap-4">
+          <div>
+            <div style="font-weight:700;font-size:0.95rem;color:var(--navy);" class="mb-1">Testimonial Work — Drive Folder</div>
+            <div style="font-size:0.82rem;color:#4a6070;">Google Drive · Video samples</div>
+          </div>
+          <a href="https://drive.google.com/drive/folders/1HSxoZmRIi8RUg4QETjICciy3RqHXtrsP?usp=sharing" target="_blank" class="btn-primary">View Folder</a>
+        </div>
+
+        <div class="card p-6 flex items-center justify-between flex-wrap gap-4">
+          <div>
+            <div style="font-weight:700;font-size:0.95rem;color:var(--navy);" class="mb-1">Additional Work Samples</div>
+            <div style="font-size:0.82rem;color:#4a6070;">Google Drive · More examples</div>
+          </div>
+          <a href="https://drive.google.com/drive/folders/1kqdRVCHETqD66JVbb_I9Lk0S42sbrAi3?usp=sharing" target="_blank" class="btn-primary">View Folder</a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="divider mb-14"></div>
+
+    <!-- CTA -->
+    <div class="highlight-bar p-10 text-center">
+      <div style="color:var(--cyan);font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;" class="mb-3">Next Step</div>
+      <h2 style="color:white;font-size:1.75rem;font-weight:800;letter-spacing:-0.02em;line-height:1.2;" class="mb-4">Give me one seller. I'll show you the system.</h2>
+      <p style="color:#8ab8cc;font-size:0.9rem;line-height:1.7;max-width:460px;margin:0 auto 2rem;">Pick whichever closing is first on the calendar. I'll run the full process — research, script, shoot, and the complete asset package — and you'll have everything you need to judge the bake-off on real footage, not promises.</p>
+      <a href="mailto:create@kimballmueller.com" class="btn-primary" style="background:var(--cyan);color:var(--navy-deep);">Get in Touch</a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer style="background:var(--navy-deep);" class="px-8 py-6 mt-12 text-center">
+    <p style="color:#4a6a80;font-size:0.8rem;">Prepared by Kimball Mueller · <a href="https://kimballmueller.com" style="color:var(--cyan);text-decoration:none;">kimballmueller.com</a></p>
+  </footer>
+
+</body>
+</html>
