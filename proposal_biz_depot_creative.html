@@ -128,6 +128,36 @@
     table.adtable td { padding: 9px 10px 9px 0; border-top: 1px solid #e8f0f5; color: #34526a; vertical-align: top; }
     table.adtable td:first-child { font-weight: 600; color: var(--navy); white-space: nowrap; }
 
+    .beat-chip {
+      border-radius: 10px;
+      padding: 0.65rem 0.7rem;
+      background: white;
+      border: 1px solid #dfeaf3;
+      line-height: 1.3;
+    }
+    .beat-chip .n {
+      font-size: 0.62rem; font-weight: 800; letter-spacing: 0.12em;
+      color: #9db6c7; display: block; margin-bottom: 3px;
+    }
+    .beat-chip .t { font-size: 0.76rem; font-weight: 700; color: var(--navy); }
+    .beat-chip.core {
+      background: linear-gradient(135deg, var(--navy) 0%, #1e3f5c 100%);
+      border-color: var(--navy);
+    }
+    .beat-chip.core .n { color: var(--cyan); }
+    .beat-chip.core .t { color: white; }
+
+    .beat-num {
+      width: 30px; height: 30px; border-radius: 8px; flex-shrink: 0;
+      background: var(--bg); color: var(--navy);
+      font-size: 0.85rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .beat-core .beat-num { background: var(--cyan); color: var(--navy-deep); }
+    .beat-core { border-left: 4px solid var(--cyan); }
+
+    .beat-note { font-size: 0.8rem; color: #7d99ab; line-height: 1.6; margin-top: 10px; }
+
     a.adlink {
       color: var(--navy);
       text-decoration: none;
@@ -364,61 +394,121 @@
     <!-- Section 3: interview guide -->
     <div class="mb-14">
       <div class="section-label mb-2">03 · The Script</div>
-      <h2 style="font-size:1.5rem;font-weight:700;color:var(--navy);" class="mb-2">The Interview Guide, In Plain English</h2>
+      <h2 style="font-size:1.5rem;font-weight:700;color:var(--navy);" class="mb-2">The Testimonial Arc — Their Story, Structured to Prove BizDepot</h2>
       <p style="font-size:0.9rem;color:#4a6070;line-height:1.7;" class="mb-3">
-        No seller reads lines. The "script" is a question plan I build per seller — a week of research on them and their business, facts verified, a group text with them and your team before I fly out. Then the questions get asked like a conversation, because that's what it is. These are the actual working questions, grouped by the footage they exist to produce:
+        No seller reads lines. The "script" is a question plan I build per seller — a week of research on them and their business, facts verified, a group text with them and your team before I fly out. Then it gets asked like a conversation, because that's what it is.
+      </p>
+      <p style="font-size:0.9rem;color:#4a6070;line-height:1.7;" class="mb-3">
+        But an unstructured story produces a nice video and no proof. So every interview runs the same six beats. Four of them carry the seller's story — that's what makes it watchable. Two of them are where BizDepot gets proven, and those two get the most screen time in the finished cut.
       </p>
       <p style="font-size:0.84rem;color:#7d99ab;line-height:1.6;" class="mb-6">
-        Questions get customized per seller — a 30-year landscaping company and a 4-year dumpster business don't get the same interview.
+        Questions get customized per seller — a 30-year landscaping company and a 4-year dumpster business don't get the same interview. The arc doesn't change.
       </p>
 
-      <div class="flex flex-col gap-5">
+      <!-- Arc strip -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 mb-3">
+        <div class="beat-chip"><span class="n">Beat 01</span><span class="t">The Owner</span></div>
+        <div class="beat-chip"><span class="n">Beat 02</span><span class="t">The Hesitation</span></div>
+        <div class="beat-chip core"><span class="n">Beat 03</span><span class="t">Why BizDepot</span></div>
+        <div class="beat-chip core"><span class="n">Beat 04</span><span class="t">How It Actually Went</span></div>
+        <div class="beat-chip"><span class="n">Beat 05</span><span class="t">The Outcome</span></div>
+        <div class="beat-chip"><span class="n">Beat 06</span><span class="t">To the Next Owner</span></div>
+      </div>
+      <p style="font-size:0.78rem;color:#7d99ab;line-height:1.6;" class="mb-8">
+        The two filled beats are the credibility core — roughly half the running time of the flagship film.
+      </p>
 
-        <div>
-          <div class="flex items-center gap-3 mb-2">
-            <span class="tag">Produces: hooks</span>
+      <div class="flex flex-col gap-4">
+
+        <div class="card p-6">
+          <div class="flex items-center gap-3 mb-3 flex-wrap">
+            <div class="beat-num">1</div>
+            <span style="font-weight:700;font-size:1rem;color:var(--navy);">The Owner</span>
+            <span class="tag">Proves: a real peer, not an actor</span>
           </div>
           <div class="grid grid-cols-1 gap-2">
-            <div class="q-item">"How long did you run it, and what finally made you decide it was time?"</div>
-            <div class="q-item">"What did you think your business was worth before anyone looked at it? And what did it actually sell for?"</div>
-            <div class="q-item">"What were you afraid would happen if you tried to sell?"</div>
+            <div class="q-item">"Tell me what you built — how long, how it started, how big it got."</div>
+            <div class="q-item">"What did a normal Tuesday look like for you five years ago?"</div>
           </div>
+          <p class="beat-note">An owner in that same trade recognizes himself in the first five seconds. That recognition is what buys the next twenty-five.</p>
         </div>
 
-        <div>
-          <div class="flex items-center gap-3 mb-2">
-            <span class="tag">Produces: the anti-broker counter</span>
+        <div class="card p-6">
+          <div class="flex items-center gap-3 mb-3 flex-wrap">
+            <div class="beat-num">2</div>
+            <span style="font-weight:700;font-size:1rem;color:var(--navy);">The Hesitation</span>
+            <span class="tag">Proves: the objection is understood</span>
           </div>
           <div class="grid grid-cols-1 gap-2">
+            <div class="q-item">"How long were you thinking about selling before you actually did anything about it?"</div>
+            <div class="q-item">"What were you afraid would happen if you tried?"</div>
             <div class="q-item">"Be straight with me — what did you think of business brokers before this?"</div>
-            <div class="q-item">"What would you say to an owner who figures nobody can sell their business but them?"</div>
           </div>
-          <p style="font-size:0.8rem;color:#7d99ab;line-height:1.6;margin-top:8px;">This is the segment aimed directly at Finding 2. Skepticism that gets voiced and then resolved by the person who lived it is the one message the "skip the broker" ads can't answer.</p>
+          <p class="beat-note">This beat is aimed directly at Finding 2. Skepticism that gets voiced and then resolved by the person who lived it is the one message the "skip the broker" ads can't answer.</p>
         </div>
 
-        <div>
-          <div class="flex items-center gap-3 mb-2">
-            <span class="tag">Produces: proof of process</span>
+        <div class="card p-6 beat-core">
+          <div class="flex items-center gap-3 mb-3 flex-wrap">
+            <div class="beat-num">3</div>
+            <span style="font-weight:700;font-size:1rem;color:var(--navy);">Why BizDepot</span>
+            <span class="tag">Proves: straight talk, no surprises</span>
+          </div>
+          <div class="grid grid-cols-1 gap-2">
+            <div class="q-item">"What made you finally pick up the phone — and why BizDepot?"</div>
+            <div class="q-item">"What was that first conversation like? What did they tell you the business was worth, and how did they get to that number?"</div>
+            <div class="q-item">"Did anything they said surprise you — good or bad?"</div>
+            <div class="q-item">"Did the deal land where they told you it would?"</div>
+          </div>
+          <p class="beat-note">The valuation conversation is where trust is won or lost in this category. I want the seller describing how BizDepot arrived at the number and whether the close matched the promise — proven in their words, not asserted in a voiceover.</p>
+        </div>
+
+        <div class="card p-6 beat-core">
+          <div class="flex items-center gap-3 mb-3 flex-wrap">
+            <div class="beat-num">4</div>
+            <span style="font-weight:700;font-size:1rem;color:var(--navy);">How It Actually Went</span>
+            <span class="tag">Proves: hands-off, and the buyers were real</span>
           </div>
           <div class="grid grid-cols-1 gap-2">
             <div class="q-item">"Walk me through it start to finish — first call to closing day. How long did it take?"</div>
+            <div class="q-item">"How much of this did you actually have to do? What did BizDepot handle that you assumed would land on you?"</div>
+            <div class="q-item">"Were you still running the business the whole time?"</div>
+            <div class="q-item">"Tell me about the buyers — how many did you meet, and were they serious?"</div>
             <div class="q-item">"Was there a point where you thought the deal was dead? What happened?"</div>
-            <div class="q-item">"Did your employees know? How did BizDepot handle keeping it quiet?"</div>
           </div>
-          <p style="font-size:0.8rem;color:#7d99ab;line-height:1.6;margin-top:8px;">Specifics only. "They were great" never makes the cut; "first call to closing in four months" does. Confidentiality answers matter — it's the promise every competitor ad leads with.</p>
+          <p class="beat-note">The heaviest beat in the cut, and specifics only. "They were great" never makes it; "I signed a handful of documents, met two real buyers, and never missed a day of work" does. The dead-deal question earns its place — a process with no friction sounds fake, and friction that BizDepot cleared is the strongest proof in the film.</p>
         </div>
 
-        <div>
-          <div class="flex items-center gap-3 mb-2">
-            <span class="tag">Produces: the close</span>
+        <div class="card p-6">
+          <div class="flex items-center gap-3 mb-3 flex-wrap">
+            <div class="beat-num">5</div>
+            <span style="font-weight:700;font-size:1rem;color:var(--navy);">The Outcome</span>
+            <span class="tag">Proves: the payoff is real and numeric</span>
           </div>
           <div class="grid grid-cols-1 gap-2">
+            <div class="q-item">"What did you think it was worth before anyone looked at it? What did it actually sell for?"</div>
             <div class="q-item">"What did selling actually change for you and your family?"</div>
-            <div class="q-item">"Somebody's watching this who's been thinking about selling for two years and hasn't called anyone. Talk to them."</div>
           </div>
-          <p style="font-size:0.8rem;color:#7d99ab;line-height:1.6;margin-top:8px;">The call to action comes from the seller, not a logo card. When the buyer's on site, I interview them separately and add the handoff — which also gives you buyer-facing creative from the same day.</p>
+          <p class="beat-note">Named numbers, named timelines. This is the beat that feeds the money-math hook the auction rewards — and the statistics-and-quotations levers the GEO research points to in Section 05.</p>
         </div>
 
+        <div class="card p-6">
+          <div class="flex items-center gap-3 mb-3 flex-wrap">
+            <div class="beat-num">6</div>
+            <span style="font-weight:700;font-size:1rem;color:var(--navy);">To the Next Owner</span>
+            <span class="tag">Proves: the CTA comes from a peer</span>
+          </div>
+          <div class="grid grid-cols-1 gap-2">
+            <div class="q-item">"Somebody's watching this who's been thinking about selling for two years and hasn't called anyone. Talk to them."</div>
+            <div class="q-item">"What would you say to an owner who figures nobody can sell their business but them?"</div>
+          </div>
+          <p class="beat-note">The call to action comes from the seller, not a logo card. When the buyer's on site, I interview them separately and add the handoff — which also gives you buyer-facing creative from the same day.</p>
+        </div>
+
+      </div>
+
+      <div class="card p-6 mt-4">
+        <div style="font-weight:700;font-size:0.95rem;color:var(--navy);" class="mb-2">The arc is also the assembly line</div>
+        <p style="font-size:0.86rem;color:#5a7386;line-height:1.7;">Beats 1–2 produce the hooks. Beats 3–4 produce the bodies — the ease-and-credibility payload that makes the ad worth watching past three seconds. Beats 5–6 produce the closes. That's why one 60–90 minute session yields 8–12 testable cutdowns instead of a single video: the structure that makes the testimonial credible is the same structure that makes the matrix.</p>
       </div>
 
       <div class="card p-6 mt-6" style="border-left:4px solid var(--cyan);">
