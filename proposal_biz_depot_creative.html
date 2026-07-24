@@ -128,6 +128,12 @@
     table.adtable td { padding: 9px 10px 9px 0; border-top: 1px solid #e8f0f5; color: #34526a; vertical-align: top; }
     table.adtable td:first-child { font-weight: 600; color: var(--navy); white-space: nowrap; }
 
+    .frame-shot { width: 100%; height: auto; border-radius: 8px; display: block; }
+    .frame-cap {
+      font-size: 0.64rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #9db6c7; margin: 8px 0 12px;
+    }
+
     .beat-chip {
       border-radius: 10px;
       padding: 0.65rem 0.7rem;
@@ -301,12 +307,14 @@
 
       <!-- Framing -->
       <h3 style="font-size:1.1rem;font-weight:700;color:var(--navy);" class="mb-2">The frame, exactly as I build it</h3>
-      <p style="font-size:0.88rem;color:#4a6070;line-height:1.7;" class="mb-6">Two cameras, one operator. The wide is composed so the same take reframes cleanly to 9:16 — every interview is shot for the feed, not cropped for it as an afterthought.</p>
+      <p style="font-size:0.88rem;color:#4a6070;line-height:1.7;" class="mb-6">Two cameras, one operator. The wide is composed so the same take reframes cleanly to 9:16 — every interview is shot for the feed, not cropped for it as an afterthought. Below: real frames from a recent shoot, with the build diagrammed underneath each one.</p>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
 
         <!-- A-cam diagram -->
         <div class="card p-5">
+          <img class="frame-shot" src="assets/bizdepot/frame-acam-wide.jpg" alt="A-cam wide frame from a recent testimonial shoot — subject seated in her own living room, window light behind" />
+          <div class="frame-cap">Actual frame · A-cam</div>
           <svg viewBox="0 0 400 225" style="width:100%;height:auto;border-radius:8px;background:#0d2236;">
             <!-- thirds grid -->
             <line x1="133" y1="0" x2="133" y2="225" stroke="#2a4a63" stroke-width="1" stroke-dasharray="4 4"/>
@@ -341,6 +349,8 @@
 
         <!-- B-cam diagram -->
         <div class="card p-5">
+          <img class="frame-shot" src="assets/bizdepot/frame-bcam-tight.jpg" alt="B-cam tight frame from the same shoot — closer, off-axis, shallow depth of field" />
+          <div class="frame-cap">Actual frame · B-cam</div>
           <svg viewBox="0 0 400 225" style="width:100%;height:auto;border-radius:8px;background:#0d2236;">
             <line x1="133" y1="0" x2="133" y2="225" stroke="#2a4a63" stroke-width="1" stroke-dasharray="4 4"/>
             <line x1="267" y1="0" x2="267" y2="225" stroke="#2a4a63" stroke-width="1" stroke-dasharray="4 4"/>
@@ -367,6 +377,10 @@
       <!-- vertical diagram -->
       <div class="card p-5">
         <div class="flex flex-col sm:flex-row gap-6 items-center">
+          <div style="flex-shrink:0;">
+            <img class="frame-shot" src="assets/bizdepot/frame-vertical.jpg" style="width:140px;border-radius:10px;" alt="9:16 vertical cutdown frame from the same take" />
+            <div class="frame-cap" style="text-align:center;margin-bottom:0;">Actual 9:16</div>
+          </div>
           <svg viewBox="0 0 158 280" style="width:140px;flex-shrink:0;height:auto;border-radius:10px;background:#0d2236;">
             <!-- hook text zone -->
             <rect x="12" y="14" width="134" height="34" rx="6" fill="none" stroke="#6AD5EF" stroke-width="1.5" stroke-dasharray="5 4"/>
