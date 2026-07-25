@@ -3,6 +3,11 @@
   "role": "Your Chief AI Officer",
   "tagline": "AI so simple your mom gets it.",
   "avatar": "assets/headshot.jpg",
+  "featuredVideo": {
+    "label": "Latest Video",
+    "title": "The Leak-Proof Sales System for Home Service Businesses",
+    "youtubeUrl": "https://www.youtube.com/watch?v=Bra_FUSTGE8"
+  },
   "buttons": [
     { "label": "Free Resource Guide", "url": "resources.html",                     "icon": "gift",     "primary": true },
     { "label": "YouTube",             "url": "https://www.youtube.com/@KimballAI",  "icon": "youtube" },

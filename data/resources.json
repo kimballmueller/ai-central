@@ -1,6 +1,20 @@
 {
   "videos": [
     {
+      "title": "The Leak-Proof Sales System for Home Service Businesses",
+      "youtubeUrl": "https://www.youtube.com/watch?v=Bra_FUSTGE8",
+      "embed": true,
+      "publishedAt": "2026-07-24",
+      "description": "Most home service businesses don't have a leads problem, they have a leaky sales system. This breaks down the 8 stages where leads quietly fall out of your pipeline, from the first phone call to the confirmed service date, and exactly how to seal every one: AI answering, instant text-back, one-click quotes, and payment built into acceptance.",
+      "resources": [
+        {
+          "label": "Book your free pipeline audit",
+          "url": "https://api.leadconnectorhq.com/widget/booking/5ks0F7kYGq2TIkyisWnx",
+          "type": "Audit"
+        }
+      ]
+    },
+    {
       "title": "Build Your Own Jarvis (The AI Daily Brief)",
       "youtubeUrl": "",
       "comingSoon": true,

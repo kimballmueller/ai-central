@@ -74,6 +74,22 @@ function renderHomepage(root, data) {
       ${svg(s.platform)}
     </a>`).join('');
 
+  // Featured video: only renders when the URL yields a real 11-char id.
+  const featuredHtml = (() => {
+    const fv = data.featuredVideo;
+    if (!fv) return '';
+    const id = youtubeId(fv.youtubeUrl);
+    if (!id) return '';
+    return `
+      <section class="featured">
+        ${fv.label ? `<p class="featured-label">${escapeHtml(fv.label)}</p>` : ''}
+        <div class="video-embed">
+          <iframe src="https://www.youtube.com/embed/${escapeHtml(id)}" title="${escapeHtml(fv.title || '')}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        ${fv.title ? `<p class="featured-title">${escapeHtml(fv.title)}</p>` : ''}
+      </section>`;
+  })();
+
   const taglineHtml = (() => {
     if (!data.tagline) return '';
     const lines = Array.isArray(data.tagline) ? data.tagline : [data.tagline];
@@ -85,6 +101,7 @@ function renderHomepage(root, data) {
     <h1 class="name">${escapeHtml(data.name)}</h1>
     ${data.role ? `<p class="role">${escapeHtml(data.role)}</p>` : ''}
     ${taglineHtml}
+    ${featuredHtml}
     <div class="stack">${buttons}</div>
     ${socials ? `<div class="socials">${socials}</div>` : ''}
   `;
