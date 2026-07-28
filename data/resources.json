@@ -1,6 +1,24 @@
 {
   "videos": [
     {
+      "title": "llms.txt, Honestly — And What Actually Gets You Recommended by ChatGPT",
+      "youtubeUrl": "",
+      "publishedAt": "2026-07-27",
+      "description": "Everyone says one file makes ChatGPT recommend your business. The data says 97% of llms.txt files never get requested by an AI crawler, and no major AI company has committed to reading them. Here's the honest version: six myths debunked with sources, how ChatGPT actually picks who to recommend, the copy-paste llms.txt template anyway, and the ranked 30-day playbook that genuinely moves AI visibility for a local business.",
+      "resources": [
+        {
+          "label": "Read the guide + get the llms.txt template",
+          "url": "guides/llms-txt-ai-search.html",
+          "type": "Guide"
+        },
+        {
+          "label": "Book your free 30-minute AI visibility audit",
+          "url": "https://api.leadconnectorhq.com/widget/booking/5ks0F7kYGq2TIkyisWnx",
+          "type": "Audit"
+        }
+      ]
+    },
+    {
       "title": "The Leak-Proof Sales System for Home Service Businesses",
       "youtubeUrl": "https://www.youtube.com/watch?v=Bra_FUSTGE8",
       "embed": true,

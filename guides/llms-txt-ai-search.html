@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a1a">
+  <title>llms.txt, Honestly — And What Actually Gets You Recommended by ChatGPT — Kimball Mueller</title>
+  <meta name="description" content="97% of llms.txt files never get requested by an AI crawler. Here's the real data, the myths worth killing, and the ranked playbook that actually gets a local business recommended inside ChatGPT.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="stylesheet" href="../assets/guide.css">
+
+  <meta property="og:title" content="llms.txt, Honestly — And What Actually Gets You Recommended by ChatGPT">
+  <meta property="og:description" content="The file takes 5 minutes and is worth making. It is almost certainly not why ChatGPT recommends you. Here's what is.">
+  <meta property="og:type" content="article">
+</head>
+<body>
+  <div class="mesh" aria-hidden="true"><span></span></div>
+
+  <main class="guide">
+
+    <nav class="guide-nav" aria-label="breadcrumb">
+      <a href="../index.html">← Home</a>
+      <span class="sep">·</span>
+      <a href="../resources.html">Resources</a>
+    </nav>
+
+    <h1 class="guide-title">llms.txt, Honestly</h1>
+    <p class="guide-subtitle">Everyone is telling you to add one file to your website so ChatGPT starts recommending your business. The file is real, it takes five minutes, and I'll give you the template. But it is almost certainly not the thing that gets you recommended — and the stuff that <em>does</em> work is nobody's favorite thing to post about.</p>
+    <p class="guide-meta">
+      <span>⏱ ~12 minute read</span>
+      <span>🔧 Do-it-yourself</span>
+      <span>📍 Written for local &amp; service businesses</span>
+    </p>
+
+    <p>Here's the pitch you've seen a hundred times: <em>"ChatGPT started recommending my business and I didn't pay for it. I set it up with one file called llms.txt."</em></p>
+
+    <p>I've made that claim myself. Then I went and checked it against the crawler logs, the platform statements, and the visibility studies — and the honest version is more useful than the pitch. So this page is the honest version: what the file actually does, what got you recommended if it wasn't the file, and the specific order I'd work in if I wanted a business to show up when someone asks ChatGPT for a recommendation in their city.</p>
+
+    <div class="callout tip">
+      <span class="ico">🎯</span>
+      <span class="body"><strong>The one-paragraph version:</strong> Make the llms.txt file — it costs you five minutes and there's a real, narrow reason to have one. Then spend your actual effort on Google Business Profile, reviews across multiple platforms, being mentioned on sites that aren't yours, letting the AI crawlers in via robots.txt, getting indexed in Bing, and writing pages that answer one question in the first two sentences. That's the whole game right now.</span>
+    </div>
+
+    <hr>
+
+    <!-- =============== WHAT IT IS =============== -->
+    <h2>First: what llms.txt actually is</h2>
+
+    <p>It's a plain text file at the root of your site — <code class="inline">yoursite.com/llms.txt</code> — written in Markdown. It was proposed in September 2024 by Jeremy Howard of Answer.AI as a way to hand a language model a clean, curated map of your site instead of making it crawl through navigation, cookie banners, and JavaScript to find the good stuff.</p>
+
+    <p>Think of it as the difference between <code class="inline">robots.txt</code> and a menu. Robots.txt says <em>what you're allowed to look at.</em> llms.txt says <em>here's what matters and here's where it lives.</em></p>
+
+    <p>It is a proposed community standard. It is not a W3C spec, it is not a search engine requirement, and — this is the part that matters — it is not something any major AI company has committed to reading.</p>
+
+    <hr>
+
+    <!-- =============== THE MYTHS =============== -->
+    <h2>Six myths worth killing</h2>
+
+    <h3>Myth 1 — "llms.txt is why ChatGPT recommends me"</h3>
+
+    <p>This is the big one, and the data is not close.</p>
+
+    <p>Ahrefs ran server-log analysis across roughly 137,000 domains and found that <strong>97% of llms.txt files received zero requests</strong> — not "few," zero. In a separate look at AI bot traffic, the file is almost never fetched: GPTBot, ClaudeBot, PerplexityBot, and OAI-SearchBot overwhelmingly skip it and crawl your HTML directly. When llms.txt <em>does</em> get requested, the largest single category of requester is SEO audit tools checking whether the file exists — not AI systems reading it.</p>
+
+    <p>Meanwhile adoption has genuinely exploded. Originality.ai's monitoring of 3M+ websites clocked llms.txt going from about 4,000 instances in June 2025 to just over 36,000 by May 2026 — 8.8x growth. So we have a lot of people putting up a sign that nearly nobody is reading.</p>
+
+    <div class="callout warn">
+      <span class="ico">⚠️</span>
+      <span class="body"><strong>The plain read:</strong> if you added llms.txt and your ChatGPT visibility went up, something else you did is doing the work. Usually it's the site rebuild that happened at the same time, a burst of new reviews, or a mention somewhere off your domain. Correlation is very easy to sell and very expensive to believe.</span>
+    </div>
+
+    <h3>Myth 2 — "It's an official standard the AI companies support"</h3>
+
+    <p>As of mid-2026, no major provider — OpenAI, Google, Anthropic, Meta, or Mistral — has publicly committed to reading llms.txt in production. Google went further and said it out loud: on June 15, 2026 it added a note to its AI-optimization guidance stating llms.txt files are <strong>not required for Google Search</strong>, and that the file <em>"won't negatively or positively impact your visibility or rankings."</em> OpenAI and Anthropic both point site owners at <code class="inline">robots.txt</code> for controlling crawler behavior; llms.txt shows up in their <em>developer</em> docs, which is a different thing entirely.</p>
+
+    <h3>Myth 3 — "It controls whether AI can use my content"</h3>
+
+    <p>It does not. llms.txt is a suggestion about <em>organization</em>, not a permission system. If you want to allow or block AI crawlers, that is <code class="inline">robots.txt</code>, and the user-agent names are specific — more on that below. Anyone telling you llms.txt keeps your content out of training data is confusing two unrelated files.</p>
+
+    <h3>Myth 4 — "It's a ranking factor"</h3>
+
+    <p>There is no retrieval system currently known to weight it. Ranking inside AI answers runs on the same substrate as the rest of the web: whether you're in the index, whether the page answers the question cleanly, and whether other sources corroborate that you exist and are good.</p>
+
+    <h3>Myth 5 — "Just block the AI crawlers, they're stealing my content"</h3>
+
+    <p>Blocking is a real choice with a real cost, and most people making it don't know they're making two decisions at once. <strong>GPTBot</strong> is OpenAI's training crawler. <strong>OAI-SearchBot</strong> is the one that builds the index ChatGPT Search reads from when it answers a live question and cites sources. Block GPTBot and you've opted out of training. Block OAI-SearchBot and <strong>you have removed yourself from ChatGPT's search results.</strong> A lot of sites did the second one by accident with a blanket rule and then wondered why they were invisible.</p>
+
+    <h3>Myth 6 — "Ranking #1 on Google means ChatGPT will find me"</h3>
+
+    <p>Helps, doesn't carry you. Pages holding Google position 1 do get cited by ChatGPT meaningfully more often than pages outside the top 20 — but only a small minority of the URLs ChatGPT cites are Google top-10 results at all. And in AI Overviews, the share of citations coming from Google's top 10 has been falling, not rising. These are overlapping systems, not the same system. You have to work both.</p>
+
+    <hr>
+
+    <!-- =============== HOW IT ACTUALLY WORKS =============== -->
+    <h2>How ChatGPT actually decides who to recommend</h2>
+
+    <p>When someone types <em>"best vehicle wrap shop in Salt Lake City"</em> into ChatGPT, roughly this happens:</p>
+
+    <ol>
+      <li><strong>It expands your question.</strong> One prompt becomes several sub-queries — "vehicle wrap shops Salt Lake City," "car wrap reviews Utah," "vinyl wrap cost SLC." You are not competing for one query, you're competing for a fan of them.</li>
+      <li><strong>It retrieves candidates</strong> from its search index — built by OAI-SearchBot and, for ChatGPT, drawing heavily on Bing's real-time index rather than Google's.</li>
+      <li><strong>It picks what to cite</strong> based on how cleanly the page answers, how authoritative and corroborated the source looks, and how fresh it is.</li>
+      <li><strong>It writes the answer</strong> — and here the model's <em>training</em> knowledge blends in, which is why some businesses get named with no citation at all. That part comes from being written about across the open web over years, not from anything on your server.</li>
+    </ol>
+
+    <div class="callout tip">
+      <span class="ico">🧭</span>
+      <span class="body"><strong>The mental model that fixes most of this:</strong> ChatGPT is not deciding whether your website is good. It's deciding whether <em>the internet as a whole</em> seems to agree you're a good answer. Your website is one input. It is not the loudest one.</span>
+    </div>
+
+    <hr>
+
+    <!-- =============== WHAT WORKS =============== -->
+    <h2>What actually works, in the order I'd do it</h2>
+
+    <p>This is ranked by impact-per-hour for a local or service business, not by what's fun.</p>
+
+    <h3>1. Google Business Profile, filled out to the last field</h3>
+
+    <p>For local recommendations this is the single highest-leverage asset, and it's free. It has become a primary structured data source for AI systems answering "near me" style questions. Fill in every field: exact categories (primary <em>and</em> secondary), service areas, hours including holiday hours, services with descriptions and prices, attributes, and a real Q&amp;A section you seed yourself. Post to it. Upload real photos with real filenames.</p>
+
+    <p>The scale of the opportunity here is stark. SOCi's 2026 Local Visibility Index looked at 350,000+ locations and found only <strong>1.2%</strong> were recommended by ChatGPT, versus 35.9% appearing in Google's local 3-pack. Almost nobody has done this work yet.</p>
+
+    <h3>2. Reviews — volume, recency, and across more than one platform</h3>
+
+    <p>A rating around 4.3+ that appears consistently on Google, Yelp, Facebook, and the vertical sites for your trade does more for AI recommendation than your backlink profile does. Recency matters as much as the average; a 4.9 with nothing new in fourteen months reads as a business that may not be operating. Ask every finished customer, every time, with a link. That's the whole system.</p>
+
+    <h3>3. Get mentioned on sites that aren't yours</h3>
+
+    <p>This is the one people skip because it can't be done in an afternoon, and it's why the businesses that do it win. Analyses of what ChatGPT cites when making recommendations consistently show third-party sources dominating — Wikipedia and Reddit sit near the top of the list, with editorial sites and directories behind them. For local trades specifically, the platforms that reliably feed AI recommendations are Google Business Profile, Yelp, Angi, HomeAdvisor, Nextdoor, and the BBB.</p>
+
+    <p>Practical version: claim and complete every relevant directory listing. Get into local "best of" roundups — email the writer, most will take a well-written pitch. Participate honestly in the subreddit for your city or trade under a real identity; do not astroturf, it gets caught and it makes you a liability in the exact corpus you're trying to influence.</p>
+
+    <h3>4. Identical NAP everywhere</h3>
+
+    <p>Name, address, phone — byte-identical across every listing. "Ste 4" in one place and "Suite #4" in another is enough ambiguity to cost you an entity match. This is boring and it is load-bearing.</p>
+
+    <h3>5. Let the right crawlers in</h3>
+
+    <p>Check <code class="inline">yoursite.com/robots.txt</code> right now. If it blocks OAI-SearchBot you are not in ChatGPT Search, full stop. A reasonable default for a business that wants to be found:</p>
+
+    <div class="code"><pre># Search crawlers that produce citations — allow these
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Training crawler — your call. Allowing it helps future
+# models know you exist. Blocking it costs you nothing today.
+User-agent: GPTBot
+Allow: /
+
+Sitemap: https://yoursite.com/sitemap.xml</pre></div>
+
+    <p>Note that these are separate user-agents needing separate entries — a rule for GPTBot does nothing for OAI-SearchBot. Also make sure your host or CDN's bot protection isn't blocking them at the edge, where robots.txt never gets consulted. Cloudflare's AI bot blocking is on by default on some plans and has quietly removed a lot of businesses from AI search.</p>
+
+    <h3>6. Be in Bing's index</h3>
+
+    <p>Because ChatGPT's retrieval leans on Bing, and most business owners have never once thought about Bing. Sign up for Bing Webmaster Tools, submit your sitemap, verify the site, and turn on IndexNow so new pages get picked up in hours instead of weeks. It takes twenty minutes and it is the least contested surface in this entire document.</p>
+
+    <h3>7. Write pages that answer one question, immediately</h3>
+
+    <p>The structural pattern that gets extracted and cited:</p>
+
+    <ul>
+      <li><strong>One page, one question.</strong> "How much does a full vehicle wrap cost in Utah?" is a page. "Services" is not.</li>
+      <li><strong>Answer in the first two sentences.</strong> Before the story, before the trust-building, before the hero image. If a model has to read 400 words to find the answer, it'll cite the competitor who put it up top.</li>
+      <li><strong>Real specifics.</strong> Actual price ranges, actual turnaround times, actual neighborhoods you serve, actual brands you carry. Specific numbers get quoted. "Competitive pricing" gets skipped.</li>
+      <li><strong>Headings that are questions,</strong> short paragraphs, and a comparison table where a comparison is warranted — tables get lifted into answers constantly.</li>
+      <li><strong>Say who you are and where.</strong> "We're a vehicle wrap shop in Salt Lake City serving Davis and Utah County" beats every clever tagline for this purpose.</li>
+    </ul>
+
+    <h3>8. Schema markup</h3>
+
+    <p>Structured data isn't magic but it removes ambiguity about what your business <em>is</em>. Minimum viable set: <code class="inline">LocalBusiness</code> (or the specific subtype), <code class="inline">Service</code> for each service, <code class="inline">FAQPage</code> on your FAQ, and <code class="inline">sameAs</code> links from your Organization schema out to every profile you own — Google Business Profile, Yelp, Facebook, Instagram, LinkedIn. That <code class="inline">sameAs</code> block is how you tell a machine that all those listings are one entity.</p>
+
+    <h3>9. Keep it fresh</h3>
+
+    <p>Freshness is a consistent citation driver across every study of this. A page updated this quarter beats an identical page from 2023. Put a visible "Last updated" date on your key pages and make it true.</p>
+
+    <hr>
+
+    <!-- =============== DO IT ANYWAY =============== -->
+    <h2>Now make the llms.txt anyway — here's the template</h2>
+
+    <p>After all that: I still recommend making the file. Three honest reasons.</p>
+
+    <ul>
+      <li><strong>Agents are the actual use case.</strong> The emerging thing worth being early on isn't AI search — it's autonomous agents that navigate sites to book appointments, pull docs, or compare options on someone's behalf. A clean site map in Markdown is genuinely useful to those, and that traffic is coming.</li>
+      <li><strong>It costs five minutes, once.</strong> Expected value is low but the cost is nearly zero and the downside is zero. Google has explicitly said it can't hurt you.</li>
+      <li><strong>Writing it is a diagnostic.</strong> If you can't state in eight lines what your business does, where, for whom, and why someone picks you — that's not a file problem, and you just found the actual problem.</li>
+    </ul>
+
+    <p>Fill this in, save it as <code class="inline">llms.txt</code>, and drop it in the root of your site so it lives at <code class="inline">yoursite.com/llms.txt</code>:</p>
+
+    <div class="code"><pre># Summit Vehicle Wraps
+
+> Vehicle wrap, paint protection film, and window tint shop in
+> Salt Lake City, Utah. Family owned since 2015, 3M Preferred
+> installer, 8,000 sq ft climate-controlled install bay.
+
+## What we do
+- Full and partial vehicle wraps — commercial fleets and personal
+- Color change wraps
+- Paint protection film (PPF)
+- Ceramic coating
+- Window tint
+
+## Where we work
+Salt Lake City, Sandy, Draper, Lehi, Provo, Ogden, Park City.
+Shop at 123 Example St, Salt Lake City, UT 84101.
+
+## Pricing
+- Full wrap, standard sedan: $3,200–$4,500
+- Partial wrap: $1,400–$2,600
+- Full front PPF: $1,800–$2,400
+- Turnaround: 3–5 business days
+
+## Why customers choose us
+- 3M Preferred installer with certified installers on staff
+- 5-year warranty on materials and labor
+- 4.9 stars across 340+ Google reviews
+- In-house design team, no outsourced print
+
+## Key pages
+- [Vehicle wrap pricing](https://example.com/pricing): full cost breakdown by vehicle type
+- [Fleet wraps](https://example.com/fleet): volume pricing and scheduling for commercial fleets
+- [Wrap care guide](https://example.com/care): how to wash and maintain a wrap
+- [FAQ](https://example.com/faq): durability, removal, resale value, insurance
+
+## Contact
+Phone: (801) 555-0100
+Email: hello@example.com
+Hours: Mon–Fri 8am–6pm, Sat 9am–2pm</pre></div>
+
+    <div class="callout tip">
+      <span class="ico">✍️</span>
+      <span class="body"><strong>The format rules, such as they are:</strong> an H1 with your business name, a blockquote summary right under it, then H2 sections. Links as Markdown with a short description after a colon. Keep it under a page. And here's the part that matters more than the file — <strong>every fact in it should also exist in plain HTML on your actual site.</strong> The crawlers read your pages. The file is a courtesy copy.</span>
+    </div>
+
+    <hr>
+
+    <!-- =============== CHECK YOURSELF =============== -->
+    <h2>How to find out where you actually stand</h2>
+
+    <p>Fifteen minutes, no tools, do it today. Open ChatGPT with web search on and run the queries a real customer would — not your business name:</p>
+
+    <table class="guide-table">
+      <thead>
+        <tr>
+          <th>Ask this</th>
+          <th>What you're testing</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>"Best [your service] in [your city]"</td>
+          <td>Are you in the consideration set at all?</td>
+        </tr>
+        <tr>
+          <td>"Who should I hire for [specific problem] near [city]?"</td>
+          <td>Problem-first queries — where most real intent lives</td>
+        </tr>
+        <tr>
+          <td>"How much does [your service] cost in [city]?"</td>
+          <td>Whether your pricing page is the source being quoted</td>
+        </tr>
+        <tr>
+          <td>"[Your business name] — what do people say about them?"</td>
+          <td>What the model already believes about you, and from where</td>
+        </tr>
+        <tr>
+          <td>"[Competitor] vs [you]"</td>
+          <td>How you're framed head-to-head</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Two things to write down each time: <strong>who got named</strong>, and <strong>which sources got cited.</strong> That citation list is your actual to-do list — those are the pages and platforms you need to be on. Re-run the same five prompts monthly. Answers vary between runs, so track the trend across several months, not any single result.</p>
+
+    <div class="callout warn">
+      <span class="ico">🔍</span>
+      <span class="body"><strong>Also check your server logs</strong> for OAI-SearchBot, PerplexityBot, ClaudeBot, and Google-Extended. If none of them have ever visited, no amount of on-page work will help until you fix the access problem — robots.txt, firewall, or CDN bot rules. Diagnose before you optimize.</span>
+    </div>
+
+    <hr>
+
+    <!-- =============== 30 DAY =============== -->
+    <h2>The 30-day version</h2>
+
+    <table class="guide-table">
+      <thead>
+        <tr>
+          <th>When</th>
+          <th>Do this</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Day 1</strong></td>
+          <td>Run the five prompts above. Screenshot everything. Check robots.txt and your CDN bot settings.</td>
+          <td>1 hr</td>
+        </tr>
+        <tr>
+          <td><strong>Week 1</strong></td>
+          <td>Google Business Profile to 100% — every field, categories, services with prices, 20+ photos, seeded Q&amp;A.</td>
+          <td>3 hrs</td>
+        </tr>
+        <tr>
+          <td><strong>Week 1</strong></td>
+          <td>Bing Webmaster Tools, sitemap submitted, IndexNow on. Write the llms.txt while you're in there.</td>
+          <td>45 min</td>
+        </tr>
+        <tr>
+          <td><strong>Week 2</strong></td>
+          <td>NAP audit across every listing you can find. Fix every mismatch. Claim what's unclaimed.</td>
+          <td>2 hrs</td>
+        </tr>
+        <tr>
+          <td><strong>Week 2</strong></td>
+          <td>Add LocalBusiness, Service, and FAQPage schema. Wire up <code class="inline">sameAs</code> to every profile.</td>
+          <td>2 hrs</td>
+        </tr>
+        <tr>
+          <td><strong>Week 3</strong></td>
+          <td>Write three answer-first pages: pricing, your top service by revenue, and a real FAQ. Answer in the first two sentences.</td>
+          <td>4 hrs</td>
+        </tr>
+        <tr>
+          <td><strong>Week 3</strong></td>
+          <td>Turn on a review request that fires automatically after every completed job. This is the compounding one.</td>
+          <td>1 hr</td>
+        </tr>
+        <tr>
+          <td><strong>Week 4</strong></td>
+          <td>Pitch two local roundups. Answer questions in your city/trade subreddit as yourself.</td>
+          <td>2 hrs</td>
+        </tr>
+        <tr>
+          <td><strong>Day 30</strong></td>
+          <td>Re-run the same five prompts. Compare to your Day 1 screenshots.</td>
+          <td>30 min</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Under twenty hours, nearly all of it free. Expect movement in Bing and Google Business Profile within weeks; expect the third-party mention work to take a couple of months to show up in answers. Anyone promising you AI visibility in seven days is selling the llms.txt story again in a new hat.</p>
+
+    <hr>
+
+    <!-- =============== WE DO THIS =============== -->
+    <h2>Or we do it for you</h2>
+
+    <p>Everything on this page is genuinely DIY-able, and if you've got the twenty hours you should just go do it. Most owners I talk to don't — they're the one answering the phone, running the estimates, and texting the crew at 9pm.</p>
+
+    <p>So we do this for businesses. It's part of how we work as a fractional Chief AI Officer: the AI search visibility work above, plus the thing that makes it worth doing — catching every lead that comes in from it, following up on every quote automatically, and getting the business out of your head and into a system your team can run.</p>
+
+    <p>Book a free 30-minute audit and I'll run the prompts against your business live, show you exactly where you're showing up and where you're not, and give you the fix list in priority order. You keep the roadmap whether we ever work together or not.</p>
+
+    <div class="ctas">
+      <a class="cta primary" href="https://api.leadconnectorhq.com/widget/booking/5ks0F7kYGq2TIkyisWnx" target="_blank" rel="noopener">Book your free 30-minute audit</a>
+      <a class="cta" href="../resources.html">More free resources</a>
+    </div>
+
+    <hr>
+
+    <!-- =============== SOURCES =============== -->
+    <h2>Sources</h2>
+
+    <p>Because a page arguing about evidence should show its own. Checked July 2026:</p>
+
+    <ul>
+      <li><a class="inline" href="https://ppc.land/llms-txt-adoption-rises-8-8x-but-97-of-files-get-zero-ai-requests/" target="_blank" rel="noopener">PPC Land — llms.txt adoption rises 8.8x but 97% of files get zero AI requests</a> (Originality.ai monitoring of 3M+ sites; Ahrefs server-log analysis of ~137,000 domains)</li>
+      <li><a class="inline" href="https://digitalstrategyforce.com/journal/does-your-site-need-llms-txt-to-get-cited-by-ai-search-in-2026/" target="_blank" rel="noopener">Digital Strategy Force — Does your site need llms.txt to get cited by AI search in 2026?</a> (Google's June 15, 2026 guidance note; AI bot traffic analysis)</li>
+      <li><a class="inline" href="https://crawlercheck.com/directory/ai-bots/oai-searchbot" target="_blank" rel="noopener">CrawlerCheck — OAI-SearchBot user-agent reference</a> and <a class="inline" href="https://nohacks.co/blog/ai-user-agents-landscape-2026" target="_blank" rel="noopener">No Hacks — The AI user-agent landscape in 2026</a></li>
+      <li><a class="inline" href="https://pushleads.com/ai-search-visibility-for-local-service-businesses-why-your-google-page-one-ranki/" target="_blank" rel="noopener">PushLeads — AI search visibility for local service businesses</a> (SOCi 2026 Local Visibility Index, 350,000+ locations; BrightLocal 2026 Local Consumer Review Survey)</li>
+      <li><a class="inline" href="https://www.stackmatix.com/blog/searchgpt-ranking-factors" target="_blank" rel="noopener">Stackmatix — SearchGPT ranking factors</a> and <a class="inline" href="https://thedigitalbloom.com/learn/llm-ranking-factors-2026/" target="_blank" rel="noopener">The Digital Bloom — LLM ranking factors in 2026</a> (query fan-out, citation drivers, Google-position correlation)</li>
+      <li><a class="inline" href="https://llmstxt.org/" target="_blank" rel="noopener">The original llms.txt proposal</a> — Jeremy Howard / Answer.AI, September 3, 2024</li>
+    </ul>
+
+    <p class="guide-meta"><span>Last updated July 27, 2026</span></p>
+
+  </main>
+
+  <script src="../assets/guide.js" defer></script>
+</body>
+</html>
