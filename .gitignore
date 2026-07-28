@@ -1,1 +1,20 @@
 .DS_Store
+.env
+.env.*
+*.key
+secrets/
+clients/*
+# Exception: Powerhouse Roofing public website is tracked + deployed (data/scripts stay ignored)
+!clients/powerhouse-roofing
+clients/powerhouse-roofing/*
+!clients/powerhouse-roofing/website
+# Exception: estimator/proposal tool, published to GitHub Pages.
+# NOTE: this folder contains material costs, labor rates and margin structure.
+# It is publicly readable at kimballmueller.github.io. Published knowingly.
+!clients/powerhouse-roofing/deliverables
+clients/powerhouse-roofing/deliverables/*
+!clients/powerhouse-roofing/deliverables/proposal-maker
+
+
+# Fireflies transcript dumps (raw call audio text)
+transcripts/
