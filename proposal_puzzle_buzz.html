@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Puzzle Buzz — AI Systems &amp; Growth Proposal · Disruptors Media</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --white:#ffffff;
+  --light:#F5F5F7;
+  --dark:#1D1D1F;
+  --darker:#111113;
+  --blue:#0071E3;
+  --blue-h:#0077ED;
+  --green:#34C759;
+  --green-bg:rgba(52,199,89,.1);
+  --red:#FF3B30;
+  --red-bg:rgba(255,59,48,.08);
+  --purple:#A855F7;
+  --orange:#FF9F0A;
+  --muted:#6E6E73;
+  --border:#E5E5EA;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif;
+  --mono:"SF Mono","Fira Code","Fira Mono","Roboto Mono",monospace;
+}
+
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--white);color:var(--dark);line-height:1.6;-webkit-font-smoothing:antialiased}
+
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+@keyframes livepulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+.section{padding:96px 24px}
+.section--light{background:var(--light)}
+.section--dark{background:var(--darker);color:var(--white)}
+.wrap{max-width:960px;margin:0 auto}
+.wrap--wide{max-width:1100px;margin:0 auto}
+
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+.section--dark .eyebrow{color:#64A5FF}
+
+h1{font-size:clamp(36px,6vw,76px);font-weight:700;line-height:1.05;letter-spacing:-.03em}
+h2{font-size:clamp(26px,3.8vw,50px);font-weight:700;line-height:1.1;letter-spacing:-.02em}
+h3{font-size:20px;font-weight:600;letter-spacing:-.01em}
+h4{font-size:15px;font-weight:600}
+
+p{font-size:17px;line-height:1.65;color:var(--muted)}
+.section--dark p{color:rgba(255,255,255,.62)}
+
+.divider{width:40px;height:3px;background:var(--blue);border-radius:2px;margin:20px 0 36px}
+.divider--c{margin-left:auto;margin-right:auto}
+.section--dark .divider{background:#64A5FF}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;text-align:center;
+  padding:100px 24px 80px;position:relative;overflow:hidden;
+  animation:fadeIn .8s ease both
+}
+#hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(0,113,227,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,113,227,.03) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none
+}
+.hero-icon{margin-bottom:28px;opacity:.16;position:relative}
+.hero-meta{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-bottom:30px;position:relative}
+.hero-meta span+span::before{content:'·';margin-right:18px;opacity:.4}
+.hero-title{max-width:860px;margin:0 auto 22px;position:relative}
+.hero-sub{font-size:20px;color:var(--muted);max-width:600px;margin:0 auto 52px;line-height:1.55;position:relative}
+.scroll-cue{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);animation:bounce 2s ease-in-out infinite;color:var(--muted);cursor:pointer;opacity:.5}
+
+/* ── EXECUTIVE SUMMARY ── */
+.exec-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.1)}
+.exec-stat{padding:36px 28px;background:rgba(255,255,255,.04);text-align:center}
+.exec-stat-num{font-size:46px;font-weight:700;letter-spacing:-.03em;line-height:1;color:#fff;margin-bottom:8px}
+.exec-stat-lbl{font-size:13px;color:rgba(255,255,255,.5);line-height:1.4}
+.exec-note{margin-top:32px;padding:20px 28px;background:rgba(0,113,227,.1);border:1px solid rgba(0,113,227,.2);border-radius:12px;font-size:15px;color:rgba(255,255,255,.7);line-height:1.6;text-align:center}
+
+/* ── STATS ── */
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin:52px 0 44px}
+.stat{text-align:center}
+.stat-num{font-size:52px;font-weight:700;letter-spacing:-.03em;color:var(--dark);line-height:1}
+.stat-label{font-size:14px;color:var(--muted);margin-top:8px}
+
+/* ── QUOTE ── */
+.quote-block{border-left:3px solid var(--blue);padding:22px 32px;margin:44px 0;border-radius:0 14px 14px 0;background:var(--white)}
+.quote-text{font-size:21px;font-weight:500;color:var(--dark);font-style:italic;line-height:1.45}
+.quote-attr{font-size:13px;color:var(--muted);margin-top:10px}
+
+/* ── PAIN POINTS ── */
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+.pain-card{padding:22px 20px;background:var(--light);border:1px solid var(--border);border-radius:14px}
+.pain-icon{font-size:20px;margin-bottom:10px}
+.pain-card h4{font-size:14px;margin-bottom:6px}
+.pain-card p{font-size:13px;color:var(--muted);line-height:1.5}
+
+/* ── OUTCOMES ── */
+.outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px}
+.outcome{padding:34px 26px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;transition:background .2s}
+.outcome:hover{background:rgba(255,255,255,.09)}
+.outcome-num{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#64A5FF;margin-bottom:14px}
+.outcome h3{color:#fff;font-size:18px;margin-bottom:10px}
+.section--light .outcome{background:#fff;border:1px solid var(--border)}
+.section--light .outcome:hover{background:#fff;box-shadow:0 8px 28px rgba(0,0,0,.07)}
+.section--light .outcome h3{color:var(--dark)}
+.section--light .outcome-num{color:var(--blue)}
+
+/* ── TIMELINE ── */
+.tl-wrap{position:relative;padding:8px 0 0}
+.tl-spine{position:absolute;left:15px;top:28px;bottom:60px;width:2px;background:linear-gradient(to bottom,var(--blue) 0%,var(--green) 55%,var(--purple) 100%);border-radius:2px}
+.tl-phase{display:grid;grid-template-columns:200px 1fr;gap:48px;padding:0 0 72px 56px;position:relative}
+.tl-phase:last-child{padding-bottom:0}
+.tl-phase::before{content:'';position:absolute;left:8px;top:20px;width:16px;height:16px;border-radius:50%;border:2.5px solid var(--blue);background:var(--white);box-shadow:0 0 0 5px rgba(0,113,227,.12)}
+.tl-phase.p2::before{border-color:var(--green);box-shadow:0 0 0 5px rgba(52,199,89,.12)}
+.tl-phase.p3::before{border-color:var(--purple);box-shadow:0 0 0 5px rgba(168,85,247,.12)}
+.tl-label{padding-top:14px}
+.tl-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);background:rgba(0,113,227,.08);padding:4px 10px;border-radius:100px;margin-bottom:12px}
+.p2 .tl-badge{color:var(--green);background:rgba(52,199,89,.1)}
+.p3 .tl-badge{color:var(--purple);background:rgba(168,85,247,.1)}
+.tl-label h3{font-size:18px;margin-bottom:4px}
+.tl-dur{font-size:13px;color:var(--muted);margin-top:2px}
+.tl-card{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:28px 32px;box-shadow:0 2px 16px rgba(0,0,0,.06)}
+.sprint-badge{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);background:var(--green-bg);padding:6px 14px;border-radius:100px;margin-bottom:20px}
+.tl-item{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--border)}
+.tl-item:first-child{padding-top:0}
+.tl-item:last-child{border-bottom:none;padding-bottom:0}
+.tl-dot{width:7px;height:7px;border-radius:50%;background:var(--blue);flex-shrink:0;margin-top:7px}
+.p2 .tl-dot{background:var(--green)}.p3 .tl-dot{background:var(--purple)}
+.tl-item h4{font-size:14px;margin-bottom:3px}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.55}
+.sprint-guarantee{margin-top:20px;padding:14px 18px;background:var(--green-bg);border:1px solid rgba(52,199,89,.2);border-radius:10px;font-size:13px;color:#1a7a38;line-height:1.5}
+
+/* ── STACK ── */
+.stack-wrap{display:flex;flex-direction:column;align-items:center;gap:0;margin-top:52px}
+.stack-node{width:100%;max-width:660px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:26px 30px}
+.stack-head{display:flex;align-items:center;gap:14px;margin-bottom:10px;flex-wrap:wrap}
+.tech-tag{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;background:rgba(0,113,227,.2);color:#64A5FF;padding:4px 12px;border-radius:100px}
+.tech-tag.gr{background:rgba(52,199,89,.15);color:#4ADE80}
+.tech-tag.pu{background:rgba(168,85,247,.18);color:#C99BFA}
+.stack-node h3{color:#fff;font-size:17px}
+.stack-node>p{font-size:14px;margin-top:4px}
+.stack-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px;list-style:none}
+.stack-chips li{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.45);background:rgba(255,255,255,.06);padding:3px 9px;border-radius:6px}
+.stack-conn{display:flex;flex-direction:column;align-items:center}
+.conn-line{width:2px;height:22px;background:rgba(255,255,255,.12)}
+.conn-label{font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.06em;padding:4px 10px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:100px;white-space:nowrap}
+.stack-apps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.stack-app{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px 16px}
+.app-name{font-size:13px;font-weight:600;color:rgba(255,255,255,.8);margin-bottom:3px}
+.app-desc{font-size:11px;color:rgba(255,255,255,.3);font-family:var(--mono)}
+
+/* ── BUILD CARDS ── */
+.card-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:52px}
+.dcard{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:28px 26px;box-shadow:0 2px 12px rgba(0,0,0,.05);transition:box-shadow .2s,transform .2s}
+.dcard:hover{box-shadow:0 8px 32px rgba(0,0,0,.1);transform:translateY(-2px)}
+.dcard-icon{margin-bottom:14px}
+.dcard h3{margin-bottom:10px}
+.dcard p{font-size:15px}
+.refine{margin-top:14px;padding:9px 12px;background:var(--light);border-radius:8px;font-size:12px;color:var(--muted)}
+.card-grid--3{grid-template-columns:repeat(3,1fr);gap:20px}
+
+/* ── EXCLUSIONS ── */
+.excl{margin-top:44px;padding:28px 30px;background:var(--light);border:1px dashed #C7C7CC;border-radius:18px}
+.excl-h{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+.excl-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.excl-item h4{font-size:15px;color:var(--dark);margin-bottom:7px}
+.excl-item p{font-size:14px;color:var(--muted);line-height:1.55}
+.excl-item p strong{color:var(--dark)}
+.excl-tag{display:inline-block;margin-top:11px;font-size:11.5px;font-weight:700;letter-spacing:.03em;color:var(--blue);background:rgba(0,113,227,.09);padding:5px 12px;border-radius:100px}
+
+/* ── THE MATH ── */
+.math-wrap{margin-top:48px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:20px;overflow:hidden}
+.math-scroll{width:100%;overflow-x:auto}
+table.mt{width:100%;border-collapse:collapse;font-size:15px;min-width:620px}
+table.mt th{padding:16px 22px;text-align:left;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.42);border-bottom:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03)}
+table.mt th:not(:first-child){text-align:right}
+table.mt td{padding:15px 22px;border-bottom:1px solid rgba(255,255,255,.07);color:rgba(255,255,255,.72);vertical-align:middle}
+table.mt td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums}
+table.mt td:first-child{color:rgba(255,255,255,.5);font-size:14px}
+table.mt tr:last-child td{border-bottom:none}
+table.mt tr.mt-hi{background:rgba(52,199,89,.07)}
+table.mt tr.mt-hi td{font-weight:700;color:#fff;font-size:17px}
+table.mt tr.mt-hi td:first-child{color:rgba(255,255,255,.7);font-size:14px;font-weight:600}
+.mt-now{color:rgba(255,255,255,.55)}
+.mt-next{color:#4ADE80}
+.math-foot{padding:14px 22px;background:rgba(0,113,227,.08);border-top:1px solid rgba(0,113,227,.16);font-size:13px;color:rgba(255,255,255,.55)}
+.delta-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+.delta{padding:26px 24px;background:rgba(52,199,89,.08);border:1px solid rgba(52,199,89,.22);border-radius:16px;text-align:center}
+.delta-num{font-size:36px;font-weight:700;letter-spacing:-.03em;color:#4ADE80;line-height:1;margin-bottom:8px}
+.delta-lbl{font-size:12.5px;color:rgba(255,255,255,.5);line-height:1.45}
+
+/* ── FUNNEL ── */
+.funnel{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px}
+.fstep{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:24px 20px;text-align:center;position:relative}
+.fstep-n{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+.fstep-num{font-size:32px;font-weight:700;letter-spacing:-.03em;color:var(--dark);line-height:1;margin-bottom:8px}
+.fstep-lbl{font-size:13px;color:var(--muted);line-height:1.45}
+
+/* ── GAP / WHERE YOU ARE ── */
+.gap-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:0;margin-top:40px;align-items:center}
+.gap-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:26px}
+.gap-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:14px}
+.gap-items{display:flex;flex-direction:column;gap:7px}
+.gap-item{font-size:13px;padding:8px 12px;border-radius:8px;line-height:1.4}
+.gap-bad{background:rgba(255,59,48,.1);color:rgba(255,130,120,.9)}
+.gap-good{background:rgba(52,199,89,.1);color:#4ADE80}
+.gap-mid{text-align:center;padding:0 20px}
+.gap-arrow{font-size:28px;color:rgba(255,255,255,.15);margin-bottom:10px}
+.gap-diff{font-size:20px;font-weight:700;color:#4ADE80;line-height:1.2;text-align:center}
+.gap-diff span{font-size:11px;font-weight:400;color:rgba(255,255,255,.35);display:block;margin-top:3px;text-transform:uppercase;letter-spacing:.06em}
+.pain-section{margin-top:28px;padding:22px 26px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:16px}
+.pain-section-title{font-size:13px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px}
+.pain-list{display:flex;flex-direction:column;gap:10px}
+.pain-row{display:flex;gap:12px;font-size:14px;color:rgba(255,255,255,.55);line-height:1.5}
+.pain-x{color:#FF6B6B;font-size:15px;flex-shrink:0;margin-top:1px;font-weight:700}
+.pain-row strong{color:rgba(255,255,255,.82)}
+.bet-box{margin-top:36px;padding:26px 32px;background:rgba(0,113,227,.1);border:1px solid rgba(0,113,227,.22);border-radius:16px}
+.bet-box p{color:rgba(255,255,255,.78);font-size:16px;line-height:1.7}
+
+/* ── CALLOUT ── */
+.callout{margin-top:34px;padding:22px 28px;background:rgba(255,159,10,.07);border:1px solid rgba(255,159,10,.25);border-left:4px solid var(--orange);border-radius:12px}
+.callout h4{font-size:15px;color:var(--dark);margin-bottom:6px}
+.callout p{font-size:14.5px;color:var(--muted);line-height:1.6}
+
+/* ── TIER PRICING ── */
+.tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px;align-items:stretch}
+.tier-card{background:var(--white);border:1px solid var(--border);border-radius:22px;padding:34px 28px;display:flex;flex-direction:column;box-shadow:0 2px 16px rgba(0,0,0,.05);position:relative;transition:transform .2s,box-shadow .2s}
+.tier-card:hover{transform:translateY(-3px);box-shadow:0 12px 38px rgba(0,0,0,.1)}
+.tier-card.featured{border:2px solid var(--blue);box-shadow:0 10px 44px rgba(0,113,227,.16)}
+.tier-flag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 16px;border-radius:100px;white-space:nowrap}
+.tier-name{font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+.tier-price{font-size:44px;font-weight:700;letter-spacing:-.03em;color:var(--dark);line-height:1}
+.tier-price span{font-size:15px;font-weight:500;color:var(--muted);letter-spacing:0}
+.tier-tag{font-size:14px;color:var(--muted);margin:12px 0 22px;line-height:1.5}
+.tier-inc{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.tier-feats{list-style:none;display:flex;flex-direction:column;gap:10px}
+.tier-feat{display:flex;gap:10px;font-size:14px;color:var(--dark);line-height:1.45}
+.tier-feat svg{flex-shrink:0;margin-top:3px}
+.tier-feat.lead{font-weight:600;color:var(--blue)}
+.tier-feat.star{font-weight:600;color:#1D1D1F}
+.tier-feat.star svg{stroke:var(--purple)}
+.tier-setup{font-size:12px;font-weight:600;color:var(--blue);margin-top:8px}
+.tier-block{margin-top:18px;padding-top:16px;border-top:1px solid var(--border)}
+.tier-block-h{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.tier-block p{font-size:13px;color:var(--muted);line-height:1.5}
+.tier-roi{margin-top:18px;padding:12px 14px;background:var(--green-bg);border:1px solid rgba(52,199,89,.22);border-radius:10px;font-size:12.5px;color:#1a7a38;line-height:1.5}
+
+/* ── BUILD BOX (standalone one-time) ── */
+.build-box{display:grid;grid-template-columns:1fr 1.25fr;gap:40px;margin-top:52px;padding:38px 40px;background:var(--white);border:2px solid var(--dark);border-radius:22px;box-shadow:0 6px 30px rgba(0,0,0,.08);text-align:left}
+.build-box .tier-name{color:var(--dark)}
+.build-left p{margin:0}
+.build-right{display:flex;align-items:center}
+.build-right .tier-feats{width:100%}
+.part-rule{display:flex;align-items:center;gap:18px;color:var(--muted);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.part-rule::before,.part-rule::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* ── RECOMMENDATION ── */
+.rec-box{max-width:780px;margin:36px auto 0;padding:24px 30px;background:var(--white);border:1px solid rgba(0,113,227,.22);border-left:4px solid var(--blue);border-radius:14px;box-shadow:0 4px 24px rgba(0,113,227,.08)}
+.rec-box h4{font-size:16px;color:var(--dark);margin-bottom:8px}
+.rec-box h4 span{color:var(--blue)}
+.rec-box p{font-size:14px;color:var(--muted);line-height:1.65}
+.rec-box p strong{color:var(--dark)}
+.rec-box p+p{margin-top:12px}
+
+/* ── CHECKLIST ── */
+.cl{list-style:none;margin-top:44px}
+.cl-item{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--border)}
+.cl-item:first-child{padding-top:0}
+.cl-item:last-child{border-bottom:none}
+.cl-check{width:24px;height:24px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.cl-body strong{display:block;font-size:15px;color:var(--dark);margin-bottom:3px}
+.cl-body span{font-size:14px;color:var(--muted)}
+
+/* ── WHY ── */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
+.why-card{padding:28px 24px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px}
+.why-num{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#64A5FF;margin-bottom:14px}
+.why-card h3{margin-bottom:10px;color:#fff}
+
+/* ── STEPS ── */
+.steps{list-style:none;margin:40px auto 0;max-width:640px;text-align:left}
+.steps li{display:flex;gap:22px;padding:22px 0;border-bottom:1px solid var(--border)}
+.steps li:last-child{border-bottom:none}
+.step-n{width:38px;height:38px;border-radius:50%;background:var(--blue);color:#fff;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-b h4{font-size:15px;margin-bottom:5px}
+.step-b p{font-size:14px}
+.step-highlight{font-weight:700;color:var(--dark)}
+
+/* ── BTN ── */
+.btn{display:inline-block;background:var(--blue);color:#fff;text-decoration:none;font-size:17px;font-weight:600;padding:17px 42px;border-radius:100px;transition:background .2s,transform .15s}
+.btn:hover{background:var(--blue-h);transform:scale(1.02)}
+
+/* ── FOOTER ── */
+footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;padding:52px 24px;font-size:13px;line-height:1.9}
+.ft-logo{font-size:18px;font-weight:700;color:#fff;letter-spacing:-.01em;margin-bottom:6px}
+.ft-links a{color:var(--blue);text-decoration:none}
+.ft-exp{margin-top:20px;font-size:12px;opacity:.6}
+
+/* ── PRINT ── */
+@media print{
+  .reveal{opacity:1!important;transform:none!important}
+  .scroll-cue{display:none}
+  #hero{min-height:auto;padding:60px 24px}
+  .section{padding:60px 24px}
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .tl-phase{grid-template-columns:1fr;gap:18px;padding-left:40px}
+  .tl-phase::before{left:6px}
+  .tl-spine{left:13px}
+  .outcomes{grid-template-columns:1fr}
+  .exec-stats{grid-template-columns:1fr}
+  .pain-grid{grid-template-columns:1fr}
+  .stack-apps{grid-template-columns:1fr}
+  .gap-grid{grid-template-columns:1fr;gap:16px}
+  .gap-mid{padding:4px 0;text-align:center}
+  .gap-arrow{font-size:22px}
+  .funnel{grid-template-columns:repeat(2,1fr)}
+  .card-grid--3{grid-template-columns:1fr}
+  .excl-grid{grid-template-columns:1fr}
+  .delta-row{grid-template-columns:1fr}
+  .tier-grid{grid-template-columns:1fr;gap:30px;margin-top:44px}
+  .tier-card.featured{order:-1}
+  .build-box{grid-template-columns:1fr;gap:24px;padding:30px 26px}
+}
+@media(max-width:700px){
+  .stats-row{grid-template-columns:1fr;gap:24px}
+  .card-grid{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  h1{font-size:32px}
+  h2{font-size:24px}
+  .section{padding:68px 20px}
+  .hero-sub{font-size:17px}
+  .tl-card{padding:20px}
+  .bet-box{padding:20px 22px}
+  .tl-label{padding-top:0}
+  .exec-stat-num{font-size:36px}
+  .funnel{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════ HERO ══════════════════════════ -->
+<section id="hero">
+  <div class="hero-icon">
+    <svg width="72" height="72" viewBox="0 0 68 68" fill="none">
+      <path d="M8 8 h20 a6 6 0 0 1 12 0 h20 v20 a6 6 0 0 0 0 12 v20 h-20 a6 6 0 0 0 -12 0 h-20 v-20 a6 6 0 0 1 0 -12 z"
+            stroke="#0071E3" stroke-width="2.5" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <div class="hero-meta">
+    <span>Puzzle Buzz · Mike Driscoll</span>
+    <span>Atlanta, GA</span>
+    <span>July 28, 2026</span>
+    <span>Disruptors Media · Kimball Mueller</span>
+  </div>
+  <div class="eyebrow" style="position:relative;">AI Systems &amp; Growth Proposal</div>
+  <h1 class="hero-title">
+    You Don't Need<br>More Hours.<br>You Need More Venues.
+  </h1>
+  <p class="hero-sub" style="position:relative;">
+    The automations give you your nights back.<br>
+    The outreach engine is what gets you from 65 venues to 100 — and past it.
+  </p>
+  <div class="scroll-cue" onclick="document.getElementById('exec-summary').scrollIntoView({behavior:'smooth'})">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════ EXECUTIVE SUMMARY ══════════════════════════ -->
+<section id="exec-summary" class="section section--dark">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">The Bottom Line — Upfront</div>
+      <h2 style="color:#fff;">Two different problems. Don't confuse them.</h2>
+      <div class="divider"></div>
+      <p style="max-width:680px;">You told me the winner posts are your biggest frustration — opening Canva, cutting out the photo, hand-typing the same five fields. That's real, and it's a <strong style="color:#fff;">one-time build</strong>. Fixed for good, $5,000, done.</p>
+      <p style="max-width:680px;margin-top:16px;">But that's a time problem. The thing you actually said out loud was different: <em>"The faster I can scale this, the more of an acquisition target I become."</em> That's not solved by a button. That's solved by getting in front of a few thousand bars a month instead of the handful you can find by hand.</p>
+    </div>
+
+    <div class="exec-stats reveal d1">
+      <div class="exec-stat">
+        <div class="exec-stat-num" style="color:rgba(255,255,255,.55);">65</div>
+        <div class="exec-stat-lbl">Venues per month today<br>— found almost entirely by hand</div>
+      </div>
+      <div class="exec-stat">
+        <div class="exec-stat-num" style="color:#4ADE80;">$15 → $6</div>
+        <div class="exec-stat-lbl">Puzzle cost once the custom<br>run lands — a two-thirds cut</div>
+      </div>
+      <div class="exec-stat">
+        <div class="exec-stat-num" style="color:#4ADE80;">4%</div>
+        <div class="exec-stat-lbl">Our cold-email response rate<br>— roughly 4× the market average</div>
+      </div>
+    </div>
+
+    <div class="exec-note reveal d2">
+      Your margin per team is about to jump from $25 to $34. Every venue you add from here is worth <strong style="color:#fff;">36% more than it was last month</strong>. The cheapest thing you will ever do is add venues right now, while the new cost structure is landing.
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════ 01 — SITUATION ══════════════════════════ -->
+<section id="situation" class="section section--light">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">01 — Where You Are</div>
+      <h2>The model already works. That's the rare part.</h2>
+      <div class="divider"></div>
+      <p style="max-width:700px;">Free for the venue, so the bar has no reason to say no. Break-even at one team — everything past that is margin. Same puzzle nationwide every month, so it scales without new creative per market. Six or seven VIP venues sell out at 10+ teams, and one in Austin runs 15. Twenty-one months in and you've got 65 venues a month. Most businesses never find a model this clean.</p>
+    </div>
+
+    <div class="stats-row reveal d1">
+      <div class="stat"><div class="stat-num">~65</div><div class="stat-label">venues per month · goal is 100</div></div>
+      <div class="stat"><div class="stat-num">$13k</div><div class="stat-label">monthly gross, on a one-man team</div></div>
+      <div class="stat"><div class="stat-num">1 team</div><div class="stat-label">break-even per venue — the rest is margin</div></div>
+    </div>
+
+    <div class="quote-block reveal d2">
+      <div class="quote-text">"You do not rise to the level of your goals. You fall to the level of your systems."</div>
+      <div class="quote-attr">— James Clear, Atomic Habits</div>
+    </div>
+
+    <p class="reveal d3" style="max-width:700px;">Which is exactly the issue. The model doesn't have a ceiling — <em>you</em> do. Every new venue currently costs you an evening of scrolling Instagram, following the suggested-accounts trail, and digging an email address off a Facebook page. Three things surfaced on the call, and all three are the same shape:</p>
+
+    <div class="pain-grid reveal d4">
+      <div class="pain-card">
+        <div class="pain-icon">🏆</div>
+        <h4>Winners aren't getting acknowledged.</h4>
+        <p>The photo comes in through the form and lands in the event log. Then it's Canva, background removal, and hand-typing team name, finish time, venue, date. So it doesn't happen consistently — and the one moment guaranteed to make a team come back gets skipped.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">🔎</div>
+        <h4>Venue #66 costs the same as venue #1.</h4>
+        <p>Find a brewery on Instagram, follow the trail, hunt the email, send from your own inbox in irregular batches. ~1,300 emails in the CRM and ~900 in the old list — built one click at a time. That's a process that can't get to 100.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">📉</div>
+        <h4>The feed doesn't sell for you.</h4>
+        <p>Your words: <em>"generic crap"</em> — same template, swapped logo, one still photo per venue. A bar owner deciding whether to host looks you up first. Right now the page doesn't answer the only question they have: <em>will this fill my room?</em></p>
+      </div>
+    </div>
+
+    <p class="reveal d4" style="max-width:700px;margin-top:32px;font-size:18px;color:var(--dark);font-weight:600;">None of this is a model problem. It's a distribution problem — and distribution is buildable.</p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════ 02 — WHY DISRUPTORS ══════════════════════════ -->
+<section id="why" class="section section--dark">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">02 — Why Disruptors Media</div>
+      <h2 style="color:#fff;">You already run Claude. So let's talk about what you actually can't build yourself.</h2>
+      <div class="divider"></div>
+      <p style="max-width:660px;">You built the Coda CRM. You wired Claude into it. You've got a 7am task drafting your email replies. You are not a client who needs to be told what AI is — which is why this proposal doesn't waste your time on that. Here's what we bring that you can't stand up on your own.</p>
+    </div>
+    <div class="why-grid reveal d1">
+      <div class="why-card">
+        <div class="why-num">01</div>
+        <h3>Sequencing, not one-shot prompts</h3>
+        <p>You've felt this: ask AI for a finished graphic and you get mangled puzzle pieces and a shirt that changed color. <em>"I could have done this in Canva in half the time instead of yelling at you."</em> The fix is staging — one step removes the background, the next places the text, the next composites. That's the difference between a demo and something you'll actually use.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">02</div>
+        <h3>Email infrastructure you can't rent</h3>
+        <p>From your own inbox you get about 20 sends a day before Google starts flagging you. We run <strong style="color:#fff;">2,000 inboxes</strong> across warmed domains — 40,000+ emails a week at a 4% response rate. Buying that infrastructure and warming it yourself takes months and a lot of burned domains.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">03</div>
+        <h3>You own every bit of it</h3>
+        <p>Everything lives in <em>your</em> Coda, <em>your</em> accounts, <em>your</em> name. Cancel us and the automations keep running. We're not renting you access to a black box — which matters a lot more than usual when the endgame is somebody buying this company.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════ 03 — THE BUILD ══════════════════════════ -->
+<section id="buildout" class="section">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">03 — The One-Time Build</div>
+      <h2>The three that give you your evenings back. $5,000, yours forever.</h2>
+      <div class="divider"></div>
+      <p style="max-width:680px;">Not a subscription, not a phase-one-of-five. Three automations built into the Coda event log you already use, then handed over. You said you don't need full automation — you'll happily do the background removal. Fine. We're killing the copy-paste, not your workflow.</p>
+    </div>
+    <div class="card-grid card-grid--3 reveal d1">
+      <div class="dcard">
+        <div class="dcard-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></div>
+        <h3>01 · Winner Post Generator</h3>
+        <p>A button in the event log. Press it on a row and the team name, finish time, venue, and date push straight into your Canva template, sized and positioned. You drop in the cut-out photo and post. The five fields you've been retyping since October 2024 are gone.</p>
+        <div class="refine">↗ Built as staged steps — background prep, then text placement, then composite. Not one prompt and a prayer.</div>
+      </div>
+      <div class="dcard">
+        <div class="dcard-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+        <h3>02 · VIP Winner Email Drafter</h3>
+        <p>Same button-press pattern, different output. Pulls the team's stats, their photo, and the link to next month's event into a drafted email with real copy — not a plain-text stub. It lands in your drafts for approval, exactly like your 7am Claude task already does.</p>
+        <div class="refine">↗ Ongoing: subject-line testing, re-book rate tracking per venue</div>
+      </div>
+      <div class="dcard">
+        <div class="dcard-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M12 14v4M10 16h4"/></svg></div>
+        <h3>03 · Next-Month Event Pages, Auto-Created</h3>
+        <p>Checkoutpage is already Zapier-connected but has no AI layer. We close the loop: when the month rolls, next month's ticket pages get generated for every active venue — dates, venue names, copy — without you touching 65 of them by hand.</p>
+        <div class="refine">↗ Ongoing: pricing tests, VIP-venue capacity rules</div>
+      </div>
+    </div>
+
+    <div class="excl reveal d2">
+      <div class="excl-h">Not in the $5,000 — and I'd rather say so now than surprise you</div>
+      <div class="excl-grid">
+        <div class="excl-item">
+          <h4>Venue list scraping</h4>
+          <p>Apify pipelines pulling bars, breweries, and taprooms by metro — verified emails, deduped against your ~2,200 existing contacts, straight into Coda. This runs continuously and needs managing, so it lives in the monthly, not the build.</p>
+          <span class="excl-tag">Included from $1,500 / mo</span>
+        </div>
+        <div class="excl-item">
+          <h4>Puzzle return tracker</h4>
+          <p>You assumed this one wasn't automatable. It mostly is — track what's out, flag anything past your window, fire an escalating chase with the UPS label attached. You've got <strong>~100 puzzles and roughly $1,500</strong> sitting at venues right now.</p>
+          <span class="excl-tag">Included from $3,500 / mo</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="reveal d2" style="margin-top:26px;font-size:15px;color:var(--muted);">
+      <strong style="color:var(--dark);">All three. $5,000 one-time. Built in your Coda, in your accounts.</strong> No monthly commitment attached — if you never work with us again, they keep running.
+    </p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════ 04 — THE MATH ══════════════════════════ -->
+<section id="math" class="section section--dark">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">04 — Now Do The Math</div>
+      <h2 style="color:#fff;">The build saves you evenings.<br>This is the part that changes the number you sell for.</h2>
+      <div class="divider"></div>
+      <p style="max-width:700px;">Here's Puzzle Buzz today, and here's Puzzle Buzz at double the venues with the custom puzzles landed. Same model, same team, same puzzle design each month. The only variable that moved is <strong style="color:#fff;">how many bars know you exist.</strong></p>
+    </div>
+
+    <div class="math-wrap reveal d1">
+      <div class="math-scroll">
+      <table class="mt">
+        <thead>
+          <tr>
+            <th>&nbsp;</th>
+            <th>Today</th>
+            <th>At 100 venues</th>
+            <th>At 130 venues</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Venues per month</td>
+            <td class="mt-now">65</td>
+            <td>100</td>
+            <td class="mt-next">130</td>
+          </tr>
+          <tr>
+            <td>Teams per month <span style="opacity:.6">(~5 avg)</span></td>
+            <td class="mt-now">325</td>
+            <td>500</td>
+            <td class="mt-next">650</td>
+          </tr>
+          <tr>
+            <td>Ticket revenue / mo <span style="opacity:.6">($40/team)</span></td>
+            <td class="mt-now">$13,000</td>
+            <td>$20,000</td>
+            <td class="mt-next">$26,000</td>
+          </tr>
+          <tr>
+            <td>Puzzle cost / team</td>
+            <td class="mt-now">$15</td>
+            <td>$6</td>
+            <td class="mt-next">$6</td>
+          </tr>
+          <tr>
+            <td>Gross margin / month</td>
+            <td class="mt-now">$8,125</td>
+            <td>$17,000</td>
+            <td class="mt-next">$22,100</td>
+          </tr>
+          <tr class="mt-hi">
+            <td>Annualized gross margin</td>
+            <td class="mt-now">$97,500</td>
+            <td>$204,000</td>
+            <td class="mt-next">$265,200</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="math-foot">Built from your own numbers on the call: ~65 venues, ~$13k/mo gross, $40 tickets, $15 puzzles today and ~$6 landed once the custom run arrives. Shipping and overhead sit outside this table and are yours either way.</div>
+    </div>
+
+    <div class="delta-row reveal d2">
+      <div class="delta">
+        <div class="delta-num">+$35k</div>
+        <div class="delta-lbl">A year in extra margin from the puzzle cost cut alone — at your <em>current</em> 65 venues, zero growth required</div>
+      </div>
+      <div class="delta">
+        <div class="delta-num">+$168k</div>
+        <div class="delta-lbl">A year in extra margin at 130 venues with the new cost structure — vs. where you are today</div>
+      </div>
+      <div class="delta">
+        <div class="delta-num">2.7×</div>
+        <div class="delta-lbl">The annual margin, from doubling venue count. Same puzzle. Same team. Same you.</div>
+      </div>
+    </div>
+
+    <div class="bet-box reveal d3">
+      <p><strong style="color:#fff;">Then there's the number you actually care about.</strong> You sold your first trivia company to Geeks Who Drink in 2016. You expect them to come for this one. Whatever multiple they put on Puzzle Buzz — and they set that number, not us — it gets applied to whatever the business is doing at the time. A company at <strong style="color:#fff;">$97k of annual margin and 65 venues</strong> and a company at <strong style="color:#fff;">$265k and 130 venues</strong> do not get the same offer. Same multiple, very different check. And the 130-venue version is also the version that's harder to walk away from, because you're no longer a regional test — you're national coverage they'd have to build from scratch.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════ 05 — THE OUTREACH ENGINE ══════════════════════════ -->
+<section id="outreach" class="section section--light">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">05 — How We Actually Get There</div>
+      <h2>Stop finding bars one at a time.</h2>
+      <div class="divider"></div>
+      <p style="max-width:700px;">You're capped at about 20 sends a day from your own inbox before Google starts flagging you, and every one of those addresses was hand-dug off a Facebook page. We run <strong style="color:var(--dark);">2,000 warmed inboxes sending 40,000+ emails a week</strong>, currently pulling a <strong style="color:var(--dark);">4% response rate — roughly four times the market average of ~1%.</strong> Pointed at bars and breweries, here's what a conservative month looks like:</p>
+    </div>
+
+    <div class="funnel reveal d1">
+      <div class="fstep">
+        <div class="fstep-n">Step 01</div>
+        <div class="fstep-num">5,000</div>
+        <div class="fstep-lbl">Scraped, verified venue contacts emailed per month — a fraction of our capacity</div>
+      </div>
+      <div class="fstep">
+        <div class="fstep-n">Step 02</div>
+        <div class="fstep-num">200</div>
+        <div class="fstep-lbl">Replies at a 4% response rate — real conversations with real venues</div>
+      </div>
+      <div class="fstep">
+        <div class="fstep-n">Step 03</div>
+        <div class="fstep-num">30</div>
+        <div class="fstep-lbl">Book a first event at a 15% close — easy, because it's <em>free</em> for the venue</div>
+      </div>
+      <div class="fstep">
+        <div class="fstep-n">Step 04</div>
+        <div class="fstep-num">6 mo</div>
+        <div class="fstep-lbl">To double venue count even after churn and no-shows — at ~10–12 net adds a month</div>
+      </div>
+    </div>
+
+    <p class="reveal d2" style="max-width:700px;margin-top:36px;">Notice what makes this different from normal cold email: <strong style="color:var(--dark);">you have no price objection.</strong> There's nothing to negotiate, no budget approval, no procurement. A bar owner reads "free entertainment night, we bring everything, your bartender runs it, you keep the bar tab" and the only question left is whether it'll fill the room. That's a conversion rate most offers can't touch — and it's why 15% is a conservative number, not an optimistic one.</p>
+
+    <p class="reveal d2" style="max-width:700px;margin-top:20px;">There are tens of thousands of bars, taprooms, and craft breweries in the U.S. running some kind of weeknight entertainment. You're in 65 of them. That's not market saturation — that's the amount of ground one person can cover by hand.</p>
+
+    <div class="callout reveal d3">
+      <h4>And this is where the social feed stops being a vanity metric.</h4>
+      <p>A bar owner who gets your email looks you up before replying. Right now they find one still photo per venue and a swapped-logo template. If they find 20,000 followers and packed rooms on video, the answer to <em>"will this fill my room?"</em> is already answered before you speak. That's why we'd pay venues ~$20 to film a few minutes of each competition — 65 venues a month becomes a content pipeline that makes every cold email land warmer.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════ 06 — ROADMAP ══════════════════════════ -->
+<section id="roadmap" class="section">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">06 — The Roadmap</div>
+      <h2>There are really only two decisions here.</h2>
+      <div class="divider"></div>
+      <p style="max-width:680px;">Take the build and we part as friends — you keep three automations that run forever and you never pay us again. Or take the build <em>and</em> turn on growth, and we go get the venues. Both are legitimate answers. They just lead to very different places twelve months out.</p>
+    </div>
+
+    <div class="tl-wrap" style="margin-top:60px;">
+      <div class="tl-spine"></div>
+
+      <!-- Path A -->
+      <div class="tl-phase p1 reveal d1">
+        <div class="tl-label">
+          <div class="tl-badge">Option A</div>
+          <h3>The Build. Then done.</h3>
+          <div class="tl-dur">$5,000 · ~3 weeks</div>
+        </div>
+        <div class="tl-card">
+          <div class="sprint-badge">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            A complete, finished answer
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div><h4>Week 1 — winner post generator live</h4><p>We start with the thing that annoys you most, so you can judge the work before the rest is built. Button in the event log, five fields into Canva, done.</p></div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div><h4>Weeks 2–3 — VIP email drafter + event page creation</h4><p>The other two button-press workflows, wired into the same event log so there's one place you work from.</p></div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div><h4>Handover, and that's the end of it</h4><p>Documentation, walkthrough, and every automation sitting inside your Coda under your accounts. No monthly, no renewal, no call in ninety days asking how it's going.</p></div>
+          </div>
+          <div class="sprint-guarantee">This is a real option and we'll build it happily. Be clear-eyed about what it is, though: it gives you back evenings. It does not add a single venue. You'd still be finding bar #66 the same way you found bar #65.</div>
+        </div>
+      </div>
+
+      <!-- Path B -->
+      <div class="tl-phase p3 reveal d2">
+        <div class="tl-label">
+          <div class="tl-badge">Option B</div>
+          <h3>The Build, then all in.</h3>
+          <div class="tl-dur">$5,000 + monthly</div>
+        </div>
+        <div class="tl-card">
+          <div class="sprint-badge" style="color:#7C3AED;background:rgba(168,85,247,.1)">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            The version that changes the business
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div><h4>Same three-week build — then the engine turns on</h4><p>Domains bought and inboxes warmed while the automations are being built, so there's no dead month between signing and sending.</p></div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div><h4>Month 1–2 — the venue list, built properly</h4><p>Apify pipelines by metro, verified and deduped against your existing ~2,200 contacts. We build the target map city by city, so expansion is deliberate instead of wherever Instagram's algorithm happened to send you.</p></div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div><h4>Month 2+ — sequences at volume, replies into Coda</h4><p>The free-to-the-venue angle is already a strong offer. It just needs to reach thousands of bars instead of twenty a day. Replies land in your CRM where your Claude task already drafts responses.</p></div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div><h4>Ongoing — the brand, and whatever breaks next</h4><p>At the top level we run the social account off venue-shot footage, so a bar owner who looks you up finds packed rooms instead of one still photo. And when 130 venues breaks something that 65 didn't, we build for that too.</p></div>
+          </div>
+          <div class="sprint-guarantee" style="background:rgba(168,85,247,.08);border-color:rgba(168,85,247,.22);color:#6B21A8">Same build, same three weeks, same ownership. The only difference is whether anyone is out there finding venues while you run the ones you've got.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════ 07 — THE STACK ══════════════════════════ -->
+<section id="stack" class="section section--dark">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">07 — How We Build</div>
+      <h2 style="color:#fff;">The technical architecture.</h2>
+      <div class="divider"></div>
+      <p style="max-width:640px;">You've spent five years building the Coda setup and you already have Claude reading and writing to it. That stays exactly where it is. We add the two layers it can't do on its own — and the sending infrastructure you'd need months to warm up yourself.</p>
+    </div>
+    <div class="stack-wrap reveal d1">
+      <div class="stack-node">
+        <div class="stack-head"><span class="tech-tag">Your Systems</span><h3>Coda + Claude + Checkoutpage</h3></div>
+        <p>The CRM, the master event log, your Claude integration, and your ticketing — all untouched. This is the system of record and it stays yours.</p>
+        <ul class="stack-chips"><li>Coda / Superhuman</li><li>Claude (read + write)</li><li>checkoutpage.com</li><li>Pirate Ship / UPS</li><li>Canva</li></ul>
+      </div>
+      <div class="stack-conn">
+        <div class="conn-line"></div>
+        <div class="conn-label">buttons + webhooks · staged, not one-shot</div>
+        <div class="conn-line"></div>
+      </div>
+      <div class="stack-node">
+        <div class="stack-head"><span class="tech-tag">Automation Layer</span><h3>The Three Builds</h3></div>
+        <p>What Coda buttons can't do alone — multi-step image compositing, drafted email generation, and bulk event-page creation.</p>
+        <ul class="stack-chips"><li>Winner post generator</li><li>VIP email drafter</li><li>Event page creation</li></ul>
+      </div>
+      <div class="stack-conn">
+        <div class="conn-line"></div>
+        <div class="conn-label">verified contacts flow in · replies flow back</div>
+        <div class="conn-line"></div>
+      </div>
+      <div class="stack-node">
+        <div class="stack-head"><span class="tech-tag gr">Growth Layer</span><h3>Apify + 2,000 Warmed Inboxes</h3></div>
+        <p>Scraping and sending at a volume no personal inbox can reach. Runs on our infrastructure so your domain reputation never takes the hit — and every reply lands back in your Coda.</p>
+        <div class="stack-apps">
+          <div class="stack-app"><div class="app-name">Apify</div><div class="app-desc">venue scraping</div></div>
+          <div class="stack-app"><div class="app-name">Inbox network</div><div class="app-desc">40k+ / week</div></div>
+          <div class="stack-app"><div class="app-name">Social engine</div><div class="app-desc">venue-shot video</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════ 08 — THE SHIFT ══════════════════════════ -->
+<section id="shift" class="section">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">08 — The Shift</div>
+      <h2>Where you are. Where you're going.</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="gap-grid reveal d1" style="--x:0">
+      <div class="gap-card" style="background:var(--light);border:1px solid var(--border)">
+        <div class="gap-label" style="color:var(--muted)">Puzzle Buzz Today</div>
+        <div class="gap-items">
+          <div class="gap-item" style="background:var(--red-bg);color:#B32218">Venues found by hand, one Instagram trail at a time</div>
+          <div class="gap-item" style="background:var(--red-bg);color:#B32218">~20 emails/day before Google flags your inbox</div>
+          <div class="gap-item" style="background:var(--red-bg);color:#B32218">Winners acknowledged inconsistently — or not at all</div>
+          <div class="gap-item" style="background:var(--red-bg);color:#B32218">Venues quitting once they realize they can run it themselves</div>
+          <div class="gap-item" style="background:var(--red-bg);color:#B32218">~$1,500 of puzzles sitting at venues, untracked</div>
+        </div>
+      </div>
+
+      <div class="gap-mid">
+        <div class="gap-arrow" style="color:var(--border)">→</div>
+        <div class="gap-diff" style="color:#1a7a38">Systems<br><span style="color:var(--muted)">the difference</span></div>
+      </div>
+
+      <div class="gap-card" style="background:#fff;border:1px solid var(--border)">
+        <div class="gap-label" style="color:var(--muted)">Puzzle Buzz Systemized</div>
+        <div class="gap-items">
+          <div class="gap-item" style="background:var(--green-bg);color:#1a7a38">Thousands of venues contacted a month, by metro, on purpose</div>
+          <div class="gap-item" style="background:var(--green-bg);color:#1a7a38">40,000+ emails a week off infrastructure that can take it</div>
+          <div class="gap-item" style="background:var(--green-bg);color:#1a7a38">Every winning team posted — one button, every time</div>
+          <div class="gap-item" style="background:var(--green-bg);color:#1a7a38">Custom puzzles + a real brand: nothing left to replicate</div>
+          <div class="gap-item" style="background:var(--green-bg);color:#1a7a38">Every puzzle tracked, chased, and returned</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="reveal d2" style="max-width:700px;margin-top:36px;font-size:18px;color:var(--dark);font-weight:600;">The custom puzzle solves the moat. The outreach solves the ceiling. You're already handling the first one — this proposal is about the second.</p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════ 09 — INVESTMENT ══════════════════════════ -->
+<section id="investment" class="section section--light">
+  <div class="wrap--wide">
+    <div class="reveal" style="text-align:center;">
+      <div class="eyebrow">09 — Investment</div>
+      <h2>The build is one price. Growth is a choice.</h2>
+      <div class="divider divider--c"></div>
+      <p style="max-width:660px;margin:0 auto;">The $5,000 stands entirely on its own — it carries no monthly and requires no commitment. Everything below it is separate, month-to-month, and cancellable anytime with everything staying yours.</p>
+    </div>
+
+    <!-- The build, standalone -->
+    <div class="build-box reveal d1">
+      <div class="build-left">
+        <div class="tier-name">Part One · The Build</div>
+        <div class="tier-price">$5,000<span> one-time</span></div>
+        <div class="tier-setup">No monthly. No commitment. Ever.</div>
+        <p style="font-size:14.5px;margin-top:14px;max-width:340px;">Three automations built into your Coda and handed over. ~3 weeks, winner posts live in week one.</p>
+      </div>
+      <div class="build-right">
+        <ul class="tier-feats">
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Winner post generator — button to Canva</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>VIP winner email drafter</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Auto-created monthly event pages</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Documentation + handover so you can extend it</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="reveal d1" style="text-align:center;margin:52px 0 0;">
+      <div class="part-rule"><span>Part Two · Growth — pick one, or none</span></div>
+    </div>
+
+    <div class="tier-grid">
+      <!-- Tier 1 -->
+      <div class="tier-card reveal d1">
+        <div class="tier-name">Outreach Engine</div>
+        <div class="tier-price">$1,500<span> / mo</span></div>
+        <div class="tier-setup">Separate from the build</div>
+        <div class="tier-tag">We point our sending infrastructure at bars and breweries nationwide and fill your pipeline. You keep doing everything else.</div>
+        <div class="tier-inc">What's included</div>
+        <ul class="tier-feats">
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Domains + warmed inboxes on our infrastructure</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Apify venue scraping — verified lists by metro</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Sequence copywriting + weekly A/B testing</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Deliverability management + domain protection</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Replies routed into your Coda CRM</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Monthly pipeline reporting by metro</li>
+        </ul>
+        <div class="tier-block">
+          <div class="tier-block-h">Social media</div>
+          <p>Not included. You keep running the feed exactly as you do today.</p>
+        </div>
+        <div class="tier-block">
+          <div class="tier-block-h">Best for</div>
+          <p>Venue growth and nothing else. The cheapest path to 100.</p>
+        </div>
+        <div class="tier-roi">At $34 margin per team, <strong>~9 extra teams a month</strong> covers it. Two new venues and you're ahead.</div>
+      </div>
+
+      <!-- Tier 2 -->
+      <div class="tier-card reveal d2">
+        <div class="tier-name">Outreach + Automation</div>
+        <div class="tier-price">$3,500<span> / mo</span></div>
+        <div class="tier-setup">Separate from the build</div>
+        <div class="tier-tag">The engine, plus a standing line on our build team — so the automations keep coming as new bottlenecks appear at scale.</div>
+        <div class="tier-inc">Everything in Outreach Engine, plus</div>
+        <ul class="tier-feats">
+          <li class="tier-feat lead"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Everything in Outreach Engine</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Higher send volume as the venue map expands</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Puzzle return tracker + automated chase sequence</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Ongoing automation — one new system a month</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Social strategy, systems &amp; content workflows</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Weekly strategy call — direct access to Kimball</li>
+        </ul>
+        <div class="tier-block">
+          <div class="tier-block-h">Social media</div>
+          <p>Strategy, systems, and workflows from us — you and your VA still execute the posting.</p>
+        </div>
+        <div class="tier-block">
+          <div class="tier-block-h">Best for</div>
+          <p>Growing venue count while the back office keeps up with it.</p>
+        </div>
+        <div class="tier-roi">Costs <strong>$42k a year.</strong> Doubling venue count is worth <strong>~$168k a year</strong> in margin.</div>
+      </div>
+
+      <!-- Tier 3 (featured) -->
+      <div class="tier-card featured reveal d3">
+        <div class="tier-flag">★ Recommended</div>
+        <div class="tier-name">Growth Partner</div>
+        <div class="tier-price">$4,500<span> / mo</span></div>
+        <div class="tier-setup">Separate from the build</div>
+        <div class="tier-tag">Everything above, plus we run the social account off real footage from your venues. The brand is what makes the cold email convert.</div>
+        <div class="tier-inc">Everything in Outreach + Automation, plus</div>
+        <ul class="tier-feats">
+          <li class="tier-feat lead"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Everything in Outreach + Automation</li>
+          <li class="tier-feat star"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Full social media management — editing, posting, growth</li>
+          <li class="tier-feat star"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Venue filming program — 65+ events become a content pipeline</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Daily posting cadence across platforms</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Creative built for the speed-puzzle rule — palette and elements, never the image</li>
+          <li class="tier-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Highest outreach volume + priority turnaround</li>
+        </ul>
+        <div class="tier-block">
+          <div class="tier-block-h">Social media</div>
+          <p>We run it. Venues capture the footage, we edit, post, and grow the account — daily cadence, real video instead of one still per venue.</p>
+        </div>
+        <div class="tier-block">
+          <div class="tier-block-h">Best for</div>
+          <p>Getting to 100 venues fast and building the brand that makes Puzzle Buzz worth buying.</p>
+        </div>
+        <div class="tier-roi">Costs <strong>$54k a year.</strong> Still less than a third of the <strong>~$168k</strong> that doubling venue count puts on the table.</div>
+      </div>
+    </div>
+
+    <div class="rec-box reveal d4">
+      <h4><span>★ Our recommendation:</span> the $5,000 build now, Growth Partner when the custom stock lands.</h4>
+      <p>You were straight with me about cash — you're carrying this month's puzzles <em>and</em> the manufacturing run at the same time, and that clears in about 90 days. So don't force it. <strong>Take the build now.</strong> It's one-time, it kills your biggest frustration, and you'll know inside a week whether we're any good.</p>
+      <p>Then when the custom puzzles land in Atlanta and your margin per team goes from $25 to $34, <strong>that's the moment to turn on growth.</strong> Your cost structure just improved by a third and you've got a moat nobody can copy — that is precisely the wrong month to still be finding venues one Instagram trail at a time. If $4,500 feels heavy on the day, start at $1,500 and add the social once the venue count is climbing. The ladder exists so you never have to buy more than you're ready for.</p>
+    </div>
+
+    <p class="reveal d4" style="margin-top:24px;font-size:14px;color:var(--muted);">Month-to-month · the one-time build carries no ongoing commitment · you own 100% of everything we build.</p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════ 10 — HOW WE WORK ══════════════════════════ -->
+<section id="how" class="section section--dark">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">10 — How Every Engagement Runs</div>
+      <h2 style="color:#fff;">The same promises at every level.</h2>
+      <div class="divider"></div>
+      <p style="max-width:600px;">Whether you take the build alone or the whole flywheel, the way we work doesn't change.</p>
+    </div>
+    <ul class="cl reveal d1">
+      <li class="cl-item" style="border-color:rgba(255,255,255,.1)">
+        <div class="cl-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="cl-body">
+          <strong style="color:#fff">You talk to Kimball. Every call.</strong>
+          <span style="color:rgba(255,255,255,.55)">No account managers, no handoffs, no "let me check with the team." You're technical — you'd see through it in a week anyway.</span>
+        </div>
+      </li>
+      <li class="cl-item" style="border-color:rgba(255,255,255,.1)">
+        <div class="cl-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="cl-body">
+          <strong style="color:#fff">One piece at a time — prove it, then scale</strong>
+          <span style="color:rgba(255,255,255,.55)">The winner post generator ships in week one so you can judge the work before you've spent the rest.</span>
+        </div>
+      </li>
+      <li class="cl-item" style="border-color:rgba(255,255,255,.1)">
+        <div class="cl-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="cl-body">
+          <strong style="color:#fff">A team behind the relationship</strong>
+          <span style="color:rgba(255,255,255,.55)">You talk to Kimball. Behind him is a team of 12–14 plus two partners in Salt Lake handling fulfillment — so things actually get built, fast.</span>
+        </div>
+      </li>
+      <li class="cl-item" style="border-color:rgba(255,255,255,.1)">
+        <div class="cl-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="cl-body">
+          <strong style="color:#fff">You own everything</strong>
+          <span style="color:rgba(255,255,255,.55)">Every automation lives in your Coda, every account in your name. Month-to-month. Cancel and keep all of it — which matters when the buyer does diligence.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════ 11 — NEXT STEPS ══════════════════════════ -->
+<section id="next" class="section section--light" style="text-align:center;">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">11 — Next Steps</div>
+      <h2>Here's what happens next.</h2>
+      <div class="divider divider--c"></div>
+    </div>
+    <ol class="steps reveal d1">
+      <li>
+        <div class="step-n">1</div>
+        <div class="step-b">
+          <h4>Read it, then poke holes in it</h4>
+          <p>You asked for time to think about the number, and that was the right call — you couldn't value the automations before knowing what they'd save you. Sections 03 and 04 are the answer to that question. Bring every objection.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-n">2</div>
+        <div class="step-b">
+          <h4>We talk <span class="step-highlight">Friday, July 31</span></h4>
+          <p>Twenty minutes on which of the three you start with. If the answer is the $5,000 build and nothing else until November, that's a completely reasonable answer and we'll build it.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-n">3</div>
+        <div class="step-b">
+          <h4>Winner posts working within a week of go</h4>
+          <p>No onboarding month. We start on the thing that's been annoying you since October 2024, and you'll know inside seven days whether this was worth it.</p>
+        </div>
+      </li>
+    </ol>
+    <div class="reveal d2">
+      <a href="mailto:kimball@disruptorsmedia.com?subject=Puzzle%20Buzz%20%2F%2F%20Proposal%20Question" class="btn" style="margin-top:48px;">Email Kimball →</a>
+      <p style="margin-top:18px;font-size:14px;">
+        Questions before Friday? <a href="mailto:kimball@disruptorsmedia.com?subject=Puzzle%20Buzz%20%2F%2F%20Proposal%20Question" style="color:var(--blue);font-weight:600;text-decoration:none;">kimball@disruptorsmedia.com</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════ FOOTER ══════════════════════════ -->
+<footer>
+  <div class="ft-logo">Disruptors Media</div>
+  <div style="font-size:13px;margin-bottom:8px;">Fractional Chief AI Officer · AI Systems &amp; Implementation</div>
+  <div class="ft-links"><a href="mailto:kimball@disruptorsmedia.com?subject=Puzzle%20Buzz%20%2F%2F%20Proposal%20Question">kimball@disruptorsmedia.com</a></div>
+  <div class="ft-exp">
+    Prepared exclusively for Puzzle Buzz · Mike Driscoll<br>
+    July 28, 2026
+  </div>
+</footer>
+
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
