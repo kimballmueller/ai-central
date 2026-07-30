@@ -375,11 +375,28 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
 
 /* ── PRINT ── */
 @media print{
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
   .reveal{opacity:1!important;transform:none!important}
   .scroll-cue,.nav{display:none}
-  #hero{min-height:auto;padding:50px 24px}
-  .section{padding:50px 24px}
-  .painbig{animation:none}
+  @page{margin:0}
+  body{padding:0}
+  #hero{min-height:auto;padding:64px 34px 48px;animation:none!important;opacity:1!important}
+  #hero::before{display:none}
+  .hero-title,.hero-sub,.hero-meta{opacity:1!important}
+  .section{padding:30px 34px;page-break-inside:auto}
+  .painbig{animation:none;padding:32px 28px}
+  .eng,.tier-card,.door,.av-card,.pain-card,.win-row,.ledger-row,.sig-row{page-break-inside:avoid}
+  .tl-phase{page-break-inside:avoid}
+  h1{font-size:40px}h2{font-size:26px}h3{font-size:17px}
+  p,.lede{font-size:13.5px!important;line-height:1.5}
+  .stat-num{font-size:36px}.painbig-num{font-size:64px}
+  .eng-list{gap:10px}.eng{padding:18px 20px}
+  .faq details{page-break-inside:avoid}
+  .faq details p{display:block!important}
+  h2,h3{page-break-after:avoid}
+  a{text-decoration:none;color:inherit}
+  .srcs a{color:var(--blue)}
+  footer{padding:30px 34px}
 }
 
 /* ── RESPONSIVE ── */
