@@ -272,6 +272,49 @@ table.dt tr.hi td:first-child{font-size:14px;color:var(--muted)}
 .delta-num{font-size:34px;font-weight:700;letter-spacing:-.03em;color:#4ADE80;line-height:1;margin-bottom:8px}
 .delta-lbl{font-size:12.5px;color:rgba(255,255,255,.5);line-height:1.45}
 
+/* ── CASE STUDIES ── */
+.cs-list{display:flex;flex-direction:column;gap:30px;margin-top:52px}
+.cs{background:var(--white);border:1px solid var(--border);border-radius:24px;overflow:hidden;box-shadow:0 2px 18px rgba(0,0,0,.06);transition:box-shadow .25s,transform .25s}
+.cs:hover{box-shadow:0 14px 44px rgba(0,0,0,.11);transform:translateY(-3px)}
+.cs-head{display:flex;align-items:center;gap:18px;padding:26px 32px;position:relative;overflow:hidden;color:#fff}
+.cs-head::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:34px 34px;pointer-events:none}
+.cs.a .cs-head{background:linear-gradient(115deg,#0057C8 0%,#0071E3 46%,#5E5CE6 100%)}
+.cs.b .cs-head{background:linear-gradient(115deg,#0E6B52 0%,#16906B 48%,#2FB37C 100%)}
+.cs.c .cs-head{background:linear-gradient(115deg,#C2410C 0%,#EA7317 50%,#FF9F0A 100%)}
+.cs.d .cs-head{background:linear-gradient(115deg,#5B21B6 0%,#7C3AED 50%,#A855F7 100%)}
+.cs-mark{width:52px;height:52px;border-radius:14px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1}
+.cs-id{position:relative;z-index:1;min-width:0}
+.cs-id h3{font-size:21px;color:#fff;letter-spacing:-.015em;line-height:1.2}
+.cs-cat{font-size:12.5px;color:rgba(255,255,255,.74);margin-top:4px;line-height:1.45}
+.cs-flag{margin-left:auto;text-align:right;position:relative;z-index:1;padding-left:18px}
+.cs-flag b{display:block;font-size:27px;font-weight:700;letter-spacing:-.025em;color:#fff;line-height:1;font-variant-numeric:tabular-nums}
+.cs-flag span{display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.66);margin-top:6px}
+.cs-body{display:grid;grid-template-columns:1fr 1fr}
+.cs-col{padding:28px 32px}
+.cs-col+.cs-col{border-left:1px solid var(--border)}
+.cs-h5{font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.cs-col>p{font-size:14.5px;color:var(--dark);line-height:1.55;margin-bottom:12px;font-weight:500}
+.cs-ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.cs-ul li{display:flex;gap:10px;font-size:13.5px;color:var(--muted);line-height:1.55}
+.cs-ul li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--border);flex-shrink:0;margin-top:8px}
+.cs.a .cs-col--sol .cs-ul li::before{background:var(--blue)}
+.cs.b .cs-col--sol .cs-ul li::before{background:#16906B}
+.cs.c .cs-col--sol .cs-ul li::before{background:#EA7317}
+.cs.d .cs-col--sol .cs-ul li::before{background:#7C3AED}
+.cs-metrics{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border);background:var(--light)}
+.cs-metric{padding:24px 18px;text-align:center;border-left:1px solid var(--border)}
+.cs-metric:first-child{border-left:none}
+.cs-metric b{display:block;font-size:31px;font-weight:700;letter-spacing:-.03em;color:var(--dark);line-height:1;font-variant-numeric:tabular-nums}
+.cs-metric.sm b{font-size:22px;letter-spacing:-.02em;padding-top:6px}
+.cs-metric span{display:block;font-size:12px;color:var(--muted);line-height:1.45;margin-top:9px}
+.cs.a .cs-metric b{color:#0057C8}.cs.b .cs-metric b{color:#0E7A5C}
+.cs.c .cs-metric b{color:#C2410C}.cs.d .cs-metric b{color:#6D28D9}
+.cs-quote{padding:20px 32px;border-top:1px solid var(--border);font-size:15px;font-style:italic;color:var(--dark);line-height:1.55}
+.cs-rel{display:flex;gap:11px;padding:17px 32px;border-top:1px solid rgba(0,113,227,.14);background:rgba(0,113,227,.045);font-size:13.5px;color:var(--blue);font-weight:600;line-height:1.55}
+.cs-rel span{flex-shrink:0}
+.cs-note{margin-top:34px;padding:20px 26px;background:var(--white);border:1px solid var(--border);border-radius:14px;font-size:13.5px;color:var(--muted);line-height:1.7}
+.cs-note strong{color:var(--dark)}
+
 /* ── DOORS (PRICING) ── */
 .door-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:56px;align-items:stretch}
 .door{background:var(--white);border:1px solid var(--border);border-radius:24px;padding:38px 34px;display:flex;flex-direction:column;box-shadow:0 2px 16px rgba(0,0,0,.05);position:relative}
@@ -385,7 +428,14 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
   .hero-title,.hero-sub,.hero-meta{opacity:1!important}
   .section{padding:30px 34px;page-break-inside:auto}
   .painbig{animation:none;padding:32px 28px}
-  .eng,.tier-card,.door,.av-card,.pain-card,.win-row,.ledger-row,.sig-row{page-break-inside:avoid}
+  .eng,.tier-card,.door,.av-card,.pain-card,.win-row,.ledger-row,.sig-row,.cs{page-break-inside:avoid}
+  .cs:hover{transform:none;box-shadow:0 2px 18px rgba(0,0,0,.06)}
+  .cs-list{gap:16px}
+  .cs-head{padding:18px 22px}
+  .cs-col{padding:18px 22px}
+  .cs-metric{padding:16px 12px}
+  .cs-metric b{font-size:24px}.cs-metric.sm b{font-size:18px}
+  .cs-quote,.cs-rel{padding:13px 22px}
   .tl-phase{page-break-inside:avoid}
   h1{font-size:40px}h2{font-size:26px}h3{font-size:17px}
   p,.lede{font-size:13.5px!important;line-height:1.5}
@@ -420,6 +470,17 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
   .ledger-row{grid-template-columns:1fr;gap:10px}
   .eng-when{margin-left:0}
   .eng{padding:26px 22px}
+  .cs-head{flex-wrap:wrap;gap:14px;padding:22px 22px}
+  .cs-flag{margin-left:0;text-align:left;padding-left:0;width:100%;border-top:1px solid rgba(255,255,255,.2);padding-top:14px}
+  .cs-flag b{font-size:24px}
+  .cs-body{grid-template-columns:1fr}
+  .cs-col{padding:22px}
+  .cs-col+.cs-col{border-left:none;border-top:1px solid var(--border)}
+  .cs-metrics{grid-template-columns:repeat(2,1fr)}
+  .cs-metric:nth-child(odd){border-left:none}
+  .cs-metric:nth-child(n+3){border-top:1px solid var(--border)}
+  .cs-metric:last-child:nth-child(odd){grid-column:1/-1}
+  .cs-quote,.cs-rel{padding:18px 22px}
 }
 </style>
 </head>
@@ -439,6 +500,7 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
     <a href="#partners">Partners</a>
     <a href="#ninety">90 Days</a>
     <a href="#math">Math</a>
+    <a href="#proof">Proof</a>
     <a href="#whyus">Why Us</a>
     <a href="#investment">Investment</a>
     <a href="#faq">FAQ</a>
@@ -473,7 +535,7 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
         <div class="stat"><div class="stat-num">1</div><div class="stat-label">New client covers a full year of this engagement</div></div>
       </div>
       <p style="font-size:16.5px">You rated your own marketing a one out of ten, then said the thing that matters more: <em>"that's the Achilles heel — the pace at which we can grow, due to deal flow."</em> Not delivery. Not talent. Not capital. You have a bundle nobody else runs, a 50% close rate on referred deals, a recruiting pipeline out of the Big Four, and a private equity partner ready to fund ten or twenty million.</p>
-      <p style="font-size:16.5px;margin-top:14px"><strong style="color:var(--dark)">The only broken part of this machine is the part that finds people to sell to</strong> — and it is the cheapest problem on your list to fix. Section 01 is what it's costing. Section 11 is what it costs to fix. Everything in between is how.</p>
+      <p style="font-size:16.5px;margin-top:14px"><strong style="color:var(--dark)">The only broken part of this machine is the part that finds people to sell to</strong> — and it is the cheapest problem on your list to fix. Section 01 is what it's costing. Section 12 is what it costs to fix. Everything in between is how.</p>
     </div>
   </div>
 </section>
@@ -728,7 +790,7 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
       </div>
       <p style="font-size:16.5px">Nobody hands over their books, their receivables, and eventually their company because a well-targeted ad found them. They do it because someone they trust vouched for you, or because the first thing you said demonstrated you already understood their situation. That is how this industry has always worked, and no amount of technology changes it.</p>
       <p style="font-size:16.5px;margin-top:16px">So it's worth being clear about what this engagement is not. <strong style="color:var(--dark)">It is not ten thousand Meta ads and a dashboard.</strong> We will test a great deal — messaging, channels, partner categories, industries — because you have to test to find what works. But the thing being tested is always <em>quality</em>: did this produce a conversation with someone who genuinely fits, and did we earn the right to have it?</p>
-      <p style="font-size:16.5px;margin-top:16px">Everything after this section is built around that. The trigger data in section 05 exists so the first sentence out of your mouth is informed rather than generic. The partner program in section 07 exists because a warm introduction outperforms anything we could buy. The content in section 06 exists so that when someone checks you out, they find a person with a track record instead of a logo. And the scoreboard in section 12 counts conversations and qualified opportunities — never impressions, never clicks, never emails sent.</p>
+      <p style="font-size:16.5px;margin-top:16px">Everything after this section is built around that. The trigger data in section 05 exists so the first sentence out of your mouth is informed rather than generic. The partner program in section 07 exists because a warm introduction outperforms anything we could buy. The content in section 06 exists so that when someone checks you out, they find a person with a track record instead of a logo. And the scoreboard in section 13 counts conversations and qualified opportunities — never impressions, never clicks, never emails sent.</p>
       <div class="callout">
         <h4>Put simply</h4>
         <p>The way you serve clients is the way we intend to go and find them. Slowly enough to be credible, systematically enough to be repeatable, and at a volume small enough that every single touch can still be worth receiving.</p>
@@ -934,7 +996,7 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
           <div><h5>Out</h5><p>Every contact in a pipeline with a stage, an owner, and an automatic next action</p></div>
         </div>
         <ul class="eng-chips"><li>GoHighLevel CRM</li><li>Pipeline + stages</li><li>Automated follow-up</li><li>Call + SMS</li><li>Website rebuild</li><li>Instant text-back</li><li>Attribution</li></ul>
-        <div class="eng-note"><strong>Why it comes first:</strong> it's also the only way a performance-based partnership can work. Nothing at Blalock is attributable today, so nothing can be fairly shared. This system and section 11 are the same conversation.</div>
+        <div class="eng-note"><strong>Why it comes first:</strong> it's also the only way a performance-based partnership can work. Nothing at Blalock is attributable today, so nothing can be fairly shared. This system and section 12 are the same conversation.</div>
       </div>
 
       <div class="eng reveal d1">
@@ -1157,11 +1219,204 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
   </div>
 </section>
 
-<!-- ══ 10 · WHY US ══ -->
+<!-- ══ 10 · PROOF ══ -->
+<section class="section" id="proof">
+  <div class="wrap wrap--wide">
+    <div class="reveal">
+      <div class="eyebrow">10 — Proof</div>
+      <h2>Four times we've done this already.</h2>
+      <div class="divider"></div>
+      <p class="lede">Every proposal you read will promise pipeline. These are four engagements where the same machine described in section 06 — signal-driven outbound, an owned CRM, speed-to-lead, and content that makes the follow-up land — was built and then measured. Two of them sell professional services to business owners, which is your exact motion. Two of them sit in the trades, which is your exact market.</p>
+    </div>
+
+    <div class="cs-list">
+
+      <!-- SegPro -->
+      <div class="cs a reveal d1">
+        <div class="cs-head">
+          <div class="cs-mark">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 17v-3"/><path d="M12 17v-6"/><path d="M15 17v-4"/></svg>
+          </div>
+          <div class="cs-id">
+            <h3>SegPro Solutions</h3>
+            <div class="cs-cat">Cost segregation accounting practice · founded 2024 · sells a technical financial service to business owners</div>
+          </div>
+          <div class="cs-flag"><b>$20k → $125k</b><span>Monthly revenue</span></div>
+        </div>
+        <div class="cs-body">
+          <div class="cs-col">
+            <div class="cs-h5">Where they started</div>
+            <p>A brand-new practice with real expertise and no way to be found.</p>
+            <ul class="cs-ul">
+              <li>Relying solely on the founders' previous networks for every new client</li>
+              <li>Roughly $20k a month in revenue, entirely referral-dependent</li>
+              <li>No website worth sending anyone to, no organic presence at all</li>
+              <li>Nothing for a prospect to read between the first call and the decision</li>
+            </ul>
+          </div>
+          <div class="cs-col cs-col--sol">
+            <div class="cs-h5">What we built</div>
+            <p>An origination engine plus the credibility layer that makes it convert.</p>
+            <ul class="cs-ul">
+              <li>Rebuilt the entire website around the service, not the firm</li>
+              <li>Built a cost-segregation savings calculator as the lead magnet</li>
+              <li>Launched hundreds of city-level pages to capture regional search</li>
+              <li>Deployed automated cold outreach across LinkedIn and email</li>
+              <li>Produced video assets and filmed client case studies</li>
+            </ul>
+          </div>
+        </div>
+        <div class="cs-metrics">
+          <div class="cs-metric"><b>4</b><span>Sales reps kept in full pipeline</span></div>
+          <div class="cs-metric"><b>13.8k</b><span>Organic impressions in 5 months, from zero</span></div>
+          <div class="cs-metric"><b>$50k+</b><span>New sales from organic rankings alone</span></div>
+        </div>
+        <div class="cs-rel"><span>→</span><div>The closest analog in this deck to Blalock. A specialist financial service, sold to owner-operators, that had never been marketed and lived entirely on the founders' networks — the exact position you described on our call.</div></div>
+      </div>
+
+      <!-- TradeWork -->
+      <div class="cs b reveal d1">
+        <div class="cs-head">
+          <div class="cs-mark">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18a10 10 0 0 1 20 0"/><path d="M1 18h22"/><path d="M12 3a4 4 0 0 0-4 4v4"/><path d="M12 3a4 4 0 0 1 4 4v4"/><path d="M12 3v8"/></svg>
+          </div>
+          <div class="cs-id">
+            <h3>TradeWork</h3>
+            <div class="cs-cat">Contractor staffing agency &amp; consultancy · B2B services sold to construction and industrial operators</div>
+          </div>
+          <div class="cs-flag"><b>30 days</b><span>To positive return</span></div>
+        </div>
+        <div class="cs-body">
+          <div class="cs-col">
+            <div class="cs-h5">Where they started</div>
+            <p>A real business with a referral ceiling and an agency making it worse.</p>
+            <ul class="cs-ul">
+              <li>Infrequent new leads reaching a sales team that could handle far more</li>
+              <li>Word-of-mouth referrals as the only reliable source of new work</li>
+              <li>An outside marketing agency publishing generic AI filler in their name</li>
+              <li>Almost no social proof or online presence for a prospect to check</li>
+            </ul>
+          </div>
+          <div class="cs-col cs-col--sol">
+            <div class="cs-h5">What we built</div>
+            <p>The full system, owned by them, replacing the agency entirely.</p>
+            <ul class="cs-ul">
+              <li>Total rebuild of the website and the case study library</li>
+              <li>AI SEO agent wired directly into the site</li>
+              <li>B2B LinkedIn agents running outreach and founder content</li>
+              <li>5,000 cold emails a day off targeted, verified lists</li>
+              <li>Custom-built accounting and operations tool</li>
+              <li>CRM restructured for automated, disciplined follow-up</li>
+            </ul>
+          </div>
+        </div>
+        <div class="cs-metrics">
+          <div class="cs-metric"><b>+206%</b><span>Increase in organic search</span></div>
+          <div class="cs-metric"><b>$80k+</b><span>Agency overhead removed annually</span></div>
+          <div class="cs-metric"><b>3×</b><span>Post volume, at higher quality</span></div>
+        </div>
+        <div class="cs-quote">"These guys really understood our brand and what we stand for."</div>
+        <div class="cs-rel"><span>→</span><div>Contractor staffing sits inside your own target list — $12–50M staffing and construction operators. This is what the engine looks like when it runs for a firm selling into that market, and it ended with them firing their agency rather than adding to it.</div></div>
+      </div>
+
+      <!-- Salmon HVAC -->
+      <div class="cs c reveal d1">
+        <div class="cs-head">
+          <div class="cs-mark">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 14.5V5a2.5 2.5 0 0 1 5 0v9.5a4 4 0 1 1-5 0z"/><path d="M12 17.5v.01"/><path d="M17 6h4"/><path d="M17 10h4"/></svg>
+          </div>
+          <div class="cs-id">
+            <h3>Salmon HVAC</h3>
+            <div class="cs-cat">Regional heating &amp; cooling contractor · strong local brand, no digital engine</div>
+          </div>
+          <div class="cs-flag"><b>$250k+</b><span>Monthly revenue · +150%</span></div>
+        </div>
+        <div class="cs-body">
+          <div class="cs-col">
+            <div class="cs-h5">Where they started</div>
+            <p>A trusted name in its region, plateaued and getting outspent.</p>
+            <ul class="cs-ul">
+              <li>Revenue stuck between $80k and $100k a month for years</li>
+              <li>Outdated website and almost no organic visibility</li>
+              <li>Calls going unanswered during peak season, when they're worth most</li>
+              <li>Losing every Google auction to a national competitor with a bigger budget</li>
+            </ul>
+          </div>
+          <div class="cs-col cs-col--sol">
+            <div class="cs-h5">What we built</div>
+            <p>Own the back yard, then answer faster than anyone else in it.</p>
+            <ul class="cs-ul">
+              <li>SEO content system producing seasonal, demand-timed pages</li>
+              <li>Keyword strategy split across heating and cooling cycles</li>
+              <li>Ad radius tightened so budget only competed where they could win</li>
+              <li>24/7 AI receptionist so no call went to voicemail again</li>
+              <li>Instant SMS follow-up on every inbound lead</li>
+            </ul>
+          </div>
+        </div>
+        <div class="cs-metrics">
+          <div class="cs-metric"><b>+300%</b><span>Website traffic</span></div>
+          <div class="cs-metric"><b>+214%</b><span>Organic leads</span></div>
+          <div class="cs-metric sm"><b>&lt; 60 sec</b><span>Response time to any new lead</span></div>
+        </div>
+        <div class="cs-rel"><span>→</span><div>They stopped being out-bid by a national competitor by refusing to fight on that competitor's terms. Blalock will never outbid a funded national lender for a search result either — section 05 is the same logic applied to your market, and this is what it produced in someone else's.</div></div>
+      </div>
+
+      <!-- Bright Line Solutions -->
+      <div class="cs d reveal d1">
+        <div class="cs-head">
+          <div class="cs-mark">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4.5 13.5H11l-.5 8.5L19 10.5h-6.5z"/></svg>
+          </div>
+          <div class="cs-id">
+            <h3>Bright Line Solutions</h3>
+            <div class="cs-cat">Electrical contractor · high-ticket installs mixed in with small repairs</div>
+          </div>
+          <div class="cs-flag"><b>+$44,200</b><span>Monthly revenue</span></div>
+        </div>
+        <div class="cs-body">
+          <div class="cs-col">
+            <div class="cs-h5">Where they started</div>
+            <p>Good leads arriving and being treated identically to bad ones.</p>
+            <ul class="cs-ul">
+              <li>No prioritization by job value anywhere in the intake</li>
+              <li>Panel upgrades and EV installs handled like a $200 service call</li>
+              <li>Texts missed and responses slow on the jobs that mattered most</li>
+              <li>$3.8k a month across paid platforms with no clear read on ROI</li>
+            </ul>
+          </div>
+          <div class="cs-col cs-col--sol">
+            <div class="cs-h5">What we built</div>
+            <p>Triage by value first, then a follow-up built for the big ticket.</p>
+            <ul class="cs-ul">
+              <li>AI lead prioritization that flags panel upgrades, EV and service work on arrival</li>
+              <li>Photo and video diagnostic intake before anyone is dispatched</li>
+              <li>Automated ballpark estimates within minutes of the request</li>
+              <li>24-hour site-visit scheduling reserved for complex jobs</li>
+              <li>Smart follow-up sequences carrying financing options</li>
+            </ul>
+          </div>
+        </div>
+        <div class="cs-metrics">
+          <div class="cs-metric sm"><b>$840 → $1,190</b><span>Average ticket</span></div>
+          <div class="cs-metric"><b>+67%</b><span>Increase in high-value jobs</span></div>
+          <div class="cs-metric sm"><b>24% → 38%</b><span>Estimate acceptance rate</span></div>
+        </div>
+        <div class="cs-quote">"I used to lose track of what I quoted. Now everything's visible and followed up automatically."</div>
+        <div class="cs-rel"><span>→</span><div>Their spend barely moved. What changed was which leads got attention first and how fast the follow-up went out — the same reason a $500k Blalock relationship should never sit in the same queue as a tyre-kicker.</div></div>
+      </div>
+
+    </div>
+
+    <div class="cs-note reveal d2"><strong>How to read these.</strong> None of these four are capital advisory firms, and I'm not going to pretend the industries are the same. What transfers is the mechanism: find the people already showing a reason to buy, reach them before a competitor does, respond faster than anyone else in the category, and put enough proof in front of them that the follow-up converts. SegPro and TradeWork sell advisory services to owner-operators for real money on long sales cycles, which is your motion. Salmon and Bright Line are the kind of $12–50M operators sitting on your own prospect list. The numbers above are the clients' own reported figures over the engagement period.</div>
+  </div>
+</section>
+
+<!-- ══ 11 · WHY US ══ -->
 <section class="section section--light" id="whyus">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow">10 — Why Disruptors Media</div>
+      <div class="eyebrow">11 — Why Disruptors Media</div>
       <h2>Structural differences, not adjectives.</h2>
       <div class="divider"></div>
       <p class="lede">Every agency says they care more. Here is what is actually built differently, and what it means for you specifically.</p>
@@ -1190,19 +1445,17 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
         <span class="av-tag c">Terms</span>
         <h3>Month to month, and we'll take the risk with you</h3>
         <p>No annual lock-in, no setup fee, and a partnership structure where a meaningful share of what we earn depends on whether this actually produces clients for you.</p>
-        <div class="av-line">→ You asked for someone with skin in the game. Section 11 prices it.</div>
+        <div class="av-line">→ You asked for someone with skin in the game. Section 12 prices it.</div>
       </div>
     </div>
-
-    >
   </div>
 </section>
 
-<!-- ══ 11 · INVESTMENT ══ -->
+<!-- ══ 12 · INVESTMENT ══ -->
 <section class="section" id="investment">
   <div class="wrap wrap--wide">
     <div class="reveal" style="text-align:center">
-      <div class="eyebrow">11 — Investment</div>
+      <div class="eyebrow">12 — Investment</div>
       <h2>The standard fee schedule, as you asked for it.</h2>
       <div class="divider" style="margin-left:auto;margin-right:auto"></div>
       <p class="lede" style="max-width:720px;margin:0 auto">You asked me to send the normal schedule before we talk about anything creative. Here it is, straight — each tier contains everything below it. The partnership structure you raised is the section immediately after.</p>
@@ -1315,11 +1568,11 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
   </div>
 </section>
 
-<!-- ══ 12 · SCOPE + MEASUREMENT ══ -->
+<!-- ══ 13 · SCOPE + MEASUREMENT ══ -->
 <section class="section section--light">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow">12 — Measurement, Scope &amp; Terms</div>
+      <div class="eyebrow">13 — Measurement, Scope &amp; Terms</div>
       <h2>How we measure it, what it excludes, and the terms.</h2>
       <div class="divider"></div>
     </div>
@@ -1375,11 +1628,11 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
   </div>
 </section>
 
-<!-- ══ 13 · FAQ ══ -->
+<!-- ══ 14 · FAQ ══ -->
 <section class="section" id="faq">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow">13 — Questions You're Going To Ask</div>
+      <div class="eyebrow">14 — Questions You're Going To Ask</div>
       <h2>The honest answers.</h2>
       <div class="divider"></div>
     </div>
@@ -1420,11 +1673,11 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
   </div>
 </section>
 
-<!-- ══ 14 · NEXT ══ -->
+<!-- ══ 15 · NEXT ══ -->
 <section class="section section--dark" id="next">
   <div class="wrap" style="text-align:center">
     <div class="reveal">
-      <div class="eyebrow">14 — Next Steps</div>
+      <div class="eyebrow">15 — Next Steps</div>
       <h2>Three things, and the first one is a decision.</h2>
       <div class="divider" style="margin-left:auto;margin-right:auto"></div>
     </div>
