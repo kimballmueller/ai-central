@@ -171,10 +171,27 @@ footer a{color:var(--blue);text-decoration:none}
   .big-num{font-size:64px}
   h1{font-size:40px}h2{font-size:27px}h3{font-size:16px}
   p,.lede{font-size:14px!important;line-height:1.5}
-  .why-card,.fix-item,.pf-card,.price-row,.stat,.steps li{page-break-inside:avoid}
+  .why-card,.fix-item,.pf-card,.price-row,.stat,.steps li,.callout,.rec-box,.big,.quote{page-break-inside:avoid}
   .fix-item:hover{transform:none;box-shadow:none}
-  .fix{gap:8px}.fix-item{padding:16px 20px}
-  h2,h3{page-break-after:avoid}
+  .fix{gap:8px}
+  /* keep the multi-column layouts in print — the narrow paper viewport would
+     otherwise trip the mobile breakpoint and stack everything one-up */
+  .why,.pf{grid-template-columns:repeat(2,1fr)!important;gap:10px!important;margin-top:22px!important}
+  .stats{grid-template-columns:repeat(3,1fr)!important;gap:10px!important;margin-top:28px!important}
+  .fix-item{grid-template-columns:44px 1fr!important;gap:18px!important;padding:15px 18px!important}
+  .fix-n{width:34px;height:34px;font-size:15px}
+  .price-row{grid-template-columns:170px 1fr 105px!important;gap:16px!important;padding:15px 20px!important}
+  .price-pr{text-align:right!important;font-size:20px}
+  .why-card{padding:16px 18px}.pf-card{padding:16px 18px}.stat{padding:20px 14px}
+  .why-card p,.pf-card p,.fix-b p{font-size:13px!important}
+  .why-q{font-size:12px;margin-top:10px;padding-top:10px}
+  .stat-num{font-size:30px!important}.stat-num.sm{font-size:24px!important}
+  .pf-stat{font-size:20px;margin-top:12px;padding-top:11px}
+  .price{margin-top:26px}.callout,.rec-box{margin-top:20px;padding:18px 22px}
+  .quote{margin:26px 0;padding:16px 24px}.quote-text{font-size:17px}
+  .steps{margin-top:26px}.steps li{padding:14px 0}
+  h2,h3{page-break-after:avoid;break-after:avoid}
+  .eyebrow,.divider{page-break-after:avoid;break-after:avoid;page-break-inside:avoid}
   a{text-decoration:none;color:inherit}
   footer{padding:26px 34px}
 }
