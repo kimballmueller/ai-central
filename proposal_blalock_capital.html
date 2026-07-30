@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Go Pro With Your Marketing — Blalock Capital Partners · Disruptors Media</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --white:#ffffff;
+  --light:#F5F5F7;
+  --dark:#1D1D1F;
+  --darker:#111113;
+  --blue:#0071E3;
+  --blue-h:#0077ED;
+  --green:#34C759;
+  --green-bg:rgba(52,199,89,.1);
+  --red:#FF3B30;
+  --purple:#A855F7;
+  --orange:#FF9F0A;
+  --muted:#6E6E73;
+  --border:#E5E5EA;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif;
+  --mono:"SF Mono","Fira Code","Fira Mono","Roboto Mono",monospace;
+}
+
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:var(--font);background:var(--white);color:var(--dark);line-height:1.6;-webkit-font-smoothing:antialiased}
+
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+@keyframes pulseRed{0%,100%{box-shadow:0 0 0 0 rgba(255,59,48,.28)}50%{box-shadow:0 0 0 18px rgba(255,59,48,0)}}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+.section{padding:96px 24px}
+.section--light{background:var(--light)}
+.section--dark{background:var(--darker);color:var(--white)}
+.wrap{max-width:960px;margin:0 auto}
+.wrap--wide{max-width:1100px;margin:0 auto}
+
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+.section--dark .eyebrow{color:#64A5FF}
+
+h1{font-size:clamp(36px,6vw,76px);font-weight:700;line-height:1.05;letter-spacing:-.03em}
+h2{font-size:clamp(26px,3.8vw,50px);font-weight:700;line-height:1.1;letter-spacing:-.02em}
+h3{font-size:20px;font-weight:600;letter-spacing:-.01em}
+h4{font-size:15px;font-weight:600}
+
+p{font-size:17px;line-height:1.65;color:var(--muted)}
+.section--dark p{color:rgba(255,255,255,.62)}
+.lede{font-size:19px;line-height:1.6}
+
+.divider{width:40px;height:3px;background:var(--blue);border-radius:2px;margin:20px 0 36px}
+.section--dark .divider{background:#64A5FF}
+
+/* ── NAV ── */
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:22px;padding:0 24px;height:52px;overflow-x:auto;scrollbar-width:none}
+.nav-in::-webkit-scrollbar{display:none}
+.nav-brand{font-size:13px;font-weight:700;letter-spacing:-.01em;color:var(--dark);white-space:nowrap;margin-right:6px}
+.nav a{font-size:12.5px;color:var(--muted);text-decoration:none;white-space:nowrap;transition:color .15s}
+.nav a:hover{color:var(--blue)}
+.nav a.nav-cta{margin-left:auto;background:var(--blue);color:#fff;padding:6px 15px;border-radius:100px;font-weight:600}
+.nav a.nav-cta:hover{background:var(--blue-h);color:#fff}
+
+/* ── HERO ── */
+#hero{
+  min-height:92vh;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;text-align:center;
+  padding:90px 24px 80px;position:relative;overflow:hidden;
+  animation:fadeIn .8s ease both
+}
+#hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(0,113,227,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,113,227,.03) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none
+}
+.hero-meta{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-bottom:30px;position:relative}
+.hero-meta span+span::before{content:'·';margin-right:18px;opacity:.4}
+.hero-title{max-width:900px;margin:0 auto 22px;position:relative}
+.hero-sub{font-size:20px;color:var(--muted);max-width:640px;margin:0 auto 46px;line-height:1.55;position:relative}
+.scroll-cue{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);animation:bounce 2s ease-in-out infinite;color:var(--muted);opacity:.5}
+
+/* ── PAIN HERO NUMBER ── */
+.painbig{margin:0 auto;max-width:720px;text-align:center;padding:52px 32px;background:rgba(255,59,48,.06);border:1px solid rgba(255,59,48,.22);border-radius:24px;animation:pulseRed 3.2s ease-in-out infinite}
+.painbig-num{font-size:clamp(56px,11vw,110px);font-weight:700;letter-spacing:-.04em;line-height:1;color:#FF6B6B}
+.painbig-lbl{font-size:17px;color:rgba(255,255,255,.72);margin-top:14px;line-height:1.5}
+.painbig-sub{font-size:13.5px;color:rgba(255,255,255,.42);margin-top:16px;line-height:1.6}
+
+/* ── PAIN LEDGER ── */
+.ledger{margin-top:44px;border:1px solid rgba(255,255,255,.12);border-radius:20px;overflow:hidden}
+.ledger-row{display:grid;grid-template-columns:1fr auto;gap:24px;padding:20px 26px;border-bottom:1px solid rgba(255,255,255,.08);align-items:center}
+.ledger-row:last-child{border-bottom:none}
+.ledger-row.total{background:rgba(255,59,48,.08)}
+.ledger-l h4{font-size:15px;color:#fff;margin-bottom:4px}
+.ledger-l p{font-size:13.5px;color:rgba(255,255,255,.45);line-height:1.5}
+.ledger-r{font-size:24px;font-weight:700;color:#FF8A80;letter-spacing:-.02em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ledger-row.total .ledger-r{font-size:30px;color:#FF6B6B}
+
+/* ── PAIN CARDS ── */
+.pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:40px}
+.pain-card{padding:26px 24px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px}
+.pain-card .pnum{font-family:var(--mono);font-size:11px;color:#FF8A80;letter-spacing:.1em;margin-bottom:12px}
+.pain-card h4{font-size:16px;color:#fff;margin-bottom:8px}
+.pain-card p{font-size:14px;color:rgba(255,255,255,.55);line-height:1.6}
+.pain-card .pquote{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.08);font-size:13px;font-style:italic;color:rgba(255,255,255,.42);line-height:1.55}
+
+/* ── QUOTE ── */
+.quote-block{border-left:3px solid var(--blue);padding:22px 32px;margin:44px 0;border-radius:0 14px 14px 0;background:var(--white)}
+.section--dark .quote-block{background:rgba(255,255,255,.04);border-left-color:#64A5FF}
+.quote-text{font-size:21px;font-weight:500;color:var(--dark);font-style:italic;line-height:1.45}
+.section--dark .quote-text{color:rgba(255,255,255,.9)}
+.quote-attr{font-size:13px;color:var(--muted);margin-top:10px}
+
+/* ── STATS ── */
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin:52px 0 10px}
+.stat{text-align:center}
+.stat-num{font-size:52px;font-weight:700;letter-spacing:-.03em;color:var(--dark);line-height:1}
+.section--dark .stat-num{color:#fff}
+.stat-label{font-size:14px;color:var(--muted);margin-top:8px;line-height:1.45}
+
+/* ── TABLES ── */
+.tbl-wrap{margin-top:44px;border-radius:20px;overflow:hidden;border:1px solid var(--border);background:var(--white)}
+.section--dark .tbl-wrap{border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.03)}
+.tbl-scroll{width:100%;overflow-x:auto}
+table.dt{width:100%;border-collapse:collapse;font-size:15px;min-width:560px}
+table.dt th{padding:15px 22px;text-align:left;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border);background:var(--light)}
+table.dt th:not(:first-child){text-align:right}
+table.dt td{padding:15px 22px;border-bottom:1px solid var(--border);color:var(--dark);vertical-align:middle}
+table.dt td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums}
+table.dt td:first-child{color:var(--muted);font-size:14px}
+table.dt tr:last-child td{border-bottom:none}
+table.dt tr.hi{background:var(--green-bg)}
+table.dt tr.hi td{font-weight:700;color:var(--dark);font-size:17px}
+table.dt tr.hi td:first-child{font-size:14px;color:var(--muted)}
+.section--dark table.dt th{color:rgba(255,255,255,.42);border-bottom-color:rgba(255,255,255,.1);background:rgba(255,255,255,.03)}
+.section--dark table.dt td{color:rgba(255,255,255,.75);border-bottom-color:rgba(255,255,255,.07)}
+.section--dark table.dt td:first-child{color:rgba(255,255,255,.5)}
+.section--dark table.dt tr.hi{background:rgba(52,199,89,.09)}
+.section--dark table.dt tr.hi td{color:#fff}
+.section--dark table.dt tr.hi td:first-child{color:rgba(255,255,255,.7)}
+.tbl-foot{padding:14px 22px;background:rgba(0,113,227,.06);border-top:1px solid rgba(0,113,227,.14);font-size:13px;color:var(--muted);line-height:1.6}
+.section--dark .tbl-foot{background:rgba(0,113,227,.1);border-top-color:rgba(0,113,227,.18);color:rgba(255,255,255,.5)}
+
+/* ── FUNNEL ── */
+.funnel{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px}
+.fstep{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:24px 18px;text-align:center}
+.section--dark .fstep{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1)}
+.fstep-n{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+.section--dark .fstep-n{color:#64A5FF}
+.fstep-num{font-size:30px;font-weight:700;letter-spacing:-.03em;color:var(--dark);line-height:1;margin-bottom:8px}
+.section--dark .fstep-num{color:#fff}
+.fstep-lbl{font-size:12.5px;color:var(--muted);line-height:1.45}
+
+/* ── AVATAR ── */
+.av-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.av-card{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:28px 24px;box-shadow:0 2px 12px rgba(0,0,0,.05)}
+.av-tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 11px;border-radius:100px;margin-bottom:14px}
+.av-tag.a{background:rgba(255,59,48,.1);color:#C62D22}
+.av-tag.b{background:rgba(0,113,227,.09);color:var(--blue)}
+.av-tag.c{background:rgba(168,85,247,.1);color:#8B37D6}
+.av-card h3{font-size:17px;margin-bottom:10px}
+.av-card>p{font-size:14px;line-height:1.6}
+.av-sub{margin-top:16px;padding-top:14px;border-top:1px solid var(--border)}
+.av-sub h5{font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.av-sub p{font-size:13.5px;line-height:1.55}
+.av-line{margin-top:14px;font-size:13px;color:var(--blue);font-weight:600;line-height:1.5}
+
+/* ── SIGNALS ── */
+.sig-block{margin-top:40px}
+.sig-head{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.sig-badge{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:100px}
+.sig-badge.a{background:rgba(255,59,48,.14);color:#FF8A80}
+.sig-badge.b{background:rgba(0,113,227,.18);color:#64A5FF}
+.sig-badge.c{background:rgba(168,85,247,.18);color:#C99BFA}
+.sig-head h3{color:#fff;font-size:17px}
+.sig-head span.sh-note{font-size:13px;color:rgba(255,255,255,.42)}
+.sig-list{border:1px solid rgba(255,255,255,.1);border-radius:16px;overflow:hidden}
+.sig-row{display:grid;grid-template-columns:1.15fr 1.5fr .85fr;gap:20px;padding:17px 22px;border-bottom:1px solid rgba(255,255,255,.07);align-items:start}
+.sig-row:last-child{border-bottom:none}
+.sig-row:nth-child(odd){background:rgba(255,255,255,.02)}
+.sig-what{font-size:14.5px;font-weight:600;color:rgba(255,255,255,.9);line-height:1.45}
+.sig-why{font-size:13.5px;color:rgba(255,255,255,.52);line-height:1.55}
+.sig-src{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.35);line-height:1.5}
+.sig-hd{display:grid;grid-template-columns:1.15fr 1.5fr .85fr;gap:20px;padding:12px 22px;background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.1)}
+.sig-hd span{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+
+/* ── ENGINE ── */
+.eng-list{margin-top:52px;display:flex;flex-direction:column;gap:18px}
+.eng{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:30px 32px;box-shadow:0 2px 14px rgba(0,0,0,.05);transition:box-shadow .2s,transform .2s}
+.eng:hover{box-shadow:0 10px 34px rgba(0,0,0,.09);transform:translateY(-2px)}
+.eng-top{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:12px}
+.eng-n{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--blue);letter-spacing:.06em}
+.eng-top h3{font-size:19px}
+.eng-when{margin-left:auto;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--light);padding:4px 11px;border-radius:100px;white-space:nowrap}
+.eng>p{font-size:15.5px;line-height:1.65}
+.eng-io{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.eng-io div{background:var(--light);border-radius:12px;padding:14px 16px}
+.eng-io h5{font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.eng-io p{font-size:13.5px;color:var(--dark);line-height:1.5}
+.eng-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px;list-style:none}
+.eng-chips li{font-family:var(--mono);font-size:11px;color:var(--muted);background:var(--light);border:1px solid var(--border);padding:4px 10px;border-radius:6px}
+.eng-note{margin-top:16px;padding:12px 16px;background:rgba(0,113,227,.06);border-left:3px solid var(--blue);border-radius:0 8px 8px 0;font-size:13.5px;color:var(--muted);line-height:1.6}
+.eng-note strong{color:var(--dark)}
+
+/* ── RESEARCH CHIP ── */
+.rsrch{display:flex;align-items:flex-start;gap:9px;margin-top:14px;padding:12px 16px;background:rgba(52,199,89,.08);border:1px solid rgba(52,199,89,.22);border-radius:10px;font-size:13px;color:#1a7a38;line-height:1.6}
+.section--dark .rsrch{background:rgba(52,199,89,.1);border-color:rgba(52,199,89,.24);color:#7BE39B}
+.rsrch b{font-weight:700}
+.rsrch em{color:inherit}
+.rsrch sup{font-size:9.5px;opacity:.75}
+
+/* ── PARTNER ── */
+.pt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:38px}
+.pt{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:20px 22px}
+.pt h4{font-size:15px;color:#fff;margin-bottom:6px}
+.pt p{font-size:13.5px;color:rgba(255,255,255,.5);line-height:1.55}
+.pt .ptm{font-family:var(--mono);font-size:11px;color:#64A5FF;margin-top:9px;display:block}
+
+/* ── TIMELINE ── */
+.tl-wrap{position:relative;padding:8px 0 0;margin-top:52px}
+.tl-spine{position:absolute;left:15px;top:28px;bottom:60px;width:2px;background:linear-gradient(to bottom,var(--blue) 0%,var(--green) 55%,var(--purple) 100%);border-radius:2px}
+.tl-phase{display:grid;grid-template-columns:190px 1fr;gap:44px;padding:0 0 64px 56px;position:relative}
+.tl-phase:last-child{padding-bottom:0}
+.tl-phase::before{content:'';position:absolute;left:8px;top:20px;width:16px;height:16px;border-radius:50%;border:2.5px solid var(--blue);background:var(--white);box-shadow:0 0 0 5px rgba(0,113,227,.12)}
+.tl-phase.p2::before{border-color:var(--green);box-shadow:0 0 0 5px rgba(52,199,89,.12)}
+.tl-phase.p3::before{border-color:var(--purple);box-shadow:0 0 0 5px rgba(168,85,247,.12)}
+.tl-label{padding-top:14px}
+.tl-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);background:rgba(0,113,227,.08);padding:4px 10px;border-radius:100px;margin-bottom:12px}
+.p2 .tl-badge{color:var(--green);background:rgba(52,199,89,.1)}
+.p3 .tl-badge{color:var(--purple);background:rgba(168,85,247,.1)}
+.tl-label h3{font-size:18px;margin-bottom:4px}
+.tl-dur{font-size:13px;color:var(--muted);margin-top:2px}
+.tl-card{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:26px 30px;box-shadow:0 2px 16px rgba(0,0,0,.06)}
+.tl-item{display:flex;gap:14px;padding:13px 0;border-bottom:1px solid var(--border)}
+.tl-item:first-child{padding-top:0}
+.tl-item:last-child{border-bottom:none;padding-bottom:0}
+.tl-dot{width:7px;height:7px;border-radius:50%;background:var(--blue);flex-shrink:0;margin-top:7px}
+.p2 .tl-dot{background:var(--green)}.p3 .tl-dot{background:var(--purple)}
+.tl-item h4{font-size:14px;margin-bottom:3px}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.55}
+
+/* ── FIRST WIN ── */
+.win-wrap{margin-top:32px;border:1px solid var(--border);border-radius:20px;overflow:hidden;background:var(--white)}
+.win-row{display:grid;grid-template-columns:140px 1fr 130px;gap:20px;padding:18px 24px;border-bottom:1px solid var(--border);align-items:center}
+.win-row:last-child{border-bottom:none}
+.win-row.hd{background:var(--light)}
+.win-row.hd span{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.win-when{font-size:14px;font-weight:700;color:var(--dark)}
+.win-what{font-size:14.5px;color:var(--dark);line-height:1.5}
+.win-what small{display:block;font-size:12.5px;color:var(--muted);margin-top:3px;line-height:1.5}
+.win-conf{font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:5px 11px;border-radius:100px;text-align:center}
+.win-conf.hi{background:var(--green-bg);color:#1a7a38}
+.win-conf.md{background:rgba(0,113,227,.09);color:var(--blue)}
+.win-conf.lo{background:rgba(255,159,10,.12);color:#B26B00}
+
+/* ── CALLOUT ── */
+.callout{margin-top:34px;padding:22px 28px;background:rgba(255,159,10,.07);border:1px solid rgba(255,159,10,.25);border-left:4px solid var(--orange);border-radius:12px}
+.callout h4{font-size:15px;color:var(--dark);margin-bottom:6px}
+.callout p{font-size:14.5px;color:var(--muted);line-height:1.6}
+.section--dark .callout{background:rgba(255,159,10,.09);border-color:rgba(255,159,10,.28)}
+.section--dark .callout h4{color:#fff}
+.section--dark .callout p{color:rgba(255,255,255,.6)}
+
+/* ── DELTA ── */
+.delta-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+.delta{padding:26px 24px;background:rgba(52,199,89,.08);border:1px solid rgba(52,199,89,.22);border-radius:16px;text-align:center}
+.delta-num{font-size:34px;font-weight:700;letter-spacing:-.03em;color:#4ADE80;line-height:1;margin-bottom:8px}
+.delta-lbl{font-size:12.5px;color:rgba(255,255,255,.5);line-height:1.45}
+
+/* ── DOORS (PRICING) ── */
+.door-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:56px;align-items:stretch}
+.door{background:var(--white);border:1px solid var(--border);border-radius:24px;padding:38px 34px;display:flex;flex-direction:column;box-shadow:0 2px 16px rgba(0,0,0,.05);position:relative}
+.door.featured{border:2px solid var(--blue);box-shadow:0 12px 46px rgba(0,113,227,.16)}
+.door-flag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 16px;border-radius:100px;white-space:nowrap}
+.door-name{font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+.door-price{font-size:48px;font-weight:700;letter-spacing:-.03em;color:var(--dark);line-height:1}
+.door-price span{font-size:16px;font-weight:500;color:var(--muted);letter-spacing:0}
+.door-plus{font-size:14.5px;color:var(--blue);font-weight:600;margin-top:8px}
+.door-tag{font-size:14.5px;color:var(--muted);margin:14px 0 22px;line-height:1.55}
+.door-feats{list-style:none;display:flex;flex-direction:column;gap:11px;margin-top:4px}
+.door-feat{display:flex;gap:10px;font-size:14px;color:var(--dark);line-height:1.5}
+.door-feat svg{flex-shrink:0;margin-top:3px}
+.door-foot{margin-top:auto;padding-top:22px}
+.door-roi{padding:13px 15px;background:var(--green-bg);border:1px solid rgba(52,199,89,.22);border-radius:10px;font-size:12.5px;color:#1a7a38;line-height:1.55}
+
+/* ── TIER STRIP ── */
+.tier-strip{margin-top:48px;border:1px solid var(--border);border-radius:18px;overflow:hidden;background:var(--white)}
+.tier-strip-h{padding:16px 24px;background:var(--light);border-bottom:1px solid var(--border);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.tier-row{display:grid;grid-template-columns:180px 1fr 110px;gap:20px;padding:18px 24px;border-bottom:1px solid var(--border);align-items:center}
+.tier-row:last-child{border-bottom:none}
+.tier-row.rec{background:rgba(0,113,227,.04)}
+.tier-nm{font-size:15px;font-weight:700;color:var(--dark)}
+.tier-nm small{display:block;font-size:11.5px;font-weight:600;color:var(--blue);letter-spacing:.04em;text-transform:uppercase;margin-top:3px}
+.tier-ds{font-size:13.5px;color:var(--muted);line-height:1.5}
+.tier-pr{font-size:19px;font-weight:700;color:var(--dark);text-align:right;font-variant-numeric:tabular-nums}
+.tier-pr small{display:block;font-size:11px;font-weight:500;color:var(--muted)}
+
+/* ── SCOPE ── */
+.excl{margin-top:44px;padding:30px 32px;background:var(--white);border:1px dashed #C7C7CC;border-radius:18px}
+.excl-h{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+.excl-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.excl-item h4{font-size:15px;color:var(--dark);margin-bottom:7px}
+.excl-item p{font-size:14px;color:var(--muted);line-height:1.55}
+.excl-item p strong{color:var(--dark)}
+
+/* ── FAQ ── */
+.faq{margin-top:48px;border-top:1px solid var(--border)}
+.faq details{border-bottom:1px solid var(--border)}
+.faq summary{list-style:none;cursor:pointer;padding:22px 44px 22px 0;font-size:16.5px;font-weight:600;color:var(--dark);position:relative;line-height:1.45}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';position:absolute;right:8px;top:17px;font-size:26px;font-weight:400;color:var(--blue);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{font-size:15px;line-height:1.7;padding:0 44px 22px 0}
+.faq details p+p{padding-top:0;margin-top:-8px}
+
+/* ── STEPS ── */
+.steps{list-style:none;margin:44px auto 0;max-width:660px;text-align:left}
+.steps li{display:flex;gap:22px;padding:22px 0;border-bottom:1px solid var(--border)}
+.steps li:last-child{border-bottom:none}
+.section--dark .steps li{border-bottom-color:rgba(255,255,255,.1)}
+.step-n{width:38px;height:38px;border-radius:50%;background:var(--blue);color:#fff;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-b h4{font-size:15px;margin-bottom:5px}
+.section--dark .step-b h4{color:#fff}
+.step-b p{font-size:14px}
+
+/* ── BTN ── */
+.btn{display:inline-block;background:var(--blue);color:#fff;text-decoration:none;font-size:17px;font-weight:600;padding:17px 42px;border-radius:100px;transition:background .2s,transform .15s}
+.btn:hover{background:var(--blue-h);transform:scale(1.02)}
+
+/* ── SOURCES ── */
+.srcs{padding:30px 32px;background:var(--white);border:1px solid var(--border);border-radius:16px}
+.srcs h4{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.srcs ol{margin-left:18px}
+.srcs li{font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:5px}
+.srcs a{color:var(--blue);text-decoration:none}
+.srcs a:hover{text-decoration:underline}
+
+/* ── FOOTER ── */
+footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;padding:52px 24px;font-size:13px;line-height:1.9}
+.ft-logo{font-size:18px;font-weight:700;color:#fff;letter-spacing:-.01em;margin-bottom:6px}
+.ft-links a{color:var(--blue);text-decoration:none}
+.ft-exp{margin-top:20px;font-size:12px;opacity:.6}
+
+/* ── PRINT ── */
+@media print{
+  .reveal{opacity:1!important;transform:none!important}
+  .scroll-cue,.nav{display:none}
+  #hero{min-height:auto;padding:50px 24px}
+  .section{padding:50px 24px}
+  .painbig{animation:none}
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .section{padding:72px 20px}
+  .tl-phase{grid-template-columns:1fr;gap:18px;padding-left:40px}
+  .tl-phase::before{left:6px}
+  .tl-spine{left:13px}
+  .pain-grid,.av-grid,.door-grid,.pt-grid,.eng-io,.excl-grid{grid-template-columns:1fr}
+  .funnel{grid-template-columns:repeat(2,1fr)}
+  .delta-row{grid-template-columns:1fr}
+  .stats-row{grid-template-columns:1fr;gap:28px}
+  .sig-row,.sig-hd{grid-template-columns:1fr;gap:6px}
+  .sig-hd{display:none}
+  .sig-src{margin-top:4px}
+  .win-row{grid-template-columns:1fr;gap:8px}
+  .win-row.hd{display:none}
+  .win-conf{justify-self:start}
+  .tier-row{grid-template-columns:1fr;gap:8px}
+  .tier-pr{text-align:left}
+  .ledger-row{grid-template-columns:1fr;gap:10px}
+  .eng-when{margin-left:0}
+  .eng{padding:26px 22px}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav class="nav">
+  <div class="nav-in">
+    <span class="nav-brand">Blalock × Disruptors</span>
+    <a href="#cost">Cost</a>
+    <a href="#money">The Money</a>
+    <a href="#who">Who</a>
+    <a href="#signals">Signals</a>
+    <a href="#engine">Engine</a>
+    <a href="#partners">Partners</a>
+    <a href="#ninety">90 Days</a>
+    <a href="#math">Math</a>
+    <a href="#investment">Investment</a>
+    <a href="#faq">FAQ</a>
+    <a href="#next" class="nav-cta">Next Steps</a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<header id="hero">
+  <div class="hero-meta">
+    <span>Blalock Capital Partners · Richard Looney</span>
+    <span>July 29, 2026</span>
+    <span>Disruptors Media · Kimball Mueller</span>
+  </div>
+  <h1 class="hero-title">Go Pro With Your Marketing.</h1>
+  <p class="hero-sub">You don't have a marketing problem — you have a deal flow problem. It's the only broken part of an otherwise finished machine, and it's the cheapest one on the list to fix.</p>
+  <div class="scroll-cue">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+</header>
+
+<!-- ══ 01 · THE COST ══ -->
+<section class="section section--dark" id="cost">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">01 — The Cost of Standing Still</div>
+      <h2>Here is what this quarter is costing you.</h2>
+      <div class="divider"></div>
+      <p class="lede">Not a projection. Not our estimate. The gap between where Blalock is today and the number you gave me on the call, using your own arithmetic.</p>
+    </div>
+
+    <div class="painbig reveal d1" style="margin-top:52px">
+      <div class="painbig-num">$200,000</div>
+      <div class="painbig-lbl">Net income, every month, that Blalock is not earning right now</div>
+      <div class="painbig-sub">You put your own appetite at "a couple of million" out, against the $10M twelve-month number you named. At the 30% net yield you quoted — $150k on every $500k out — that gap is $2.4M a year in net income. Divided by twelve.</div>
+    </div>
+
+    <div class="reveal d2">
+      <div class="quote-block">
+        <p class="quote-text">"You could easily have out $10 million in 12 months. And 50 million in 36. It's there. It's that big. It's who are you calling on."</p>
+        <div class="quote-attr">— Richard, on the call. Every number on this page is yours.</div>
+      </div>
+    </div>
+
+    <div class="reveal d2">
+      <h3 style="color:#fff;margin-top:8px">The ledger, line by line</h3>
+      <div class="ledger">
+        <div class="ledger-row">
+          <div class="ledger-l">
+            <h4>The distance to your own capital target</h4>
+            <p>$8M between the ~$2M appetite you described and the $10M you said was reachable — at your 30% net yield</p>
+          </div>
+          <div class="ledger-r">$2.4M / yr</div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-l">
+            <h4>Advisory clients not added</h4>
+            <p>Adding about one a quarter on referral alone. Eight more at your ~$7k average fee</p>
+          </div>
+          <div class="ledger-r">$672k / yr</div>
+        </div>
+        <div class="ledger-row total">
+          <div class="ledger-l">
+            <h4>Annual cost of having no marketing function</h4>
+            <p>Conservative. Excludes every $250k M&amp;A exit fee sitting downstream of these clients.</p>
+          </div>
+          <div class="ledger-r">$3.07M</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal d3">
+      <h3 style="color:#fff;margin-top:56px;margin-bottom:6px">Four things are causing it</h3>
+      <p style="font-size:15px">None of them are market problems. The market is enormous and you are one of the few firms serving it whole.</p>
+      <div class="pain-grid">
+        <div class="pain-card">
+          <div class="pnum">01</div>
+          <h4>Marketing stops the moment someone closes</h4>
+          <p>A big fish lands, it takes two or three months to digest, and the top of the funnel goes dark for a quarter. Then it restarts from zero. This is the entire problem in one sentence.</p>
+          <div class="pquote">"We get a big fish on the hook, it'll take two or three months to digest that client. And so we're not doing any marketing during that time."</div>
+        </div>
+        <div class="pain-card">
+          <div class="pnum">02</div>
+          <h4>No CRM, so nothing survives a slow reply</h4>
+          <p>You pulled a few hundred contacts out of ZoomInfo, emailed them, and heard almost nothing — then picked up the phone against the same list and booked appointments. That's not a targeting failure or a discipline failure. The list was never scored, the messaging was never tested, and there was nowhere for a reply to land.</p>
+          <div class="pquote">"Hundreds and hundreds of emails gone in, hardly any answers at all. But I would take those lists and I would call, and I would get appointments."</div>
+        </div>
+        <div class="pain-card">
+          <div class="pnum">03</div>
+          <h4>One channel, and its pipeline is thinning</h4>
+          <p>The equipment broker channel works — real commissions, real meetings. But out of fifty customers a broker might have three that fit. It's a good channel. It cannot be the only one.</p>
+          <div class="pquote">"I've got four or five meetings through them, but I think their pipeline's drying up."</div>
+        </div>
+        <div class="pain-card">
+          <div class="pnum">04</div>
+          <h4>The website can't take a handoff</h4>
+          <p>Clicking "working capital financing" currently lands on an AI readiness page. Your in-house hire is doing her best without the background for it. Every dollar of demand anyone creates leaks out right here.</p>
+          <div class="pquote">"That's our number one thing we've got going on right now."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout reveal d3">
+      <h4>Why this is worth fixing rather than tolerating</h4>
+      <p>You close at roughly 50% when a <em>referred</em> deal reaches you. A client is worth, in your own estimate, somewhere around $500k across advisory, financing, and the exit. You have a partner with capacity for four or five more financing clients today, and a private equity partner ready to fund $10M or $20M behind her. Every constraint on growth has already been solved except one.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 02 · WHERE THE MONEY IS ══ -->
+<section class="section" id="money">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">02 — Where The Money Actually Is</div>
+      <h2>Your highest-margin division is the one nobody is selling.</h2>
+      <div class="divider"></div>
+      <p class="lede">A standard marketing plan would chase advisory retainers, because that's the visible half of the business. Your own numbers say it's the smaller one. Advisory at full scale is $2.1M a year in gross revenue, three years out. The financing line clears <strong style="color:var(--dark)">$3.0M in net income inside twelve months</strong> — and the capacity to run it is already sitting idle. Point the machine at the wrong division and the year costs you exactly the same. It just returns a fraction of what it was worth.</p>
+    </div>
+
+    <div class="reveal d1" style="margin-top:56px">
+      <h3>Finding one — financing is roughly seven times the prize</h3>
+      <p style="margin-top:10px">You told me $500k deployed returns about $150k in net income. That's a 30% net annual yield. Run it against your own targets and the financing line dwarfs everything else in the firm.</p>
+      <div class="tbl-wrap">
+        <div class="tbl-scroll">
+          <table class="dt">
+            <thead><tr><th>Capital position</th><th>Deployed</th><th>Net income / yr</th></tr></thead>
+            <tbody>
+              <tr><td>Today — your personal ceiling</td><td>~$2M</td><td>~$600k</td></tr>
+              <tr class="hi"><td>Your 12-month target</td><td>$10M</td><td>$3.0M</td></tr>
+              <tr><td>Your 36-month target</td><td>$50M</td><td>$15.0M</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tbl-foot">For comparison: 25 advisory clients at your ~$7k average is $2.1M a year in <em>gross revenue</em> — before delivery cost, before payroll for the Big Four hires it requires. The financing line produces more <em>net income</em> in year one than the advisory line produces in revenue, and it needs almost no additional headcount to do it.</div>
+      </div>
+      <div class="callout">
+        <h4>So marketing weight goes to financing — and your own rule makes that clean</h4>
+        <p>"We don't do financing for clients we're not closing their books." That policy means every financing win is automatically an advisory win. One funnel, two revenue lines — and the accounting requirement stops being friction and becomes the reason you can underwrite where a pure factoring shop can't.</p>
+      </div>
+    </div>
+
+    <div class="reveal d2" style="margin-top:64px">
+      <h3>Finding two — you need forty conversations, not four thousand leads</h3>
+      <p style="margin-top:10px">On the call I told you we send 40,000 emails a week. That's true across our client base, and it's the wrong plan for Blalock. Your numbers don't call for volume. They call for precision.</p>
+      <div class="funnel">
+        <div class="fstep">
+          <div class="fstep-n">Target</div>
+          <div class="fstep-num">$10M</div>
+          <div class="fstep-lbl">deployed in 12 months — your number</div>
+        </div>
+        <div class="fstep">
+          <div class="fstep-n">Requires</div>
+          <div class="fstep-num">12–18</div>
+          <div class="fstep-lbl">new financing clients at $500k–$1M each</div>
+        </div>
+        <div class="fstep">
+          <div class="fstep-n">At a blended close</div>
+          <div class="fstep-num">~40</div>
+          <div class="fstep-lbl">qualified opportunities for the year</div>
+        </div>
+        <div class="fstep">
+          <div class="fstep-n">Which is</div>
+          <div class="fstep-num">2–3</div>
+          <div class="fstep-lbl">qualified conversations a month</div>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:20px">
+        <h4>One caveat on that 50%, because it matters</h4>
+        <p>You gave me that close rate about <em>broker introductions</em> — someone vouched for you before the call started. A cold-sourced opportunity will not close at 50%, and we shouldn't pretend it will. Forty opportunities gets you to twelve-to-eighteen clients only if a healthy share of them are referred. That is precisely why the partner channel is built first and why it carries the most weight in this plan — not because it's easier, but because it's the only channel that preserves the economics you already know are true.</p>
+      </div>
+      <div class="rsrch">
+        <span>◆</span>
+        <div>Cold email in financial services averages a <b>3.39% reply rate</b><sup>1</sup>, and tightly targeted lists under 50 recipients reply at <b>5.8% versus 2.1% for large blasts</b><sup>2</sup> across 25,000+ campaigns. Backing into 40 qualified opportunities: roughly <b>750 well-chosen prospects a month</b>, not tens of thousands. The entire strategy follows from that one number.</div>
+      </div>
+    </div>
+
+    <div class="reveal d3" style="margin-top:64px">
+      <h3>And one advantage nobody in your category is using</h3>
+      <p style="margin-top:10px">A client is worth about $500k to Blalock over its life. Model what you can afford to spend acquiring one:</p>
+      <div class="tbl-wrap">
+        <div class="tbl-scroll">
+          <table class="dt">
+            <thead><tr><th>Step</th><th>Assumption</th><th>Result</th></tr></thead>
+            <tbody>
+              <tr><td>Click on a high-intent financing term</td><td>~$40</td><td>—</td></tr>
+              <tr><td>Landing page conversion</td><td>4%</td><td>~$1,000 / lead</td></tr>
+              <tr><td>Lead → qualified opportunity</td><td>1 in 5</td><td>~$5,000 / opportunity</td></tr>
+              <tr><td>Close rate</td><td>50% — yours</td><td>~$10,000 acquisition cost</td></tr>
+              <tr class="hi"><td>Against lifetime value</td><td>~$500k — yours</td><td>50 : 1</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tbl-foot">Modeled rather than measured — but the conclusion holds under any reasonable input. A pure-play factoring company earns a fraction of $500k per client and <em>cannot</em> pay $10,000 to win one. You can. Your binding constraint on paid channels is lead quality, not lead cost, and almost nobody you compete with is in that position.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 03 · WHO ══ -->
+<section class="section section--light" id="who">
+  <div class="wrap wrap--wide">
+    <div class="reveal">
+      <div class="eyebrow">03 — Who We Go After</div>
+      <h2>Two buyers. One very long relationship.</h2>
+      <div class="divider"></div>
+      <p class="lede">Same firm, same bundle — but a CEO whose bank just declined them is not in the same state of mind as an owner thinking about retiring. Each gets its own list, message, and channel. The universe is 200,000–300,000 US middle market firms<sup style="font-size:11px">10</sup>, and your reachable slice inside the $12–50M band runs to tens of thousands. This has never been a market size problem.</p>
+    </div>
+
+    <div class="av-grid reveal d1">
+      <div class="av-card">
+        <span class="av-tag a">Priority one</span>
+        <h3>The cash-crunched operator</h3>
+        <p>$12–50M in oilfield services, trucking, environmental, staffing, or construction. Growing faster than collections. Just got declined by the bank, or is paying 40%+ to a merchant cash advance shop.</p>
+        <div class="av-sub">
+          <h5>What keeps them up</h5>
+          <p>Making payroll against net-60 and net-90 receivables. Knowing the merchant advance was a mistake and not seeing a way out of it.</p>
+        </div>
+        <div class="av-sub">
+          <h5>What earns trust</h5>
+          <p>Speed, and candor about cost. Richard having personally paid 28% for five years and built a company on it.</p>
+        </div>
+        <div class="av-line">→ Highest urgency. Fastest close. Feeds the financing line.</div>
+      </div>
+
+      <div class="av-card">
+        <span class="av-tag b">Priority two</span>
+        <h3>The CEO with no finance function</h3>
+        <p>Under 50, strong operator, weak on financials — the profile you described. Books are behind, the controller just quit or was never good enough, and the P&amp;L wouldn't survive a lender's diligence.</p>
+        <div class="av-sub">
+          <h5>What keeps them up</h5>
+          <p>Not trusting their own numbers. Knowing a real CFO costs $250k a year and that a bookkeeper isn't the answer either.</p>
+        </div>
+        <div class="av-sub">
+          <h5>What earns trust</h5>
+          <p>Big Four pedigree at a price they can carry, delivered by people who have actually run companies rather than only audited them.</p>
+        </div>
+        <div class="av-line">→ The retainer. Also the gateway to the financing line.</div>
+      </div>
+
+      <div class="av-card">
+        <span class="av-tag c">What they become</span>
+        <h3>The same client, six years later</h3>
+        <p>There is no third prospect list. You don't hunt for owners who are already at the door — you take the two above at the early or mid stage, embed, grow them, and drive them to the exit. Your words: a three-to-six-year relationship, and you're the most important contractor on their payroll.</p>
+        <div class="av-sub">
+          <h5>Why the timing works</h5>
+          <p>51% of US businesses are boomer-owned and 49% of owners plan to exit within five years — inside your typical relationship window. Only 5% have an exit team.<sup>5</sup> Most clients you sign will transact while you still hold them.</p>
+        </div>
+        <div class="av-sub">
+          <h5>What it's worth</h5>
+          <p>Monthly advisory, then financing, then the $250k minimum transaction fee. That's the ~$500k lifetime value every number in this proposal is built on.</p>
+        </div>
+        <div class="av-line">→ Not a segment to chase. The reason one client is worth $500k.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 04 · SIGNALS ══ -->
+<section class="section section--dark" id="signals">
+  <div class="wrap wrap--wide">
+    <div class="reveal">
+      <div class="eyebrow">04 — The Signals</div>
+      <h2>We don't guess who needs capital.<br>It's a matter of public record.</h2>
+      <div class="divider"></div>
+      <p class="lede">This is what makes 750 prospects a month outperform 40,000. When a company borrows, wins a contract, or falls behind on taxes, it files paperwork — and that paperwork is public, dated, and searchable. We pull it every morning, enrich it against the D&amp;B and ZoomInfo seats you already pay for, and hand your team a scored list every Monday. Run <strong style="color:#fff">nationally</strong>, not just Texas — receivables financing isn't a local business, and the geography constraint belongs on paid search and the partner network, not on the data.</p>
+    </div>
+
+    <div class="sig-block reveal d1">
+      <div class="sig-head">
+        <span class="sig-badge a">Tier A</span>
+        <h3>The buying window is open right now</h3>
+        <span class="sh-note">— these get called, not just emailed</span>
+      </div>
+      <div class="sig-list">
+        <div class="sig-hd"><span>Signal</span><span>Why it converts</span><span>Source</span></div>
+        <div class="sig-row">
+          <div class="sig-what">New federal or state contract award</div>
+          <div class="sig-why">They just won revenue they now have to fund on net-60 and net-90 terms. A textbook receivables financing moment, and largely unworked at the $12–50M level.</div>
+          <div class="sig-src">SAM.gov / FPDS · free · daily<sup>7</sup></div>
+        </div>
+        <div class="sig-row">
+          <div class="sig-what">A high-cost lender already holds a lien on them</div>
+          <div class="sig-why">They are paying 40%+ to a merchant cash advance shop and they know it was a mistake. Your 28% plus a clean book close is a rescue, not a pitch — the highest-converting message in this plan. Note how this one works: there is no national UCC database, so we don't hunt these blind. We run lien lookups against accounts the other signals already surfaced, and the ones carrying expensive paper move to the top of the call list.</div>
+          <div class="sig-src">UCC lookup API, run per account<sup>7</sup></div>
+        </div>
+        <div class="sig-row">
+          <div class="sig-what">An existing lien approaching its five-year lapse</div>
+          <div class="sig-why">A financing relationship is ending on a known date. A replacement window with a calendar entry already attached — and once an account is in the CRM, that date monitors itself.</div>
+          <div class="sig-src">Same lookup, stored and watched</div>
+        </div>
+        <div class="sig-row">
+          <div class="sig-what">State or federal tax lien filed</div>
+          <div class="sig-why">Cash-flow distress, and it just disqualified them from a commercial line — exactly the borrower a bank won't touch and you will. Straight answer on this one: lien records are filed county by county with no clean national feed, so this is a phase-two addition rather than something we switch on in week four.</div>
+          <div class="sig-src">County records · phase two</div>
+        </div>
+        <div class="sig-row">
+          <div class="sig-what">Bank turndown</div>
+          <div class="sig-why">Partner-sourced rather than data-sourced. The highest-converting lead type in commercial finance, full stop — the need is proven and the alternative is already gone.</div>
+          <div class="sig-src">Referral partner network</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sig-block reveal d2">
+      <div class="sig-head">
+        <span class="sig-badge b">Tier B</span>
+        <h3>Strong fit, need is forming</h3>
+        <span class="sh-note">— sequenced, nurtured, watched</span>
+      </div>
+      <div class="sig-list">
+        <div class="sig-row">
+          <div class="sig-what">New FMCSA operating authority, or a fleet going 5 → 25 trucks</div>
+          <div class="sig-why">Trucking is a core receivables vertical and growth outruns collections fast. New-authority feeds arrive weekly with owner name, email, and phone attached.</div>
+          <div class="sig-src">FMCSA public carrier census</div>
+        </div>
+        <div class="sig-row">
+          <div class="sig-what">Controller or CFO departure — or a req open 60+ days</div>
+          <div class="sig-why">The cleanest trigger for outsourced accounting that exists. They have the problem today, and hiring visibly isn't solving it.</div>
+          <div class="sig-src">LinkedIn · job boards</div>
+        </div>
+        <div class="sig-row">
+          <div class="sig-what">Outgrowing QuickBooks, or migrating to NetSuite</div>
+          <div class="sig-why">A company changing its accounting stack has just admitted its finance function was outgrown. You are the answer to a question they already asked themselves.</div>
+          <div class="sig-src">ZoomInfo technographics — already yours</div>
+        </div>
+        <div class="sig-row">
+          <div class="sig-what">Fast headcount growth in staffing and services</div>
+          <div class="sig-why">Payroll goes out weekly, invoices come back in sixty days. That gap is the product.</div>
+          <div class="sig-src">Enrichment + job postings</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sig-block reveal d3">
+      <div class="sig-head">
+        <span class="sig-badge c">Tier C</span>
+        <h3>Signals that raise what a client is worth</h3>
+        <span class="sh-note">— same pitch, higher priority in the queue</span>
+      </div>
+      <div class="sig-list">
+        <div class="sig-row">
+          <div class="sig-what">Owner 58+, business 20+ years, no visible succession</div>
+          <div class="sig-why">The approach doesn't change — capital and clean books. But half of American businesses are boomer-owned, half of those owners plan to exit inside five years, and 95% have no exit team.<sup>5</sup> This prospect will very likely transact while you still hold them, which means the file carries the full $500k rather than a retainer.</div>
+          <div class="sig-src">D&amp;B · Secretary of State · enrichment</div>
+        </div>
+        <div class="sig-row">
+          <div class="sig-what">Private equity add-on activity in their vertical</div>
+          <div class="sig-why">An unsolicited offer is coming. Sign them before it lands and you're the advisor sitting on their side of the table when it does — with three years of their books already closed.</div>
+          <div class="sig-src">Deal databases · trade press</div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="reveal d3" style="margin-top:56px">
+      <h3 style="color:#fff;margin-bottom:6px">This isn't a description. Here's today's pull.</h3>
+      <p style="font-size:15px">Ran against the federal award data the night before this call, filtered to your five verticals and to award sizes a $12–50M business actually wins. Nine of twenty-nine, unedited:</p>
+      <div class="sig-list" style="margin-top:20px">
+        <div class="sig-hd"><span>Company</span><span>Award &amp; agency</span><span>Work begins</span></div>
+        <div class="sig-row"><div class="sig-what">Promethean Operating I LLC <span style="font-weight:400;color:rgba(255,255,255,.4)">· LA</span></div><div class="sig-why">$6.1M · Department of the Interior · oilfield services</div><div class="sig-src">May 1, 2026</div></div>
+        <div class="sig-row"><div class="sig-what">Chet Morrison Contractors LLC <span style="font-weight:400;color:rgba(255,255,255,.4)">· LA</span></div><div class="sig-why">$710k · Department of the Interior · oilfield services</div><div class="sig-src">May 14, 2026</div></div>
+        <div class="sig-row"><div class="sig-what">Texas Global Distribution LLC <span style="font-weight:400;color:rgba(255,255,255,.4)">· TX</span></div><div class="sig-why">$1.9M · Department of Defense · logistics</div><div class="sig-src">Feb 9, 2026</div></div>
+        <div class="sig-row"><div class="sig-what">Battle Axe Transport LLC <span style="font-weight:400;color:rgba(255,255,255,.4)">· TX</span></div><div class="sig-why">$546k · Veterans Affairs · trucking</div><div class="sig-src">Jul 1, 2026</div></div>
+        <div class="sig-row"><div class="sig-what">Environmental Restoration LLC <span style="font-weight:400;color:rgba(255,255,255,.4)">· TX</span></div><div class="sig-why">$1.4M · Environmental Protection Agency · remediation</div><div class="sig-src">Jul 16, 2026</div></div>
+        <div class="sig-row"><div class="sig-what">Citadel Federal Solutions LLC <span style="font-weight:400;color:rgba(255,255,255,.4)">· MD</span></div><div class="sig-why">$4.3M · Homeland Security · staffing</div><div class="sig-src">Sep 23, 2026</div></div>
+        <div class="sig-row"><div class="sig-what">Ameritech Contracting LLC <span style="font-weight:400;color:rgba(255,255,255,.4)">· OH</span></div><div class="sig-why">$3.8M · Veterans Affairs · specialty construction</div><div class="sig-src">Sep 9, 2026</div></div>
+        <div class="sig-row"><div class="sig-what">Structural Builders Inc. <span style="font-weight:400;color:rgba(255,255,255,.4)">· AL</span></div><div class="sig-why">$2.5M · Veterans Affairs · specialty construction</div><div class="sig-src">Sep 30, 2026</div></div>
+        <div class="sig-row"><div class="sig-what">Aya Healthcare Inc. <span style="font-weight:400;color:rgba(255,255,255,.4)">· MD</span></div><div class="sig-why">$2.3M · Health &amp; Human Services · staffing</div><div class="sig-src">Sep 30, 2026</div></div>
+      </div>
+      <div class="rsrch" style="margin-top:20px"><span>◆</span><div>Note the <b>future start dates</b>. Those are the best names on the list — committed revenue they have not begun funding yet. You would be talking to them before the cash gap opens, not after.<br><br>What's missing is the honest part: <b>no contact names yet</b>, and company size is inferred from award size. Those come from the ZoomInfo and D&amp;B seats you already pay for. This took an afternoon against a free federal API — it is one of four sources, at maybe 30% of finished.</div></div>
+    </div>
+
+    <div class="callout reveal d3">
+      <h4>One thing we will not do</h4>
+      <p>We won't buy off-the-shelf "UCC lead lists." Those files get resold to merchant cash advance shops and burned to ash — the same business owner has heard from thirty callers before you dial. The value is in pulling raw filings ourselves and enriching them, which is slower to build and far harder for anyone to copy. That's the honest version of "we use AI for research," and it is the piece of this engine that genuinely becomes yours.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 05 · ENGINE ══ -->
+<section class="section" id="engine">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">05 — The Engine</div>
+      <h2>Six systems. All of them built inside your accounts.</h2>
+      <div class="divider"></div>
+      <p class="lede">Not a retainer that buys you "marketing." Six specific pieces of infrastructure, each with an input and an output. Every one is registered in Blalock's name from day one — if we ever part ways, you keep the website, the CRM, the data pipeline, the sequences, and the partner list.</p>
+    </div>
+
+    <div class="eng-list">
+      <div class="eng reveal d1">
+        <div class="eng-top"><span class="eng-n">01</span><h3>The Foundation</h3><span class="eng-when">Weeks 1–4</span></div>
+        <p>A CRM that can actually hold a pipeline, and a website that can take a handoff. This is the part that ends "we did a poor job following up" permanently, without asking anyone at Blalock to be more diligent than they have time to be.</p>
+        <div class="eng-io">
+          <div><h5>In</h5><p>Your Excel contacts, four existing clients, two live deals, the broker relationship, and the old ZoomInfo pulls — re-scored against fit, not assumed to be good</p></div>
+          <div><h5>Out</h5><p>Every contact in a pipeline with a stage, an owner, and an automatic next action</p></div>
+        </div>
+        <ul class="eng-chips"><li>GoHighLevel CRM</li><li>Pipeline + stages</li><li>Automated follow-up</li><li>Call + SMS</li><li>Website rebuild</li><li>Instant text-back</li><li>Attribution</li></ul>
+        <div class="eng-note"><strong>Why it comes first:</strong> it's also the only way a performance-based partnership can work. Nothing at Blalock is attributable today, so nothing can be fairly shared. This system and section 09 are the same conversation.</div>
+      </div>
+
+      <div class="eng reveal d1">
+        <div class="eng-top"><span class="eng-n">02</span><h3>The Signal Pipeline</h3><span class="eng-when">Weeks 2–6</span></div>
+        <p>Automated daily pulls of the public filings in section 04 — contract awards, UCC-1s, tax liens, new carrier authority — deduplicated, enriched against your existing data seats, scored, and delivered into the CRM as a working list every Monday morning.</p>
+        <div class="eng-io">
+          <div><h5>In</h5><p>USAspending/FPDS contract awards and the FMCSA carrier census — both free and open — plus finance-role vacancies, then lien lookups on whatever surfaces. Enriched with your D&amp;B and ZoomInfo.</p></div>
+          <div><h5>Out</h5><p>~750 scored, reason-coded prospects a month — each with a dated event behind it</p></div>
+        </div>
+        <ul class="eng-chips"><li>USAspending / FPDS</li><li>FMCSA census deltas</li><li>UCC lien lookups</li><li>CFO vacancy signals</li><li>Entity resolution</li><li>Enrichment + scoring</li><li>Weekly list</li></ul>
+        <div class="eng-note"><strong>This is the differentiator.</strong> No agency you would otherwise be talking to is building this. It's the reason your outreach opens with "we saw you were awarded the contract in May" instead of "hope this finds you well."</div>
+      </div>
+
+      <div class="eng reveal d2">
+        <div class="eng-top"><span class="eng-n">03</span><h3>Outbound</h3><span class="eng-when">Week 5 onward</span></div>
+        <p>Email, phone, and LinkedIn running against those lists — with a different sequence written for every trigger, because the message to a company that just won a federal contract is nothing like the message to one drowning in a merchant cash advance.</p>
+        <div class="eng-io">
+          <div><h5>In</h5><p>The Monday scored list, sent on warmed infrastructure that protects blalockcapitalpartners.com</p></div>
+          <div><h5>Out</h5><p>Booked calls on your calendar. A setter handles the front end — you close.</p></div>
+        </div>
+        <ul class="eng-chips"><li>3 secondary domains</li><li>~9 warmed inboxes</li><li>Per-trigger sequences</li><li>Sales Navigator</li><li>Daily LinkedIn outreach</li><li>Weekly message testing</li></ul>
+        <div class="rsrch"><span>◆</span><div>You said it yourself: <em>"You can't send out 200 emails a week and get anything going."</em> You were right about the direction and we were both wrong about the scale — the data says <b>tight, triggered lists beat volume by nearly 3×</b><sup>2</sup>. You don't need a bigger cannon. You need a better list.</div></div>
+      </div>
+
+      <div class="eng reveal d2">
+        <div class="eng-top"><span class="eng-n">04</span><h3>The Partner Channel</h3><span class="eng-when">Week 3 onward</span></div>
+        <p>The one thing already working at Blalock, turned from a relationship into a system. Detailed in the next section, because it is where we expect your first win to come from.</p>
+        <div class="eng-io">
+          <div><h5>In</h5><p>AACFB and NEFA member rosters, ~40 Houston-area community bank lenders, adjacent professionals</p></div>
+          <div><h5>Out</h5><p>10–15 partners actively engaged inside 90 days, with the first referrals landing well before the last one signs</p></div>
+        </div>
+        <ul class="eng-chips"><li>Commission sheet</li><li>Partner landing page</li><li>Deal registration</li><li>Monthly recruitment</li><li>Automated commission statements</li></ul>
+      </div>
+
+      <div class="eng reveal d3">
+        <div class="eng-top"><span class="eng-n">05</span><h3>Authority</h3><span class="eng-when">Month 2 onward</span></div>
+        <p>Content earns its place here as a multiplier, not as a lead source — and we would rather tell you that now than explain it in month five. A prospect who gets a triggered email, checks LinkedIn, and finds a real person with real proof replies at a materially higher rate than one who finds an empty profile.</p>
+        <div class="eng-io">
+          <div><h5>In</h5><p>One recorded 60-minute interview with you per month. That is your entire time commitment.</p></div>
+          <div><h5>Out</h5><p>Three posts a week in your voice, two researched articles a week, case studies, and the quarterly index</p></div>
+        </div>
+        <ul class="eng-chips"><li>AEO / answer-engine content</li><li>Richard's LinkedIn</li><li>Case studies</li><li>Financing comparison sheet</li><li>Cash Flow Index</li><li>Quarterly roundtable</li></ul>
+        <div class="rsrch"><span>◆</span><div>Two honest notes. <b>Organic search is a year-two asset</b> for a one-year-old domain — 68% of Google searches now end without a click at all<sup>4</sup>, and that results page belongs to funded national lenders. But <b>webinars rank as the highest-quality lead source for 81% of B2B marketers at roughly $72 a lead</b><sup>6</sup>, and case studies move close rate, which at forty conversations a year is worth more than most lead-generation wins.</div></div>
+        <div class="eng-note"><strong>The asset nobody else has:</strong> you close the books, finance the receivables, and eventually sell the companies. That is real cash-flow data on lower-middle-market businesses that no publisher owns. Published quarterly as the <em>Blalock Lower Middle Market Cash Flow Index</em>, it's the one content piece that can produce conversations inside 90 days — because bankers forward it, and it doesn't have to wait for Google.</div>
+      </div>
+
+      <div class="eng reveal d3">
+        <div class="eng-top"><span class="eng-n">06</span><h3>Paid — and What Comes After</h3><span class="eng-when">Month 3 onward</span></div>
+        <p>Narrow paid search on vertical and geographic terms only — oilfield, trucking, and environmental services across Texas, Oklahoma, and Louisiana. Never the national head terms. Plus retargeting, so a firm one year old looks established to a CEO doing diligence.</p>
+        <div class="eng-io">
+          <div><h5>In</h5><p>$3–5k/mo in media billed to your own account, spent against the 50:1 math in section 02</p></div>
+          <div><h5>Out</h5><p>High-intent inbound at a cost your competitors structurally cannot match</p></div>
+        </div>
+        <ul class="eng-chips"><li>Vertical + geo search</li><li>Site retargeting</li><li>Google Business Profile</li><li>Big Four recruiting funnel</li><li>Internal AI enablement</li></ul>
+        <div class="rsrch"><span>◆</span><div>Finance and insurance search averages <b>$74 per lead</b> against a $3.39 click<sup>3</sup>. We are deliberately <em>not</em> recommending LinkedIn lead-generation forms as a cold channel — financial services runs <b>$148–$200+ per lead</b> there<sup>8</sup> at considerably lower intent. LinkedIn earns its keep as your presence and your outbound, not as a faucet.</div></div>
+        <div class="eng-note"><strong>And your second bottleneck, pre-solved:</strong> you said that once marketing is fixed, the next problem is recruiting out of the Big Four. That pitch is already written — remote, bigger bonuses, full enterprise exposure instead of being pigeonholed at Deloitte. Same infrastructure, different audience, and it arrives right on schedule around month six.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 06 · PARTNERS ══ -->
+<section class="section section--dark" id="partners">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">06 — The Partner Channel</div>
+      <h2>You already proved this works. It has just never been given distribution.</h2>
+      <div class="divider"></div>
+      <p class="lede">One equipment broker relationship has produced four or five meetings and real commissions. And you pay <em>for the life of the client</em> — materially better than what most funders offer. You are sitting on a strong recruiting offer that has never actually been recruited with.</p>
+    </div>
+
+    <div class="reveal d1">
+      <div class="quote-block">
+        <p class="quote-text">"Look in your files and see who fits this description and give us an introduction, and we'll take it from there. And our close ratio is about 50%."</p>
+        <div class="quote-attr">— Richard. This is why partners produce first: the demand already exists. It's just sitting in someone else's filing cabinet.</div>
+      </div>
+    </div>
+
+    <div class="reveal d2">
+      <h3 style="color:#fff;margin-bottom:6px">Who we recruit, and where they come from</h3>
+      <p style="font-size:15px">Every one of these is a named, reachable list — not a category.</p>
+      <div class="pt-grid">
+        <div class="pt"><h4>Commercial finance brokers</h4><p>The exact profile already working for you. There is a national trade association whose entire membership fits the description, with an annual conference and a financing expo attached.</p><span class="ptm">AACFB — highest-ROI single move on this list</span></div>
+        <div class="pt"><h4>Equipment finance and leasing</h4><p>Same visibility into the borrower's financials, same relationship with the CEO who signs off on the purchase.</p><span class="ptm">NEFA · ELFA member rosters</span></div>
+        <div class="pt"><h4>Community banks and credit unions</h4><p>Structured turndown reciprocity: send us your declines, we hand them back bankable in 24 months. Banks say yes to this because they keep the relationship instead of losing it entirely.</p><span class="ptm">~40 Houston-area commercial lenders</span></div>
+        <div class="pt"><h4>Sub-scale CPA and bookkeeping firms</h4><p>A $20M client outgrows a three-person shop. Today that shop simply loses the client. With a commission, they refer it instead.</p><span class="ptm">Local + regional, campaign-sourced</span></div>
+        <div class="pt"><h4>Restructuring and commercial attorneys</h4><p>They meet the distressed operator before anyone else does, and they need somewhere credible to send them.</p><span class="ptm">TMA — Turnaround Management Association</span></div>
+        <div class="pt"><h4>Commercial P&amp;C insurance brokers</h4><p>They see the equipment schedule and the financials every single year at renewal.</p><span class="ptm">Regional brokerages</span></div>
+        <div class="pt"><h4>The factoring industry itself</h4><p>Competitors, yes — but also a steady source of deals too small, too large, or too messy for them, which are frequently exactly right for you.</p><span class="ptm">IFA · 2026 conference, May 6–8, Nashville<sup>9</sup></span></div>
+        <div class="pt"><h4>The M&amp;A ecosystem</h4><p>Sixty chapters, 15,000 members, a thousand events a year, and dues between $425 and $700. The cheapest entry into lower middle market deal flow that exists.</p><span class="ptm">ACG — Houston chapter<sup>9</sup></span></div>
+      </div>
+      <div class="rsrch" style="margin-top:26px"><span>◆</span><div><b>Referred clients convert at 3–5× the rate of cold outbound</b> and carry higher lifetime value<sup>11</sup> — which is why this is the first channel we build and the one your first win most likely comes from. The target is <b>10–15 partners actively engaged inside 90 days</b>, against the one you have today — and the first referral matters more than the fifteenth signature.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 07 · NINETY DAYS ══ -->
+<section class="section section--light" id="ninety">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">07 — The First Ninety Days</div>
+      <h2>What gets built, and when it should start to bite.</h2>
+      <div class="divider"></div>
+      <p class="lede">Work starts within 48 hours of signing. There is no onboarding month — the website is already your top priority and inbox warming has to begin immediately regardless, so week one is real work.</p>
+    </div>
+
+    <div class="tl-wrap reveal d1">
+      <div class="tl-spine"></div>
+
+      <div class="tl-phase p1">
+        <div class="tl-label">
+          <span class="tl-badge">Phase One</span>
+          <h3>Foundation</h3>
+          <div class="tl-dur">Days 1–30</div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-item"><div class="tl-dot"></div><div><h4>CRM live, contacts migrated</h4><p>Excel, your four clients, the two live deals, and the broker — one pipeline, with follow-up running automatically instead of by memory.</p></div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div><h4>Website rebuilt and shipped</h4><p>One page per revenue line, mobile-first, instant text-back on every form. The broken navigation goes away in week two.</p></div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div><h4>Signal pipeline v1 running</h4><p>SAM.gov, UCC filings across TX/OK/LA, tax liens, FMCSA. First scored list in your hands by week four.</p></div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div><h4>Domains warming, partner kit built</h4><p>Nine inboxes warming from day one. Commission sheet, partner page, and deal registration ready to send.</p></div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div><h4>Existing relationships properly worked</h4><p>The cheapest win in this plan. Four clients who have never been asked for a referral, two live deals with real follow-up behind them, and one broker asked properly to go through his files.</p></div></div>
+        </div>
+      </div>
+
+      <div class="tl-phase p2">
+        <div class="tl-label">
+          <span class="tl-badge">Phase Two</span>
+          <h3>Channels Live</h3>
+          <div class="tl-dur">Days 31–60</div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-item"><div class="tl-dot"></div><div><h4>Triggered outbound begins</h4><p>~750 prospects a month across email, phone, and LinkedIn, sequenced by trigger type rather than by list.</p></div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div><h4>Partner recruitment campaign</h4><p>AACFB and NEFA rosters, Houston-area bank lenders, CPAs, insurance brokers, restructuring attorneys.</p></div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div><h4>Your LinkedIn starts</h4><p>Three posts a week from one recorded interview. Connection requests maxed daily against your exact filters.</p></div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div><h4>First eight articles published</h4><p>Written as answers to the questions your buyers actually type at eleven at night, not as keyword filler.</p></div></div>
+        </div>
+      </div>
+
+      <div class="tl-phase p3">
+        <div class="tl-label">
+          <span class="tl-badge">Phase Three</span>
+          <h3>Amplify</h3>
+          <div class="tl-dur">Days 61–90</div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-item"><div class="tl-dot"></div><div><h4>Paid search and retargeting live</h4><p>Narrow vertical and geographic terms only, measured against qualified opportunities rather than clicks.</p></div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div><h4>First CEO roundtable</h4><p>Co-hosted with a bank or an equipment broker. Lead generation and partner recruitment in the same ninety minutes.</p></div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div><h4>First case studies produced</h4><p>Written, filmed, and cut. You have none today, and they move close rate more than anything else we make.</p></div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div><h4>Full review and reallocation</h4><p>Every dollar and hour moves to whatever is actually producing qualified opportunities. Nothing here is precious.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal d2" style="margin-top:32px">
+      <h3>Where your first win realistically comes from</h3>
+      <p style="margin-top:10px">We would rather set this expectation now than let you invent one. The failure mode in this business is not slow results — it's a client who expected day thirty, got day seventy-five, and experienced a good outcome as a miss.</p>
+      <div class="win-wrap">
+        <div class="win-row hd"><span>When</span><span>What</span><span>Confidence</span></div>
+        <div class="win-row">
+          <div class="win-when">Weeks 2–4</div>
+          <div class="win-what">Existing relationships, worked properly<small>Four clients never asked for a referral, two live deals with real follow-up, and your broker asked to go through his files. Requires zero new demand.</small></div>
+          <div class="win-conf hi">Meeting likely</div>
+        </div>
+        <div class="win-row">
+          <div class="win-when">Days 45–75</div>
+          <div class="win-what">First partner-sourced qualified opportunity<small>The demand already exists inside a broker's client files. The only missing step is that nobody has asked broker number two.</small></div>
+          <div class="win-conf hi">Highest</div>
+        </div>
+        <div class="win-row">
+          <div class="win-when">Days 60–90</div>
+          <div class="win-what">First trigger-outbound opportunity<small>Most likely the merchant-cash-advance refinance play — current pain, public data, and a message that writes itself.</small></div>
+          <div class="win-conf md">Medium-high</div>
+        </div>
+        <div class="win-row">
+          <div class="win-when">Month 3–5</div>
+          <div class="win-what">First closed client from new marketing<small>Set by your sales cycle rather than our speed. A $20M CEO handing over their books and their capital structure is not a two-week decision.</small></div>
+          <div class="win-conf md">The real number</div>
+        </div>
+        <div class="win-row">
+          <div class="win-when">Month 7+</div>
+          <div class="win-what">Organic and content-sourced leads<small>Real, compounding, and slow. We are not going to pretend otherwise to make this page look better.</small></div>
+          <div class="win-conf lo">Year-two asset</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 08 · MATH ══ -->
+<section class="section section--dark" id="math">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">08 — Now Do The Math</div>
+      <h2>Your firm with a functioning top of funnel.</h2>
+      <div class="divider"></div>
+      <p class="lede">Every input below is a number you gave me — your fee range, your close rate, your lifetime value, your capital targets. We have added nothing optimistic to any of it.</p>
+    </div>
+
+    <div class="tbl-wrap reveal d1" style="margin-top:48px">
+      <div class="tbl-scroll">
+        <table class="dt">
+          <thead><tr><th>&nbsp;</th><th>Today</th><th>12 months</th><th>36 months</th></tr></thead>
+          <tbody>
+            <tr><td>Active advisory clients</td><td>4</td><td>12</td><td>25</td></tr>
+            <tr><td>Advisory fees / mo (~$7k avg)</td><td>$28,000</td><td>$84,000</td><td>$175,000</td></tr>
+            <tr><td>Annualized advisory revenue</td><td>$336,000</td><td>$1,008,000</td><td>$2,100,000</td></tr>
+            <tr><td>Capital deployed — your target</td><td>~$2M</td><td>$10M</td><td>$50M</td></tr>
+            <tr class="hi"><td>Financing net income / yr (30%)</td><td>$600,000</td><td>$3,000,000</td><td>$15,000,000</td></tr>
+            <tr><td>Lifetime value added (~$500k/client)</td><td>—</td><td>+$4.0M</td><td>+$10.5M</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tbl-foot">At your current pace of about one client a quarter you reach roughly 8 clients in 12 months without changing anything — so the advisory column represents <em>incremental</em> clients, not the whole number. The financing line is where this engagement pays for itself many times over, and it is the line with the most capacity sitting idle today.</div>
+    </div>
+
+    <div class="delta-row reveal d2">
+      <div class="delta"><div class="delta-num">1</div><div class="delta-lbl">New client at your average fee covers a full year of this engagement — before financing, before the exit</div></div>
+      <div class="delta"><div class="delta-num">$250k</div><div class="delta-lbl">Your minimum M&amp;A exit fee. One of them covers more than two years of the top tier</div></div>
+      <div class="delta"><div class="delta-num">28×</div><div class="delta-lbl">Return on the annual fee if the financing line reaches the target you named on the call</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 09 · INVESTMENT ══ -->
+<section class="section" id="investment">
+  <div class="wrap wrap--wide">
+    <div class="reveal" style="text-align:center">
+      <div class="eyebrow">09 — Investment</div>
+      <h2>Two doors. You told me to price both.</h2>
+      <div class="divider" style="margin-left:auto;margin-right:auto"></div>
+      <p class="lede" style="max-width:730px;margin:0 auto">You asked for the standard fee schedule <em>and</em> for something with shared risk in it. Rather than make you negotiate us into the second one, here they both are — the same scope, priced two ways.</p>
+    </div>
+
+    <div class="door-grid reveal d1">
+      <div class="door">
+        <div class="door-name">Door One · Standard</div>
+        <div class="door-price">$9,000<span> / mo</span></div>
+        <div class="door-tag">The complete engine — every system in section 05, the partner channel, the recruiting funnel, and internal AI enablement. You pay for the work. We carry none of the risk.</div>
+        <ul class="door-feats">
+          <li class="door-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span>Website rebuild included — no separate build fee</span></li>
+          <li class="door-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span>CRM built, managed, and worked weekly</span></li>
+          <li class="door-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span>The signal pipeline — trigger data, scored weekly</span></li>
+          <li class="door-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span>Outbound across email, phone, and LinkedIn</span></li>
+          <li class="door-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span>Partner program built and recruited monthly</span></li>
+          <li class="door-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span>Content, personal brand, and the quarterly Index</span></li>
+          <li class="door-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span>Paid search and retargeting managed</span></li>
+          <li class="door-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span>Big Four recruiting funnel + internal AI enablement</span></li>
+          <li class="door-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span>Weekly strategy call — with Kimball, directly</span></li>
+        </ul>
+        <div class="door-foot">
+          <div class="door-roi">$108,000 a year, month-to-month, no lock-in. One new client at your average fee returns $84k in advisory alone — before a dollar of financing income.</div>
+        </div>
+      </div>
+
+      <div class="door featured">
+        <div class="door-flag">★ Our recommendation</div>
+        <div class="door-name">Door Two · Partnership</div>
+        <div class="door-price">$5,500<span> / mo</span></div>
+        <div class="door-plus">+ performance, on clients we originate</div>
+        <div class="door-tag">The identical scope for $3,500 a month less. You keep $42,000 a year against the standard rate, and we only get paid properly if this actually works.</div>
+        <ul class="door-feats">
+          <li class="door-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071E3" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Everything in Door One.</strong> Nothing is held back from this version.</span></li>
+          <li class="door-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span>10% of monthly advisory fees, on originated clients only</span></li>
+          <li class="door-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span><strong>1.5% of capital deployed</strong> to those same clients — tied to the line you told me matters most, and priced to equal ~5% of net income at your 30% yield</span></li>
+          <li class="door-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span>Nothing owed on clients that come from your own network</span></li>
+          <li class="door-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span>Advisory share audited in your own CRM. Financing share paid on <strong>capital deployed</strong>, not net income — a number that sits on the facility documents and can't be argued about</span></li>
+          <li class="door-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span>If we originate nothing, you had the full scope for $66k</span></li>
+          <li class="door-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span>Equity instead of revenue share, if you'd rather — earned against targets we set together, nothing vesting in year one</span></li>
+        </ul>
+        <div class="door-foot">
+          <div class="door-roi"><strong>Why this shape:</strong> you told me financing is the low-hanging fruit and the most profitable division in the firm. A structure paying us on advisory fees alone would point us at the wrong revenue line. One originated client at a $1M facility is roughly $300k of net income to you and $15k a year to us. We would rather be measured on that — and paid on deployed capital rather than on your P&amp;L, so you are never asked to open your books to your own vendor.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal d2">
+      <div class="tier-strip">
+        <div class="tier-strip-h">If you'd rather start smaller — the standard schedule, unchanged</div>
+        <div class="tier-row">
+          <div class="tier-nm">Foundation</div>
+          <div class="tier-ds">Website, CRM, cold email outbound, SEO foundation, weekly call. The floor for this to be worth doing at all — one channel, and a lot of waiting.</div>
+          <div class="tier-pr">$3,500<small>/ mo</small></div>
+        </div>
+        <div class="tier-row">
+          <div class="tier-nm">Fractional CMO</div>
+          <div class="tier-ds">Adds LinkedIn, AI search visibility, the partner program, and hands-on pipeline management. Marketing exists as a function — but without paid, and without the signal pipeline at full depth.</div>
+          <div class="tier-pr">$6,500<small>/ mo</small></div>
+        </div>
+        <div class="tier-row rec">
+          <div class="tier-nm">Growth Partner<small>★ Door One</small></div>
+          <div class="tier-ds">Everything in section 05, running at once. The tier that matches the twelve-month version of your own projections rather than easing toward it.</div>
+          <div class="tier-pr">$9,000<small>/ mo</small></div>
+        </div>
+      </div>
+      <div class="callout">
+        <h4>The straight recommendation, since you'll ask for it</h4>
+        <p>Take Door Two. It is the full engine at $3,500 a month less than the tier we would otherwise recommend, and the only thing it costs you is a share of revenue that does not exist today and will not exist unless we create it. If shared upside is genuinely off the table, take Door One at $9,000 — because $3,500 buys you one channel and a quarter of waiting, which is a slower version of the problem you already have.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 10 · SCOPE ══ -->
+<section class="section section--light">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">10 — Scope Notes</div>
+      <h2>Who does what, and what isn't included.</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="excl reveal d1">
+      <div class="excl-h">Billed to your accounts, not ours</div>
+      <div class="excl-grid">
+        <div class="excl-item">
+          <h4>Software subscriptions</h4>
+          <p><strong>CRM, sending infrastructure, and lien lookups</strong> billed directly to Blalock — roughly <strong>$700–1,200/mo</strong>, with the lookups usage-based. The two heaviest data sources are federal and free. We set it all up and run it; you own the accounts and the data permanently.</p>
+        </div>
+        <div class="excl-item">
+          <h4>Paid media spend</h4>
+          <p><strong>$3–5k/mo recommended</strong> once paid search goes live in month three, billed straight to your card. Management is included, and we never mark up media.</p>
+        </div>
+        <div class="excl-item">
+          <h4>Memberships and events</h4>
+          <p><strong>AACFB, ACG, IFA and similar</strong> — a few thousand dollars a year in total. We build the target lists and run the outreach; the memberships belong to Blalock.</p>
+        </div>
+        <div class="excl-item">
+          <h4>What we need from you</h4>
+          <p><strong>One 60-minute recorded interview a month</strong>, a weekly strategy call, and someone to take the meetings we book. That's the whole ask — you're the deal guy, and nothing here requires you to become a marketer.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal d2" style="margin-top:44px">
+      <h3>How the engagement runs, whichever door you take</h3>
+      <ul class="steps" style="margin-top:24px">
+        <li><div class="step-n">1</div><div class="step-b"><h4>Weekly strategy call — Kimball, directly</h4><p>Live, every week. What's the bottleneck right now, and what are we building next. No account managers, no relay.</p></div></li>
+        <li><div class="step-n">2</div><div class="step-b"><h4>Built inside your stack — you own all of it</h4><p>Every account, domain, and automation in Blalock's name from day one. Walk away and you keep the website, the CRM, the sequences, the signal pipeline, and the partner list.</p></div></li>
+        <li><div class="step-n">3</div><div class="step-b"><h4>Your new hire gets trained, not sidelined</h4><p>She has the IT and accounting background to own a great deal of this eventually. We build so she can take it over, rather than leaving you dependent on us.</p></div></li>
+        <li><div class="step-n">4</div><div class="step-b"><h4>The scoreboard is qualified opportunities</h4><p>Not leads, not impressions, not clicks. You're a finance person — you'll trust the number that maps to revenue, so that's the one we report on.</p></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 11 · FAQ ══ -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">11 — Questions You're Going To Ask</div>
+      <h2>The honest answers.</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="faq reveal d1">
+      <details open>
+        <summary>How fast will we actually see leads?</summary>
+        <p>A meeting out of your existing relationships inside 30 days. A qualified opportunity from partners or triggered outbound by day 45–75. A closed client somewhere in month three to five. That last number is set by your sales cycle rather than our speed — you told me a big fish takes two or three months to digest, and the decision to hand over your books and your capital structure isn't quick either.</p>
+        <p>Anyone promising closed business in thirty days in this category is either selling merchant cash advances or lying to you.</p>
+      </details>
+      <details>
+        <summary>What if the trigger data doesn't produce?</summary>
+        <p>Then the partner channel carries the year, which is exactly why we build it first and why it's the channel we're most confident in. These are deliberately independent bets — public-record data and human referral networks fail for completely different reasons, so they're unlikely to fail together. We review every channel at day 90 and move budget to whatever is producing qualified opportunities. Nothing in this plan is precious.</p>
+      </details>
+      <details>
+        <summary>We're hiring someone with an IT and accounting background. Why not just have her do this?</summary>
+        <p>She should — eventually, and we build so that she can. But she is one person starting a new job, and this is a website rebuild, a CRM implementation, a data pipeline across four public sources, warmed email infrastructure, a partner recruitment program, and a content operation. That's a team's first six months, not one new hire's.</p>
+        <p>The realistic version is that we build it, she learns it alongside us, and somewhere in year two she owns most of it. That's a better outcome for Blalock than either of us doing it alone — and it's precisely why nothing gets built in our accounts.</p>
+      </details>
+      <details>
+        <summary>Who owns everything if we part ways?</summary>
+        <p>You do, entirely, including the parts that are expensive to rebuild. Every account is registered in Blalock's name on day one — the website, the CRM and all its data, the domains, the sequences, the signal pipeline, and the partner list with its commission history. There is no version of this where leaving costs you your infrastructure.</p>
+        <p>For a firm whose entire thesis is ownership and equity, renting your growth infrastructure from a vendor would be a strange way to live.</p>
+      </details>
+      <details>
+        <summary>Why pay for content if it takes a year to work?</summary>
+        <p>Because most of it isn't waiting on search. Case studies and the comparison sheet move your close rate now — and at forty conversations a year, going from 50% to 60% is worth about four extra clients. The Cash Flow Index doesn't depend on domain authority at all, because bankers forward it. Your LinkedIn presence raises the reply rate on outbound that is already running.</p>
+        <p>The genuinely slow piece is organic search, which we've deliberately scoped at roughly 20% of the effort rather than the centerpiece, and told you plainly is a year-two asset.</p>
+      </details>
+      <details>
+        <summary>What happens to the equipment broker relationship we already have?</summary>
+        <p>It gets better, and it gets company. That broker goes into the CRM with proper deal registration and automated commission statements, so they can see exactly what they've earned without asking. Then we go find forty more like them. Nothing about the existing arrangement changes, except that it stops being managed by hand out of your inbox.</p>
+      </details>
+      <details>
+        <summary>Can we start with Foundation and move up later?</summary>
+        <p>You can, and it's month-to-month either way. But it's worth being honest about what $3,500 buys: the infrastructure gets built, and one channel runs. The signal pipeline — the part that makes 750 prospects outperform 40,000 — isn't in it, and neither is the partner recruitment engine, which is where we expect your first win to come from.</p>
+        <p>You'd be paying for the foundation of the house and then waiting a quarter to decide whether you want the house. Given that every month of waiting costs roughly $200,000 in unearned net income by your own arithmetic, the slower option is the expensive one.</p>
+      </details>
+      <details>
+        <summary>How do we know the performance share is calculated honestly?</summary>
+        <p>Because it runs on a CRM in your account that your team can audit at any time, with origination source stamped on every record at the moment it's created. We'd also define "originated" in writing before signing: a client who first entered the pipeline through a channel we built. Anyone from your own network, your partners' pre-existing relationships, or inbound referral is yours free and clear.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 12 · NEXT ══ -->
+<section class="section section--dark" id="next">
+  <div class="wrap" style="text-align:center">
+    <div class="reveal">
+      <div class="eyebrow">12 — Next Steps</div>
+      <h2>Three things, and the first one is a decision.</h2>
+      <div class="divider" style="margin-left:auto;margin-right:auto"></div>
+    </div>
+    <ul class="steps reveal d1" style="text-align:left">
+      <li><div class="step-n">1</div><div class="step-b"><h4>Pick a door</h4><p style="color:rgba(255,255,255,.6)">Standard at $9,000, or Partnership at $5,500 plus performance. Bring the spreadsheet you mentioned — if your number is different from mine, that's a conversation, not a problem.</p></div></li>
+      <li><div class="step-n">2</div><div class="step-b"><h4>Work starts within 48 hours</h4><p style="color:rgba(255,255,255,.6)">No onboarding month. Inbox warming and the website begin immediately, because both sit on the critical path for everything else.</p></div></li>
+      <li><div class="step-n">3</div><div class="step-b"><h4>First scored prospect list in your hands by week four</h4><p style="color:rgba(255,255,255,.6)">Real companies, each with the dated public filing that put it on the list. That's the moment this stops being a proposal.</p></div></li>
+    </ul>
+    <div class="reveal d2" style="margin-top:48px">
+      <a href="mailto:kimball@disruptorsmedia.com?subject=Blalock%20Capital%20—%20Let's%20go" class="btn">Let's get started</a>
+      <p style="margin-top:20px;font-size:14px">Questions before then — kimball@disruptorsmedia.com</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SOURCES ══ -->
+<section class="section section--light">
+  <div class="wrap">
+    <div class="srcs reveal">
+      <h4>Research &amp; Sources</h4>
+      <ol>
+        <li>Cleverly — <a href="https://www.cleverly.co/blog/cold-email-benchmarks-by-industry">Cold Email Benchmarks by Industry</a>: financial services 3.39% reply rate</li>
+        <li>LeadRiver — <a href="https://www.leadriver.io/blog/cold-email-reply-rate-benchmarks-2026">Cold Email Reply Rate Benchmarks 2026</a>, 25,000+ B2B campaigns: 5.8% reply on lists under 50 vs 2.1% on large sends</li>
+        <li>WordStream — <a href="https://www.wordstream.com/blog/2026-google-ads-benchmarks">2026 Google Ads Benchmarks</a>, 13,474 campaigns Apr 2025–Mar 2026: Finance &amp; Insurance $3.39 CPC, $74.44 CPL</li>
+        <li>SparkToro × Similarweb — <a href="https://sparktoro.com/blog/in-2026-less-than-one-third-of-google-searches-still-send-a-click/">Less Than One Third of Google Searches Still Send a Click</a>, Jan–Apr 2026: 68% zero-click</li>
+        <li>Exit Planning Institute — <a href="https://exit-planning-institute.org/state-of-owner-readiness">State of Owner Readiness</a>; Project Equity — <a href="https://project-equity.org/news/employee-ownership-insider/business-owner-statistics-exit-planning/">Business Owner Exit &amp; Succession Statistics</a></li>
+        <li>Contrast — <a href="https://www.getcontrast.io/learn/webinar-statistics">Webinar Statistics 2026</a> (Forrester data, 524 B2B marketers): 81.4% rank webinars their highest-quality lead source, ~$72 CPL</li>
+        <li>Accutrend — <a href="https://www.accutrend.com/ucc-business-prospects/">Using UCC Data to Find Business Prospects</a>; <a href="https://sam.gov/fpds">SAM.gov Contract Award Data (FPDS)</a></li>
+        <li>Stackmatix — <a href="https://www.stackmatix.com/blog/linkedin-ads-cost-per-lead-benchmarks">LinkedIn Ads Cost Per Lead Benchmarks</a>: financial services $148–200+</li>
+        <li>ABF Journal — <a href="https://www.abfjournal.com/event/international-factoring-associations-2026-factoring-conference/">IFA 2026 Factoring Conference</a>, May 6–8, Omni Nashville; <a href="https://www.acg.org/membership-tools/why-join">ACG Global</a> — 60 chapters, 15,000 members, dues $425–700</li>
+        <li>RSM US — <a href="https://rsmus.com/insights/economics/redefining-the-american-middle-market-for-the-modern-era.html">Redefining the American Middle Market</a>: 200,000–300,000 US middle market firms</li>
+        <li>Financial Planning Association — <a href="https://www.financialplanningassociation.org/learning/publications/journal/JUN26-building-systematic-referral-partnership-program-why-structure-beats-hope-OPEN">Building a Systematic Referral Partnership Program</a>: referred clients convert at 3–5× cold outbound</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-logo">Disruptors Media</div>
+  <div>Fractional CMO · AI Systems &amp; Growth Infrastructure</div>
+  <div class="ft-links"><a href="mailto:kimball@disruptorsmedia.com">kimball@disruptorsmedia.com</a></div>
+  <div class="ft-exp">Prepared exclusively for Blalock Capital Partners · Richard Looney<br>July 29, 2026 · Valid 30 days</div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(e){e.classList.add('visible')});
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){ en.target.classList.add('visible'); io.unobserve(en.target); }
+    });
+  },{threshold:.08, rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+
+</body>
+</html>
