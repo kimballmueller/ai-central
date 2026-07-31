@@ -343,6 +343,42 @@ body.present .doc{display:block}
 .docbar button.pri{background:var(--red);color:#fff}
 .docbar button.pri:hover{background:var(--red-d);color:#fff}
 
+/* payment, financing, warranty */
+.tier .fin{font-family:var(--mono);font-size:.78rem;color:var(--red);margin-top:9px;
+  padding-top:9px;border-top:1px dashed var(--line)}
+.tier.hero .fin{color:#fff;border-color:rgba(255,255,255,.2)}
+.tier .fin small{display:block;font-family:var(--sans);font-size:.68rem;color:var(--g4);
+  margin-top:3px;letter-spacing:0}
+.tier.hero .fin small{color:rgba(255,255,255,.45)}
+
+.notax{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line-2);
+  border-radius:100px;padding:9px 20px;font-size:.82rem;font-weight:700;color:var(--ink);
+  background:var(--paper);margin-bottom:26px}
+.notax i{width:7px;height:7px;border-radius:50%;background:var(--red);display:block;flex:none}
+
+.pay{display:grid;grid-template-columns:repeat(auto-fit,minmax(252px,1fr));gap:1px;background:var(--line)}
+.pay div{background:var(--paper);padding:24px 22px}
+.sec.tinted .pay div{background:var(--paper-3)}
+.pay h4{font-size:1rem;margin-bottom:8px}
+.pay p{font-size:.86rem;line-height:1.6;color:var(--g6)}
+.pay .lend{font-family:var(--mono);font-size:.62rem;color:var(--red);display:block;
+  margin-bottom:10px;letter-spacing:.11em}
+.paynote{margin-top:20px;font-size:.76rem;line-height:1.65;color:var(--g4);max-width:82ch}
+
+.warrbox{border:1px solid var(--line);border-radius:14px;padding:28px 26px;background:var(--paper);
+  max-width:78ch}
+.sec.tinted .warrbox{background:var(--paper-3)}
+.warrbox p{font-size:.92rem;line-height:1.7;color:var(--g6)}
+.warrbox p+p{margin-top:14px}
+.warrbox b{color:var(--ink);font-weight:700}
+.warrbox .term{font-family:var(--display);font-size:2.6rem;font-weight:800;color:var(--ink);
+  letter-spacing:-.03em;line-height:1;margin-bottom:16px}
+.warrbox .term em{font-style:normal;color:var(--red)}
+
+.lic{margin-top:38px;padding-top:18px;border-top:1px solid rgba(255,255,255,.22);
+  font-size:.73rem;line-height:1.75;color:rgba(255,255,255,.5);max-width:70ch}
+.lic b{color:rgba(255,255,255,.8);font-weight:700}
+
 @media(max-width:1020px){
   .cockpit{grid-template-columns:1fr}
   .rail{max-height:none;border-right:0;border-bottom:1px solid var(--line)}
@@ -359,7 +395,32 @@ body.present .doc{display:block}
   .cover{padding:12px 0 26px}
   .tier{break-inside:avoid;box-shadow:none!important}
   .tiers{grid-template-columns:repeat(3,1fr)!important}
+  .pay,.inc{break-inside:avoid}
+  .warrbox{break-inside:avoid}
+  .closer{break-inside:avoid;padding:44px 0}
+  .flow li{break-inside:avoid}
+  /* The tier row is atomic in print, so the whole trio plus its heading has to
+     fit one page — otherwise the heading orphans onto a blank page of its own. */
+  .sec-head{margin-bottom:18px;break-after:avoid}
+  .sec-head h2{font-size:1.62rem}
+  .sec-head p{font-size:.86rem;margin-top:9px}
+  .notax{margin-bottom:14px;padding:7px 16px;font-size:.74rem;break-after:avoid}
+  .tiers{gap:12px}
+  .tier{padding:18px 16px 16px}
+  .tier h3{font-size:1.06rem}
+  .tier .mfr{font-size:.66rem;margin-top:4px}
+  .tier .price{font-size:1.7rem;margin:11px 0 2px}
+  .tier .psq{font-size:.66rem}
+  .tier .fin{margin-top:6px;padding-top:6px;font-size:.69rem}
+  .tier .fin small{font-size:.6rem;margin-top:2px}
+  .tier p.blurb{font-size:.78rem;line-height:1.5;margin:11px 0;padding-top:11px}
+  .tier ul{font-size:.75rem;line-height:1.4}
+  .tier li{padding:3px 0 3px 19px}
+  .tier li::before{top:9px}
+  .tier .warr{margin-top:11px;padding-top:10px;font-size:.65rem;line-height:1.45}
+  .badge{font-size:.53rem;padding:5px 11px;top:-11px}
   .sec.tinted,.tier.hero,.closer,.badge,.tier li::before,.flow li::before,.inc .no,
+  .pay .lend,.notax i,.tier .fin,.warrbox .term em,
   .cover .eyebrow,.sec-head .eyebrow{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 
@@ -513,6 +574,50 @@ body.present .doc{display:block}
         </label>
       </div>
     </details>
+
+    <details class="panel">
+      <summary>Supplier tax on materials</summary>
+      <div class="panel-b">
+        <p class="hint" style="margin:0 0 11px">PowerHouse <b>does not charge the homeowner sales tax</b> — on a
+        real-property improvement the contractor is the end consumer and pays tax at the supplier counter.
+        So tax lives in <b>cost</b>, never on the price. The workbook baked four different rates
+        (7.5 / 7.6 / 7.7 / 8.5%) into individual unit prices.</p>
+        <div class="grid2">
+          <label class="f mrow"><span>Baked into the sheet</span><input id="s_taxBaked" type="number" step="0.1" min="0" value="7.7"><i class="unit">%</i></label>
+          <label class="f mrow"><span>Actual rate</span><input id="s_taxActual" type="number" step="0.1" min="0" value="" placeholder="off"><i class="unit">%</i></label>
+        </div>
+        <p class="hint">Leave <b>Actual rate</b> blank and nothing re-prices. Enter one and every material
+        unit cost is restated from the baked-in rate to the real one. Disposal, delivery, rollout and
+        kettle are treated as services and left alone.</p>
+      </div>
+    </details>
+
+    <details class="panel" id="finPanel">
+      <summary>Payment &amp; financing</summary>
+      <div class="panel-b">
+        <label class="f"><span>Monthly payment estimates on the proposal</span>
+          <select id="f_show">
+            <option value="1">Show</option>
+            <option value="0">Hide</option>
+          </select>
+        </label>
+        <label class="f"><span>Illustrate with</span>
+          <select id="f_lender">
+            <option value="svc">Service Finance Company</option>
+            <option value="slice">Slice® by FNBO</option>
+          </select>
+        </label>
+        <div class="grid2">
+          <label class="f mrow"><span>APR</span><input id="f_apr" type="number" step="0.01" min="0" value="9.99"><i class="unit">%</i></label>
+          <label class="f mrow"><span>Term</span><input id="f_term" type="number" step="12" min="6" value="120"><i class="unit">mo</i></label>
+        </div>
+        <label class="f mrow"><span>Amount down</span><input id="f_down" type="number" step="100" min="0" value="0" placeholder="0"><i class="unit">$</i></label>
+        <p class="hint">Slice publishes <b>8.49%–18.99% APR</b> (low end requires AutoPay), up to
+        <b>$150,000</b> and up to <b>20 years</b>. Service Finance carries 50+ promotional and standard
+        plans. Both proposal-facing numbers are labelled an estimate — the real rate and term come from
+        the lender's approval, not from here.</p>
+      </div>
+    </details>
   </aside>
 
   <section class="board">
@@ -551,6 +656,68 @@ const money = n => (n<0?"-":"") + "$" + Math.abs(Math.round(n)).toLocaleString()
 const money2 = n => "$" + (Math.round(n*100)/100).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
 const qty = n => Number.isInteger(n) ? n : (Math.round(n*100)/100);
 
+/* ═══════════════════════ the company ═══════════════════════
+   From the DOPL license and the signed Customer Agreement in clients/
+   powerhouse-roofing/Assets/. Change these here, not in the markup.
+   ══════════════════════════════════════════════════════════ */
+const CO = {
+  legal:"Powerhouse Roofing LLC",
+  addr:"1154 S 420 W, Salem, UT 84653",
+  phone:"(801) 874-9083",
+  web:"www.powerhouseroofing.com",
+  lic:"11494924-5501",
+  licClass:"B100, S280",
+  licExp:"11/30/2027",
+  deckSheet:100,      // Agreement: each added sheet of plywood/OSB, subject to tier
+  cardFee:3,          // Agreement 2.2: credit-card convenience fee, %
+  depositPct:50,      // Agreement 2.1: cash deals, at signing
+  lateFee:500,        // Agreement 2.4
+  lateInt:2,          // Agreement 2.4, % per month
+  unforeseen:1000,    // Agreement 2.5 / Unknown Defects: written notice above this
+  warrantyYears:10    // Agreement Art. 4 + the warranty certificate
+};
+
+/* Verbatim intent of the PowerHouse warranty certificate. */
+const WARRANTY_TEXT = `Should a defect in workmanship related to the work completed by PowerHouse
+Roofing occur within ${CO.warrantyYears} years of the project, PowerHouse Roofing will complete repairs
+within the original project&rsquo;s scope of work at no charge to you.`;
+const WARRANTY_LIMITS = `This warranty does not cover normal wear and tear, hail, wind or sun damage,
+intentional or accidental damage by any person, or acts of God that may or may not merit an insurance
+claim. It applies only to portions of the project in which PowerHouse Roofing fully replaced the
+existing products, and does not cover repairs or service done to another contractor&rsquo;s work.
+Defects in the building materials themselves fall under the product&rsquo;s original manufacturer warranty
+rather than this workmanship warranty.`;
+
+/* Financing partners — both are live PowerHouse programs. */
+const LENDERS = {
+  svc:{
+    name:"Service Finance Company",
+    tag:"Home improvement lender",
+    blurb:`A nationally licensed sales finance company and an approved FHA Title I lender, carrying more
+    than fifty financing plans across promotional and standard installment terms. Roofing is one of their
+    core categories.`,
+    contact:"svcfin.com &middot; (866) 393-0033"
+  },
+  slice:{
+    name:"Slice&reg; by FNBO",
+    tag:"First National Bank of Omaha",
+    blurb:`Point-of-sale lending from a 170-year-old bank. Up to $150,000, terms out to 20 years, and
+    published rates from 8.49% APR with AutoPay to 18.99% APR depending on credit. You apply online from
+    a link we send you and most decisions come back in minutes.`,
+    contact:"fnbo.com/pos-lending/slice"
+  }
+};
+
+/* Level-payment amortization. Zero APR falls back to straight division. */
+function monthly(P, aprPct, n){
+  if (!(P > 0) || !(n > 0)) return 0;
+  const r = (Number(aprPct)||0)/1200;
+  return r > 0 ? P*r/(1 - Math.pow(1+r, -n)) : P/n;
+}
+
+/* Lines that are services or rentals, not taxable material at the counter. */
+const NONTAX = new Set(["disposal","load","rollout","kettle"]);
+
 /* ═══════════════════════ systems ═══════════════════════
    Unit costs are the evaluated values from Yasir's workbook — including the
    tax multipliers he baked into the formulas. Nothing was re-priced.
@@ -566,7 +733,7 @@ const SYSTEMS = [
   id:"natshadow", cat:"Architectural shingle", name:"GAF Timberline Natural Shadow",
   mfr:"GAF", div:.64, laborMult:1.075,
   client:"A clean, classic architectural shingle with real dimensional shadow lines — the workhorse of Utah County roofs.",
-  warranty:"GAF limited lifetime shingle coverage, plus our workmanship warranty. Exact terms are written into your contract.",
+  warranty:"GAF limited lifetime coverage on the shingle, plus our 10-year workmanship warranty on the installation.",
   highlights:["Full tear-off down to the deck","Ice &amp; water shield at eaves and valleys","Synthetic underlayment across the field","New drip edge, valley metal and flashings","Ridge venting sized to the attic"],
   sq:(M,Q)=>up(Q.shingle*0.98),
   labor:[
@@ -603,7 +770,7 @@ const SYSTEMS = [
   id:"hdz", cat:"Architectural shingle", name:"GAF Timberline HDZ",
   mfr:"GAF", div:.64, laborMult:1.075,
   client:"GAF's flagship architectural shingle. The LayerLock nailing zone is what unlocks their strongest wind coverage.",
-  warranty:"GAF limited lifetime shingle coverage with WindProven wind protection when installed with the qualifying accessory system. Exact terms are written into your contract.",
+  warranty:"GAF limited lifetime coverage with WindProven wind protection when installed with the qualifying accessory system, plus our 10-year workmanship warranty.",
   highlights:["Full tear-off down to the deck","LayerLock nailing for maximum wind hold","Ice &amp; water shield at eaves and valleys","FeltBuster synthetic underlayment","New drip edge, valley metal and flashings","Ridge venting sized to the attic"],
   sq:M=>up(M.field/96),
   labor:[
@@ -639,7 +806,7 @@ const SYSTEMS = [
   id:"uhdz", cat:"Premium shingle", name:"GAF Timberline UHDZ",
   mfr:"GAF", div:.64, laborMult:1.075,
   client:"GAF's thickest laminate shingle. Deeper shadow bands and a heavier profile that reads much closer to wood shake from the street.",
-  warranty:"GAF limited lifetime shingle coverage with WindProven wind protection and StainGuard Plus algae protection when installed with the qualifying accessory system. Exact terms are written into your contract.",
+  warranty:"GAF limited lifetime coverage with WindProven wind protection and StainGuard Plus algae protection when installed with the qualifying accessory system, plus our 10-year workmanship warranty.",
   highlights:["Full tear-off down to the deck","Thickest GAF laminate — deepest shadow line","StainGuard Plus algae protection","TigerPaw premium underlayment","Ice &amp; water shield at eaves and valleys","New drip edge, valley metal and flashings"],
   sq:(M,Q)=>((Q.starter+Q.ridgecap)/3)+Q.shingle,
   labor:[
@@ -676,7 +843,7 @@ const SYSTEMS = [
   id:"presidential", cat:"Luxury shingle", name:"CertainTeed Presidential TL",
   mfr:"CertainTeed", div:.64, laborMult:1.075,
   client:"A triple-laminate luxury shingle. Three layers of sculpted tabs give it the depth and irregular edge of hand-split cedar shake, without any of the upkeep.",
-  warranty:"CertainTeed limited lifetime coverage with SureStart protection. Exact terms are written into your contract.",
+  warranty:"CertainTeed limited lifetime coverage with SureStart protection, plus our 10-year workmanship warranty.",
   highlights:["Full tear-off down to the deck","Triple-laminate shake profile","Sharkskin premium underlayment","Mountain Ridge accessory cap","New drip edge, valley metal and flashings","Ridge venting sized to the attic"],
   sq:(M,Q)=>up(Q.shingle*0.98),
   labor:[
@@ -714,7 +881,7 @@ const SYSTEMS = [
   id:"metal", cat:"Standing seam metal", name:"24-Gauge Standing Seam Metal",
   mfr:"24 ga. steel", div:.70, laborMult:1.075,
   client:"Concealed-fastener standing seam in 24-gauge steel. Nothing penetrates the panel face, so there is no fastener gasket to dry out and leak in fifteen years.",
-  warranty:"Manufacturer paint-finish warranty on the coating, plus our workmanship warranty. Exact terms are written into your contract.",
+  warranty:"Manufacturer paint-finish warranty on the panel coating, plus our 10-year workmanship warranty.",
   highlights:["Full tear-off down to the deck","24-gauge concealed-fastener panels","Sharkskin high-temp underlayment","Full metal flashing package","Snow and ice shed performance","Effectively the last roof on the house"],
   sq:(M,Q)=>up(Q.panel),
   labor:[
@@ -745,7 +912,7 @@ const SYSTEMS = [
   id:"hydrotech", cat:"Low-slope membrane", name:"HydroTech Hot-Applied Membrane",
   mfr:"HydroTech", div:.70, laborMult:1.075, flatSystem:true,
   client:"A hot-applied, fully-bonded membrane for flat and low-slope sections. It is monolithic — no seams to open up — which is why it is specified over living space.",
-  warranty:"Manufacturer membrane warranty plus our workmanship warranty. Exact terms are written into your contract.",
+  warranty:"Manufacturer membrane warranty, plus our 10-year workmanship warranty.",
   highlights:["Fully-bonded, seamless membrane","Reinforcing mesh flashing at all walls","New L-metal and drip edge","Protective cover sheet","Built for standing water and low pitch"],
   sq:M=>(M.flat+M.pwall)/100,
   labor:[{n:"Membrane install", q:(M,Q,S)=>S, u:300}],
@@ -764,7 +931,7 @@ const SYSTEMS = [
   id:"tpo", cat:"Low-slope membrane", name:"GAF 60-mil TPO",
   mfr:"GAF", div:.75, laborMult:1.275, flatSystem:true, commission:.10,
   client:"A 60-mil white TPO membrane over rigid insulation. The reflective surface drops attic and interior temperatures noticeably through a Utah summer.",
-  warranty:"GAF membrane system warranty plus our workmanship warranty. Exact terms are written into your contract.",
+  warranty:"GAF membrane system warranty, plus our 10-year workmanship warranty.",
   highlights:["Full tear-off of the existing flat roof","Rigid ISO insulation to build R-value","60-mil reflective white TPO membrane","Heat-welded seams — no adhesive to fail","New drains, boots and termination bar","Parapet caps and wall flashings"],
   sq:(M,Q)=>up((Q.mem10*10)+(Q.mem6*5)),
   labor:[
@@ -810,7 +977,9 @@ const FLAGS = [
   {t:"Three tabs define a &ldquo;square&rdquo; three different ways",
    d:"Natural Shadow uses bundles×0.98, HDZ uses field÷96, UHDZ adds starter and cap bundles into the count. Squares drive labor and price-per-square, so the tabs aren&rsquo;t directly comparable. Left alone — this is a pay decision, not a bug."},
   {t:"Four different sales-tax rates are hard-coded inside formulas",
-   d:"7.5%, 7.6%, 7.7% and 8.5% appear baked into individual unit prices. Unit costs here are carried over exactly as the sheet computes them so nothing silently re-prices. Use <b>Material adjust</b> to move them together, and let&rsquo;s set one real tax rate on a call."},
+   d:"7.5%, 7.6%, 7.7% and 8.5% appear baked into individual unit prices. That tax is <b>correctly a cost</b> — PowerHouse pays it at the supplier counter and does not charge the homeowner sales tax on a real-property improvement. What is wrong is that four rates disagree. Unit costs are still carried over exactly as the sheet computes them so nothing silently re-prices; set the real rate in <b>Supplier tax on materials</b> to restate them all at once."},
+  {t:"Added decking is quoted at cost here and at $100 a sheet in the contract",
+   d:"The Customer Agreement fixes plywood/OSB at <b>$100 per sheet</b>, subject to the tier the customer picks. The estimator carries OSB at $18.67 cost, so sheets you quote up front land near $29 to the homeowner while sheets discovered after tear-off bill at $100. Sheets found later are a different transaction, so this is not automatically a bug — but if a job is expected to need decking, quoting it at contract rate is the consistent move. Override the OSB unit in the line-item drawer."},
   {t:"Presidential TL has no ice &amp; water line",
    d:"Every other steep-slope tab carries ice &amp; water at eaves and valleys. Presidential has a &ldquo;Second Starter&rdquo; line in roughly that position but measured differently. Worth confirming before it goes out on a luxury job."},
   {t:"Disposal is priced three different ways",
@@ -828,10 +997,20 @@ const blank = () => ({
   job:{name:"",addr:"",rep:"",date:new Date().toISOString().slice(0,10)},
   m:{field:0,ridge:0,valley:0,rake:0,eave:0,headwall:0,sidewall:0,transition:0,flat:0,
      decking:0,insideEdge:0,flatEave:0,pwall:0,parapet:0,drains:0},
-  set:{burden:7.5,ops:10,adj:0,margin:0,engine:"fixed"},
+  set:{burden:7.5,ops:10,adj:0,margin:0,engine:"fixed",taxBaked:7.7,taxActual:null},
+  fin:{show:true,lender:"svc",apr:9.99,term:120,down:0},
   addons:[], picks:[], open:null
 });
-const load = () => { try{ return Object.assign(blank(), JSON.parse(localStorage.getItem(KEY))||{}); }catch(e){ return blank(); } };
+const load = () => {
+  const b = blank();
+  try{
+    const saved = JSON.parse(localStorage.getItem(KEY)) || {};
+    const out = Object.assign(b, saved);
+    // one level down, so a job saved before these keys existed still gets their defaults
+    ["job","m","set","fin"].forEach(k => out[k] = Object.assign({}, b[k], saved[k]||{}));
+    return out;
+  }catch(e){ return b; }
+};
 const save = () => { try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} };
 
 /* ═══════════════════════ engine ═══════════════════════ */
@@ -841,6 +1020,12 @@ function calc(sys, mode){
   const opsRate = (st.ops||0)/100;
   const burden = 1 + (st.burden||0)/100;
   const div = st.margin ? (1 - st.margin/100) : sys.div;
+
+  // Supplier tax sits inside the workbook's unit costs. Restate it to one real rate when
+  // asked; never in "sheet" mode, and never on service lines. The homeowner is never
+  // charged sales tax — this only moves cost.
+  const taxOn = mode!=="sheet" && st.taxActual!=null && st.taxActual!=="" && isFinite(st.taxActual);
+  const taxMult = taxOn ? (1 + Number(st.taxActual)/100) / (1 + (Number(st.taxBaked)||0)/100) : 1;
 
   // flat systems read the low-slope area
   const MM = Object.assign({}, M);
@@ -858,9 +1043,10 @@ function calc(sys, mode){
     if (n < 0 || !isFinite(n)) n = 0;
     if (over && over.q != null && mode!=="sheet") n = over.q;
     Q[it.k] = n;
-    const u = ((over && over.u != null && mode!=="sheet") ? over.u : it.u) * adj;
+    const tx = NONTAX.has(it.k) ? 1 : taxMult;
+    const u = ((over && over.u != null && mode!=="sheet") ? over.u : it.u) * adj * tx;
     const counted = !(mode==="sheet" && it.noTotal);
-    rows.push({...it, n, u, ext:n*u, counted, overridden:!!(over && (over.q!=null||over.u!=null))});
+    rows.push({...it, n, u, tx, ext:n*u, counted, overridden:!!(over && (over.q!=null||over.u!=null))});
   }
   const sq = sys.sq(MM,Q,0) || 0;
 
@@ -892,6 +1078,16 @@ function calc(sys, mode){
 }
 const hasJob = () => (S.m.field>0 || S.m.flat>0);
 
+/* Estimated financed payment on a contract price. */
+function finance(total){
+  const f = S.fin || {};
+  const down = Math.max(0, Math.min(Number(f.down)||0, total));
+  const amt = total - down;
+  return {down, amt, term:Number(f.term)||0, apr:Number(f.apr)||0,
+          pmt: monthly(amt, f.apr, Number(f.term)||0),
+          lender: LENDERS[f.lender] || LENDERS.svc};
+}
+
 /* ═══════════════════════ render: cockpit ═══════════════════════ */
 function renderSystems(){
   const g = $("#sysgrid");
@@ -901,12 +1097,14 @@ function renderSystems(){
     const dead = r.total <= 0 || r.sq <= 0;
     const mp = Math.max(0, Math.min(1, r.margin/0.45));
     const cls = r.margin < .22 ? "bad" : r.margin < .30 ? "warn" : "";
+    const fi = finance(r.total);
     return `<article class="sys ${on?"picked":""} ${dead?"zero":""}" data-sys="${sys.id}">
       <div class="cat">${sys.cat}</div>
       <h4>${sys.name}</h4>
       <button class="pick" data-act="pick" data-sys="${sys.id}" aria-label="Select">${on?(S.picks.indexOf(sys.id)+1):"✓"}</button>
       <div class="big">${dead?"—":money(r.total)}</div>
       <div class="persq">${dead?"enter measurements":money2(r.perSq)+" / square · "+qty(Math.round(r.sq*10)/10)+" sq"}</div>
+      ${dead||!fi.pmt?"":`<div class="persq" style="color:var(--red)">≈ ${money(fi.pmt)}/mo · ${fi.term} mo @ ${fi.apr}%</div>`}
       <div class="meter"><i class="${cls}" style="width:${mp*100}%"></i></div>
       <div class="kv"><span>Material</span><b>${money(r.mat)}</b></div>
       <div class="kv"><span>Labor + burden</span><b>${money(r.labBurdened)}</b></div>
@@ -939,7 +1137,7 @@ function renderDrawer(){
       <td class="n"><input type="number" step="any" min="0" data-ov="q" data-sys="${sys.id}" data-k="${x.k}"
           class="${o.q!=null?"over":""}" value="${o.q!=null?o.q:""}" placeholder="${qty(Math.round(x.n*100)/100)}"></td>
       <td class="n"><input type="number" step="any" min="0" data-ov="u" data-sys="${sys.id}" data-k="${x.k}"
-          class="${o.u!=null?"over":""}" value="${o.u!=null?o.u:""}" placeholder="${(x.u/(1+(S.set.adj||0)/100)).toFixed(2)}"></td>
+          class="${o.u!=null?"over":""}" value="${o.u!=null?o.u:""}" placeholder="${(x.u/((1+(S.set.adj||0)/100)*(x.tx||1))).toFixed(2)}"></td>
       <td class="n">${x.counted? money2(x.ext) : '<span style="color:var(--red)">dropped</span>'}</td>
     </tr>`;
   }).join("");
@@ -969,7 +1167,9 @@ function renderDrawer(){
         <tr><td>Market price @ ${((1-(S.set.margin? (1-S.set.margin/100):sys.div))*100).toFixed(0)}%</td><td></td><td></td><td class="n">${money2(r.market)}</td></tr>
         <tr><td>Company OPS</td><td></td><td></td><td class="n">${money2(r.ops)}</td></tr>
         ${r.comm?`<tr><td>Commission</td><td></td><td></td><td class="n">${money2(r.comm)}</td></tr>`:""}
+        <tr><td>Sales tax to customer</td><td></td><td></td><td class="n">none — tax is paid at the supplier</td></tr>
         <tr class="sub"><td>Price to homeowner</td><td></td><td></td><td class="n">${money2(r.total)}</td></tr>
+        ${(()=>{const fi=finance(r.total); return fi.pmt?`<tr><td>Financed — ${fi.lender.name.replace(/&reg;/g,"®")}${fi.down?", "+money(fi.down)+" down":""}</td><td class="n">${fi.term} mo</td><td class="n">${fi.apr}% APR</td><td class="n">${money2(fi.pmt)}/mo</td></tr>`:"";})()}
         <tr class="sub"><td>Profit</td><td></td><td></td><td class="n">${money2(r.profit)} · ${(r.margin*100).toFixed(1)}%</td></tr>
       </tbody>
     </table></div>
@@ -1052,9 +1252,12 @@ function renderDoc(){
   const heroIdx = picks.length===3 ? 1 : picks.length-1;
   const rank = ["Essential","Recommended","Premier"];
 
+  const showFin = !!(S.fin && String(S.fin.show) !== "0" && S.fin.show !== false);
+
   const tiers = picks.map((p,i)=>{
     const hero = i===heroIdx && picks.length>1;
     const label = picks.length===3 ? rank[i] : (picks.length===2 ? ["Essential","Recommended"][i] : "Your roof");
+    const fi = finance(p.r.total);
     return `<article class="tier ${hero?"hero":""}">
       ${hero?'<div class="badge">Most homeowners choose this</div>':""}
       <div class="rank">${label}</div>
@@ -1062,11 +1265,17 @@ function renderDoc(){
       <div class="mfr">${p.sys.mfr} · ${p.sys.cat}</div>
       <div class="price">${money(p.r.total)}</div>
       <div class="psq">${money2(p.r.perSq)} per square · ${Math.round(p.r.sq*10)/10} squares</div>
+      <div class="psq">no sales tax added</div>
+      ${showFin && fi.pmt ? `<div class="fin">or about ${money(fi.pmt)} / month
+        <small>Estimate only: ${fi.term} months at ${fi.apr}% APR on ${money(fi.amt)}${fi.down?" after "+money(fi.down)+" down":""}.
+        Your actual rate and term come from the lender on approval.</small></div>` : ""}
       <p class="blurb">${p.sys.client}</p>
       <ul>${p.sys.highlights.map(h=>`<li>${h}</li>`).join("")}</ul>
       <div class="warr">${p.sys.warranty}</div>
     </article>`;
   }).join("");
+
+  const fi0 = picks.length ? finance(picks[heroIdx>=0?heroIdx:0].r.total) : null;
 
   const facts = [
     M.field ? {l:"Roof area",v:M.field.toLocaleString(),s:"square feet"} : null,
@@ -1103,8 +1312,9 @@ function renderDoc(){
   <section class="sec tinted"><div class="sheet">
     <div class="sec-head"><div class="eyebrow">Your options</div>
       <h2>${picks.length>1?"Three ways to do this right":"Your roofing system"}</h2>
-      <p>Same crew, same install standard, same warranty on our workmanship. The difference is the shingle
+      <p>Same crew, same install standard, same ${CO.warrantyYears}-year workmanship warranty. The difference is the shingle
       or panel on top — how long it lasts, how it handles wind, and how it looks from the curb.</p></div>
+    <div class="notax"><i></i> The price you see is the price you pay — we do not add sales tax</div>
     <div class="tiers" style="grid-template-columns:repeat(${Math.min(picks.length,3)},1fr)">${tiers}</div>
   </div></section>
 
@@ -1122,9 +1332,50 @@ function renderDoc(){
   </div></section>
 
   <section class="sec tinted"><div class="sheet">
+    <div class="sec-head"><div class="eyebrow">Paying for it</div>
+      <h2>No sales tax, and you don&rsquo;t have to pay for it all at once</h2>
+      <p>A roof is a real-property improvement, so Utah taxes it at the supplier counter, not at your
+      kitchen table. We pay that tax when we buy your material — it is already inside the price above.
+      <b>Nothing is added on top.</b></p></div>
+    <div class="pay">
+      <div><span class="lend">PAY IN FULL</span><h4>Cash, check or ACH</h4>
+        <p>A ${CO.depositPct}% deposit at signing, and the balance when the work is substantially complete.
+        No fee either way.</p></div>
+      <div><span class="lend">CARD</span><h4>Credit card</h4>
+        <p>We take cards for the deposit, the balance, or both. A ${CO.cardFee}% convenience fee may apply
+        where the card network permits it.</p></div>
+      <div><span class="lend">FINANCE &middot; 01</span><h4>${LENDERS.svc.name}</h4>
+        <p>${LENDERS.svc.blurb}</p></div>
+      <div><span class="lend">FINANCE &middot; 02</span><h4>${LENDERS.slice.name}</h4>
+        <p>${LENDERS.slice.blurb}</p></div>
+    </div>
+    ${showFin && fi0 && fi0.pmt ? `<p class="paynote">
+      <b>About the monthly figures on your options.</b> They are an illustration, not an offer:
+      ${fi0.term} monthly payments at ${fi0.apr}% APR${fi0.down?", after "+money(fi0.down)+" down":""}.
+      All financing is subject to credit approval, and your actual amount financed, APR, term and payment
+      are set by the lender in the documents you sign with them — not by this proposal. Approved
+      financing pays us directly, so on a financed job there is no deposit out of your pocket.
+    </p>` : `<p class="paynote">Ask your rep to run financing numbers for you — approval usually comes back
+      the same day, and it pays us directly, so a financed job needs no deposit out of pocket.</p>`}
+  </div></section>
+
+  <section class="sec"><div class="sheet">
+    <div class="sec-head"><div class="eyebrow">Our warranty</div>
+      <h2>We stand behind the install for a decade</h2>
+      <p>Two separate warranties cover your roof. The manufacturer covers the product. We cover the work.</p></div>
+    <div class="warrbox">
+      <div class="term">${CO.warrantyYears} <em>years</em></div>
+      <p>${WARRANTY_TEXT}</p>
+      <p>${WARRANTY_LIMITS}</p>
+      <p>The workmanship period runs from Substantial Completion. Your written warranty certificate is
+      issued with your closing documents, and we register the manufacturer coverage in your name.</p>
+    </div>
+  </div></section>
+
+  <section class="sec tinted"><div class="sheet">
     <div class="sec-head"><div class="eyebrow">How it goes</div><h2>From yes to finished</h2></div>
     <ol class="flow">
-      <li><div><h4>You choose an option</h4><p>Sign the option you want. We collect no money up front — a deposit is only due when materials are ordered.</p></div></li>
+      <li><div><h4>You choose an option</h4><p>Sign the option you want. If you are paying cash, a ${CO.depositPct}% deposit is due at signing and holds your spot on the schedule. If you are financing, your lender funds the project and nothing comes out of pocket at signing. Either way you have three business days to cancel for a full refund.</p></div></li>
       <li><div><h4>We schedule and order</h4><p>You get a firm install date and we stage material to the property, usually the day before.</p></div></li>
       <li><div><h4>Install day</h4><p>Most roofs this size are a one-day tear-off and install. You will have a crew lead on site whose job is to answer your questions.</p></div></li>
       <li><div><h4>Walkthrough and warranty</h4><p>We walk the property with you, sweep for nails a second time, and register your manufacturer warranty in your name.</p></div></li>
@@ -1141,14 +1392,23 @@ function renderDoc(){
       <div><small>Homeowner signature</small></div>
       <div><small>Date</small></div>
     </div>
+    <p class="lic"><b>${CO.legal}</b> · ${CO.addr} · ${CO.phone} · ${CO.web}<br>
+      Utah DOPL contractor license <b>#${CO.lic}</b> · classifications ${CO.licClass} · active through ${CO.licExp}<br>
+      Licensed and insured. General liability and workers&rsquo; compensation carried as required by Utah law.</p>
   </div></section>
 
   <div class="sheet"><p class="fineprint">
     Pricing is based on the measurements shown and on conditions visible at the time of inspection.
-    Decking replacement beyond the sheets listed, structural repair, and code upgrades discovered after
-    tear-off are billed separately and only with your written approval. Manufacturer warranty terms are
-    summarized here and governed in full by the manufacturer&rsquo;s published documents, which are provided
-    with your contract. Proposal valid 30 days from the date shown.
+    <b>No sales tax is added to this price</b> — tax on materials is paid by PowerHouse at the point of
+    purchase and is already included above. Additional sheets of plywood or OSB required after tear-off
+    are ${money(CO.deckSheet)} per sheet, subject to the option you select. Structural repair and
+    code-required upgrades discovered after tear-off are handled by written change order; anything under
+    ${money(CO.unforeseen)} may be performed and added to the total, and anything over ${money(CO.unforeseen)}
+    is discussed and documented with you before we proceed. Manufacturer warranty terms are summarized here
+    and governed in full by the manufacturer&rsquo;s published documents, provided with your contract.
+    Payment terms, cancellation rights and the full warranty are set out in the PowerHouse Customer
+    Agreement you sign; this proposal does not replace it. Financing is subject to credit approval and the
+    lender&rsquo;s terms. Proposal valid 30 days from the date shown.
     ${j.addr?"":"<br><b>Note: add the property address before sending.</b>"}
   </p></div>`;
 }
@@ -1164,6 +1424,11 @@ function paint(){
   $("#s_burden").value = S.set.burden; $("#s_ops").value = S.set.ops;
   $("#s_adj").value = S.set.adj; $("#s_margin").value = S.set.margin || "";
   $("#s_engine").value = S.set.engine;
+  $("#s_taxBaked").value = S.set.taxBaked;
+  $("#s_taxActual").value = (S.set.taxActual==null ? "" : S.set.taxActual);
+  $("#f_show").value = (S.fin.show===false || String(S.fin.show)==="0") ? "0" : "1";
+  $("#f_lender").value = S.fin.lender; $("#f_apr").value = S.fin.apr;
+  $("#f_term").value = S.fin.term;     $("#f_down").value = S.fin.down || "";
   renderAddons();
   refresh();
 }
@@ -1198,6 +1463,23 @@ MFIELDS.forEach(k=>{
   });
 });
 $("#s_engine").onchange = e => { S.set.engine = e.target.value; refresh(); };
+
+/* supplier tax — blank actual rate means "leave the workbook alone" */
+$("#s_taxBaked").addEventListener("input", e => {
+  S.set.taxBaked = Math.max(0, Number(e.target.value)||0); refresh();
+});
+$("#s_taxActual").addEventListener("input", e => {
+  S.set.taxActual = e.target.value === "" ? null : Math.max(0, Number(e.target.value)||0); refresh();
+});
+
+/* financing */
+$("#f_show").onchange   = e => { S.fin.show = e.target.value === "1"; refresh(); };
+$("#f_lender").onchange = e => { S.fin.lender = e.target.value; refresh(); };
+["apr","term","down"].forEach(k=>{
+  $("#f_"+k).addEventListener("input", e => {
+    S.fin[k] = Math.max(0, Number(e.target.value)||0); refresh();
+  });
+});
 
 /* roof diagram highlighting */
 $$(".mrow[data-part]").forEach(row=>{
@@ -1276,10 +1558,12 @@ $("#btnNew").onclick = ()=>{
   S = blank(); save(); paint(); setMode(false);
 };
 $("#btnExport").onclick = ()=>{
-  const rows = [["System","Squares","Material","Labor+burden","Job cost","OPS","Price","Profit","Margin %"]];
-  SYSTEMS.forEach(s=>{ const r = calc(s,S.set.engine);
+  const rows = [["System","Squares","Material","Labor+burden","Job cost","OPS","Price (no sales tax)",
+                 "Profit","Margin %","Est. monthly","Term (mo)","APR %"]];
+  SYSTEMS.forEach(s=>{ const r = calc(s,S.set.engine); const fi = finance(r.total);
     rows.push([s.name, Math.round(r.sq*10)/10, r.mat.toFixed(2), r.labBurdened.toFixed(2),
-      r.cost.toFixed(2), r.ops.toFixed(2), r.total.toFixed(2), r.profit.toFixed(2), (r.margin*100).toFixed(1)]); });
+      r.cost.toFixed(2), r.ops.toFixed(2), r.total.toFixed(2), r.profit.toFixed(2), (r.margin*100).toFixed(1),
+      fi.pmt.toFixed(2), fi.term, fi.apr]); });
   const csv = rows.map(r=>r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(",")).join("\n");
   const a = document.createElement("a");
   a.href = URL.createObjectURL(new Blob([csv],{type:"text/csv"}));
