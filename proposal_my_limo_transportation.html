@@ -304,8 +304,42 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
 .ft-links a{color:var(--blue);text-decoration:none}
 .ft-exp{margin-top:20px;font-size:12px;opacity:.6}
 
+/* ── CASE STUDY CAROUSEL ── */
+.wrap--xwide{max-width:1280px;margin:0 auto}
+.case-wrap{margin-top:48px;position:relative}
+.case-scroll{display:flex;gap:18px;overflow-x:auto;overflow-y:hidden;scroll-behavior:smooth;scroll-snap-type:x mandatory;padding:4px 4px 16px;scrollbar-width:thin;scrollbar-color:rgba(0,113,227,.3) transparent}
+.case-scroll::-webkit-scrollbar{height:6px}
+.case-scroll::-webkit-scrollbar-track{background:transparent}
+.case-scroll::-webkit-scrollbar-thumb{background:rgba(0,113,227,.3);border-radius:100px}
+.case-card{flex:0 0 440px;background:var(--white);border:1px solid var(--border);border-radius:18px;overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;scroll-snap-align:start;display:flex;flex-direction:column}
+.case-card:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.1)}
+.case-thumb{aspect-ratio:16/9;background:#1a1a1a;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.case-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.case-thumb-zoom{position:absolute;bottom:10px;right:10px;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.6);color:#fff;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;backdrop-filter:blur(8px);pointer-events:none}
+.case-card:hover .case-thumb-zoom{opacity:1}
+.case-nav{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
+.case-arrow{width:44px;height:44px;border-radius:50%;background:var(--white);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;color:var(--dark)}
+.case-arrow:hover{background:var(--blue);color:#fff;border-color:var(--blue);transform:translateY(-1px)}
+.case-arrow:disabled{opacity:.35;cursor:not-allowed;transform:none;background:var(--white);color:var(--muted)}
+.case-arrow:disabled:hover{background:var(--white);color:var(--muted);border-color:var(--border)}
+.case-hint{font-size:13px;color:var(--muted);margin-top:24px;text-align:center}
+
+/* ── LIGHTBOX ── */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;z-index:1000;opacity:0;pointer-events:none;transition:opacity .3s;padding:32px}
+.lightbox.active{opacity:1;pointer-events:auto}
+.lightbox-inner{width:100%;max-width:1400px;max-height:92vh;display:flex;flex-direction:column;align-items:center;position:relative;transform:scale(.96);transition:transform .3s}
+.lightbox.active .lightbox-inner{transform:scale(1)}
+.lightbox-close{position:absolute;top:-12px;right:-12px;width:44px;height:44px;border-radius:50%;background:#fff;border:0;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--dark);transition:all .2s;z-index:2;box-shadow:0 6px 24px rgba(0,0,0,.3)}
+.lightbox-close:hover{background:var(--dark);color:#fff;transform:rotate(90deg)}
+.lightbox-body{width:100%;display:flex;align-items:center;justify-content:center;background:transparent;border-radius:12px;overflow:hidden}
+.lightbox-body img{max-width:100%;max-height:88vh;width:auto;height:auto;display:block;border-radius:10px;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.lightbox-title{position:absolute;bottom:-44px;left:50%;transform:translateX(-50%);font-size:13px;color:rgba(255,255,255,.7);letter-spacing:.04em;white-space:nowrap;max-width:90%;overflow:hidden;text-overflow:ellipsis}
+
 /* ── PRINT ── */
 @media print{
+  .lightbox{display:none!important}
+  .case-scroll{overflow:visible;flex-wrap:wrap}
+  .case-nav,.case-hint{display:none}
   .reveal{opacity:1!important;transform:none!important}
   .scroll-cue{display:none}
   #hero{min-height:auto;padding:60px 24px}
@@ -338,6 +372,7 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
   .why-grid{grid-template-columns:1fr}
 }
 @media(max-width:480px){
+  .case-card{flex:0 0 320px}
   h1{font-size:32px}
   h2{font-size:24px}
   .section{padding:68px 20px}
@@ -407,8 +442,8 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
         <div class="exec-stat-lbl">Monthly gap between where you are<br>and the $150K you told me you want</div>
       </div>
       <div class="exec-stat">
-        <div class="exec-stat-num" style="color:#4ADE80;">16</div>
-        <div class="exec-stat-lbl">Additional jobs a month that closes it,<br>priced at your own numbers</div>
+        <div class="exec-stat-num" style="color:#4ADE80;">$200K</div>
+        <div class="exec-stat-lbl">One Major League Cricket contract.<br>Three teams are coming next year.</div>
       </div>
     </div>
 
@@ -495,136 +530,68 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
 </section>
 
 
-<!-- ══════════════════════════ 03 — THE MATH ══════════════════════════ -->
-<section id="math" class="section">
-  <div class="wrap">
+<!-- ══════════════════════════ 03 — PROOF ══════════════════════════ -->
+<section id="proof" class="section">
+  <div class="wrap--xwide">
     <div class="reveal">
-      <div class="eyebrow">03 — Now Do The Math</div>
-      <h2>You said $150,000 a month as a first step.<br>Here's how few jobs that actually is.</h2>
+      <div class="eyebrow">03 — What We&rsquo;ve Done For Service Businesses</div>
+      <h2>Real systems. Real numbers.</h2>
       <div class="divider"></div>
-      <p style="max-width:700px;">Every figure below came out of your mouth on the call, and I've used the <em>bottom</em> of every range you gave me. Your local minimum is five hours at $150 an hour — <strong style="color:var(--dark);">$750</strong>. A multi-day corporate airport shuttle you priced at <strong style="color:var(--dark);">$10,000 to $20,000</strong>; I'm using $10,000. Nothing in this table assumes a single large event contract.</p>
+      <p style="max-width:720px;">The following are success stories to inspire you &mdash; and to show what AI-first systems are now capable of in modern SEO and GEO. Different industries, different sizes, same underlying approach: AI-first execution, owned by the client.</p>
     </div>
 
-    <div class="math-wrap reveal d1" style="background:var(--light);border-color:var(--border);">
-      <div class="math-scroll">
-      <table class="mt">
-        <thead>
-          <tr>
-            <th style="color:var(--muted);border-color:var(--border);background:#fff;">What it takes to add $50K/mo</th>
-            <th style="color:var(--muted);border-color:var(--border);background:#fff;">Worth each</th>
-            <th style="color:var(--muted);border-color:var(--border);background:#fff;">Per month</th>
-            <th style="color:var(--muted);border-color:var(--border);background:#fff;">Monthly revenue</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="color:var(--muted);border-color:var(--border);">Local charters — your 5-hour minimum <span style="opacity:.65">(weddings, dinners, sightseeing)</span></td>
-            <td style="color:var(--dark);border-color:var(--border);">$750</td>
-            <td style="color:var(--dark);border-color:var(--border);">12</td>
-            <td style="color:var(--dark);border-color:var(--border);">$9,000</td>
-          </tr>
-          <tr>
-            <td style="color:var(--muted);border-color:var(--border);">Multi-day corporate &amp; airport shuttles <span style="opacity:.65">(your low end)</span></td>
-            <td style="color:var(--dark);border-color:var(--border);">$10,000</td>
-            <td style="color:var(--dark);border-color:var(--border);">4</td>
-            <td style="color:var(--dark);border-color:var(--border);">$40,000</td>
-          </tr>
-          <tr>
-            <td style="color:var(--muted);border-color:var(--border);">School, church &amp; university contract work</td>
-            <td style="color:var(--muted);border-color:var(--border);">not counted</td>
-            <td style="color:var(--muted);border-color:var(--border);">—</td>
-            <td style="color:var(--muted);border-color:var(--border);">$0</td>
-          </tr>
-          <tr>
-            <td style="color:var(--muted);border-color:var(--border);">Major event &amp; team contracts <span style="opacity:.65">(cricket, DMCs, conventions)</span></td>
-            <td style="color:var(--muted);border-color:var(--border);">not counted</td>
-            <td style="color:var(--muted);border-color:var(--border);">—</td>
-            <td style="color:var(--muted);border-color:var(--border);">$0</td>
-          </tr>
-          <tr class="mt-hi" style="background:var(--green-bg);">
-            <td style="color:var(--dark);border-color:var(--border);">New monthly revenue</td>
-            <td style="color:var(--muted);border-color:var(--border);">—</td>
-            <td style="color:#1a7a38;border-color:var(--border);">16 jobs</td>
-            <td style="color:#1a7a38;border-color:var(--border);">$49,000</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="case-wrap reveal d1">
+      <div class="case-scroll" id="caseScroll">
+        <div class="case-card" data-case-id="1">
+          <div class="case-thumb">
+            <img src="assets/case-studies/case-slide-1.jpg" alt="Tradeworks case study slide" loading="lazy" />
+            <div class="case-thumb-zoom"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+          </div>
+        </div>
+        <div class="case-card" data-case-id="2">
+          <div class="case-thumb">
+            <img src="assets/case-studies/case-slide-2.jpg" alt="SegPro Solutions case study slide" loading="lazy" />
+            <div class="case-thumb-zoom"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+          </div>
+        </div>
+        <div class="case-card" data-case-id="3">
+          <div class="case-thumb">
+            <img src="assets/case-studies/case-slide-3.jpg" alt="Salmon HVAC case study slide" loading="lazy" />
+            <div class="case-thumb-zoom"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+          </div>
+        </div>
+        <div class="case-card" data-case-id="4">
+          <div class="case-thumb">
+            <img src="assets/case-studies/case-slide-4.jpg" alt="Bright Solutions case study slide" loading="lazy" />
+            <div class="case-thumb-zoom"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+          </div>
+        </div>
+        <div class="case-card" data-case-id="5">
+          <div class="case-thumb">
+            <img src="assets/case-studies/case-slide-5.jpg" alt="Apex Construction Group case study slide" loading="lazy" />
+            <div class="case-thumb-zoom"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+          </div>
+        </div>
       </div>
-      <div class="math-foot" style="background:rgba(0,113,227,.06);border-color:rgba(0,113,227,.15);color:var(--muted);">Sixteen additional jobs a month — roughly one every other day — puts you at the $150K you named. The two rows I zeroed out are the two you're best at winning. If a corporate shuttle lands at $20,000 instead of $10,000, you hit the goal on <strong style="color:var(--dark);">eight</strong> jobs a month instead of sixteen.</div>
-    </div>
 
-    <div class="delta-row reveal d2">
-      <div class="delta" style="background:var(--green-bg);border-color:rgba(52,199,89,.25);">
-        <div class="delta-num" style="color:#1a7a38;">$588,000</div>
-        <div class="delta-lbl" style="color:var(--muted);">New annual revenue at sixteen additional jobs a month, using only your lowest quoted prices</div>
+      <div class="case-nav">
+        <button class="case-arrow" id="caseLeft" aria-label="Scroll case studies left">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="case-arrow" id="caseRight" aria-label="Scroll case studies right">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
       </div>
-      <div class="delta" style="background:var(--green-bg);border-color:rgba(52,199,89,.25);">
-        <div class="delta-num" style="color:#1a7a38;">14×</div>
-        <div class="delta-lbl" style="color:var(--muted);">Return on a $3,500/mo engagement in the first twelve months — and the engagement is month-to-month</div>
-      </div>
-      <div class="delta" style="background:var(--green-bg);border-color:rgba(52,199,89,.25);">
-        <div class="delta-num" style="color:#1a7a38;">$200,000</div>
-        <div class="delta-lbl" style="color:var(--muted);">One Major League Cricket contract — deliberately excluded above. Three teams are coming next year</div>
-      </div>
-    </div>
-
-    <div class="callout reveal d3">
-      <h4>And the table leaves out the biggest number you gave me — on purpose.</h4>
-      <p>The Major League Cricket deal was <em>$200,000 over a month</em>, and you said you expect three teams next year. Destination management companies are booking national sales meetings into Dallas. FIFA came through and, in your words, <em>"we weren't the one that popped up when people were searching for transportation."</em> Dallas isn't slowing down. <strong>Every one of those is a search-and-reputation win, not a fleet win</strong> — and none of them are in the $588,000 above. The table is the floor, not the ceiling.</p>
+      <p class="case-hint">Drag, scroll, or use the arrows. Click any card for the full case study.</p>
     </div>
   </div>
 </section>
 
-
-<!-- ══════════════════════════ 04 — THE CHANNEL ══════════════════════════ -->
-<section id="channel" class="section section--dark">
-  <div class="wrap">
-    <div class="reveal">
-      <div class="eyebrow">04 — How We Actually Get There</div>
-      <h2 style="color:#fff;">Sixteen jobs a month, worked backwards.</h2>
-      <div class="divider"></div>
-      <p style="max-width:700px;">You asked the right question on the call: <em>"How do you drive the hits to get the visibility?"</em> So rather than promise traffic, here's the funnel built <strong style="color:#fff;">backwards from the sixteen jobs</strong> — starting at the number you need and working up to the amount of search traffic that produces it. Every rate below is deliberately conservative.</p>
-    </div>
-
-    <div class="funnel reveal d1">
-      <div class="fstep" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1)">
-        <div class="fstep-n" style="color:#64A5FF">Step 01</div>
-        <div class="fstep-num" style="color:#fff">~1,350</div>
-        <div class="fstep-lbl" style="color:rgba(255,255,255,.5)">Monthly visitors from organic and AI search, across Dallas and every surrounding city page</div>
-      </div>
-      <div class="fstep" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1)">
-        <div class="fstep-n" style="color:#64A5FF">Step 02</div>
-        <div class="fstep-num" style="color:#fff">~40</div>
-        <div class="fstep-lbl" style="color:rgba(255,255,255,.5)">Quote requests started, at a conservative 3% — these visitors already need a bus</div>
-      </div>
-      <div class="fstep" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1)">
-        <div class="fstep-n" style="color:#64A5FF">Step 03</div>
-        <div class="fstep-num" style="color:#fff">~27</div>
-        <div class="fstep-lbl" style="color:rgba(255,255,255,.5)">Completed quotes on your desk, with abandoned-form recovery texts pulling back the drop-offs</div>
-      </div>
-      <div class="fstep" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1)">
-        <div class="fstep-n" style="color:#64A5FF">Step 04</div>
-        <div class="fstep-num" style="color:#4ADE80">16</div>
-        <div class="fstep-lbl" style="color:rgba(255,255,255,.5)">Booked jobs at a 60% close — below the rate you claimed for yourself</div>
-      </div>
-    </div>
-
-    <p class="reveal d2" style="max-width:700px;margin-top:36px;">That last step is where I'm being most conservative. You said: <em>"if the quotes come in, I can pretty much guarantee a conversion on most of them."</em> I've modeled 60%, not "most." And ~1,350 monthly visitors is a modest number for a metro the size of Dallas–Fort Worth once you have a page for Plano, Frisco, Irving, Arlington, Fort Worth, Richardson, Grapevine and the rest — because <strong style="color:#fff;">nobody searches "Dallas" when they're in Frisco.</strong></p>
-
-    <p class="reveal d2" style="max-width:700px;margin-top:20px;">This channel converts unusually well for your business specifically, for three reasons. The search intent is nearly perfect — nobody types "motor coach rental Frisco TX" out of curiosity. The buying window is short and urgent, which means whoever shows up first usually wins. And you close: thirty-plus years in transportation, and the ability to price a job on the phone. The brokers beating you have none of those advantages. They just have the page.</p>
-
-    <div class="bet-box reveal d3">
-      <p><strong style="color:#fff;">Sequencing matters, and your calendar sets it.</strong> You told me July and August are dead — school's out, it's hot, conventions aren't coming — and that churches heading to summer camp are what fills the gap. That makes right now the best possible month to build, because search work takes weeks to compound and you want it mature <em>before</em> the season turns. Foundation goes in during the slow weeks. By late September the school year, convention season and holiday party bookings arrive into a site that's already ranking. January brings RFP season, three cricket teams, and the DMC relationships you're free to work.</p>
-    </div>
-  </div>
-</section>
-
-
-<!-- ══════════════════════════ 05 — REVIEWS ══════════════════════════ -->
+<!-- ══════════════════════════ 04 — REVIEWS ══════════════════════════ -->
 <section id="reviews" class="section section--light">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow">05 — The Fastest Fix You Have</div>
+      <div class="eyebrow">04 — The Fastest Fix You Have</div>
       <h2>You move hundreds of people a month and collect almost no proof of it.</h2>
       <div class="divider"></div>
       <p style="max-width:700px;">Every other item in this proposal takes weeks to compound. This one doesn't. Right now a bus leaves with forty passengers on it, delivers a flawless day, and generates zero public evidence that it happened. The cricket team was thrilled — your words: <em>"if I'd have had a QR code or something for them to leave a Google review, we would have probably got raving reviews. But we don't have that."</em></p>
@@ -653,11 +620,11 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
 </section>
 
 
-<!-- ══════════════════════════ 06 — ROADMAP ══════════════════════════ -->
+<!-- ══════════════════════════ 05 — ROADMAP ══════════════════════════ -->
 <section id="roadmap" class="section">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow">06 — The Roadmap</div>
+      <div class="eyebrow">05 — The Roadmap</div>
       <h2>Built on your season, not ours.</h2>
       <div class="divider"></div>
       <p style="max-width:680px;">You laid the Dallas calendar out for me on the call. We're putting an engine on top of the year you already run — and starting with the pieces that produce fastest, so you have something real to judge before you've spent much.</p>
@@ -765,11 +732,11 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
 </section>
 
 
-<!-- ══════════════════════════ 07 — THE STACK ══════════════════════════ -->
+<!-- ══════════════════════════ 06 — THE STACK ══════════════════════════ -->
 <section id="stack" class="section section--dark">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow">07 — How We Build</div>
+      <div class="eyebrow">06 — How We Build</div>
       <h2 style="color:#fff;">We connect to what you have. We don't rip it out.</h2>
       <div class="divider"></div>
       <p style="max-width:640px;">Your fleet, your dispatch, your drivers, your Deloitte contract, your GATM partnership, your domain — none of it changes and none of it becomes dependent on us. We add the layer that's missing, which is everything between <em>"someone in Dallas needs a bus"</em> and <em>"that job is on your schedule."</em></p>
@@ -814,11 +781,11 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
 </section>
 
 
-<!-- ══════════════════════════ 08 — THE SHIFT ══════════════════════════ -->
+<!-- ══════════════════════════ 07 — THE SHIFT ══════════════════════════ -->
 <section id="shift" class="section">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow">08 — The Shift</div>
+      <div class="eyebrow">07 — The Shift</div>
       <h2>Where you are. Where you're going.</h2>
       <div class="divider"></div>
     </div>
@@ -857,11 +824,11 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
 </section>
 
 
-<!-- ══════════════════════════ 09 — INVESTMENT ══════════════════════════ -->
+<!-- ══════════════════════════ 08 — INVESTMENT ══════════════════════════ -->
 <section id="investment" class="section section--light">
   <div class="wrap--wide">
     <div class="reveal" style="text-align:center;">
-      <div class="eyebrow">09 — Investment</div>
+      <div class="eyebrow">08 — Investment</div>
       <h2>Three ways in. No setup fee on any of them.</h2>
       <div class="divider divider--c"></div>
       <p style="max-width:700px;margin:0 auto;">Month to month, cancel any time, nothing due before we start. You said you'd probably take it a step at a time and prioritize what gives the biggest bang for the buck — so each tier adds a capability rather than just adding hours, and the first one is a genuinely small commitment.</p>
@@ -921,9 +888,9 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
         </div>
         <div class="tier-block">
           <div class="tier-block-h">Best for</div>
-          <p>The $150K goal. This is the tier where the funnel in section 04 actually holds together end to end.</p>
+          <p>The $150K goal. This is the tier where a lead gets found, captured, and followed up without anything depending on your free hours.</p>
         </div>
-        <div class="tier-roi"><strong>Four</strong> multi-day shuttles pays for the whole year. If the plan works, that's four of about 192 jobs — the other 188 are yours.</div>
+        <div class="tier-roi"><strong>Four</strong> multi-day corporate shuttles pays for the whole year — at the low end of the range you quoted me. Everything after that is yours.</div>
       </div>
 
       <!-- Tier 3 -->
@@ -957,7 +924,7 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
 
     <div class="rec-box reveal d4">
       <h4><span>★ Our recommendation:</span> start at $3,500.</h4>
-      <p>$1,500 is a real option and we'll build it happily — the site rebuild, the search engine and the review system are the foundation everything else sits on, and they compound whether or not you ever add a channel. But be clear-eyed about what it is: <strong>it drives people to a quote form and then hands them to your inbox.</strong> The funnel in section 04 assumes ~40 quote requests a month getting worked. Forty emails a month landing on the person who is also selling, quoting, and running operations is how good leads go quiet — and the abandoned ones never surface at all. It fixes the traffic problem and leaves the capture problem exactly where it is.</p>
+      <p>$1,500 is a real option and we'll build it happily — the site rebuild, the search engine and the review system are the foundation everything else sits on, and they compound whether or not you ever add a channel. But be clear-eyed about what it is: <strong>it drives people to a quote form and then hands them to your inbox.</strong> That's the same inbox belonging to the person who is also selling, quoting, and running operations — which is how good leads go quiet, and the abandoned ones never surface at all. It fixes the visibility problem and leaves the capture problem exactly where it is.</p>
       <p>$3,500 closes that loop. Every quote lands in a CRM, gets answered in under a minute, and gets followed up until it converts or dies on purpose rather than by accident. It also includes the two things you asked me for directly — <strong>the RFP agent</strong> watching every bid board, and real AI training for you, starting with cutting proposal drafting from an evening to minutes. That's the tier where the $150,000 month is a plan rather than a hope. Step up to $6,000 when the pipeline is full and the constraint becomes brand instead of visibility — that's a year-two conversation, not a today conversation.</p>
     </div>
 
@@ -966,11 +933,11 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
 </section>
 
 
-<!-- ══════════════════════════ 10 — HOW WE WORK ══════════════════════════ -->
+<!-- ══════════════════════════ 09 — HOW WE WORK ══════════════════════════ -->
 <section id="how" class="section section--dark">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow">10 — How Every Engagement Runs</div>
+      <div class="eyebrow">09 — How Every Engagement Runs</div>
       <h2 style="color:#fff;">The same promises at every level.</h2>
       <div class="divider"></div>
       <p style="max-width:620px;">Whether you start at $1,500 or $6,000, the way we work with you doesn't change.</p>
@@ -1016,11 +983,11 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
 </section>
 
 
-<!-- ══════════════════════════ 11 — NEXT STEPS ══════════════════════════ -->
+<!-- ══════════════════════════ 10 — NEXT STEPS ══════════════════════════ -->
 <section id="next" class="section section--light" style="text-align:center;">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow">11 — Next Steps</div>
+      <div class="eyebrow">10 — Next Steps</div>
       <h2>Here's what happens next.</h2>
       <div class="divider divider--c"></div>
     </div>
@@ -1029,7 +996,7 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
         <div class="step-n">1</div>
         <div class="step-b">
           <h4>Read it, then poke holes in it</h4>
-          <p>Section 03 is where the whole argument lives, and every number in it is yours. If the $750 minimum or the $10,000 shuttle figure is off, or if sixteen jobs a month is the wrong shape for how you actually book, tell me and we'll rebuild the table with the right numbers before Friday.</p>
+          <p>Section 03 is five real builds for service businesses with the actual numbers on them — click any card to read the full case. If something in the scope looks wrong for how transportation actually books, or you want a tier reshaped, tell me and I'll rework it before Friday.</p>
         </div>
       </li>
       <li>
@@ -1069,13 +1036,120 @@ footer{background:var(--darker);color:rgba(255,255,255,.38);text-align:center;pa
 </footer>
 
 
+<!-- LIGHTBOX MODAL -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="lightbox-body" id="lightboxBody"></div>
+    <div class="lightbox-title" id="lightboxTitle"></div>
+  </div>
+</div>
+
 <script>
+// ============== CASE STUDY CONFIG ==============
+const CASE_STUDIES = {
+  1: { client: 'Tradeworks', headline: 'Contractor staffing — recovery from prior agency’s “AI slop”', image: 'assets/case-studies/case-slide-1.jpg' },
+  2: { client: 'SegPro Solutions', headline: 'Cost-seg accounting — referral-dependent to inbound engine', image: 'assets/case-studies/case-slide-2.jpg' },
+  3: { client: 'Salmon HVAC', headline: 'Regional HVAC — beating the mega-corp competitor', image: 'assets/case-studies/case-slide-3.jpg' },
+  4: { client: 'Bright Solutions', headline: 'Electrical — AI lead prioritization for high-value jobs', image: 'assets/case-studies/case-slide-4.jpg' },
+  5: { client: 'Apex Construction Group', headline: 'Commercial bidding — automated pipeline + win-rate lift', image: 'assets/case-studies/case-slide-5.jpg' }
+};
+
+// ============== REVEAL ==============
 const obs = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
   });
 }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// ============== CASE STUDY CAROUSEL ==============
+(function(){
+  const scroll = document.getElementById('caseScroll');
+  const left = document.getElementById('caseLeft');
+  const right = document.getElementById('caseRight');
+  if (!scroll || !left || !right) return;
+
+  function getStep() {
+    const card = scroll.querySelector('.case-card');
+    if (!card) return 320;
+    return card.offsetWidth + 18; // gap
+  }
+
+  function updateArrows() {
+    const max = scroll.scrollWidth - scroll.clientWidth - 2;
+    left.disabled = scroll.scrollLeft <= 2;
+    right.disabled = scroll.scrollLeft >= max;
+  }
+
+  left.addEventListener('click', () => { scroll.scrollBy({ left: -getStep(), behavior: 'smooth' }); });
+  right.addEventListener('click', () => { scroll.scrollBy({ left: getStep(), behavior: 'smooth' }); });
+  scroll.addEventListener('scroll', updateArrows);
+  window.addEventListener('resize', updateArrows);
+  updateArrows();
+
+  // Drag-to-scroll
+  let isDown = false, startX = 0, startScroll = 0;
+  scroll.addEventListener('mousedown', (e) => {
+    isDown = true;
+    startX = e.pageX - scroll.offsetLeft;
+    startScroll = scroll.scrollLeft;
+    scroll.style.cursor = 'grabbing';
+  });
+  scroll.addEventListener('mouseleave', () => { isDown = false; scroll.style.cursor = ''; });
+  scroll.addEventListener('mouseup', () => { isDown = false; scroll.style.cursor = ''; });
+  scroll.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - scroll.offsetLeft;
+    scroll.scrollLeft = startScroll - (x - startX);
+  });
+
+  // Click -> lightbox
+  scroll.querySelectorAll('.case-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (Math.abs(e.movementX) > 4) return; // was dragging
+      openLightbox(card.getAttribute('data-case-id'));
+    });
+  });
+})();
+
+// ============== LIGHTBOX ==============
+function openLightbox(caseId) {
+  const cs = CASE_STUDIES[caseId];
+  if (!cs) return;
+  const lb = document.getElementById('lightbox');
+  const title = document.getElementById('lightboxTitle');
+  const body = document.getElementById('lightboxBody');
+
+  title.textContent = cs.client + (cs.headline ? ' — ' + cs.headline : '');
+  body.innerHTML = '<img src="' + cs.image + '" alt="' + cs.client + ' — ' + cs.headline + '" />';
+
+  lb.classList.add('active');
+  lb.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  const lb = document.getElementById('lightbox');
+  lb.classList.remove('active');
+  lb.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  setTimeout(() => {
+    const body = document.getElementById('lightboxBody');
+    if (body) body.innerHTML = '';
+  }, 300);
+}
+
+document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+document.getElementById('lightbox').addEventListener('click', (e) => {
+  if (e.target.id === 'lightbox') closeLightbox();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeLightbox();
+});
 </script>
 </body>
 </html>
