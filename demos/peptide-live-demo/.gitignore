@@ -1,0 +1,5 @@
+# Local scrape artifacts — regenerate with scrape.py, don't publish client price data
+prices.db
+*.xlsx
+~$*
+__pycache__/
