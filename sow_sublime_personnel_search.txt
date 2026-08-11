@@ -1,0 +1,182 @@
+SCOPE OF WORK
+Search & Website Services
+
+Client:    Sublime Personnel (Pete & Terry)
+Provider:  Disruptors Media - Kimball Mueller (kimball@disruptorsmedia.com)
+Fee:       $850.00 per month. No setup fee. Month-to-month.
+Date:      August 11, 2026
+
+
+1. OVERVIEW
+
+Provider will design, build, and host a new website for Client, migrate it off
+GoDaddy, and perform ongoing search engine optimization (SEO), generative engine
+optimization (GEO), and answer engine optimization (AEO) services.
+
+This Scope of Work covers Search & Website services only. LinkedIn outreach is a
+separate service offered at $850 per month; both services combined are $1,500 per
+month.
+
+
+2. MONTH ONE DELIVERABLES
+
+2.1 Week One - Audit & Architecture
+  a) Full technical audit of the existing website: crawl, index coverage, page
+     speed and Core Web Vitals, broken links, mobile rendering, and hosting
+     limitations.
+  b) Keyword and search query research across all seven of Client's verticals,
+     segmented by buyer intent (companies seeking recruiting services) versus
+     candidate intent (individuals seeking employment).
+  c) Competitor analysis covering three to five competing recruiting firms per
+     niche, including ranking gaps and content gaps.
+  d) AI answer baseline: twenty defined prompts run across ChatGPT, Perplexity,
+     and Google AI Overviews, with Client's current visibility recorded. This
+     baseline is the benchmark for ongoing monthly reporting.
+  e) Site architecture, sitemap, URL structure, and positioning/messaging
+     document, submitted to Client for written approval.
+
+  Deliverables: written audit, keyword map, competitor analysis, sitemap,
+  messaging document. All become Client property upon delivery.
+
+2.2 Weeks Two and Three - Build
+  a) Core pages designed, written, and built: Home, About, For Clients, For
+     Candidates, Contact.
+  b) Seven vertical landing pages, each with dedicated content, proof, and
+     search targeting: hospitality/restaurant; HOA and property management;
+     commercial lines insurance; personal lines insurance; accounting;
+     commercial construction; QSR/franchise.
+  c) Two written case studies developed from Client-supplied engagement history.
+  d) Conversion paths: contact forms with email and SMS notification, calendar
+     booking integration, and click-to-call on mobile, with separate paths for
+     client inquiries and candidate inquiries.
+  e) Google reviews, video, and existing social content integrated into
+     the site.
+
+  Deliverables: complete website on a private staging link for Client review
+  prior to launch. One full revision round included on every page.
+
+2.3 Week Four - Launch & Technical Foundation
+  a) Migration from GoDaddy: new hosting established in Client's name, DNS
+     cutover, and a complete 301 redirect map to preserve existing equity.
+  b) Technical SEO implementation: title tags and meta descriptions, header
+     structure, internal linking, XML sitemap and robots.txt, image compression
+     and speed optimization, mobile and Core Web Vitals compliance, SSL, and
+     canonical tags.
+  c) Schema markup: Organization, Service, LocalBusiness, and FAQ.
+  d) Google Business Profile optimization: categories, services, service areas,
+     description, photos, and seeded Q&A, linked to the new site.
+  e) Measurement configured in Client-owned accounts: Google Analytics 4, Google
+     Search Console, and form and call tracking.
+
+  Deliverables: live website, fully migrated and instrumented.
+
+
+3. ONGOING MONTHLY DELIVERABLES (MONTH TWO FORWARD)
+
+  Deliverable                                         Quantity per month
+  ------------------------------------------------------------------------
+  Niche content - blog posts and answer pages         4
+  New landing page (vertical or geographic market)    1
+  Existing pages refreshed and re-optimized           1-2
+  Technical SEO maintenance                           Ongoing
+  GEO / AEO work (AI answer visibility)               Ongoing
+  Directory and citation listings                     5-10
+  Google Business Profile posts                       4
+  Review generation - request flow and monitoring     Ongoing
+  Hosting, maintenance, backups, and small edits      Unlimited, 48-hour
+                                                        turnaround
+  Rank tracking                                       ~40 terms
+  AI answer visibility check (baseline prompts)       20 prompts
+  Written report and strategy call with Kimball       1
+
+Quantities listed are minimums. Where a given month warrants a different
+allocation of effort - for example, additional pages in a vertical that is
+converting, or a build-out for a newly acquired market - Provider will reallocate
+effort accordingly with Client's agreement.
+
+
+4. REPORTING AND PERFORMANCE EXPECTATIONS
+
+Provider will deliver a written report monthly, plus one strategy call.
+
+Client acknowledges that search performance compounds over time and that no
+specific ranking, traffic volume, or lead volume is guaranteed. Expected
+progression:
+
+  Days 30-60    Leading indicators: pages indexed, impressions in Search
+                Console, site speed, resolution of crawl errors.
+  Days 60-120   Movement across the approximately 40 tracked search terms and
+                increased presence across the 20 tracked AI prompts.
+  Month 4+      Inbound form fills and calls from decision makers, tracked and
+                attributed.
+
+
+5. EXCLUSIONS
+
+The following are expressly NOT included in this Scope of Work:
+
+  a) LinkedIn outreach, list building, connection campaigns, and messaging
+     sequences (available as a separate service at $850 per month; $1,500 per
+     month for both services combined).
+  b) Social media content production and posting across YouTube, Instagram, X,
+     and Facebook, which remains with Client's existing provider.
+  c) Paid advertising management and paid advertising spend of any kind.
+  d) Cold email infrastructure and pay-per-lead services (separately quoted at a
+     $990 one-time setup and $125 per qualified lead).
+  e) Third-party platform costs. Hosting, domain renewal, and SEO tooling are
+     billed directly to Client's own accounts at cost, without markup, and are
+     estimated at $30-60 per month in total.
+  f) Applicant tracking systems, sourcing tools, and other candidate-side
+     systems, which remain unchanged.
+
+
+6. TERMS
+
+6.1 Fee and Billing. $850.00 per month, with no setup fee. The first payment is
+due on the commencement date, and monthly thereafter on the same date of each
+month.
+
+6.2 Term and Termination. This engagement is month-to-month. Either party may
+terminate with thirty (30) days' written notice. No penalty or early termination
+fee applies, and no amounts are owed beyond the final month.
+
+6.3 Ownership. Client owns all work product. The domain, hosting account, Google
+Analytics, Google Search Console, Google Business Profile, and all website files
+and content are registered in Client's name from the commencement date. Upon
+termination, all assets remain with Client and the site remains operational.
+
+6.4 Client Responsibilities. Client will provide access to the existing website
+and domain registrar and to the Google Business Profile, and will make
+approximately one hour of Client time available during month one for approval of
+the messaging document, review of the staging site, and confirmation of case
+study details.
+
+6.5 Revisions. One full revision round is included on every page during the
+build. Unlimited minor edits (copy changes, images, contact details, new service
+listings) are included for the duration of the engagement, with a 48-hour
+turnaround. A second full redesign is outside this Scope of Work and would be
+quoted separately.
+
+6.6 Point of Contact. Kimball Mueller is Client's direct point of contact,
+providing one strategy call per month and a written update weekly. Fulfillment
+is supported by the Disruptors Media team.
+
+6.7 Commencement. Work begins upon Client's authorization and delivery of the
+access described in Section 6.4. There is no onboarding period and no setup
+invoice.
+
+
+7. AUTHORIZATION
+
+
+Sublime Personnel                        Disruptors Media
+
+
+_______________________________          _______________________________
+Signature                                Signature
+
+_______________________________          Kimball Mueller
+Name and Title                           Owner
+
+_______________________________          _______________________________
+Date                                     Date
