@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a1a">
+  <title>The Jarvis Build Checklist — Six Layers, What to Pick, What to Never Allow — Kimball Mueller</title>
+  <meta name="description" content="The companion checklist to the six-layer Jarvis architecture: what to choose at each layer, the permission ladder that keeps it safe, copy-paste SOP templates, and the one workflow to build first.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="stylesheet" href="../assets/guide.css">
+
+  <meta property="og:title" content="The Jarvis Build Checklist — Six Layers, What to Pick, What to Never Allow">
+  <meta property="og:description" content="The dashboard is not Jarvis. Here's the system underneath it — layer by layer, with the templates.">
+  <meta property="og:type" content="article">
+</head>
+<body>
+  <div class="mesh" aria-hidden="true"><span></span></div>
+
+  <main class="guide">
+
+    <nav class="guide-nav" aria-label="breadcrumb">
+      <a href="../index.html">← Home</a>
+      <span class="sep">·</span>
+      <a href="../resources.html">Resources</a>
+    </nav>
+
+    <h1 class="guide-title">The Jarvis Build Checklist</h1>
+    <p class="guide-subtitle">The video walks through the six layers. This is the part you actually work from — what to pick at each layer, the permission ladder that keeps the thing safe, the instruction files to copy, and the single workflow I'd build first. If you only take one thing from this page, take the <a class="inline" href="#permissions">permission ladder</a>.</p>
+    <p class="guide-meta">
+      <span>⏱ ~10 minute read</span>
+      <span>🔧 Do-it-yourself</span>
+      <span>📍 Written for operators, not engineers</span>
+    </p>
+
+    <div class="video-wrap">
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/z6jFqt0QwIE"
+        title="Jarvis Runs 85% of My Business — Here's the Exact 6-Layer Stack"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
+    </div>
+
+    <div class="callout tip">
+      <span class="ico">🎯</span>
+      <span class="body"><strong>The one-paragraph version:</strong> Jarvis is not one AI model and it is not a dashboard. It's six things working together — a computer that stays awake, a harness that lets a model take action, the model itself, connections to your tools, written instructions and memory, and skills on a schedule. Miss any one of them and you have a chatbot. Build them in order, give it one job, and make that job reliable before you add a second.</span>
+    </div>
+
+    <hr>
+
+    <!-- =============== THE SIX LAYERS =============== -->
+    <h2>The six layers at a glance</h2>
+
+    <p>Each layer answers a different question. The common failure is buying the last layer first — people start with the voice and the glowing interface, which is the only layer that does no work.</p>
+
+    <table class="guide-table">
+      <thead>
+        <tr><th>Layer</th><th>Answers</th><th>Start with</th><th>The usual mistake</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>J</strong> — Job Runner</td>
+          <td>Where does it live?</td>
+          <td>A Mac mini left plugged in</td>
+          <td>Running it on the laptop you close at 5pm</td>
+        </tr>
+        <tr>
+          <td><strong>A</strong> — Agent Harness</td>
+          <td>How does it take action?</td>
+          <td>One folder, read-only</td>
+          <td>Full system access on day one</td>
+        </tr>
+        <tr>
+          <td><strong>R</strong> — Reasoning Model</td>
+          <td>What does the thinking?</td>
+          <td>One good cloud model</td>
+          <td>Paying top rates to rename files</td>
+        </tr>
+        <tr>
+          <td><strong>V</strong> — Virtual Connections</td>
+          <td>What can it touch?</td>
+          <td>Email, read-only</td>
+          <td>Granting send before you trust it</td>
+        </tr>
+        <tr>
+          <td><strong>I</strong> — Instructions &amp; Memory</td>
+          <td>What does it know?</td>
+          <td>One markdown file</td>
+          <td>One giant prompt, re-pasted forever</td>
+        </tr>
+        <tr>
+          <td><strong>S</strong> — Skills, Schedules &amp; Speech</td>
+          <td>When does it run?</td>
+          <td>One daily job</td>
+          <td>Starting here</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr>
+
+    <!-- =============== LAYER 1 =============== -->
+    <h2>J — Job Runner: the machine that stays awake</h2>
+
+    <p>The specific hardware barely matters. Uptime is the whole point. If your agent is supposed to check email every few minutes, it cannot live on a laptop that's asleep in a backpack. If it builds a report every morning, the machine has to be on when that report is scheduled.</p>
+
+    <p>A dedicated machine also gives the agent a physical home — one place that holds the files, runs the automations, and keeps working while your main computer is off.</p>
+
+    <table class="guide-table">
+      <thead><tr><th>Option</th><th>Good for</th><th>Watch out for</th></tr></thead>
+      <tbody>
+        <tr><td>Mac mini</td><td>Most people — quiet, power-efficient, always on</td><td>Upfront cost</td></tr>
+        <tr><td>Old laptop / desktop</td><td>Free start, proving it out</td><td>Sleep settings will bite you</td></tr>
+        <tr><td>Linux box</td><td>Comfortable in a terminal</td><td>More setup</td></tr>
+        <tr><td>Cloud server</td><td>No hardware, access anywhere</td><td>Monthly bill, your files live elsewhere</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout tip">
+      <span class="ico">💡</span>
+      <span class="body"><strong>On RAM:</strong> if you're calling cloud models through an API, the machine is mostly just coordinating and doesn't need to be powerful. RAM only becomes the deciding factor when you want to run local models on it.</span>
+    </div>
+
+    <p><strong>Local or cloud?</strong> Both. Use a local model for cheap, repetitive, private work, and escalate the hard tasks to a stronger cloud model. Local models cost nothing per call and keep sensitive data on your machine; they're also less capable and want more RAM.</p>
+
+    <hr>
+
+    <!-- =============== LAYER 2 =============== -->
+    <h2>A — Agent Harness: intelligence vs. agency</h2>
+
+    <p>The harness is the software sitting between the model and the rest of your computer. It's the difference between a model that <em>answers</em> and one that <em>acts</em>.</p>
+
+    <p>Without a harness, you can ask an AI to write an email. With one, it can read the email, check the relevant context, create a draft, and put it in front of you for approval inside Gmail.</p>
+
+    <p>The model provides intelligence. The harness provides agency. The harness is also what controls what the model can reach, which tools it may use, how long it can work, and what happens when it hits a problem.</p>
+
+    <p>It's what makes loops possible: read the task → make a plan → use a tool → check the result → keep going until done. That loop is the thing that makes an agent feel different from a chatbot.</p>
+
+    <div class="callout warn">
+      <span class="ico">⚠️</span>
+      <span class="body"><strong>This is where people get burned.</strong> Do not give an agent unlimited access on day one. Start with one folder, one email label, and read-only wherever it's offered. Expand only as you learn how it behaves. An agent with full access and bad instructions doesn't get more useful — it gets more dangerous.</span>
+    </div>
+
+    <hr>
+
+    <!-- =============== LAYER 3 =============== -->
+    <h2>R — Reasoning Model: route work by cost</h2>
+
+    <p>This is the LLM — OpenAI, Claude, Gemini, or something local. You don't have to pick just one, and a harness means your whole system isn't locked to a single AI company.</p>
+
+    <p>Think of it like assigning jobs to employees. You wouldn't pay your highest-level strategist to rename files all day.</p>
+
+    <table class="guide-table">
+      <thead><tr><th>Tier</th><th>Work</th><th>Send it to</th></tr></thead>
+      <tbody>
+        <tr><td>Tier 1</td><td>Cheap and repetitive — sorting, tagging, classifying</td><td>A small or local model</td></tr>
+        <tr><td>Tier 2</td><td>Needs real writing or judgement</td><td>A mid-tier cloud model</td></tr>
+        <tr><td>Tier 3</td><td>Deep reasoning on a hard problem</td><td>Your best model — only when needed</td></tr>
+      </tbody>
+    </table>
+
+    <p>The goal isn't to use the best model for everything. It's to use the <em>least expensive model that still reliably completes the task</em>. API costs climb fast when every trivial job goes to the most expensive option.</p>
+
+    <hr>
+
+    <!-- =============== LAYER 4 =============== -->
+    <h2 id="permissions">V — Virtual Connections: where it gets hands</h2>
+
+    <p>Two acronyms do the work here.</p>
+
+    <p><strong>API</strong> (Application Programming Interface) is a structured way for one piece of software to talk to another. An email API lets your agent read messages or create drafts. A CRM API lets it update a contact. An analytics API lets it pull business numbers.</p>
+
+    <p><strong>MCP</strong> (Model Context Protocol) gives models a standardised way to connect to tools and data. Instead of building a custom integration for every app, an MCP server exposes a specific set of tools the agent is allowed to use.</p>
+
+    <p>This is the layer where the agent gets hands — which is exactly why access should be deliberate. For every connection, decide separately whether it can read, write, delete, or send.</p>
+
+    <table class="guide-table">
+      <thead><tr><th>Permission</th><th>Risk</th><th>Rule of thumb</th></tr></thead>
+      <tbody>
+        <tr><td>Read</td><td>Lower</td><td>Fine to start here on almost anything</td></tr>
+        <tr><td>Write / draft</td><td>Moderate</td><td>Grant once you've watched it read for a while</td></tr>
+        <tr><td>Delete</td><td>High</td><td>Withhold. Let it propose, you execute</td></tr>
+        <tr><td>Send</td><td>High</td><td>Withhold until it has earned it — see HITL below</td></tr>
+      </tbody>
+    </table>
+
+    <p><strong>HITL — Human In The Loop.</strong> The agent does most of the work, but a person stays at the decision point that matters. It prepares the proposal, you approve the pricing. It drafts the email, you approve the message. That's how you get the speed of AI without handing over the decisions you'd regret.</p>
+
+    <hr>
+
+    <!-- =============== LAYER 5 =============== -->
+    <h2>I — Instructions &amp; Memory: the layer everyone skips</h2>
+
+    <p>This is probably the most important part of the system. People assume the intelligence comes from the model, but the quality usually comes from the context you put around it.</p>
+
+    <p>Your agent needs to know who you are, what your company does, what you're working on right now, how you like things done, and what it must never do.</p>
+
+    <p>You don't need a database. Start with markdown files — plain text. One main file explaining the business, then an SOP per task.</p>
+
+    <p>Copy this as your starting <code class="inline">business.md</code>:</p>
+
+    <div class="code"><pre># Business Context
+
+## What we do
+[One paragraph. What you sell, to whom, and what makes you different.]
+
+## Who we serve
+[Ideal customer. Who is NOT a fit — this matters as much.]
+
+## Current goals
+[This quarter, in plain language. Update it when it changes.]
+
+## Products &amp; pricing
+[What you sell and what it costs. Note anything that must never be
+quoted without a human.]
+
+## How we sound
+[Tone. Words we use. Words we never use.]
+
+## Hard rules — never do these
+- Never send an email to a client without my approval
+- Never quote a price not listed above
+- Never delete anything
+- Never respond to an angry customer; flag it to me instead</pre></div>
+
+    <p>And an SOP looks like this — one per repeatable task:</p>
+
+    <div class="code"><pre># SOP: Morning Email Triage
+
+## Input
+Unread email in the inbox since the last run.
+
+## Process
+1. Sort into: needs a reply / FYI / ignore.
+2. For "needs a reply", check the CRM for context on the sender.
+3. Draft a reply in my voice and leave it in Drafts.
+
+## Output
+A list of drafted replies, plus a one-line summary of the FYI pile.
+
+## Stopping condition
+Stop and ask me if: the sender is angry, money is involved,
+pricing is missing, or you are unsure who the sender is.
+
+## Never
+Send anything. Drafts only.</pre></div>
+
+    <div class="callout warn">
+      <span class="ico">⚠️</span>
+      <span class="body"><strong>Don't treat this like a prompt.</strong> Treat it like training an employee. If you'd explain something to a new hire, put it in the file. If you correct the agent twice, update the SOP. Every correction should improve the system — that's how this compounds. A chat disappears. A file gets better.</span>
+    </div>
+
+    <p><strong>On memory:</strong> the agent shouldn't save everything. It should save preferences, decisions, product updates, and lessons that will matter in a future task. Memory isn't a transcript of what happened — it's the stuff you don't want to explain twice.</p>
+
+    <hr>
+
+    <!-- =============== LAYER 6 =============== -->
+    <h2>S — Skills, Schedules &amp; Speech</h2>
+
+    <p>A <strong>skill</strong> is a repeatable capability: check the inbox, build a report, create a proposal, research a prospect, repurpose content. Every skill needs four things — an input, a process, an output, and a <em>stopping condition</em>.</p>
+
+    <p>The stopping condition is the part people forget. The agent has to know when the task is finished, and just as importantly, when to stop and ask for help.</p>
+
+    <table class="guide-table">
+      <thead><tr><th>If…</th><th>Then…</th></tr></thead>
+      <tbody>
+        <tr><td>Pricing information is missing</td><td>Don't create the proposal — ask</td></tr>
+        <tr><td>The customer is angry</td><td>Don't send a response — flag it</td></tr>
+        <tr><td>It can't resolve the situation</td><td>Ask for approval</td></tr>
+      </tbody>
+    </table>
+
+    <p>A <strong>schedule</strong> is what lets work happen without you starting it. That's usually a cron job — cron being the scheduler that runs commands at set times. Check urgent email every few minutes; build a business report every morning; summarise open projects every Friday.</p>
+
+    <p><strong>Triggers</strong> are the event-driven version: a new lead entering the CRM, a form submission, a failed payment. The trigger launches the skill, the skill follows the SOP, the agent uses the tools it's allowed, and the result either completes or comes to you for approval.</p>
+
+    <p><strong>Speech</strong> is last for a reason. TTS (text-to-speech, via something like ElevenLabs) turns responses into voice; STT (speech-to-text) lets you talk instead of type. It's genuinely impressive — and it is the final layer, not the system. Don't start here.</p>
+
+    <hr>
+
+    <!-- =============== FIRST BUILD =============== -->
+    <h2>The one workflow to build first</h2>
+
+    <p>An email and daily business briefing agent. Every morning, automatically:</p>
+
+    <table class="guide-table">
+      <thead><tr><th>Step</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Check the calendar and important unread email</td></tr>
+        <tr><td>2</td><td>Check the CRM for leads that need attention</td></tr>
+        <tr><td>3</td><td>Pull a small set of KPIs and compare to last period</td></tr>
+        <tr><td>4</td><td>Write a short briefing: your messages, emails needing replies, leads to follow up, and the actions that matter most</td></tr>
+      </tbody>
+    </table>
+
+    <p>Deliver it to Telegram, Slack, email, or a simple page. Later, connect ElevenLabs and have it read the briefing aloud.</p>
+
+    <p>That one workflow teaches you nearly everything — permissions, memory, SOPs, schedules, tool connections, and human approval. Don't start by asking your agent to run an entire company. Give it one job, make the job reliable, then add the next one.</p>
+
+    <hr>
+
+    <!-- =============== BOUNDARIES =============== -->
+    <h2>Leverage, not autonomy</h2>
+
+    <p>The goal was never full autonomy. It's useful leverage.</p>
+
+    <table class="guide-table">
+      <thead><tr><th>Give the agent</th><th>Keep for yourself</th></tr></thead>
+      <tbody>
+        <tr><td>Repetitive work</td><td>Judgement</td></tr>
+        <tr><td>Gathering information</td><td>Relationships</td></tr>
+        <tr><td>Organising</td><td>Strategy</td></tr>
+        <tr><td>Drafting</td><td>Anything irreversible</td></tr>
+        <tr><td>Monitoring</td><td></td></tr>
+      </tbody>
+    </table>
+
+    <p>I wouldn't let an early version of this independently send sensitive messages, move money, delete important files, or publish work without review. It can prepare those actions. It can recommend them. It shouldn't be the one to pull the trigger.</p>
+
+    <hr>
+
+    <!-- =============== GLOSSARY =============== -->
+    <h2>Every acronym, in one place</h2>
+
+    <table class="guide-table">
+      <thead><tr><th>Term</th><th>Means</th><th>In plain English</th></tr></thead>
+      <tbody>
+        <tr><td>LLM</td><td>Large Language Model</td><td>The thing that does the thinking</td></tr>
+        <tr><td>API</td><td>Application Programming Interface</td><td>How two pieces of software talk</td></tr>
+        <tr><td>MCP</td><td>Model Context Protocol</td><td>A standard way to plug tools into a model</td></tr>
+        <tr><td>SOP</td><td>Standard Operating Procedure</td><td>The written recipe for one task</td></tr>
+        <tr><td>KPI</td><td>Key Performance Indicator</td><td>The numbers that show if things are working</td></tr>
+        <tr><td>HITL</td><td>Human In The Loop</td><td>A person approves the decision that matters</td></tr>
+        <tr><td>TTS / STT</td><td>Text-to-Speech / Speech-to-Text</td><td>It talks / it listens</td></tr>
+        <tr><td>Cron</td><td>—</td><td>The scheduler that runs things at set times</td></tr>
+      </tbody>
+    </table>
+
+    <hr>
+
+    <!-- =============== CTA =============== -->
+    <h2>Want help finding the first workflow?</h2>
+
+    <p>Book a free 30-minute audit and we'll map where your time actually goes, pick the one workflow worth automating first, and spec it out — input, process, output, stopping condition. You keep the plan whether we work together or not.</p>
+
+    <div class="ctas">
+      <a class="cta primary" href="https://api.leadconnectorhq.com/widget/booking/5ks0F7kYGq2TIkyisWnx" target="_blank" rel="noopener">Book your free 30-minute audit</a>
+      <a class="cta" href="../resources.html">More free resources</a>
+    </div>
+
+    <p class="guide-meta"><span>Last updated August 12, 2026</span></p>
+
+  </main>
+
+  <script src="../assets/guide.js" defer></script>
+</body>
+</html>
