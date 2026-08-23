@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Before We Film · BizDepot</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --navy:#162A3D; --navy-deep:#04213E; --cyan:#6AD5EF; --cyan-light:#A4F4F7;
+    --bg:#F5FAFF; --ink:#2c4a60; --muted:#7d99ab; --line:#e2edf5;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;font-family:'Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}
+  body{background:var(--bg);color:var(--navy);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:720px;margin:0 auto;padding:0 22px;}
+
+  /* ---------- header ---------- */
+  header{background:linear-gradient(135deg,var(--navy) 0%,#1e3f5c 100%);color:#fff;padding:52px 0 58px;}
+  .brand{display:flex;align-items:center;gap:10px;margin-bottom:34px;}
+  .mark{width:30px;height:30px;border-radius:8px;background:var(--cyan);color:var(--navy-deep);
+        font-weight:800;font-size:1rem;display:flex;align-items:center;justify-content:center;}
+  .brand span{font-weight:700;letter-spacing:.02em;font-size:.95rem;}
+  header h1{font-size:2.6rem;font-weight:800;letter-spacing:-.025em;line-height:1.1;margin-bottom:14px;}
+  header .sub{color:var(--cyan-light);font-size:.95rem;font-weight:500;}
+  header .meta{margin-top:26px;padding-top:22px;border-top:1px solid rgba(255,255,255,.15);
+               display:flex;flex-wrap:wrap;gap:26px;}
+  .meta div .k{font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);}
+  .meta div .v{font-size:.9rem;font-weight:600;margin-top:3px;}
+
+  /* ---------- generic ---------- */
+  section{padding:44px 0;}
+  .label{font-size:.66rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+         color:var(--muted);margin-bottom:8px;}
+  h2{font-size:1.6rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px;}
+  .lede{color:var(--ink);font-size:1rem;margin-bottom:26px;}
+  .divider{height:1px;background:var(--line);}
+
+  .intro{background:#fff;border-radius:15px;box-shadow:0 0 20px rgba(0,0,0,.07);padding:30px 28px;margin-top:-34px;position:relative;}
+  .intro p{color:var(--ink);font-size:1rem;}
+  .intro p + p{margin-top:14px;}
+  .intro strong{color:var(--navy);font-weight:700;}
+
+  /* ---------- timeline ---------- */
+  .tl{background:#fff;border-radius:15px;box-shadow:0 0 20px rgba(0,0,0,.07);overflow:hidden;}
+  .tl-row{display:flex;gap:16px;align-items:baseline;padding:14px 22px;border-top:1px solid var(--line);}
+  .tl-row:first-child{border-top:none;}
+  .tl-row.core{background:var(--bg);}
+  .tl-time{font-size:.78rem;font-weight:800;color:var(--muted);width:74px;flex-shrink:0;letter-spacing:.02em;}
+  .tl-row.core .tl-time{color:var(--navy);}
+  .tl-what{font-size:.92rem;font-weight:600;}
+  .tl-dur{font-size:.78rem;color:var(--muted);margin-left:auto;flex-shrink:0;padding-left:12px;}
+  .tl-note{font-size:.82rem;color:var(--muted);margin-top:12px;}
+
+  /* ---------- checklist ---------- */
+  .item{background:#fff;border-radius:15px;box-shadow:0 0 20px rgba(0,0,0,.07);
+        padding:24px 26px;margin-bottom:16px;position:relative;transition:opacity .2s ease;}
+  .item.key{border-left:4px solid var(--cyan);}
+  .item-head{display:flex;gap:14px;align-items:flex-start;cursor:pointer;user-select:none;}
+  .box{width:26px;height:26px;border-radius:8px;border:2px solid #cfdfeb;flex-shrink:0;margin-top:1px;
+       display:flex;align-items:center;justify-content:center;transition:all .18s ease;background:#fff;}
+  .box svg{width:14px;height:14px;opacity:0;transition:opacity .18s ease;}
+  .item.done .box{background:var(--cyan);border-color:var(--cyan);}
+  .item.done .box svg{opacity:1;}
+  .item.done .item-head h3{color:var(--muted);text-decoration:line-through;text-decoration-color:#cfdfeb;}
+  .item-head h3{font-size:1.08rem;font-weight:700;letter-spacing:-.01em;line-height:1.35;}
+  .tag{display:inline-block;background:var(--cyan);color:var(--navy-deep);font-size:.58rem;font-weight:800;
+       letter-spacing:.12em;text-transform:uppercase;border-radius:9999px;padding:.2rem .6rem;
+       vertical-align:middle;margin-left:8px;position:relative;top:-2px;}
+  .item-body{padding-left:40px;margin-top:10px;}
+  .item-body p{color:var(--ink);font-size:.92rem;}
+  .item-body p + p{margin-top:10px;}
+  ul.dots{list-style:none;margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:7px 20px;}
+  ul.dots.one{grid-template-columns:1fr;}
+  ul.dots li{position:relative;padding-left:16px;font-size:.87rem;color:var(--ink);line-height:1.5;}
+  ul.dots li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--cyan);}
+  .yes-no{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px;}
+  .yn{border-radius:10px;padding:12px 14px;}
+  .yn.y{background:var(--bg);border-left:3px solid var(--cyan);}
+  .yn.n{background:#fbf6f6;border-left:3px solid #e2c9c9;}
+  .yn .h{font-size:.62rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px;}
+  .yn.y .h{color:var(--navy);} .yn.n .h{color:#a98080;}
+  .yn p{font-size:.85rem;color:var(--ink);line-height:1.55;}
+
+  /* ---------- dark panel ---------- */
+  .panel{background:linear-gradient(135deg,var(--navy) 0%,#1e3f5c 100%);border-radius:15px;padding:32px 30px;color:#fff;}
+  .panel h2{color:#fff;}
+  .panel p{color:#cfe4f0;font-size:.95rem;}
+  .panel p + p{margin-top:12px;}
+  .panel .label{color:var(--cyan);}
+  .panel ul.dots li{color:#cfe4f0;}
+  .quote{background:rgba(255,255,255,.07);border-left:3px solid var(--cyan);border-radius:0 10px 10px 0;
+         padding:14px 16px;margin-top:14px;font-size:.9rem;color:#e4f3fa;line-height:1.6;}
+  .quote .q-lab{display:block;font-size:.6rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+                color:var(--cyan);margin-bottom:5px;}
+  .quote em{font-style:normal;color:#fff;font-weight:600;}
+  .arc{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+  .arc span{background:rgba(255,255,255,.09);border:1px solid rgba(106,213,239,.25);border-radius:9999px;
+            padding:.35rem .85rem;font-size:.78rem;font-weight:600;color:#e4f3fa;}
+
+  /* ---------- handled ---------- */
+  .handled{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .handled .h-card{background:#fff;border-radius:15px;box-shadow:0 0 20px rgba(0,0,0,.07);padding:22px 24px;}
+  .h-card .h-t{font-size:.95rem;font-weight:700;margin-bottom:6px;}
+  .h-card p{font-size:.86rem;color:var(--ink);line-height:1.55;}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--navy-deep);color:#fff;padding:44px 0;margin-top:20px;text-align:center;}
+  footer h3{font-size:1.35rem;font-weight:800;margin-bottom:10px;letter-spacing:-.02em;}
+  footer p{color:#9fc0d4;font-size:.92rem;}
+  footer a{color:var(--cyan);text-decoration:none;font-weight:600;}
+  footer a:hover{color:var(--cyan-light);}
+  footer .contact{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:14px;
+                  font-size:1rem;margin-top:4px;}
+  footer .contact .dot{width:4px;height:4px;border-radius:50%;background:#3f6480;}
+  footer .sig{margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);
+              font-size:.75rem;color:#6e8ea4;}
+
+  @media (max-width:600px){
+    header{padding:38px 0 46px;} header h1{font-size:2rem;}
+    section{padding:34px 0;}
+    ul.dots{grid-template-columns:1fr;}
+    .yes-no,.handled{grid-template-columns:1fr;}
+    .item{padding:20px;} .item-body{padding-left:0;margin-top:12px;}
+    .tl-row{flex-wrap:wrap;gap:6px 14px;} .tl-dur{margin-left:0;padding-left:0;width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand"><div class="mark">B</div><span>BizDepot</span></div>
+    <h1>Before we film</h1>
+    <p class="sub">Everything you need to have ready. It's a short list.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="intro">
+    <p><strong>Congratulations on the sale of your business.</strong> We're coming out to capture your story — what you built, what selling it was actually like, and where you landed.</p>
+    <p>This is relaxed and conversational. <strong>There's no script and nothing to memorize.</strong> Six things below will make the film look and sound its best. That's the whole ask.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="label">The day</div>
+    <h2>What four hours looks like</h2>
+    <p class="lede">Most of it is filming your business, not you sitting in a chair.</p>
+    <div class="tl">
+      <div class="tl-row"><div class="tl-time">0:00</div><div class="tl-what">You show me around</div><div class="tl-dur">15 min</div></div>
+      <div class="tl-row"><div class="tl-time">0:15</div><div class="tl-what">I set up cameras, lights, sound</div><div class="tl-dur">45 min</div></div>
+      <div class="tl-row core"><div class="tl-time">1:00</div><div class="tl-what">The interview — just the two of us</div><div class="tl-dur">60–90 min</div></div>
+      <div class="tl-row"><div class="tl-time">2:30</div><div class="tl-what">Filming the business, the crew, the equipment</div><div class="tl-dur">45–60 min</div></div>
+      <div class="tl-row"><div class="tl-time">3:30</div><div class="tl-what">Old photos and memorabilia</div><div class="tl-dur">15–30 min</div></div>
+      <div class="tl-row"><div class="tl-time">4:00</div><div class="tl-what">Pack up and wrap</div><div class="tl-dur">—</div></div>
+    </div>
+    <p class="tl-note">One person on site. No crew, no production circus.</p>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<section>
+  <div class="wrap">
+    <div class="label">Your checklist</div>
+    <h2>Six things to have ready</h2>
+    <p class="lede">Tap each one as you knock it out — this page remembers.</p>
+
+    <div class="item" data-id="1">
+      <div class="item-head"><div class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#04213E" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <h3>Block about four hours</h3></div>
+      <div class="item-body">
+        <p>Protect the window on your calendar. The interview itself is 60–90 minutes; the rest is setup and filming your business.</p>
+      </div>
+    </div>
+
+    <div class="item" data-id="2">
+      <div class="item-head"><div class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#04213E" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <h3>Pick one quiet indoor room</h3></div>
+      <div class="item-body">
+        <p>Where we sit down for the interview. Let your team, family and front desk know that room is off-limits for about 90 minutes.</p>
+        <ul class="dots">
+          <li>Reasonably spacious</li>
+          <li>Nobody walking through</li>
+          <li>Two power outlets</li>
+          <li>Phones on silent</li>
+          <li>HVAC, TV, radio, compressors we can pause if they're loud</li>
+          <li>A backup room, in case the first one turns out noisy</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="item" data-id="3">
+      <div class="item-head"><div class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#04213E" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <h3>Have the business looking sharp</h3></div>
+      <div class="item-body">
+        <p>This is where the film gets its look. If we're featuring trucks or major equipment, have them on site and reasonably clean.</p>
+        <ul class="dots">
+          <li>Exterior and signage</li>
+          <li>The yard or property</li>
+          <li>Trucks and trailers</li>
+          <li>Equipment, mowers, tools</li>
+          <li>Your office and desk</li>
+          <li>Anything you're proud of</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="item" data-id="4">
+      <div class="item-head"><div class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#04213E" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <h3>Keep your people around</h3></div>
+      <div class="item-body">
+        <p>Don't clear the place out. A working business films far better than an empty one — crews doing normal work, people in the office, the phone ringing.</p>
+        <p>The only thing we protect is the interview room while we're recording.</p>
+      </div>
+    </div>
+
+    <div class="item key" data-id="5">
+      <div class="item-head"><div class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#04213E" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <h3>Dig out the old photos<span class="tag">Most important</span></h3></div>
+      <div class="item-body">
+        <p>This is the one that makes the film feel like a story instead of a talking head. Pile everything in one place before I arrive. <strong>Blurry old phone photos absolutely count.</strong></p>
+        <ul class="dots">
+          <li>The first truck</li>
+          <li>The first shop or office</li>
+          <li>Old company photos</li>
+          <li>Old business cards or logo</li>
+          <li>Original uniforms or shirts</li>
+          <li>Newspaper clippings, awards</li>
+          <li>Early job or customer photos</li>
+          <li>You, back when you started</li>
+          <li>Family in the business</li>
+          <li>Anything from the early years</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="item" data-id="6">
+      <div class="item-head"><div class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#04213E" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <h3>Bring two shirts</h3></div>
+      <div class="item-body">
+        <p>One you'd normally wear to work — company polo, branded button-down. And one a step nicer. We'll pick on the day. You should look like yourself, not like you're going on CNBC.</p>
+        <div class="yes-no">
+          <div class="yn y"><div class="h">Works great</div><p>Solid colors · mid-tones · simple textures</p></div>
+          <div class="yn n"><div class="h">Causes problems on camera</div><p>Tiny stripes · small checks · herringbone · shiny or reflective fabric · big unrelated logos · noisy jewelry</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="panel">
+      <div class="label">One more thing</div>
+      <h2>Please don't prepare a speech</h2>
+      <p>Seriously. Don't rehearse, don't write anything down, and I'm not sending you the questions ahead of time — on purpose. Rehearsed answers sound rehearsed, and the real version is always better.</p>
+      <p>If you want to think about anything, just let a few memories float up beforehand:</p>
+      <ul class="dots one">
+        <li>Starting the company</li>
+        <li>A hard stretch you got through</li>
+        <li>The breakthrough that changed things</li>
+        <li>When you first thought about selling</li>
+        <li>Your first call with BizDepot</li>
+        <li>A stressful moment during the sale</li>
+        <li>Closing day</li>
+        <li>How life feels now</li>
+      </ul>
+      <p style="margin-top:20px">Here's the shape of the conversation, so nothing catches you off guard:</p>
+      <div class="arc">
+        <span>What you built</span><span>Why you considered selling</span><span>How you found BizDepot</span>
+        <span>What the process was like</span><span>The deal</span><span>Life now</span><span>What you'd tell another owner</span>
+      </div>
+      <div class="quote">
+        <span class="q-lab">The one trick worth knowing</span>
+        My questions won't be in the finished film, so answer in complete sentences. Instead of <em>"about four months,"</em> say <em>"from my first conversation with BizDepot to closing took about four months."</em> I'll remind you as we go — it becomes second nature in five minutes.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="label">Already handled</div>
+    <h2>Not your homework</h2>
+    <p class="lede">Two things people ask about. Both are taken care of.</p>
+    <div class="handled">
+      <div class="h-card">
+        <div class="h-t">What's off-limits</div>
+        <p>BizDepot and I confirm in advance what can be discussed publicly — sale price, buyer, deal terms. If something's off the table, I simply won't ask about it.</p>
+      </div>
+      <div class="h-card">
+        <div class="h-t">The release form</div>
+        <p>A short appearance release. I'll bring it and we'll sign it before we start rolling. Nothing to print or track down.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h3>Questions before the shoot?</h3>
+    <p class="contact">
+      <a href="tel:+12089097765">(208) 909-7765</a>
+      <span class="dot"></span>
+      <a href="mailto:create@kimballmueller.com">create@kimballmueller.com</a>
+    </p>
+    <p style="margin-top:14px">Text or call anytime. I'll check in a few days out to confirm logistics — that's it.</p>
+    <div class="sig">Kimball Mueller · filming on behalf of BizDepot</div>
+  </div>
+</footer>
+
+<script>
+  var KEY = 'bizdepot-seller-prep';
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {}
+
+  document.querySelectorAll('.item').forEach(function (item) {
+    var id = item.dataset.id;
+    if (saved[id]) item.classList.add('done');
+    item.querySelector('.item-head').addEventListener('click', function () {
+      item.classList.toggle('done');
+      saved[id] = item.classList.contains('done');
+      try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+    });
+  });
+</script>
+</body>
+</html>
