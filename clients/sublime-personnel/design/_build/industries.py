@@ -1,0 +1,256 @@
+#!/usr/bin/env python3
+"""Content for the seven practice-area pages.
+
+Kept out of pages.py because it is copy, not markup, and Pete will edit it.
+Voice matches the rest of the site: plain, declarative, British spelling
+(judgement, behaviour, licence), &mdash; for em dashes, &#8209; for hyphens
+that must not break a line.
+
+SOURCE NOTE: the underlying research came from the earlier build at
+../../website/_build/build.py and was rewritten here into the design voice.
+The practice list itself is still unconfirmed — the SOW says seven including
+QSR/franchise, the live homepage says "07 Oil and Gas", and the blog says five.
+Pete has to settle that before this goes to WordPress.
+"""
+
+INDUSTRIES = [
+{
+ "slug": "hoa-property-management",
+ "photo": "hoa.jpg",
+ "nav": "HOA &amp; Property Management",
+ "h1_main": "HOA &amp; Property Management",
+ "h1_fill": "Recruiting",
+ "title": "HOA &amp; Property Management Recruiting | Sublime Personnel",
+ "desc": "Houston HOA and property management recruiters who understand governance. Community managers, portfolio managers and high-rise GMs &mdash; CMCA, AMS, PCAM.",
+ "lede": "In community association management, governance is everything. A manager who cannot run a board meeting, read the governing documents and hold a difficult board together is a liability, however well the r&eacute;sum&eacute; reads.",
+ "why_head": "Judgement,<br>not keywords.",
+ "why": [
+   "We learned this practice from the inside &mdash; two years as a corporate recruiter within a high&#8209;rise property management firm, where the business turned on whether a manager could handle a board. Boards do not remove managers over spreadsheets. They remove them over meetings, minutes and tone.",
+   "So our assessment goes well past portfolio size: how a candidate handles an owner who arrives angry, whether they have led a reserve study conversation, how they document decisions, and whether they have survived a board turnover without losing the account.",
+ ],
+ "roles_head": "HOA &amp; property management placements.",
+ "roles": ["Community Association Manager","Portfolio Manager","On-Site / High-Rise General Manager",
+           "Director of Community Management","Regional Director","Assistant Community Manager",
+           "Association Accounting &amp; AR Manager","Maintenance &amp; Facilities Director",
+           "Transition &amp; Onboarding Specialist"],
+ "screen_head": "What separates a r&eacute;sum&eacute; from a hire.",
+ "screen": [
+   ("Governance literacy","Can they read governing documents, run an annual meeting and hold a quorum together? We ask for specifics from actual meetings, not job descriptions."),
+   ("Portfolio math","Doors, associations and complexity are three separate measures. Twelve small associations and two high&#8209;rises are not the same workload, and we assess the candidate accordingly."),
+   ("Credentials and trajectory","CMCA, AMS and PCAM matter to boards. We establish where a candidate sits on that ladder and whether their employer supported the progression."),
+   ("Board temperament","The strongest single predictor of a manager reaching year two. We reference this directly with people who have watched them in a room."),
+ ],
+ "dark_eyebrow": "Hiring in community management?",
+ "faq": [
+   ("Do you place licensed and credentialed managers?","Yes. We recruit CMCA, AMS and PCAM holders as well as strong managers working toward those designations, and we confirm credential status before presenting anyone."),
+   ("Can you support a management company opening a new market?","Yes. Market entry is where we do some of our best work, because it requires a portfolio manager and a bench simultaneously. Give us the timeline and we will build the search around it."),
+ ],
+ "related": [("accounting-finance","Association accounting, AR managers and controllers who understand reserves."),
+             ("commercial-construction","Capital projects, remediation and facilities leadership for large associations.")],
+},
+{
+ "slug": "hospitality-restaurant",
+ "photo": "hospitality.jpg",
+ "nav": "Hospitality &amp; Restaurant",
+ "h1_main": "Hospitality &amp; Restaurant",
+ "h1_fill": "Recruiting",
+ "title": "Hospitality &amp; Restaurant Recruiting | Sublime Personnel",
+ "desc": "Restaurant and hospitality recruiters who ran the floor first. GM, multi-unit, executive chef and F&amp;B leadership searches out of Houston, placing nationwide.",
+ "lede": "There is a difference between a r&eacute;sum&eacute; that reads like a general manager and a person who can hold a building together on a Saturday night. Thirty years of restaurant operations sit behind every search we run in this practice.",
+ "why_head": "We ran these<br>buildings first.",
+ "why": [
+   "Pete Proctor spent more than thirty years in restaurant operations before he recruited for it &mdash; walking into units in the low nineties and taking them past one&#8209;thirty. That background is the screen. When a candidate describes how they fixed a labour line or turned a kitchen culture around, we know within a few minutes whether the story is real.",
+   "Hospitality hiring fails in predictable places: a strong operator who has never run more than one unit, a chef who can cook but cannot cost, a district manager who has only ever inherited healthy stores. We ask the questions that expose those gaps before you spend three months discovering them.",
+ ],
+ "roles_head": "Hospitality &amp; restaurant placements.",
+ "roles": ["General Manager","Multi&#8209;Unit / District Manager","Director of Operations",
+           "Executive Chef","Food &amp; Beverage Director","Regional Vice President",
+           "Catering &amp; Events Director","Hotel &amp; Resort Leadership","Kitchen Manager"],
+ "screen_head": "What separates a r&eacute;sum&eacute; from a hire.",
+ "screen": [
+   ("Unit economics, not anecdotes","We ask for the numbers they owned &mdash; food cost, labour, COGS, AUV, flow&#8209;through &mdash; and how they moved them. Operators who genuinely ran the P&amp;L answer in seconds."),
+   ("Span of control","A five&#8209;unit district and a twenty&#8209;unit district are different jobs. We map what a candidate actually supervised, including whether they built the bench beneath them."),
+   ("Turnover and retention","Anyone can open a store. We look at whether their teams stayed, and what they did in the first ninety days when they inherited a broken one."),
+   ("Hours and expectations","Hospitality burns people who did not know what they were signing up for. We are direct about schedule, travel and expectations before the first interview."),
+ ],
+ "dark_eyebrow": "Hiring in hospitality?",
+ "faq": [
+   ("Do you recruit for independents or only large groups?","Both. Our client profile is a company that can support roughly four searches a year &mdash; usually a multi&#8209;unit group, a growing regional brand or a hospitality management company &mdash; but we take strong independent operators when the role is senior enough to justify the work."),
+   ("Can you fill hourly or line&#8209;level roles?","Our work is management and above. For hourly volume hiring a staffing agency will serve you better, and we will say so rather than take the engagement."),
+ ],
+ "related": [("qsr-franchise","Area coaches, franchise business consultants and multi-unit franchise leadership."),
+             ("accounting-finance","Restaurant back-office, multi-unit consolidations and controllers who know the model.")],
+},
+{
+ "slug": "commercial-lines-insurance",
+ "photo": "commercial-lines.jpg",
+ "nav": "Commercial Lines Insurance",
+ "h1_main": "Commercial Lines Insurance",
+ "h1_fill": "Recruiting",
+ "title": "Commercial Lines Insurance Recruiting | Sublime Personnel",
+ "desc": "Commercial lines insurance recruiting in Houston for agencies, brokers and carriers. Producers with a book, account managers and underwriters. CIC, CPCU, CRM.",
+ "lede": "Commercial insurance is a relationship business with a technical floor. We screen for both &mdash; the book and the book of knowledge &mdash; because agencies that hire on charm alone spend the following year cleaning up the file.",
+ "why_head": "The book, and<br>the book of knowledge.",
+ "why": [
+   "Terry Richards has recruited insurance talent since 2006 and knows the difference between a producer with a portable book and a producer with a story about one. We raise renewal retention, carrier appointments, class concentration and restrictive covenants early, so nobody spends a quarter on a hire who cannot lawfully bring anything with them.",
+   "On the service side the gap is usually technical. An account manager who can quote, endorse and handle a certificate crunch in a hard market is worth two who cannot &mdash; and the r&eacute;sum&eacute;s look identical until somebody asks the right five questions.",
+ ],
+ "roles_head": "Commercial lines placements.",
+ "roles": ["Commercial Lines Producer","Commercial Lines Account Manager","Account Executive",
+           "Underwriter","Claims Adjuster / Examiner","Risk Advisor",
+           "Marketing / Placement Specialist","Agency &amp; Branch Leadership","Surplus Lines Broker"],
+ "screen_head": "What separates a r&eacute;sum&eacute; from a hire.",
+ "screen": [
+   ("Book, retention and portability","Size of book, renewal retention, class mix and &mdash; critically &mdash; what their agreement actually permits them to move."),
+   ("Systems fluency","AMS360, Applied Epic, EZLynx, Sagitta. The wrong system is a real ramp cost, and we flag it before you interview."),
+   ("Designations","CIC, CPCU, CRM, ARM. We record who holds what and who is mid&#8209;track, because it shows how a candidate invests in themselves."),
+   ("Market conditions","How somebody performed in a hard market tells you more than how they performed in a soft one. We ask about both."),
+ ],
+ "dark_eyebrow": "Hiring in commercial lines?",
+ "faq": [
+   ("Do you recruit producers with a book of business?","Yes, and we handle those conversations with real discretion. Producer searches are confidential by default and we never approach anyone through a channel their current agency can see."),
+   ("Do you work with carriers as well as agencies?","Yes. Retail agencies, wholesalers, MGAs and carriers. The screen changes for each; the discipline does not."),
+ ],
+ "related": [("personal-lines-insurance","Account managers, private client advisers and service leadership."),
+             ("accounting-finance","Agency accounting, trust accounting and finance leadership for brokers.")],
+},
+{
+ "slug": "personal-lines-insurance",
+ "photo": "personal-lines.jpg",
+ "nav": "Personal Lines Insurance",
+ "h1_main": "Personal Lines Insurance",
+ "h1_fill": "Recruiting",
+ "title": "Personal Lines Insurance Recruiting | Sublime Personnel",
+ "desc": "Personal lines insurance recruiting in Houston &mdash; account managers, producers, service representatives and agency leadership. Screened for retention, not volume.",
+ "lede": "Personal lines lives or dies on service. A book bleeds one policy at a time when the person answering the phone is competent but cold, or warm but slow &mdash; and neither shows up on a r&eacute;sum&eacute;.",
+ "why_head": "Retention is<br>a hiring decision.",
+ "why": [
+   "We screen personal lines candidates on the two things that actually drive retention: how quickly they close the loop, and how they speak to a policyholder who has just received a rate increase. Both are testable in an interview if you know what to listen for.",
+   "Licensing is the other place searches stall. We confirm the licence, the state, the appointment status and CE standing before a candidate reaches your calendar, so an offer is never held up by paperwork nobody checked.",
+ ],
+ "roles_head": "Personal lines placements.",
+ "roles": ["Personal Lines Account Manager","Personal Lines Producer","Customer Service Representative",
+           "Claims Support Specialist","High&#8209;Net&#8209;Worth / Private Client Adviser","Agency Manager",
+           "Team Lead / Service Supervisor","Renewal Specialist","Licensed Sales Associate"],
+ "screen_head": "What separates a r&eacute;sum&eacute; from a hire.",
+ "screen": [
+   ("Licence verification","State, line, standing and continuing education. Confirmed before presentation, not after the offer."),
+   ("Book size and mix","Households serviced, average premium, and whether they have carried high&#8209;net&#8209;worth accounts, which is a separate discipline entirely."),
+   ("Retention behaviour","What they do at renewal, how they handle a rate increase call, and whether they re&#8209;market proactively or only when asked."),
+   ("Carrier and system exposure","Which carriers and which agency management system &mdash; the two largest drivers of ramp time in this practice."),
+ ],
+ "dark_eyebrow": "Hiring in personal lines?",
+ "faq": [
+   ("Do you handle high&#8209;net&#8209;worth and private client roles?","Yes. Private client service is a distinct skill set &mdash; Chubb, PURE and Cincinnati experience, comfort with complex schedules &mdash; and we screen for it specifically rather than treating it as ordinary personal lines."),
+   ("Can you fill a full service team, not just one seat?","Yes. Team builds are common here and usually cost less per seat than a series of one&#8209;off searches. Tell us the headcount and the runway."),
+ ],
+ "related": [("commercial-lines-insurance","Producers with a portable book, underwriters and account executives."),
+             ("accounting-finance","Agency accounting and finance leadership for growing brokerages.")],
+},
+{
+ "slug": "accounting-finance",
+ "photo": "accounting.jpg",
+ "nav": "Accounting &amp; Finance",
+ "h1_main": "Accounting &amp; Finance",
+ "h1_fill": "Recruiting",
+ "title": "Accounting &amp; Finance Recruiting | Houston | Sublime Personnel",
+ "desc": "Accounting and finance recruiting in Houston &mdash; controllers, assistant controllers, staff and senior accountants, AP/AR leadership, FP&amp;A and fractional CFOs.",
+ "lede": "Accounting runs through every other practice we work in. Restaurants, associations, agencies and contractors all need somebody who can close the month and tell the owner the truth about the numbers.",
+ "why_head": "Context, not<br>just credentials.",
+ "why": [
+   "Because we recruit accounting inside industries we already know, we can screen for context rather than credentials alone. Association accounting is not restaurant accounting. Percentage&#8209;of&#8209;completion for a commercial contractor is not agency trust accounting.",
+   "That context is what prevents the classic bad hire: a technically sound accountant who has never worked in your industry, takes six months to become comfortable and leaves in month nine because the work was not what they pictured.",
+ ],
+ "roles_head": "Accounting &amp; finance placements.",
+ "roles": ["Controller","Assistant Controller","Staff &amp; Senior Accountant",
+           "Accounting Manager","AP / AR Manager","FP&amp;A Analyst",
+           "Payroll Manager","CFO &amp; Fractional CFO","Bookkeeper / Full Charge"],
+ "screen_head": "What separates a r&eacute;sum&eacute; from a hire.",
+ "screen": [
+   ("Close ownership","Do they own the close or support it? How many days, how many entities, and what did they inherit when they arrived?"),
+   ("Industry accounting","Percentage&#8209;of&#8209;completion, association reserves, trust accounting, multi&#8209;unit consolidations &mdash; whichever applies to you."),
+   ("Systems","QuickBooks, Sage Intacct, NetSuite, Yardi, Vantaca, restaurant back&#8209;office platforms. Ramp time is largely a systems question."),
+   ("Business partnership","Whether they can sit in front of an owner or a board and explain the number, or whether they can only produce it."),
+ ],
+ "dark_eyebrow": "Hiring in accounting?",
+ "faq": [
+   ("Do you place fractional or interim finance leadership?","Yes. We handle direct hire, temp&#8209;to&#8209;hire and interim placements, and for smaller companies an experienced fractional controller is often the right first move."),
+   ("Are candidates CPA&#8209;verified?","Where CPA status is claimed we verify licence standing before presentation. We will also tell you plainly when a strong candidate is not a CPA and it does not matter for the role."),
+ ],
+ "related": [("hoa-property-management","Association accounting inside management companies and large communities."),
+             ("commercial-construction","Job costing, WIP schedules and controllers who understand a contractor.")],
+},
+{
+ "slug": "commercial-construction",
+ "photo": "construction.jpg",
+ "nav": "Commercial Construction",
+ "h1_main": "Commercial Construction",
+ "h1_fill": "Recruiting",
+ "title": "Commercial Construction Recruiting | Sublime Personnel",
+ "desc": "Commercial construction recruiting in Houston for general contractors and specialty trades &mdash; project managers, superintendents, estimators, preconstruction.",
+ "lede": "Construction hiring is judged in the field, not the interview. We screen on project type, delivery method and dollar value, because a twelve&#8209;million&#8209;dollar tilt&#8209;wall superintendent and a ninety&#8209;million&#8209;dollar healthcare superintendent are not interchangeable.",
+ "why_head": "Field leaders know<br>who has stood on a site.",
+ "why": [
+   "This practice is Terry's home ground, and Pete grew up around the trades &mdash; his father was a welder &mdash; which is why our conversations with field leaders sound like conversations rather than screenings. A superintendent can tell within a minute whether a recruiter has ever stood on a jobsite.",
+   "We also work the adjacent industrial and energy niches around Houston, including hard&#8209;to&#8209;fill technical roles such as subsea and ROV operators, where the candidate pool is a network rather than a job board.",
+ ],
+ "roles_head": "Commercial construction placements.",
+ "roles": ["Project Manager","Senior Project Manager","Superintendent",
+           "Estimator","Preconstruction Manager","Project Executive",
+           "Safety Director","MEP &amp; Specialty Trade Leadership","Project Engineer"],
+ "screen_head": "What separates a r&eacute;sum&eacute; from a hire.",
+ "screen": [
+   ("Project profile","Sector, square footage, dollar value and delivery method &mdash; CM at risk, design&#8209;build, hard bid. The r&eacute;sum&eacute; rarely says. We always ask."),
+   ("Self&#8209;perform or subcontract","Whether they managed their own crews or coordinated subs changes what they can do on day one."),
+   ("Software","Procore, Bluebeam, Sage 300 CRE, HeavyBid, On&#8209;Screen Takeoff. A field leader who cannot use your stack costs you a quarter."),
+   ("Travel and geography","Construction candidates will move for the right project. We settle relocation and per&#8209;diem expectations before the first interview, not after the offer."),
+ ],
+ "dark_eyebrow": "Hiring in construction?",
+ "faq": [
+   ("Do you recruit for specialty trades and industrial work?","Yes &mdash; mechanical, electrical, roofing and industrial contractors, plus energy&#8209;adjacent technical roles through our Gulf Coast network."),
+   ("Can you support a bid&#8209;driven hiring spike?","Yes. Tell us the award timeline and we will pipeline ahead of it, so you are not beginning a search the week the contract is signed."),
+ ],
+ "related": [("accounting-finance","Job costing, WIP and controllers who have closed a contractor's books."),
+             ("hoa-property-management","Capital projects and facilities leadership for large associations.")],
+},
+{
+ "slug": "qsr-franchise",
+ "photo": "qsr.jpg",
+ "nav": "QSR &amp; Franchise",
+ "h1_main": "QSR &amp; Franchise",
+ "h1_fill": "Recruiting",
+ "title": "QSR &amp; Franchise Recruiting | Houston | Sublime Personnel",
+ "desc": "QSR and franchise recruiting in Houston &mdash; area coaches, franchise business consultants, directors of operations and multi-unit leadership for both sides.",
+ "lede": "Franchise operations is its own discipline. Running units you own and coaching units somebody else owns require two different personalities, and hiring the wrong one produces a year of quiet friction.",
+ "why_head": "Two sides of the<br>same relationship.",
+ "why": [
+   "We recruit for both sides of the franchise relationship &mdash; multi&#8209;unit franchisees building an operations bench, and franchisors staffing field support. The screen differs. Franchisee leadership needs P&amp;L ownership and speed; franchisor field roles need influence without authority, which is the rarer skill.",
+   "Brand&#8209;standard discipline is the other filter. Some operators thrive inside a playbook. Others quietly rewrite it, which works until the audit. We find out which one you are hiring.",
+ ],
+ "roles_head": "QSR &amp; franchise placements.",
+ "roles": ["Area Coach / Area Supervisor","Franchise Business Consultant","Director of Operations",
+           "Multi&#8209;Unit Manager","Training &amp; Development Manager","New Store Opening Manager",
+           "Franchise Development Manager","Regional Director","Above&#8209;Store Leader"],
+ "screen_head": "What separates a r&eacute;sum&eacute; from a hire.",
+ "screen": [
+   ("Units and AUV","Units supervised, average unit volume, and whether growth came from new builds or from repairing existing stores."),
+   ("Franchisee or franchisor","Which side they have operated on, and whether they can influence an owner they do not employ."),
+   ("Speed and scale","New&#8209;store opening experience, remodel cycles, and how many openings they have personally led."),
+   ("Brand standards","How they handle an audit, a failing store, and an owner who does not want to hear it."),
+ ],
+ "dark_eyebrow": "Hiring in franchise operations?",
+ "faq": [
+   ("Do you work with franchisees or franchisors?","Both. A multi&#8209;unit franchisee building a district manager bench and a franchisor staffing field consultants are different searches, and we run them differently."),
+   ("Can you support new market entry?","Yes. New markets need leadership hired ahead of the build schedule. Give us the opening dates and we will work backwards from them."),
+ ],
+ "related": [("hospitality-restaurant","GMs, multi-unit leaders and executive chefs for full-service groups."),
+             ("accounting-finance","Multi-unit consolidations, royalty accounting and back-office leadership.")],
+},
+]
+
+# Appended to every practice FAQ so the two commercial questions are answered
+# on every page — this is the AEO surface, and it is also what Pete gets asked.
+STANDARD_FAQ = [
+  ("How do your fees work?","A percentage of first&#8209;year compensation, structured to the level of the role and the volume of work, and agreed in writing before the search begins."),
+  ("How long does a search usually take?","For most roles we present a first slate within two weeks of the briefing. Time to offer depends more on your interview process than on ours."),
+]

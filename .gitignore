@@ -15,6 +15,15 @@ clients/powerhouse-roofing/*
 clients/powerhouse-roofing/deliverables/*
 !clients/powerhouse-roofing/deliverables/proposal-maker
 
+# Exception: Sublime Personnel. Whole client folder is tracked and PUBLIC.
+# NOTE: this includes design/README.md, which carries internal notes — SOW clause
+# references, a quote from the discovery transcript, and open questions for Pete.
+# Published knowingly.
+!clients/sublime-personnel
+
 
 # Fireflies transcript dumps (raw call audio text)
 transcripts/
+
+__pycache__/
+*.pyc
