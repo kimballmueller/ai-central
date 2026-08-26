@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a1a">
+<title>Kimball Mueller — Brand Kit</title>
+<meta name="description" content="Brand colors, type, logo, and voice for Kimball Mueller / @KimballAI. One page, everything a designer needs.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<meta property="og:title" content="Kimball Mueller — Brand Kit">
+<meta property="og:description" content="Colors, type, logo, and voice. One page.">
+<meta property="og:type" content="website">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0}
+
+:root{
+  --ink:#0a0a1a;
+  --panel:#0f1738;
+  --paper:#f5f3ff;
+  --blue:#3b82f6;
+  --blue-deep:#2563eb;
+  --indigo:#6366f1;
+  --indigo-deep:#4f46e5;
+  --violet:#8b5cf6;
+  --violet-light:#a78bfa;
+  --sky:#93c5fd;
+  --lavender:#c4b5fd;
+  --pink:#ec4899;
+  --grad:linear-gradient(135deg,#2563eb 0%,#4f46e5 60%,#8b5cf6 100%);
+  --grad-text:linear-gradient(135deg,#93c5fd 0%,#c4b5fd 100%);
+  --glass:rgba(255,255,255,0.07);
+  --glass-line:rgba(255,255,255,0.14);
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+}
+
+body{
+  min-height:100vh;
+  font-family:-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  color:var(--paper);
+  background:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  line-height:1.5;
+}
+a{color:inherit}
+
+/* ---------- Mesh background (the real one from the site) ---------- */
+.mesh{position:fixed;inset:0;z-index:-1;overflow:hidden;background:var(--ink)}
+.mesh::before,.mesh::after,.mesh>span{content:"";position:absolute;border-radius:50%;filter:blur(90px);will-change:transform}
+.mesh::before{width:90vmax;height:90vmax;opacity:.7;background:radial-gradient(circle at center,#3b82f6 0%,transparent 60%);top:-40vmax;left:-30vmax;animation:drift-a 22s ease-in-out infinite alternate}
+.mesh::after{width:55vmax;height:55vmax;opacity:.32;background:radial-gradient(circle at center,#ec4899 0%,transparent 60%);bottom:-25vmax;right:-18vmax;animation:drift-b 26s ease-in-out infinite alternate}
+.mesh>span{width:70vmax;height:70vmax;opacity:.40;background:radial-gradient(circle at center,#6366f1 0%,transparent 60%);top:20%;left:30%;animation:drift-c 30s ease-in-out infinite alternate}
+@keyframes drift-a{0%{transform:translate3d(0,0,0) scale(1)}100%{transform:translate3d(15vw,10vh,0) scale(1.15)}}
+@keyframes drift-b{0%{transform:translate3d(0,0,0) scale(1)}100%{transform:translate3d(-12vw,-8vh,0) scale(1.1)}}
+@keyframes drift-c{0%{transform:translate3d(0,0,0) scale(1)}100%{transform:translate3d(-10vw,12vh,0) scale(1.2)}}
+@media (prefers-reduced-motion:reduce){.mesh::before,.mesh::after,.mesh>span{animation:none}}
+
+/* ---------- Layout ---------- */
+.wrap{max-width:1080px;margin:0 auto;padding:56px 24px 80px}
+.card,.grad-card,.sw{min-width:0}
+
+.eyebrow{
+  margin:0;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(245,243,255,.5);
+}
+h2{
+  margin:0 0 4px;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.sec-note{margin:0 0 20px;font-size:14px;color:rgba(245,243,255,.62);max-width:62ch}
+
+section{margin-top:56px}
+
+.card{
+  background:var(--glass);border:1px solid var(--glass-line);border-radius:18px;
+  backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);
+  padding:22px;
+}
+
+/* ---------- Masthead ---------- */
+.masthead{display:flex;gap:26px;align-items:center;flex-wrap:wrap}
+.mark{
+  width:96px;height:96px;flex-shrink:0;border-radius:22px;
+  background:linear-gradient(135deg,#3b82f6 0%,#6366f1 60%,#a78bfa 100%);
+  display:grid;place-items:center;
+  font-size:56px;font-weight:800;line-height:1;color:#fff;
+  box-shadow:0 10px 30px rgba(59,130,246,.5),0 6px 16px rgba(99,102,241,.35);
+}
+.masthead h1{margin:8px 0 2px;font-size:38px;font-weight:700;letter-spacing:-.02em}
+.role{
+  margin:0;font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.tagline{margin:10px 0 0;font-size:17px;color:rgba(245,243,255,.8)}
+
+.position{
+  margin-top:26px;padding:20px 24px;border-radius:16px;
+  border:1px solid rgba(255,255,255,.14);
+  border-left:3px solid var(--blue);
+  background:linear-gradient(90deg,rgba(59,130,246,.16),rgba(139,92,246,.06));
+  font-size:19px;font-weight:600;letter-spacing:-.01em;line-height:1.45;
+}
+.position small{display:block;margin-top:8px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,243,255,.45)}
+
+/* ---------- Swatches ---------- */
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(150px,100%),1fr));gap:14px}
+.sw{
+  border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.04);cursor:pointer;text-align:left;
+  font:inherit;color:inherit;padding:0;display:block;width:100%;
+  transition:transform .15s ease,border-color .2s ease,box-shadow .2s ease;
+}
+.sw:hover,.sw:focus-visible{transform:translateY(-3px);border-color:rgba(255,255,255,.3);box-shadow:0 12px 28px rgba(0,0,0,.35);outline:none}
+.sw .chip{height:88px;display:block;position:relative}
+.sw .chip::after{
+  content:"Copy";position:absolute;right:10px;top:10px;font-size:10px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;padding:3px 7px;border-radius:999px;
+  background:rgba(10,10,26,.5);color:#fff;opacity:0;transition:opacity .2s ease;
+}
+.sw:hover .chip::after,.sw:focus-visible .chip::after{opacity:1}
+.sw.copied .chip::after{content:"Copied";opacity:1;background:rgba(16,185,129,.85)}
+.sw .meta{padding:11px 13px 13px}
+.sw .nm{display:block;font-size:13px;font-weight:700;letter-spacing:-.01em}
+.sw .hx{display:block;margin-top:3px;font-family:var(--mono);font-size:12px;color:rgba(245,243,255,.62);text-transform:uppercase}
+.sw .use{display:block;margin-top:6px;font-size:11px;line-height:1.4;color:rgba(245,243,255,.45)}
+
+/* ---------- Gradients ---------- */
+.grads{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr));gap:14px}
+.grad-card{border-radius:16px;border:1px solid rgba(255,255,255,.14);overflow:hidden;background:rgba(255,255,255,.04)}
+.grad-card .bar{height:76px}
+.grad-card .meta{padding:13px 15px 15px}
+.grad-card .nm{font-size:13px;font-weight:700}
+.grad-card code{
+  display:block;margin-top:7px;font-family:var(--mono);font-size:11px;line-height:1.5;
+  color:var(--sky);word-break:break-all;
+}
+.grad-card .use{margin-top:7px;font-size:11px;color:rgba(245,243,255,.45)}
+
+/* ---------- Type ---------- */
+.type-row{display:flex;align-items:baseline;gap:18px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.08);flex-wrap:wrap}
+.type-row:last-child{border-bottom:0}
+.type-spec{font-family:var(--mono);font-size:11px;color:rgba(245,243,255,.5);min-width:190px;flex-shrink:0}
+.t-h1{font-size:38px;font-weight:700;letter-spacing:-.02em}
+.t-h2{font-size:28px;font-weight:700;letter-spacing:-.02em}
+.t-eyebrow{font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent}
+.t-body{font-size:16px;font-weight:400;color:rgba(245,243,255,.82)}
+.t-small{font-size:13px;color:rgba(245,243,255,.6)}
+.t-mono{font-family:var(--mono);font-size:14px;color:var(--sky)}
+
+/* ---------- Two-col ---------- */
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:16px}
+
+/* ---------- Component demos ---------- */
+.demo-btn{
+  display:flex;align-items:center;gap:12px;width:100%;padding:18px 20px;border-radius:16px;
+  background:var(--grad);border:1px solid transparent;color:var(--paper);
+  font-size:17px;font-weight:600;
+  box-shadow:0 10px 30px rgba(59,130,246,.5),0 6px 16px rgba(99,102,241,.35);
+}
+.demo-btn.ghost{
+  background:var(--glass);border:1px solid var(--glass-line);font-size:16px;padding:16px 18px;
+  backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);
+  box-shadow:none;
+}
+.demo-btn .cv{margin-left:auto;opacity:.5}
+.pill{
+  display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:4px 9px;border-radius:999px;background:rgba(255,255,255,.12);color:var(--paper);
+}
+
+.spec-list{margin:0;padding:0;list-style:none;font-family:var(--mono);font-size:12px;line-height:1.9;overflow-wrap:anywhere}
+.spec-list b{color:var(--sky);font-weight:400}
+.spec-list span{color:rgba(245,243,255,.55)}
+
+/* ---------- Do / Don't ---------- */
+.dd{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:16px}
+.dd .card{padding:20px 22px}
+.dd h3{margin:0 0 12px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.dd.ok h3{color:#6ee7b7}
+.do h3{color:#6ee7b7}
+.dont h3{color:#fda4af}
+.dd ul{margin:0;padding-left:18px;font-size:14px;line-height:1.75;color:rgba(245,243,255,.78)}
+.do{border-color:rgba(110,231,183,.28)}
+.dont{border-color:rgba(253,164,175,.28)}
+
+/* ---------- Voice ---------- */
+.voice-line{font-size:16px;line-height:1.7;color:rgba(245,243,255,.82);margin:0 0 14px}
+.voice-line:last-child{margin-bottom:0}
+.voice-line b{color:var(--paper)}
+
+/* ---------- Contact ---------- */
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:2px;
+  border-radius:16px;overflow:hidden;border:1px solid var(--glass-line);background:rgba(255,255,255,.05)}
+.contact div{padding:16px 18px;background:rgba(10,10,26,.35)}
+.contact dt{margin:0 0 5px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,243,255,.45)}
+.contact dd{margin:0;font-size:14px;font-weight:600;word-break:break-word}
+.contact dd a:hover{color:var(--sky)}
+
+.warn{
+  margin-top:16px;padding:16px 20px;border-radius:14px;
+  border:1px solid rgba(253,164,175,.3);background:rgba(236,72,153,.1);
+  font-size:14px;line-height:1.6;color:rgba(245,243,255,.85);
+}
+.warn b{color:#fda4af}
+
+footer{margin-top:64px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);
+  font-size:12px;color:rgba(245,243,255,.4);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:640px){
+  .wrap{padding:36px 18px 64px}
+  .masthead h1{font-size:30px}
+  .mark{width:76px;height:76px;border-radius:18px;font-size:44px}
+  .position{font-size:17px;padding:18px}
+  .t-h1{font-size:30px}
+  .type-spec{min-width:0}
+}
+@media print{
+  .mesh{display:none}
+  body{background:#0a0a1a}
+}
+</style>
+</head>
+<body>
+<div class="mesh" aria-hidden="true"><span></span></div>
+
+<div class="wrap">
+
+  <p class="eyebrow">Brand Kit · v1 · August 2026</p>
+
+  <div class="masthead">
+    <div class="mark" aria-hidden="true">K</div>
+    <div>
+      <h1>Kimball Mueller</h1>
+      <p class="role">Your Chief AI Officer</p>
+      <p class="tagline">“AI so simple your mom gets it.”</p>
+    </div>
+  </div>
+
+  <div class="position">
+    I build AI systems inside real businesses. You watch me do it.
+    <small>Positioning line — the credibility promise</small>
+  </div>
+
+  <!-- ================= COLOR ================= -->
+  <section>
+    <h2>Color</h2>
+    <p class="sec-note">The palette is a blue&nbsp;→&nbsp;indigo&nbsp;→&nbsp;violet ramp on near-black. Blue is dominant, violet is the bridge, pink is a kiss of accent — never a fill. Click any swatch to copy the hex.</p>
+    <div class="swatches">
+      <button class="sw" data-hex="#0a0a1a"><span class="chip" style="background:#0a0a1a;border-bottom:1px solid rgba(255,255,255,.1)"></span><span class="meta"><span class="nm">Ink</span><span class="hx">#0A0A1A</span><span class="use">Primary background. Everything sits on this.</span></span></button>
+      <button class="sw" data-hex="#0f1738"><span class="chip" style="background:#0f1738"></span><span class="meta"><span class="nm">Deep Panel</span><span class="hx">#0F1738</span><span class="use">Raised surface, avatar base.</span></span></button>
+      <button class="sw" data-hex="#f5f3ff"><span class="chip" style="background:#f5f3ff"></span><span class="meta"><span class="nm">Paper</span><span class="hx">#F5F3FF</span><span class="use">All body text. Warm white, not pure #FFF.</span></span></button>
+      <button class="sw" data-hex="#3b82f6"><span class="chip" style="background:#3b82f6"></span><span class="meta"><span class="nm">Signal Blue</span><span class="hx">#3B82F6</span><span class="use">The hero color. Glow, focus, primary accent.</span></span></button>
+      <button class="sw" data-hex="#2563eb"><span class="chip" style="background:#2563eb"></span><span class="meta"><span class="nm">Blue Deep</span><span class="hx">#2563EB</span><span class="use">Start of the primary gradient.</span></span></button>
+      <button class="sw" data-hex="#6366f1"><span class="chip" style="background:#6366f1"></span><span class="meta"><span class="nm">Indigo</span><span class="hx">#6366F1</span><span class="use">The bridge between blue and violet.</span></span></button>
+      <button class="sw" data-hex="#4f46e5"><span class="chip" style="background:#4f46e5"></span><span class="meta"><span class="nm">Indigo Deep</span><span class="hx">#4F46E5</span><span class="use">Gradient midpoint at 60%.</span></span></button>
+      <button class="sw" data-hex="#8b5cf6"><span class="chip" style="background:#8b5cf6"></span><span class="meta"><span class="nm">Violet</span><span class="hx">#8B5CF6</span><span class="use">End of the primary gradient.</span></span></button>
+      <button class="sw" data-hex="#a78bfa"><span class="chip" style="background:#a78bfa"></span><span class="meta"><span class="nm">Violet Light</span><span class="hx">#A78BFA</span><span class="use">Hover state, logo mark tip.</span></span></button>
+      <button class="sw" data-hex="#93c5fd"><span class="chip" style="background:#93c5fd"></span><span class="meta"><span class="nm">Sky</span><span class="hx">#93C5FD</span><span class="use">Gradient text start, code &amp; links.</span></span></button>
+      <button class="sw" data-hex="#c4b5fd"><span class="chip" style="background:#c4b5fd"></span><span class="meta"><span class="nm">Lavender</span><span class="hx">#C4B5FD</span><span class="use">Gradient text end.</span></span></button>
+      <button class="sw" data-hex="#ec4899"><span class="chip" style="background:#ec4899"></span><span class="meta"><span class="nm">Kiss Pink</span><span class="hx">#EC4899</span><span class="use">Accent only. Background glow at ≤32% opacity.</span></span></button>
+    </div>
+  </section>
+
+  <!-- ================= GRADIENTS ================= -->
+  <section>
+    <h2>Gradients</h2>
+    <p class="sec-note">Four gradients do all the work. All run at 135°. Don't invent new ones — pick the one whose job matches.</p>
+    <div class="grads">
+      <div class="grad-card">
+        <div class="bar" style="background:linear-gradient(135deg,#2563eb 0%,#4f46e5 60%,#8b5cf6 100%)"></div>
+        <div class="meta">
+          <div class="nm">Primary — buttons &amp; CTAs</div>
+          <code>linear-gradient(135deg, #2563eb 0%, #4f46e5 60%, #8b5cf6 100%)</code>
+          <div class="use">Every primary action. Note the 60% stop — it's not an even three-way split.</div>
+        </div>
+      </div>
+      <div class="grad-card">
+        <div class="bar" style="background:linear-gradient(135deg,#3b82f6 0%,#6366f1 60%,#a78bfa 100%)"></div>
+        <div class="meta">
+          <div class="nm">Primary Hover / Logo Mark</div>
+          <code>linear-gradient(135deg, #3b82f6 0%, #6366f1 60%, #a78bfa 100%)</code>
+          <div class="use">The whole primary gradient lifted one step. Also the logo mark fill.</div>
+        </div>
+      </div>
+      <div class="grad-card">
+        <div class="bar" style="background:linear-gradient(135deg,#93c5fd 0%,#c4b5fd 100%)"></div>
+        <div class="meta">
+          <div class="nm">Gradient Text</div>
+          <code>linear-gradient(135deg, #93c5fd 0%, #c4b5fd 100%)</code>
+          <div class="use">Clipped to text for eyebrows and section labels only. Never body copy.</div>
+        </div>
+      </div>
+      <div class="grad-card">
+        <div class="bar" style="background:radial-gradient(circle at 22% 30%,rgba(59,130,246,.85),transparent 55%),radial-gradient(circle at 70% 65%,rgba(99,102,241,.65),transparent 55%),radial-gradient(circle at 88% 88%,rgba(236,72,153,.5),transparent 55%),#0a0a1a"></div>
+        <div class="meta">
+          <div class="nm">Mesh Background</div>
+          <code>3 radial blobs, blur(90px): blue .70 · indigo .45 · pink .32 — on #0a0a1a</code>
+          <div class="use">The signature backdrop. Blue biggest and top-left, pink smallest and bottom-right.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TYPE ================= -->
+  <section>
+    <h2>Typography</h2>
+    <p class="sec-note">One family: the system UI stack, with <b>Inter</b> as the named fallback. If a design tool needs a single font file, use <b>Inter</b> — it's the closest match and is free on Google Fonts. Headings tighten (−0.02em), uppercase labels open up (+0.08em). That contrast <em>is</em> the typographic identity.</p>
+    <div class="card">
+      <div class="type-row"><span class="type-spec">700 · 38px · −0.02em</span><span class="t-h1">Kimball Mueller</span></div>
+      <div class="type-row"><span class="type-spec">700 · 28px · −0.02em</span><span class="t-h2">Section headline</span></div>
+      <div class="type-row"><span class="type-spec">600 · 14px · +0.08em · caps</span><span class="t-eyebrow">Your Chief AI Officer</span></div>
+      <div class="type-row"><span class="type-spec">400 · 16px · 1.5</span><span class="t-body">Body copy sits at 82% white on ink — never full-strength, it's too harsh on this background.</span></div>
+      <div class="type-row"><span class="type-spec">400 · 13px · 60% opacity</span><span class="t-small">Captions, meta, timestamps.</span></div>
+      <div class="type-row"><span class="type-spec">SF Mono / Menlo · Sky</span><span class="t-mono">code, hex values, terminal output</span></div>
+      <p style="margin:18px 0 0;font-family:var(--mono);font-size:11px;line-height:1.7;color:rgba(245,243,255,.5)">
+        font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe&nbsp;UI", Roboto,<br>
+        &nbsp;&nbsp;"Helvetica&nbsp;Neue", Arial, sans-serif;
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= LOGO ================= -->
+  <section>
+    <h2>Logo Mark</h2>
+    <p class="sec-note">A rounded square holding a single white <b>K</b>. Corner radius is 22% of the square — it scales with the mark, so don't hard-code a pixel value.</p>
+    <div class="two">
+      <div class="card" style="display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap;padding:34px 22px">
+        <div class="mark" style="width:112px;height:112px;border-radius:25px;font-size:66px">K</div>
+        <div class="mark" style="width:64px;height:64px;border-radius:14px;font-size:38px;box-shadow:none">K</div>
+        <div class="mark" style="width:36px;height:36px;border-radius:8px;font-size:21px;box-shadow:none">K</div>
+      </div>
+      <div class="card">
+        <ul class="spec-list">
+          <li><b>shape</b> <span>rounded square, radius = 22% of side</span></li>
+          <li><b>fill</b> <span>#3b82f6 → #6366f1 (60%) → #a78bfa</span></li>
+          <li><b>letter</b> <span>K, weight 800, pure #fff</span></li>
+          <li><b>letter size</b> <span>≈59% of the square</span></li>
+          <li><b>glow</b> <span>0 10px 30px rgba(59,130,246,.5)</span></li>
+          <li><b>clear space</b> <span>25% of the mark on all sides</span></li>
+          <li><b>min size</b> <span>24px — below that, drop the glow</span></li>
+          <li><b>source file</b> <span>assets/favicon.svg</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SURFACES ================= -->
+  <section>
+    <h2>Surfaces &amp; Components</h2>
+    <p class="sec-note">Everything that isn't the background is frosted glass: a low-opacity white fill, a 1px lighter border, and a real backdrop blur. That's the whole system.</p>
+    <div class="two">
+      <div class="card">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="demo-btn">Free Resource Guide<svg class="cv" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="demo-btn ghost">YouTube<svg class="cv" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+          <div class="demo-btn ghost">Skool Community<span class="pill" style="margin-left:auto">Soon</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <ul class="spec-list">
+          <li><b>glass fill</b> <span>rgba(255,255,255,0.07)</span></li>
+          <li><b>glass border</b> <span>1px rgba(255,255,255,0.14)</span></li>
+          <li><b>blur</b> <span>backdrop-filter: blur(20px) saturate(140%)</span></li>
+          <li><b>hover fill</b> <span>rgba(255,255,255,0.12) + translateY(−2px)</span></li>
+          <li><b>radius</b> <span>10 · 12 · 14 · 16 · 18 · 999px</span></li>
+          <li><b>blue glow</b> <span>0 10px 30px rgba(59,130,246,.5)</span></li>
+          <li><b>indigo glow</b> <span>0 6px 16px rgba(99,102,241,.35)</span></li>
+          <li><b>soft depth</b> <span>0 12px 34px rgba(0,0,0,.35)</span></li>
+          <li><b>lift</b> <span>transform .15s ease · color .2s ease</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= VOICE ================= -->
+  <section>
+    <h2>Voice</h2>
+    <div class="two">
+      <div class="card">
+        <p class="voice-line"><b>Plain-spoken, never dumbed down.</b> The tagline is the tone contract: “AI so simple your mom gets it.” Explain the hard thing in the words a roofing owner already uses.</p>
+        <p class="voice-line"><b>Proof over promise.</b> Real dashboards, real call logs, real numbers from real businesses. Screenshots beat adjectives every time.</p>
+        <p class="voice-line"><b>Two audiences, one story.</b> Owners who want it built for them, operators who want to build it themselves. Every piece serves both and ends with the fork.</p>
+      </div>
+      <div class="dd" style="grid-template-columns:1fr;gap:16px">
+        <div class="card do">
+          <h3>Do</h3>
+          <ul>
+            <li>Dark backgrounds. This brand lives at night.</li>
+            <li>Let the mesh gradient breathe — big, soft, out of focus.</li>
+            <li>Blue leads. Violet supports. Pink whispers.</li>
+            <li>Generous corner radii. Nothing sharp.</li>
+          </ul>
+        </div>
+        <div class="card dont">
+          <h3>Don't</h3>
+          <ul>
+            <li>Put the logo on white without testing — the glow disappears.</li>
+            <li>Use pink as a fill, a button, or a text color.</li>
+            <li>Add a second typeface. One family, many weights.</li>
+            <li>Stretch, recolor, or outline the K mark.</li>
+            <li>Mix in Kimball Travels branding. Different brand.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= IDENTITY ================= -->
+  <section>
+    <h2>Identity &amp; Handles</h2>
+    <dl class="contact">
+      <div><dt>Name</dt><dd>Kimball Mueller</dd></div>
+      <div><dt>Title</dt><dd>Your Chief AI Officer</dd></div>
+      <div><dt>YouTube</dt><dd><a href="https://www.youtube.com/@KimballAI" target="_blank" rel="noopener">@KimballAI</a></dd></div>
+      <div><dt>Instagram / TikTok</dt><dd><a href="https://instagram.com/kimball.ai" target="_blank" rel="noopener">@kimball.ai</a></dd></div>
+      <div><dt>Site</dt><dd><a href="https://kimballmueller.github.io" target="_blank" rel="noopener">kimballmueller.github.io</a></dd></div>
+      <div><dt>Email</dt><dd><a href="mailto:kimball@disruptorsmedia.com">kimball@disruptorsmedia.com</a></dd></div>
+      <div><dt>Company</dt><dd><a href="https://disruptorsmedia.com" target="_blank" rel="noopener">Disruptors Media</a></dd></div>
+      <div><dt>Headshot</dt><dd><a href="assets/headshot.jpg" target="_blank" rel="noopener">assets/headshot.jpg</a></dd></div>
+    </dl>
+    <div class="warn">
+      <b>Separate brand — do not blend.</b> <b>Kimball Travels</b> (@kimballmueller) is a different brand with its own site, feed, and email. Nothing from this kit applies to it, and nothing from it belongs here.
+    </div>
+  </section>
+
+  <footer>
+    <span>Kimball Mueller · Brand Kit v1</span>
+    <span>Colors pulled from the live site — <a href="https://kimballmueller.github.io" target="_blank" rel="noopener">kimballmueller.github.io</a></span>
+  </footer>
+
+</div>
+
+<script>
+document.querySelectorAll('.sw').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var hex = b.dataset.hex;
+    var done = function () {
+      b.classList.add('copied');
+      setTimeout(function () { b.classList.remove('copied'); }, 1200);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(hex).then(done, done);
+    } else {
+      var t = document.createElement('textarea');
+      t.value = hex; document.body.appendChild(t); t.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(t); done();
+    }
+  });
+});
+</script>
+</body>
+</html>
