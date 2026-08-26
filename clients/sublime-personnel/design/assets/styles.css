@@ -793,3 +793,33 @@ a.card:hover .shot img { transform: scale(1.05); }
 .brand img { width: auto; height: 46px; }
 .ftr .brand img { height: 50px; }
 @media (max-width: 720px) { .brand img { height: 38px; } }
+
+/* ---------------- Practice gallery ----------------
+   A static three-up, deliberately placed below the primary call to action so it
+   cannot compete with it. Not a carousel: most visitors never advance past the
+   first slide, it costs page weight, and on a phone it pushes the CTA off screen.
+   Built to receive the client's own photographs — swap the image sources and
+   nothing else changes. */
+.gallery { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; }
+.gallery .gal-cell { position: relative; display: block; overflow: hidden; }
+.gallery .shot { height: clamp(150px, 15vw, 210px); }
+.gallery .gal-cap {
+  position: absolute; left: 16px; bottom: 16px; z-index: 2;
+  font-size: .68rem; font-weight: 650; letter-spacing: .14em; text-transform: uppercase;
+  color: #fff; text-shadow: 0 1px 10px rgba(12,26,46,.7);
+}
+.gallery .gal-cell:hover .shot img { transform: scale(1.05); }
+@media (max-width: 820px) { .gallery { grid-template-columns: repeat(3, minmax(0,1fr)); gap: 8px; }
+                            .gallery .gal-cap { font-size: .6rem; left: 10px; bottom: 10px; } }
+@media (max-width: 560px) { .gallery { grid-template-columns: 1fr; }
+                            .gallery .shot { height: 170px; } }
+
+/* the return leg of the hub and spoke: Insights links back to every practice */
+.prac-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.prac-row a {
+  border: 1px solid var(--line); padding: 11px 18px; font-size: .88rem; font-weight: 550;
+  color: var(--head); transition: all .25s var(--ease);
+}
+.prac-row a:hover { border-color: var(--blue); color: var(--blue); background: var(--paper-2); }
+/* the gallery follows the article cluster directly — no stacked section padding */
+.gal-sec { padding-top: 0; }

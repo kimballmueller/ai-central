@@ -38,5 +38,5 @@ await send('Runtime.enable'); await send('Log.enable');
 export const PAGES = ['index','clients','candidates','blog','start-a-search','cost-of-vacancy','talent-network',
   'industries/hoa-property-management','industries/hospitality-restaurant','industries/commercial-lines-insurance',
   'industries/personal-lines-insurance','industries/accounting-finance','industries/commercial-construction',
-  'industries/qsr-franchise'];
+  'industries/qsr-franchise','industries/oil-gas'];
 export const SLUGS = PAGES.filter(p => p.startsWith('industries/')).map(p => p.split('/')[1]);

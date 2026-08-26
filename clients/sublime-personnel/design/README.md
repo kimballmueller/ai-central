@@ -340,3 +340,101 @@ To go back to the full plaque, point the header `<img>` at `logo.png` in
 **Still needed from Pete: the logo as a vector.** Everything above is a raster lift
 from a 1600px PNG, which is fine for the prototype and not fine for the WordPress
 build or for print.
+
+## The guarantee — two registers
+
+Pete corrected this after the first review: it is **60/90/120 days, set in the
+negotiated contract**, not the thirty days the first draft claimed. It appears in
+thirteen places, and the rule is that the register changes with the surface:
+
+- **Headline / badge / stat band** — the big number. Homepage stat reads `60–120 /
+  Day placement guarantee`, practice-page badges read "Up to a 120-day guarantee".
+- **FAQ and the engagement-model card** — the tiers spelled out, and that the term is
+  contractual. Detail belongs where someone is reading for detail.
+
+**Never state a bare "120-day guarantee" as though every placement carries it.** The
+tiers are contractual, and this is the one claim on the site that could actually cost
+the client something if overstated. The FAQ copy links their own published post on
+replacement guarantees.
+
+## Content architecture — hub and spoke
+
+Pete asked whether we could put blogs behind each vertical for AEO/GEO authority. The
+answer built here is **one Insights section with a cluster block on each practice
+page** — not eight separate blogs, and not a blog page that merely links out.
+
+- Eight separate blogs fragments authority into eight thin sections.
+- A blog that links out to industries gives no signal about which page is
+  authoritative for a given practice.
+- Hub and spoke — practice page as pillar, its articles as spokes, linked both ways —
+  is one publishing flow and eight authority surfaces. `cluster_block()` renders the
+  outbound leg on each practice page; the `.prac-row` on `blog.html` is the return leg.
+
+**The constraint that shaped this: none of their ten published posts is
+vertical-specific.** Every one is top-of-funnel general — fees, market trends,
+guarantees, cost of vacancy. There is nothing HOA-specific to put behind a button
+today. So `posts_for()` rotates the universal pool by practice index: eight identical
+blocks would read as padding, and spreading internal links across the whole library
+ranks better than pointing every page at the same three. The moment a practice-tagged
+post exists (7th field in `POSTS`), it takes priority over the universal ones.
+
+Filling those clusters is the highest-value use of the SOW's monthly content, which
+should be aimed per-practice from here rather than published as a general blog.
+
+## Schema
+
+`faq_schema()` and `service_schema()` in `_build/pages.py`, emitted through the
+`schema=` parameter on `head()`. FAQPage on all eight practice pages plus
+For Employers and For Candidates; Service on each practice page. The FAQ blocks were
+already question-shaped, so this was the cheapest real AEO win available — it is what
+answer engines read when deciding whether to quote a page.
+
+`esc_json()` strips tags and unescapes entities before serialising; our copy is full
+of `&mdash;` and `&#8209;` and raw interpolation produces JSON-LD that does not parse.
+**Validate after any copy change** — 18 blocks currently parse clean:
+
+```bash
+python3 - <<'EOF'
+import json, re, glob
+for f in glob.glob("**/*.html", recursive=True):
+    for m in re.findall(r'<script type="application/ld\+json">(.*?)</script>',
+                        open(f, encoding="utf-8").read(), re.S):
+        json.loads(m)
+EOF
+```
+
+## Gallery, and why not a carousel
+
+Pete asked for an image carousel and asked, in the same breath, whether it would be a
+distraction. It would: most visitors never advance past the first slide, it costs page
+weight, and on a phone it pushes the call to action below the fold.
+
+What is built instead is `gallery_block()` — a static three-up placed **below** the
+primary CTA so it cannot compete with it, showing the practice's own photograph plus
+its two related practices, each captioned and linked. It doubles as a visual version
+of the related-practice cross-links.
+
+It pulls the `-card.jpg` crops, not the 1800px bands — the cells render about 300×210,
+and loading band images there put four practice pages over the weight budget. That is
+what `images.mjs` caught.
+
+## Adding a practice area
+
+Everything reads off one list, so this is cheap — which matters, because the final
+list is still unconfirmed.
+
+1. `_build/pages.py` → append to `VERTICALS`. Appending keeps the existing numbers
+   stable; inserting renumbers everything after it.
+2. `_build/industries.py` → an `INDUSTRIES` entry with the same shape as its
+   neighbours (nine roles, four screening criteria, two FAQs, two related practices).
+3. `assets/img/` → `<slug>.jpg` at 1800×620 and `<slug>-card.jpg` at 760×320, through
+   the duotone pipeline in **Photography**.
+4. `index.html` → nav dropdown, mobile drawer, practices grid card, footer column.
+   The homepage is the only hand-maintained page; everything else reads from
+   `header()` / `footer()`.
+5. Rebuild and run `./_build/tests/run.sh`.
+
+The `NN of NN` numbering derives from `len(VERTICALS)` and the test regex derives from
+`SLUGS.length`, so neither needs touching. Both used to be hardcoded to `07` and both
+silently went wrong when the eighth practice was added — that is why they are computed
+now.

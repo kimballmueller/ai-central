@@ -26,11 +26,12 @@ VERTICALS = [
     ("accounting-finance",        "Accounting &amp; Finance",      "Controllers, CFOs, senior accountants"),
     ("commercial-construction",   "Commercial Construction",       "PMs, superintendents, estimators"),
     ("qsr-franchise",             "QSR &amp; Franchise",           "Area coaches, FBCs, multi-unit leadership"),
+    ("oil-gas",                   "Oil &amp; Gas",                 "Drilling, completions, HSE, turnaround"),
 ]
 IND_NUM = {slug: f"{n+1:02d}" for n, (slug, _, _) in enumerate(VERTICALS)}
 
 # d = directory depth below the site root, so industries/ pages get "../".
-def head(title, desc, d=0):
+def head(title, desc, d=0, schema=""):
     r = "../" * d
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -44,8 +45,8 @@ def head(title, desc, d=0):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{r}assets/styles.css?v=94e67a65">
-</head>
+<link rel="stylesheet" href="{r}assets/styles.css?v=72103e20">
+{schema}</head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 """
@@ -195,6 +196,91 @@ def write(path, body):
     os.makedirs(os.path.dirname(full), exist_ok=True)
     open(full, "w", encoding="utf-8").write(body)
     print("  wrote", path, f"({len(body)//1024} KB)")
+
+
+# ============================================================ SCHEMA + CLUSTERS
+def esc_json(t):
+    """Strip the HTML entities and tags our copy carries so JSON-LD stays valid."""
+    import re, html
+    return html.unescape(re.sub(r"<[^>]+>", "", t)).replace("\u2011", "-").replace('"', "'")
+
+def faq_schema(items):
+    """FAQPage JSON-LD. The FAQ blocks are already question-shaped, so this is the
+    cheapest real AEO win on the site — it is what answer engines read when deciding
+    whether to quote a page."""
+    qs = ",".join(
+        '{"@type":"Question","name":"%s","acceptedAnswer":{"@type":"Answer","text":"%s"}}'
+        % (esc_json(q), esc_json(a)) for q, a in items)
+    return ('<script type="application/ld+json">'
+            '{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[%s]}</script>\n' % qs)
+
+def service_schema(name, desc, area="Houston, Texas"):
+    return ('<script type="application/ld+json">'
+            '{"@context":"https://schema.org","@type":"Service",'
+            '"serviceType":"%s","provider":{"@type":"EmploymentAgency","name":"Sublime Personnel",'
+            '"telephone":"+1-713-396-0944","areaServed":"%s"},"description":"%s"}</script>\n'
+            % (esc_json(name), area, esc_json(desc)))
+
+def posts_for(slug, limit=3):
+    """Articles for one practice: practice-specific first, then the universal ones.
+    Today every published post is universal — none of their ten is vertical-specific —
+    so the clusters start general and tighten as per-practice content is written."""
+    specific = [p for p in POSTS if slug in p[6]]
+    universal = [p for p in POSTS if not p[6]]
+    if universal:
+        off = (IND_NUM.get(slug, "01") and int(IND_NUM[slug]) - 1) * limit
+        universal = [universal[(off + k) % len(universal)] for k in range(len(universal))]
+    return (specific + universal)[:limit]
+
+def post_cards(posts, d=0):
+    r = "../" * d
+    return "".join(
+        f'<article class="post rv"><a class="post-link" href="{LIVE}{p[4]}" target="_blank" rel="noopener">'
+        f'<div class="post-meta"><time datetime="{p[0]}">{p[1]}</time><span class="tag">{p[2]}</span></div>'
+        f'<h3>{p[3]}</h3><p>{p[5]}</p>'
+        f'<span class="tlink">Read {ARROW}</span></a></article>' for p in posts)
+
+def cluster_block(slug, nav, d=1):
+    """Hub and spoke: the practice page is the pillar, its articles are the spokes,
+    linked both ways. One Insights section, eight authority surfaces — rather than
+    eight thin blogs or a blog page that merely links out."""
+    r = "../" * d
+    cards = post_cards(posts_for(slug), d)
+    if not cards:
+        return ""
+    return f'''<section class="sec">
+  <div class="wrap">
+    <div class="split-hd" style="margin-bottom:40px">
+      <div><p class="eyebrow rv">Reading</p><h2 class="rv">Written for people<br>hiring in {nav}.</h2></div>
+      <div><p class="lede rv">Where a vacancy actually costs you money, how fee structures differ, and what the Texas market is paying now. <a class="tlink" href="{r}blog.html" style="margin-top:14px">All insights {ARROW}</a></p></div>
+    </div>
+    <div class="post-grid rv">{cards}</div>
+  </div>
+</section>
+
+'''
+
+def gallery_block(slug, related, d=1):
+    """A static three-up, deliberately below the primary CTA so it cannot compete
+    with it. Not a carousel: most visitors never advance past slide one, it costs
+    page weight, and on a phone it pushes the call to action off screen.
+    Swap the `photo` values for the client's own images when they arrive."""
+    r = "../" * d
+    import industries as _I
+    by = {i["slug"]: i for i in _I.INDUSTRIES}
+    picks = [slug] + [o for o, _ in related]
+    cells = "".join(
+        f'<a class="gal-cell rv" href="{r}industries/{sg}.html">'
+        f'<div class="shot"><img src="{r}assets/img/{by[sg]["photo"].replace(".jpg", "-card.jpg")}" alt="" '
+        f'width="760" height="320" loading="lazy" decoding="async"></div>'
+        f'<span class="gal-cap">{by[sg]["nav"]}</span></a>' for sg in picks if sg in by)
+    return f'''<section class="sec-tight gal-sec">
+  <div class="wrap">
+    <div class="gallery">{cells}</div>
+  </div>
+</section>
+
+'''
 
 # ============================================================ 1. START A SEARCH
 def build_intake():
@@ -592,7 +678,8 @@ def build_talent():
 # ============================================================ 4. FOR EMPLOYERS
 def build_clients():
     body = head("Executive Search for Houston Employers | Sublime Personnel",
-                "How we run a search: a proper briefing, a mapped market, a short assessed slate, fees agreed in writing, and a thirty-day guarantee on every direct hire.")
+                "How we run a search: a proper briefing, a mapped market, a short assessed slate, fees agreed in writing, and a replacement guarantee of up to 120 days on every direct hire.",
+                schema=faq_schema(CLIENT_FAQ))
     body += header()
     body += f"""
 <main id="main">
@@ -616,7 +703,7 @@ def build_clients():
       <div><p class="lede rv">Most of our work is direct hire. Forcing every requirement into one model is how firms end up selling you the wrong thing, so we will tell you which of these your situation actually calls for.</p></div>
     </div>
     <div class="grid g3">
-      <div class="card rv"><h3 class="minor-head">Direct hire</h3><p>Permanent placement, contingency or retained. A percentage of first-year compensation, and every placement carries the thirty-day guarantee.</p></div>
+      <div class="card rv"><h3 class="minor-head">Direct hire</h3><p>Permanent placement, contingency or retained. A percentage of first-year compensation, and every placement carries a replacement guarantee &mdash; 60, 90 or 120 days, set in your contract.</p></div>
       <div class="card rv"><h3 class="minor-head">Temp&#8209;to&#8209;hire</h3><p>Bring someone in on our payroll, see the work, convert when you are certain. Useful for accounting and back-office roles where fit is hard to read in an interview.</p></div>
       <div class="card rv"><h3 class="minor-head">Interim &amp; temporary</h3><p>Cover for a leave, a close, a build-out, or the gap between leaders &mdash; including interim controllers and fractional finance leadership.</p></div>
     </div>
@@ -656,7 +743,7 @@ def build_clients():
       <div class="grid" style="gap:20px">
         <div class="card rv"><div class="icn">{SEARCH}</div><h3 class="minor-head">We screen on the work</h3><p>Each practice page sets out exactly what we ask candidates in that field. It is the clearest picture of how we assess &mdash; read the one that matches your role.</p><a class="tlink" style="margin-top:auto;padding-top:22px" href="index.html#industries">See the practices {ARROW}</a></div>
         <div class="card rv"><div class="icn">{LOCK}</div><h3 class="minor-head">Confidential searches</h3><p>Replacing someone who still holds the seat is delicate. We run those quietly and never approach a candidate through a channel their employer can see.</p></div>
-        <div class="card rv"><div class="icn">{SHIELD}</div><h3 class="minor-head">Thirty-day guarantee</h3><p>Should a direct-hire placement leave within thirty days, we conduct the search again at no further fee.</p></div>
+        <div class="card rv"><div class="icn">{SHIELD}</div><h3 class="minor-head">Up to a 120-day guarantee</h3><p>Every direct hire is guaranteed for 60, 90 or 120 days depending on your contract. Should the placement leave inside that window, we run the search again at no further fee.</p></div>
       </div>
     </div>
   </div>
@@ -699,7 +786,7 @@ CLIENT_FAQ = [
  ("What do you need from us to start?",
   "Roughly an hour: a proper briefing, the compensation band you can defend, and one named decision maker who can move candidates through the process. Searches stall on scheduling far more often than on sourcing."),
  ("What is the guarantee?",
-  "Direct-hire placements carry a thirty-day guarantee. Should the placement leave within that period, we conduct the search again at no further fee."),
+  "Every direct hire carries a replacement guarantee of 60, 90 or 120 days &mdash; the term is negotiated and set in your contract. Should the placement leave inside that window, we run the search again at no further fee. We have written about why replacement guarantees matter <a href=\"https://sublimepersonnel.com/blog/f/how-replacement-guarantees-reduce-hiring-risk-for-texas-employers\" target=\"_blank\" rel=\"noopener\">here</a>."),
  ("Will you sign our NDA or vendor agreement?",
   "Yes. Send it across with the role and we will turn it around quickly."),
 ]
@@ -725,7 +812,8 @@ def build_candidates():
         (f'<li><a class="tlink" href="industries/{slug}.html">' if slug != "#" else '<li><a class="tlink" href="#">')
         + name + f" {ARROW}</a></li>" for slug, name, _ in VERTICALS)
     body = head("For Candidates | Confidential Career Conversations | Sublime",
-                "Confidential representation for Houston professionals in hospitality, property management, insurance, accounting and construction. Never a cost to you.")
+                "Confidential representation for Houston professionals in hospitality, property management, insurance, accounting and construction. Never a cost to you.",
+                schema=faq_schema(CAND_FAQ))
     body += header()
     body += f"""
 <main id="main">
@@ -819,43 +907,53 @@ POSTS = [
  ("2026-08-21", "August 21, 2026", "Hiring strategy",
   "10 Reasons Texas Organizations Choose Sublime Personnel",
   "10-reasons-texas-organizations-choose-sublime-personnel",
-  "A series exploring why Texas organizations across HOA and community management, hospitality, insurance, accounting and construction choose Sublime Personnel as their recruiting partner."),
+  "A series exploring why Texas organizations across HOA and community management, hospitality, insurance, accounting and construction choose Sublime Personnel as their recruiting partner.",
+  ()),
  ("2026-08-18", "August 18, 2026", "Hiring strategy",
   "Why Choose Sublime Personnel as Your Texas Recruiting Partner",
   "why-choose-sublime-personnel-as-your-texas-recruiting-partner",
-  "Nine specific, practical reasons Texas organizations choose us: targeted candidates, real industry expertise, faster placements, culture fit and reduced hiring risk."),
+  "Nine specific, practical reasons Texas organizations choose us: targeted candidates, real industry expertise, faster placements, culture fit and reduced hiring risk.",
+  ()),
  ("2026-08-13", "August 13, 2026", "Market data",
   "Texas Hiring Market Trends: What Employers Need to Know Right Now",
   "texas-hiring-market-trends-what-employers-need-to-know-right-now",
-  "Hiring decisions made without current market context tend to cost more in the long run &mdash; through offers that miss the market, or searches that drag because expectations are out of date."),
+  "Hiring decisions made without current market context tend to cost more in the long run &mdash; through offers that miss the market, or searches that drag because expectations are out of date.",
+  ()),
  ("2026-08-11", "August 11, 2026", "Fees",
   "Contingent, Retained, or Hourly? A Guide to Recruiting Pricing",
   "contingent-retained-or-hourly-a-guide-to-recruiting-pricing",
-  "A single leadership hire, a confidential executive search and ongoing volume hiring each call for a different kind of engagement &mdash; and a different fee structure."),
+  "A single leadership hire, a confidential executive search and ongoing volume hiring each call for a different kind of engagement &mdash; and a different fee structure.",
+  ()),
  ("2026-08-06", "August 6, 2026", "Working with us",
   "Why a Dedicated Recruiting Partner Beats Call-Center Staffing",
   "why-a-dedicated-recruiting-partner-beats-call-center-staffing",
-  "When you hire a recruiting firm you are trusting someone to represent your organization in the marketplace. That is a different relationship to submitting a request and hoping the right r&eacute;sum&eacute; arrives."),
+  "When you hire a recruiting firm you are trusting someone to represent your organization in the marketplace. That is a different relationship to submitting a request and hoping the right r&eacute;sum&eacute; arrives.",
+  ()),
  ("2026-08-04", "August 4, 2026", "Track record",
   "Sublime Personnel's Track Record: 187 Hires in 22 Months",
   "sublime-personnels-track-record-187-hires-in-22-months",
-  "Most agencies talk about their process. Fewer share their numbers. For employers evaluating a recruiting partner, results rather than promises are the better measure."),
+  "Most agencies talk about their process. Fewer share their numbers. For employers evaluating a recruiting partner, results rather than promises are the better measure.",
+  ()),
  ("2026-07-30", "July 30, 2026", "Hiring risk",
   "How Replacement Guarantees Reduce Hiring Risk for Texas Employers",
   "how-replacement-guarantees-reduce-hiring-risk-for-texas-employers",
-  "Every hiring decision carries risk. However thorough the interview process, nobody can predict every challenge that surfaces after someone joins a team."),
+  "Every hiring decision carries risk. However thorough the interview process, nobody can predict every challenge that surfaces after someone joins a team.",
+  ()),
  ("2026-07-28", "July 28, 2026", "Assessment",
   "Why the Most Qualified Candidate Isn't Always the Best Hire",
   "why-the-most-qualified-candidate-isnt-always-the-best-hire",
-  "A r&eacute;sum&eacute; shows what someone has done. An interview shows what they know. Neither reliably predicts how a person will lead, collaborate or adapt over the next three years."),
+  "A r&eacute;sum&eacute; shows what someone has done. An interview shows what they know. Neither reliably predicts how a person will lead, collaborate or adapt over the next three years.",
+  ()),
  ("2026-07-23", "July 23, 2026", "Cost of vacancy",
   "The Real Cost of a Vacant Position, and How to Reduce It",
   "real-cost-of-a-vacant-position-and-how-tx-employers-can-reduce-it",
-  "An open position does not sit quietly on an org chart. It shows up in overtime, in customer service delays, and in the stress absorbed by everyone covering the gap."),
+  "An open position does not sit quietly on an org chart. It shows up in overtime, in customer service delays, and in the stress absorbed by everyone covering the gap.",
+  ()),
  ("2026-07-18", "July 2026", "Practice areas",
   "Why Industry-Specific Recruiting Expertise Matters",
   "why-industry-specific-recruiting-expertise-matters-for-tx-hiring",
-  "A recruiter who has not worked inside your industry is assessing candidates against a job description. One who has is assessing them against the job."),
+  "A recruiter who has not worked inside your industry is assessing candidates against a job description. One who has is assessing them against the job.",
+  ()),
 ]
 
 def build_blog():
@@ -868,8 +966,10 @@ def build_blog():
           <p>{excerpt}</p>
           <span class="tlink">Read {ARROW}</span>
         </a>
-      </article>""" for iso, shown, tag, title, slug, excerpt in rest)
+      </article>""" for iso, shown, tag, title, slug, excerpt, _pr in rest)
 
+    prac_links = "".join(
+        f'<a href="industries/{slug}.html">{name}</a>' for slug, name, _ in VERTICALS)
     body = head("Insights | Hiring Intelligence for Employers | Sublime",
                 "Hiring intelligence for Texas employers: market trends, the real cost of a vacant seat, fee structures, guarantees and how to assess beyond the résumé.")
     body += header()
@@ -897,6 +997,13 @@ def build_blog():
         <img src="assets/mark.svg" alt="" width="200" height="200">
       </div>
     </a>
+  </div>
+</section>
+
+<section class="sec-tight">
+  <div class="wrap">
+    <p class="eyebrow rv" style="margin-bottom:18px">Browse by practice</p>
+    <div class="prac-row rv">{prac_links}</div>
   </div>
 </section>
 
@@ -946,6 +1053,7 @@ def build_industry(i):
     """One practice-area page. Everything is driven off _build/industries.py, so
     the seven pages cannot drift apart in structure — only in copy."""
     slug, num = i["slug"], IND_NUM[i["slug"]]
+    total = f"{len(VERTICALS):02d}"
 
     roles  = "".join(f"<li>{r}</li>" for r in i["roles"])
     screen = "".join(
@@ -963,7 +1071,9 @@ def build_industry(i):
                 '<h3>All practice areas</h3><p>How the practices overlap, and where your role sits.</p>'
                 f'<span class="tlink">View all {ARROW}</span></a>')
 
-    body  = head(i["title"], i["desc"], d=1)
+    schema = (faq_schema(i["faq"] + STANDARD_FAQ)
+              + service_schema(f'{i["nav"]} recruiting', i["desc"]))
+    body  = head(i["title"], i["desc"], d=1, schema=schema)
     body += header(d=1)
     body += f"""
 <main id="main">
@@ -971,7 +1081,7 @@ def build_industry(i):
 <section class="phead">
   <div class="wrap">
     <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a><i>/</i><a href="../index.html#industries">Industries</a><i>/</i>{i['nav']}</nav>
-    <p class="eyebrow center">Practice area {num} of 07</p>
+    <p class="eyebrow center">Practice area {num} of {total}</p>
     <h1 class="phead-display">{i['h1_main']} <span class="fill">{i['h1_fill']}</span></h1>
     <p class="lede">{i['lede']}</p>
     <div class="btns center">
@@ -1026,13 +1136,14 @@ def build_industry(i):
       </div>
       <div class="grid" style="gap:20px">
         <div class="card rv"><div class="icn">{CLOCK}</div><h3 class="minor-head">First slate in about two weeks</h3><p>Three to five candidates with written assessment of fit, risk and what it will take to close them.</p></div>
-        <div class="card rv"><div class="icn">{SHIELD}</div><h3 class="minor-head">30-day guarantee</h3><p>Direct-hire placements are replaced at no further fee should they leave within thirty days.</p></div>
+        <div class="card rv"><div class="icn">{SHIELD}</div><h3 class="minor-head">Up to a 120-day guarantee</h3><p>Every direct hire is guaranteed for 60, 90 or 120 days depending on your contract. Leave inside that window and we run the search again at no further fee.</p></div>
       </div>
     </div>
   </div>
 </section>
 
 {faq_block(i['faq'] + STANDARD_FAQ, "Common questions.")}
+{cluster_block(slug, i['nav'])}{gallery_block(slug, i['related'])}
 <section class="sec tint">
   <div class="wrap">
     <p class="eyebrow rv">Related practices</p>

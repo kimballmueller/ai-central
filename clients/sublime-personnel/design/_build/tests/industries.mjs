@@ -19,7 +19,7 @@ for (const s of SLUGS) {
     num: (document.querySelector('.phead .eyebrow')||{}).textContent||''
   }))()`);
   const ok = r.roles===9 && r.screen===4 && r.faq===4 && r.related===3 && r.fill && r.band
-             && r.dark && r.ghost && /^Practice area 0[1-7] of 07$/.test(r.num.trim());
+             && r.dark && r.ghost && new RegExp(`^Practice area \\d{2} of ${String(SLUGS.length).padStart(2,'0')}$`).test(r.num.trim());
   if (!ok) fail++;
   console.log(`${ok?'PASS':'FAIL'} ${s.padEnd(26)} ${String(r.roles).padStart(4)} ${String(r.screen).padStart(6)} ${String(r.faq).padStart(3)} ${String(r.related).padStart(7)} ${String(r.fill).padStart(5)} ${String(r.band).padStart(4)} ${String(r.dark&&r.ghost).padStart(7)}  ${r.num.trim().slice(-8)}`);
 }
