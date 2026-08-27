@@ -35,8 +35,18 @@ export const realErrs = () => errs.filter(t => !/favicon|fonts\.g/.test(t));
 export const close = code => { ws.close(); process.exit(code); };
 await send('Runtime.enable'); await send('Log.enable');
 
+// Practice pages are read off disk rather than listed here. A hardcoded roster has
+// drifted three times now — once when practices were added, once when they were
+// renamed, once when two were merged — and each time the suite either skipped a real
+// page or asserted against a deleted one. Derive it.
+import { readdirSync } from 'fs';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+const DESIGN = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
+const practices = readdirSync(join(DESIGN, 'industries'))
+  .filter(f => f.endsWith('.html'))
+  .map(f => `industries/${f.slice(0, -5)}`)
+  .sort();
 export const PAGES = ['index','clients','candidates','blog','start-a-search','cost-of-vacancy','talent-network',
-  'industries/hoa-property-management','industries/hospitality-restaurant','industries/commercial-lines-insurance',
-  'industries/personal-lines-insurance','industries/accounting-finance','industries/commercial-construction',
-  'industries/qsr-franchise','industries/oil-gas'];
+  ...practices];
 export const SLUGS = PAGES.filter(p => p.startsWith('industries/')).map(p => p.split('/')[1]);

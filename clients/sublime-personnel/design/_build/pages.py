@@ -16,18 +16,10 @@ SEARCH= '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width
 DOC   = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.5 2.5H6a1.5 1.5 0 0 0-1.5 1.5v12A1.5 1.5 0 0 0 6 17.5h8a1.5 1.5 0 0 0 1.5-1.5V6.5z"/><path d="M11.5 2.5v4h4M7.5 11h5M7.5 14h3"/></svg>'
 USER  = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="6.8" r="3"/><path d="M4 16.6a6 6 0 0 1 12 0"/></svg>'
 
-# Order is the published order: the "practice area NN of 07" numbering, the nav,
-# the footer and the related-practice cards all read off this one list.
-VERTICALS = [
-    ("hoa-property-management",   "HOA &amp; Property Management", "Community managers, portfolio &amp; high-rise"),
-    ("hospitality-restaurant",    "Hospitality &amp; Restaurant",  "GMs, multi-unit leaders, chefs, F&amp;B"),
-    ("commercial-lines-insurance","Commercial Lines Insurance",    "Producers, underwriters, account managers"),
-    ("personal-lines-insurance",  "Personal Lines Insurance",      "Account managers, producers, service"),
-    ("accounting-finance",        "Accounting &amp; Finance",      "Controllers, CFOs, senior accountants"),
-    ("commercial-construction",   "Commercial Construction",       "PMs, superintendents, estimators"),
-    ("qsr-franchise",             "QSR &amp; Franchise",           "Area coaches, FBCs, multi-unit leadership"),
-    ("oil-gas",                   "Oil &amp; Gas",                 "Drilling, completions, HSE, turnaround"),
-]
+# Derived from _build/industries.py so the nav, the footer, the practice grid and
+# the "NN of NN" numbering cannot drift from the practice content. One list, one
+# source — this used to be a second hardcoded copy and it went stale immediately.
+VERTICALS = [(i["slug"], i["nav"], i["navsub"]) for i in INDUSTRIES]
 IND_NUM = {slug: f"{n+1:02d}" for n, (slug, _, _) in enumerate(VERTICALS)}
 
 # d = directory depth below the site root, so industries/ pages get "../".
@@ -547,7 +539,7 @@ def build_calc():
         <form class="form-card" data-simple="vacancy_report" novalidate style="background:#fff;border:1px solid var(--line);padding:clamp(26px,3.4vw,40px)">
           <p class="eyebrow">Take it with you</p>
           <h3 style="margin-bottom:12px">Send me these figures</h3>
-          <p style="font-size:.94rem;margin-bottom:24px">We will send the figures you have built, together with the compensation range we are currently seeing for this role in the Houston market.</p>
+          <p style="font-size:.94rem;margin-bottom:24px">We will send the figures you have built, together with the compensation range we are currently seeing for this role in your market.</p>
           <div class="field" data-required="email">
             <label for="cemail">Work email <span class="req">*</span></label>
             <input id="cemail" name="email" type="email" autocomplete="email">

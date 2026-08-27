@@ -418,23 +418,58 @@ It pulls the `-card.jpg` crops, not the 1800px bands — the cells render about 
 and loading band images there put four practice pages over the weight budget. That is
 what `images.mjs` caught.
 
-## Adding a practice area
+## Practice areas — one source of truth
 
-Everything reads off one list, so this is cheap — which matters, because the final
-list is still unconfirmed.
+`_build/industries.py` is the single source. `VERTICALS`, `IND_NUM`, the nav, the
+mobile drawer, the footer column, the `NN of NN` numbering and the test roster all
+derive from it. Each entry carries `nav` (the full button label) and `navsub` (the
+smaller line under it).
 
-1. `_build/pages.py` → append to `VERTICALS`. Appending keeps the existing numbers
-   stable; inserting renumbers everything after it.
-2. `_build/industries.py` → an `INDUSTRIES` entry with the same shape as its
-   neighbours (nine roles, four screening criteria, two FAQs, two related practices).
-3. `assets/img/` → `<slug>.jpg` at 1800×620 and `<slug>-card.jpg` at 760×320, through
-   the duotone pipeline in **Photography**.
-4. `index.html` → nav dropdown, mobile drawer, practices grid card, footer column.
-   The homepage is the only hand-maintained page; everything else reads from
-   `header()` / `footer()`.
-5. Rebuild and run `./_build/tests/run.sh`.
+**Long names live on the button, not in the display heading.** Terry's naming —
+"Insurance Sales, Account Management & Leadership" — is 48 characters and would wrap
+to four lines at 70px. `nav`/`navsub` carry it in the nav and on the card; `h1_main` /
+`h1_fill` stay tight ("Insurance" / "Recruiting") so the heading still reads as type
+and still carries the search term.
 
-The `NN of NN` numbering derives from `len(VERTICALS)` and the test regex derives from
-`SLUGS.length`, so neither needs touching. Both used to be hardcoded to `07` and both
-silently went wrong when the eighth practice was added — that is why they are computed
-now.
+To add or change one:
+
+1. `_build/industries.py` — add or edit the entry. Nine roles, four screening
+   criteria, two FAQs, two related practices, matching its neighbours.
+2. `assets/img/` — `<slug>.jpg` at 1800×620 and `<slug>-card.jpg` at 760×320 through
+   the duotone pipeline in **Photography**. The crop bias in that snippet matters:
+   0.42 suits landscapes, but a portrait-oriented subject needs ~0.10 or it slices
+   people's heads off. Look at the band before moving on.
+3. `index.html` — nav dropdown, mobile drawer, practices grid card, footer column.
+   **The homepage is the only page that does not read from `header()`/`footer()`,**
+   so it is the only one that needs hand-editing. There is a script in the git history
+   for this commit that regenerates all four blocks from `INDUSTRIES` — reuse it.
+4. Rebuild and run `./_build/tests/run.sh`.
+
+Retiring one also means deleting `industries/<slug>.html`, its two images, and any
+`related` tuples that point at it. `links.py` catches the dangling references.
+
+### Hardcoded lists are the recurring bug here
+
+Three separate copies of the practice list drifted during this build: the `of 07`
+numbering, the test regex guarding it, and the test roster in `_cdp.mjs`. Each time
+the failure was silent in the wrong direction — the suite asserted against pages that
+no longer existed, or skipped ones that did. All three are now derived: the count from
+`len(VERTICALS)`, the regex from `SLUGS.length`, and the roster from `readdirSync` on
+`industries/`. **If you find yourself typing the practice list a fourth time, derive
+it instead.**
+
+## Still needs the client
+
+- **Healthcare has no operator story.** Every other practice opens with a version of
+  "we worked inside this industry" — Pete's thirty years in restaurants, Terry's 2006
+  insurance desk, the Gulf Coast construction network. Healthcare copy came from Terry
+  and the "why us" section currently argues the difficulty of the hire rather than
+  their standing in it. That is honest but weaker than the rest of the site. Ask
+  Terry what their actual healthcare track record is.
+- **The healthcare screening criteria are ours, not theirs.** Licensure and
+  credentialing, setting and scale, revenue cycle literacy, standing with clinical
+  staff — sensible for the vertical, but Terry supplied roles and positioning, not a
+  screen. Have him correct it.
+- **QSR & Franchise vs Hospitality & Restaurant** is unresolved. Terry asked whether
+  QSR should become "Restaurants and Hospitality", which would duplicate practice 02.
+  Left alone pending an answer.
