@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css?v=72103e20">
+<link rel="stylesheet" href="assets/styles.css?v=7cf2e454">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -36,6 +36,7 @@
       </div>
       <a href="clients.html">For Employers</a>
       <a href="candidates.html">For Candidates</a>
+      <a href="jobs.html">Open Roles</a>
       <a href="blog.html">Insights</a>
       <a href="index.html#partners">About</a>
     </nav>
@@ -50,6 +51,7 @@
   <div class="wrap" style="padding:0">
     <a href="clients.html">For Employers</a>
     <a href="candidates.html">For Candidates</a>
+    <a href="jobs.html">Open Roles</a>
     <a href="cost-of-vacancy.html">What It Costs</a>
     <a href="blog.html">Insights</a>
     <a href="index.html#partners">About</a>
@@ -77,6 +79,23 @@
     <div class="calc" data-calc>
 
       <div class="calc-in">
+      <div class="calc-field">
+          <label class="flabel" for="jobtitle">What is the role</label>
+          <input id="jobtitle" class="titlein" type="text" list="commonroles" autocomplete="off"
+                 placeholder="Director of Operations" value="">
+          <datalist id="commonroles">
+            <option value="Chief Executive Officer"><option value="Chief Financial Officer">
+            <option value="Chief Operating Officer"><option value="Vice President of Operations">
+            <option value="Regional Vice President"><option value="Director of Operations">
+            <option value="General Manager"><option value="Multi-Unit / District Manager">
+            <option value="Controller"><option value="Portfolio / Community Manager">
+            <option value="Commercial Lines Producer"><option value="Project Executive">
+            <option value="Project Manager"><option value="Superintendent">
+            <option value="Director of Nursing"><option value="Drilling Engineer">
+          </datalist>
+          <p class="hint">Optional. It sharpens the comparables if you ask us for the figures.</p>
+        </div>
+
         <div class="calc-field">
           <div class="rangewrap">
             <label class="flabel" for="salary">Annual salary for the role</label>
@@ -104,7 +123,7 @@
           <div class="ticks"><span>1</span><span>12</span></div>
         </div>
 
-        <div class="calc-field" style="margin-bottom:0">
+        <div class="calc-field">
           <div class="rangewrap">
             <label class="flabel" for="multiplier">Value of the role against its salary</label>
             <span class="rangeval" data-out="mult">1.0&times;</span>
@@ -113,21 +132,45 @@
           <div class="ticks"><span>0.5&times;</span><span>3&times;</span></div>
           <p class="hint">The default of 1.0&times; assumes the role generates exactly what it is paid &mdash; deliberately conservative. For a producer or revenue role, increase it.</p>
         </div>
+
+        <div class="calc-field tier-field">
+          <span class="flabel" id="tierlab">Fee and replacement guarantee</span>
+          <div class="tiers" role="radiogroup" aria-labelledby="tierlab">
+            <label class="tier"><input type="radio" name="tier" value="0"><span><b>15%</b><i>60&#8209;day guarantee</i></span></label>
+            <label class="tier"><input type="radio" name="tier" value="1" checked><span><b>20%</b><i>90&#8209;day guarantee</i></span></label>
+            <label class="tier"><input type="radio" name="tier" value="2"><span><b>25%</b><i>120&#8209;day guarantee</i></span></label>
+          </div>
+          <p class="hint">Where you land in our fee band is your choice, not ours. A lower fee carries a shorter guarantee on the placement; a higher one carries longer cover. Most clients sit at 20%.</p>
+        </div>
       </div>
 
       <div class="calc-out on-dark">
-        <p class="eyebrow">Running total</p>
+        <h2 class="eyebrow">Running total</h2>
         <div class="bignum" data-out="vacancy">$19,038</div>
         <p style="margin-top:10px">is what this vacancy has cost so far.</p>
 
         <div style="margin-top:32px">
-          <div class="calc-row"><span>Every further day it stays open</span><b data-out="daily">$423</b></div>
-          <div class="calc-row"><span>Our fee for this placement (15&ndash;20%)</span><b data-out="fee">$16,500 &ndash; $22,000</b></div>
-          <div class="calc-row"><span>At this volume, annually</span><b data-out="annual">$66,000 &ndash; $88,000</b></div>
+          <div class="calc-row"><span>Your cost every day it stays open</span><b data-out="daily">$423</b></div>
+          <div class="calc-row lost"><span>Lost revenue this quarter</span><b data-out="quarter">$38,077</b></div>
+          <div class="calc-row"><span data-out="feelabel">Our fee at 20% &middot; 90&#8209;day guarantee</span><b data-out="fee">$22,000</b></div>
           <div class="calc-row"><span>Days of vacancy that equal the fee</span><b data-out="breakeven">52 days</b></div>
         </div>
 
         <div class="verdict" data-out="verdict"></div>
+
+        <form class="calc-capture" data-simple="vacancy_snapshot" data-calc-context novalidate>
+          <div class="field" data-required="email">
+            <label for="snapemail">Send this to yourself</label>
+            <div class="inline-in">
+              <input id="snapemail" name="email" type="email" autocomplete="email" placeholder="Work email">
+              <button class="btn btn-green" type="submit">Send</button>
+            </div>
+            <p class="err">Please check the email address.</p>
+          </div>
+          <div class="hp" aria-hidden="true"><label for="snapw">Leave blank</label><input id="snapw" name="company_website" type="text" tabindex="-1" autocomplete="off"></div>
+          <p class="form-note hint">Your figures, plus the compensation range we are currently seeing for this role. One email &mdash; no sequence.</p>
+          <div class="form-ok" hidden><h3>On its way.</h3><p>Check your inbox shortly.</p></div>
+        </form>
 
         <div class="btns" style="margin-top:30px">
           <a class="btn btn-green" href="start-a-search.html">Begin the search <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
@@ -136,8 +179,8 @@
 
         <details class="assump">
           <summary>How we calculate this</summary>
-          <p>Daily cost = (salary &times; multiplier) &divide; 260 working days. Cost so far = daily cost &times; days open. Our fee range is 15&ndash;20% of first-year compensation, which is the band Pete quotes on the phone &mdash; where you land inside it depends on role level and how many searches you run a year.</p>
-          <p>This is a planning estimate, not a quote. It deliberately ignores overtime, the cost of the work not getting done, and manager time spent covering &mdash; so if anything it reads low. Your actual fee is agreed in writing before any search begins.</p>
+          <p>Daily cost = (salary &times; multiplier) &divide; 260 working days. Cost so far = daily cost &times; days open. Lost revenue this quarter = daily cost &times; 90 days. Our fee is 15%, 20% or 25% of first&#8209;year compensation depending on the replacement guarantee you want behind the placement.</p>
+          <p>This is a planning estimate, not a quote. It deliberately ignores overtime, the cost of the work not getting done, and manager time spent covering &mdash; so if anything it reads low. It also ignores the largest compounding risk: an open seat absorbed by one person who then leaves as well, which costs you the training already invested, a second search, and the team&rsquo;s rhythm on top. Your actual fee is agreed in writing before any search begins.</p>
         </details>
       </div>
 
@@ -155,7 +198,7 @@
         <p style="margin-top:16px">We take the opposite view. Tell us what you are able to invest in hiring across a year and we will tell you whether we can work within it. Sometimes the answer is no &mdash; which is a five-minute conversation rather than a wasted quarter.</p>
       </div>
       <div>
-        <form class="form-card" data-simple="vacancy_report" novalidate style="background:#fff;border:1px solid var(--line);padding:clamp(26px,3.4vw,40px)">
+        <form class="form-card" data-simple="vacancy_report" data-calc-context novalidate style="background:#fff;border:1px solid var(--line);padding:clamp(26px,3.4vw,40px)">
           <p class="eyebrow">Take it with you</p>
           <h3 style="margin-bottom:12px">Send me these figures</h3>
           <p style="font-size:.94rem;margin-bottom:24px">We will send the figures you have built, together with the compensation range we are currently seeing for this role in your market.</p>
@@ -194,6 +237,7 @@
       <div><h3 class="minor-head">Company</h3><ul>
         <li><a href="clients.html">For Employers</a></li>
         <li><a href="candidates.html">For Candidates</a></li>
+        <li><a href="jobs.html">Open Roles</a></li>
         <li><a href="start-a-search.html">Start a Search</a></li>
         <li><a href="cost-of-vacancy.html">What It Costs</a></li>
         <li><a href="blog.html">Insights</a></li>
@@ -219,6 +263,6 @@
 </div>
 
 <script src="assets/main.js?v=b0564b64" defer></script>
-<script src="assets/funnel.js?v=3696a58f" defer></script>
+<script src="assets/funnel.js?v=3658b600" defer></script>
 </body>
 </html>

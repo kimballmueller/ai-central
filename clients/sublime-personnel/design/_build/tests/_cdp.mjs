@@ -47,6 +47,6 @@ const practices = readdirSync(join(DESIGN, 'industries'))
   .filter(f => f.endsWith('.html'))
   .map(f => `industries/${f.slice(0, -5)}`)
   .sort();
-export const PAGES = ['index','clients','candidates','blog','start-a-search','cost-of-vacancy','talent-network',
+export const PAGES = ['index','clients','candidates','blog','start-a-search','cost-of-vacancy','talent-network','jobs',
   ...practices];
 export const SLUGS = PAGES.filter(p => p.startsWith('industries/')).map(p => p.split('/')[1]);

@@ -17,7 +17,7 @@ trap 'kill $BROWSER 2>/dev/null; rm -rf "$PROFILE"' EXIT
 for _ in $(seq 1 20); do curl -sf -o /dev/null "http://127.0.0.1:$PORT/json/version" && break; sleep .3; done
 
 fail=0
-for t in links.py pages.mjs industries.mjs images.mjs funnel.mjs; do
+for t in links.py pages.mjs industries.mjs images.mjs funnel.mjs jobs.mjs; do
   echo; echo "════ $t"
   case $t in
     *.py)  python3 "_build/tests/$t" ;;

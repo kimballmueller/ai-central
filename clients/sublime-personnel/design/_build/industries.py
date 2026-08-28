@@ -293,5 +293,5 @@ INDUSTRIES = [
 # on every page — this is the AEO surface, and it is also what Pete gets asked.
 STANDARD_FAQ = [
   ("How do your fees work?","A percentage of first&#8209;year compensation, structured to the level of the role and the volume of work, and agreed in writing before the search begins."),
-  ("How long does a search usually take?","For most roles we present a first slate within two weeks of the briefing. Time to offer depends more on your interview process than on ours."),
+  ("How long does a search usually take?","For most roles the first slate reaches you in under 10 days from the briefing. We then take your feedback and come back with a tighter four. Time to offer depends more on your interview process than on ours."),
 ]

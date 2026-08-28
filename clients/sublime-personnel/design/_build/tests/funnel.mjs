@@ -95,13 +95,16 @@ const nums = `(() => {
   const t = s => (document.querySelector(s)?.textContent || '');
   const num = s => t(s).replace(/[^0-9.]/g,'');
   return { daily: num('[data-out=daily]'), vacancy: num('[data-out=vacancy]'),
-           fee: t('[data-out=fee]'), annual: t('[data-out=annual]'),
+           quarter: num('[data-out=quarter]'), fee: num('[data-out=fee]'),
+           feelabel: t('[data-out=feelabel]'),
            breakeven: num('[data-out=breakeven]'), verdict: t('[data-out=verdict]'),
            salary: num('[data-out=salary]'), days: num('[data-out=days]') };
 })()`;
 const set = async (id, v) => ev(`(()=>{const e=document.querySelector('#${id}');
   if(e){e.value='${v}'; e.dispatchEvent(new Event('input',{bubbles:true}));}})()`);
 const money = n => Math.round(n).toLocaleString('en-US');
+const tier = async i => ev(`(()=>{const e=document.querySelector('input[name=tier][value="${i}"]');
+  if(e){e.checked=true; e.dispatchEvent(new Event('input',{bubbles:true}));}})()`);
 
 await set('salary', 120000); await set('daysopen', 45);
 await set('hires', 4); await set('multiplier', 2); await wait(400);
@@ -110,9 +113,25 @@ const a = await ev(nums);
 check('echoes the salary back', a.salary, '120,000'.replace(/,/g,''));
 check('daily value = salary x multiplier / 260', a.daily, String(Math.round(D1)));
 check('vacancy cost = daily x days open', a.vacancy, String(Math.round(V1)));
-check('fee range is 15-20% of salary', a.fee.replace(/\s/g,''), '$18,000–$24,000');
-check('annual fee = range x hires per year', a.annual.replace(/\s/g,''), '$72,000–$96,000');
-check('break-even = high fee / daily value', a.breakeven, String(Math.round(24000/D1)));
+check('quarterly loss = daily value x 90', a.quarter, String(Math.round(D1*90)));
+check('default tier is 20%', a.fee, '24000');
+check('fee label names the tier and its guarantee', a.feelabel.replace(/\s+/g,' ').trim(),
+      'Our fee at 20% \u00b7 90\u2011day guarantee');
+check('break-even = fee / daily value', a.breakeven, String(Math.round(24000/D1)));
+check('volume line puts fees against empty seats',
+      a.verdict.includes(money(24000*4)) && a.verdict.includes(money(D1*90*4)), true);
+
+// Pete's ladder: fee and guarantee move together, and break-even moves with them.
+for (const [i, pct, days] of [[0, 0.15, 60], [2, 0.25, 120]]) {
+  await tier(i); await wait(300);
+  const t = await ev(nums);
+  check(`tier ${i}: fee is ${pct*100}% of salary`, t.fee, String(120000*pct));
+  check(`tier ${i}: label carries the ${days}-day guarantee`,
+        t.feelabel.includes(`${days}\u2011day`), true);
+  check(`tier ${i}: break-even tracks the tier`, t.breakeven,
+        String(Math.round((120000*pct)/D1)));
+}
+await tier(1); await wait(300);
 check('verdict speaks when the seat has outrun the fee',
       V1 > 24000 ? a.verdict.includes('more') : a.verdict.includes('overtakes'), true);
 
@@ -121,9 +140,19 @@ const D2 = 65000*2/260;
 const b = await ev(nums);
 check('recalculates daily value on new inputs', b.daily, String(Math.round(D2)));
 check('vacancy follows the new day count', b.vacancy, String(Math.round(D2*90)));
-check('fees follow the new salary', b.fee.replace(/\s/g,''), '$9,750–$13,000');
-check('no email gate on the result',
-      await ev(`!document.querySelector('.calc-out input[type=email]')`), true);
+check('fee follows the new salary', b.fee, String(65000*0.20));
+check('quarterly loss follows the new salary', b.quarter, String(Math.round(D2*90)));
+/* The page promises "no email required" in its lede. There IS an email field in
+   the result panel now — a capture, not a gate — so assert the property that
+   actually matters: every figure is legible before anyone types anything. */
+check('figures are readable without entering an email',
+      await ev(`(()=>{const F=['daily','vacancy','quarter','fee','breakeven','verdict'];
+        const empty = document.querySelector('.calc-out input[type=email]');
+        return empty && !empty.value &&
+               F.every(k => (document.querySelector('[data-out='+k+']')?.textContent||'').trim().length > 0);})()`), true);
+check('the calculator scenario rides along with the capture form',
+      await ev(`(()=>{const f=document.querySelector('form[data-calc-context]');
+        return !!f && f.closest('.calc-out') !== null;})()`), true);
 
 // ----------------------------------------------------------------- the forms
 for (const page of ['talent-network.html', 'cost-of-vacancy.html']) {
@@ -143,8 +172,11 @@ for (const page of ['talent-network.html', 'cost-of-vacancy.html']) {
   check(`${name}: confirmation shown on valid submit`,
         await ev(`(()=>{const b=document.querySelector('form[data-simple] .form-ok');
                   return !!b && b.hidden === false;})()`), true);
+  /* Scope to the submitted form: cost-of-vacancy carries two data-simple forms
+     and only the first was filled in, so a page-wide query reports a false miss. */
   check(`${name}: fields hidden after submit`,
-        await ev(`[...document.querySelectorAll('form[data-simple] .field')].every(f=>f.hidden)`), true);
+        await ev(`(()=>{const f=document.querySelector('form[data-simple]');
+                  return [...f.querySelectorAll('.field')].every(x=>x.hidden);})()`), true);
 }
 
 // ------------------------------------------------------------------- console

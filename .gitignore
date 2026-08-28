@@ -20,6 +20,11 @@ clients/powerhouse-roofing/deliverables/*
 # references, a quote from the discovery transcript, and open questions for Pete.
 # Published knowingly.
 !clients/sublime-personnel
+# ...but NOT pending/. That folder holds copy drafted from things clients said
+# off the record — Pete named healthcare clients on the Aug 28 call prefaced with
+# "between me and you", and Sublime never publishes client names because
+# candidates use them to apply direct. Drafts go to Pete by email, not by URL.
+clients/sublime-personnel/pending/
 
 
 # Fireflies transcript dumps (raw call audio text)

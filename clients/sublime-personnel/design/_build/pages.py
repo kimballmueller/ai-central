@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Generates every page except index.html, so header/footer never drift.
 Run from design/:  python3 _build/pages.py && python3 _build/bust.py"""
-import os, sys
+import os, sys, re, html
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from industries import INDUSTRIES, STANDARD_FAQ
+from glossary import GLOSSARY, RECRUITING_TERMS
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 ARROW = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg>'
@@ -37,7 +38,7 @@ def head(title, desc, d=0, schema=""):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{r}assets/styles.css?v=72103e20">
+<link rel="stylesheet" href="{r}assets/styles.css?v=7cf2e454">
 {schema}</head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -74,6 +75,7 @@ def header(d=0):
       </div>
       <a href="{r}clients.html">For Employers</a>
       <a href="{r}candidates.html">For Candidates</a>
+      <a href="{r}jobs.html">Open Roles</a>
       <a href="{r}blog.html">Insights</a>
       <a href="{r}index.html#partners">About</a>
     </nav>
@@ -88,6 +90,7 @@ def header(d=0):
   <div class="wrap" style="padding:0">
     <a href="{r}clients.html">For Employers</a>
     <a href="{r}candidates.html">For Candidates</a>
+    <a href="{r}jobs.html">Open Roles</a>
     <a href="{r}cost-of-vacancy.html">What It Costs</a>
     <a href="{r}blog.html">Insights</a>
     <a href="{r}index.html#partners">About</a>
@@ -120,6 +123,7 @@ def footer(d=0):
       <div><h3 class="minor-head">Company</h3><ul>
         <li><a href="{r}clients.html">For Employers</a></li>
         <li><a href="{r}candidates.html">For Candidates</a></li>
+        <li><a href="{r}jobs.html">Open Roles</a></li>
         <li><a href="{r}start-a-search.html">Start a Search</a></li>
         <li><a href="{r}cost-of-vacancy.html">What It Costs</a></li>
         <li><a href="{r}blog.html">Insights</a></li>
@@ -145,7 +149,7 @@ def footer(d=0):
 </div>
 
 <script src="{r}assets/main.js?v=b0564b64" defer></script>
-<script src="{r}assets/funnel.js?v=3696a58f" defer></script>
+<script src="{r}assets/funnel.js?v=3658b600" defer></script>
 </body>
 </html>
 """
@@ -177,7 +181,7 @@ def cta_band(heading="Let us discuss the role.", d=0,
     <p class="lede mx-auto rv" style="margin-top:22px;color:rgba(255,255,255,.68)">{body}</p>
     <div class="btns center rv" style="margin-top:36px">
       <a class="btn btn-green" href="{r}start-a-search.html">Begin a search {ARROW}</a>
-      <a class="btn btn-out" href="tel:+17133960944">Call 713-396-0944</a>
+      <a class="btn btn-out" href="{r}cost-of-vacancy.html">What is this seat costing you?</a>
     </div>
   </div>
 </section>
@@ -458,6 +462,23 @@ def build_calc():
     <div class="calc" data-calc>
 
       <div class="calc-in">
+      <div class="calc-field">
+          <label class="flabel" for="jobtitle">What is the role</label>
+          <input id="jobtitle" class="titlein" type="text" list="commonroles" autocomplete="off"
+                 placeholder="Director of Operations" value="">
+          <datalist id="commonroles">
+            <option value="Chief Executive Officer"><option value="Chief Financial Officer">
+            <option value="Chief Operating Officer"><option value="Vice President of Operations">
+            <option value="Regional Vice President"><option value="Director of Operations">
+            <option value="General Manager"><option value="Multi-Unit / District Manager">
+            <option value="Controller"><option value="Portfolio / Community Manager">
+            <option value="Commercial Lines Producer"><option value="Project Executive">
+            <option value="Project Manager"><option value="Superintendent">
+            <option value="Director of Nursing"><option value="Drilling Engineer">
+          </datalist>
+          <p class="hint">Optional. It sharpens the comparables if you ask us for the figures.</p>
+        </div>
+
         <div class="calc-field">
           <div class="rangewrap">
             <label class="flabel" for="salary">Annual salary for the role</label>
@@ -485,7 +506,7 @@ def build_calc():
           <div class="ticks"><span>1</span><span>12</span></div>
         </div>
 
-        <div class="calc-field" style="margin-bottom:0">
+        <div class="calc-field">
           <div class="rangewrap">
             <label class="flabel" for="multiplier">Value of the role against its salary</label>
             <span class="rangeval" data-out="mult">1.0&times;</span>
@@ -494,21 +515,45 @@ def build_calc():
           <div class="ticks"><span>0.5&times;</span><span>3&times;</span></div>
           <p class="hint">The default of 1.0&times; assumes the role generates exactly what it is paid &mdash; deliberately conservative. For a producer or revenue role, increase it.</p>
         </div>
+
+        <div class="calc-field tier-field">
+          <span class="flabel" id="tierlab">Fee and replacement guarantee</span>
+          <div class="tiers" role="radiogroup" aria-labelledby="tierlab">
+            <label class="tier"><input type="radio" name="tier" value="0"><span><b>15%</b><i>60&#8209;day guarantee</i></span></label>
+            <label class="tier"><input type="radio" name="tier" value="1" checked><span><b>20%</b><i>90&#8209;day guarantee</i></span></label>
+            <label class="tier"><input type="radio" name="tier" value="2"><span><b>25%</b><i>120&#8209;day guarantee</i></span></label>
+          </div>
+          <p class="hint">Where you land in our fee band is your choice, not ours. A lower fee carries a shorter guarantee on the placement; a higher one carries longer cover. Most clients sit at 20%.</p>
+        </div>
       </div>
 
       <div class="calc-out on-dark">
-        <p class="eyebrow">Running total</p>
+        <h2 class="eyebrow">Running total</h2>
         <div class="bignum" data-out="vacancy">$19,038</div>
         <p style="margin-top:10px">is what this vacancy has cost so far.</p>
 
         <div style="margin-top:32px">
-          <div class="calc-row"><span>Every further day it stays open</span><b data-out="daily">$423</b></div>
-          <div class="calc-row"><span>Our fee for this placement (15&ndash;20%)</span><b data-out="fee">$16,500 &ndash; $22,000</b></div>
-          <div class="calc-row"><span>At this volume, annually</span><b data-out="annual">$66,000 &ndash; $88,000</b></div>
+          <div class="calc-row"><span>Your cost every day it stays open</span><b data-out="daily">$423</b></div>
+          <div class="calc-row lost"><span>Lost revenue this quarter</span><b data-out="quarter">$38,077</b></div>
+          <div class="calc-row"><span data-out="feelabel">Our fee at 20% &middot; 90&#8209;day guarantee</span><b data-out="fee">$22,000</b></div>
           <div class="calc-row"><span>Days of vacancy that equal the fee</span><b data-out="breakeven">52 days</b></div>
         </div>
 
         <div class="verdict" data-out="verdict"></div>
+
+        <form class="calc-capture" data-simple="vacancy_snapshot" data-calc-context novalidate>
+          <div class="field" data-required="email">
+            <label for="snapemail">Send this to yourself</label>
+            <div class="inline-in">
+              <input id="snapemail" name="email" type="email" autocomplete="email" placeholder="Work email">
+              <button class="btn btn-green" type="submit">Send</button>
+            </div>
+            <p class="err">Please check the email address.</p>
+          </div>
+          <div class="hp" aria-hidden="true"><label for="snapw">Leave blank</label><input id="snapw" name="company_website" type="text" tabindex="-1" autocomplete="off"></div>
+          <p class="form-note hint">Your figures, plus the compensation range we are currently seeing for this role. One email &mdash; no sequence.</p>
+          <div class="form-ok" hidden><h3>On its way.</h3><p>Check your inbox shortly.</p></div>
+        </form>
 
         <div class="btns" style="margin-top:30px">
           <a class="btn btn-green" href="start-a-search.html">Begin the search {ARROW}</a>
@@ -517,8 +562,8 @@ def build_calc():
 
         <details class="assump">
           <summary>How we calculate this</summary>
-          <p>Daily cost = (salary &times; multiplier) &divide; 260 working days. Cost so far = daily cost &times; days open. Our fee range is 15&ndash;20% of first-year compensation, which is the band Pete quotes on the phone &mdash; where you land inside it depends on role level and how many searches you run a year.</p>
-          <p>This is a planning estimate, not a quote. It deliberately ignores overtime, the cost of the work not getting done, and manager time spent covering &mdash; so if anything it reads low. Your actual fee is agreed in writing before any search begins.</p>
+          <p>Daily cost = (salary &times; multiplier) &divide; 260 working days. Cost so far = daily cost &times; days open. Lost revenue this quarter = daily cost &times; 90 days. Our fee is 15%, 20% or 25% of first&#8209;year compensation depending on the replacement guarantee you want behind the placement.</p>
+          <p>This is a planning estimate, not a quote. It deliberately ignores overtime, the cost of the work not getting done, and manager time spent covering &mdash; so if anything it reads low. It also ignores the largest compounding risk: an open seat absorbed by one person who then leaves as well, which costs you the training already invested, a second search, and the team&rsquo;s rhythm on top. Your actual fee is agreed in writing before any search begins.</p>
         </details>
       </div>
 
@@ -536,7 +581,7 @@ def build_calc():
         <p style="margin-top:16px">We take the opposite view. Tell us what you are able to invest in hiring across a year and we will tell you whether we can work within it. Sometimes the answer is no &mdash; which is a five-minute conversation rather than a wasted quarter.</p>
       </div>
       <div>
-        <form class="form-card" data-simple="vacancy_report" novalidate style="background:#fff;border:1px solid var(--line);padding:clamp(26px,3.4vw,40px)">
+        <form class="form-card" data-simple="vacancy_report" data-calc-context novalidate style="background:#fff;border:1px solid var(--line);padding:clamp(26px,3.4vw,40px)">
           <p class="eyebrow">Take it with you</p>
           <h3 style="margin-bottom:12px">Send me these figures</h3>
           <p style="font-size:.94rem;margin-bottom:24px">We will send the figures you have built, together with the compensation range we are currently seeing for this role in your market.</p>
@@ -579,7 +624,7 @@ def build_talent():
     <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><i>/</i>Talent Network</nav>
     <p class="eyebrow center">For candidates</p>
     <h1 class="phead-display"><span class="fill">Represented</span>, not listed</h1>
-    <p class="lede">We do not run a job board and we do not post r&eacute;sum&eacute;s. Tell us what would make a move worthwhile, and when something genuine appears in your field you will hear about it before it is advertised &mdash; if it is advertised at all.</p>
+    <p class="lede">Our board carries only the roles a client has cleared for posting; most of what we fill never reaches it, and we never post r&eacute;sum&eacute;s. Tell us what would make a move worthwhile, and when something genuine appears in your field you will hear about it before it is advertised &mdash; if it is advertised at all.</p>
   </div>
 </section>
 
@@ -670,7 +715,7 @@ def build_talent():
 # ============================================================ 4. FOR EMPLOYERS
 def build_clients():
     body = head("Executive Search for Houston Employers | Sublime Personnel",
-                "How we run a search: a proper briefing, a mapped market, a short assessed slate, fees agreed in writing, and a replacement guarantee of up to 120 days on every direct hire.",
+                "How we run a search: a proper briefing, a mapped market, a short assessed slate, fees agreed in writing, and a replacement guarantee of 60, 90 or 120 days on every direct hire, tied to the fee tier you choose.",
                 schema=faq_schema(CLIENT_FAQ))
     body += header()
     body += f"""
@@ -695,7 +740,7 @@ def build_clients():
       <div><p class="lede rv">Most of our work is direct hire. Forcing every requirement into one model is how firms end up selling you the wrong thing, so we will tell you which of these your situation actually calls for.</p></div>
     </div>
     <div class="grid g3">
-      <div class="card rv"><h3 class="minor-head">Direct hire</h3><p>Permanent placement, contingency or retained. A percentage of first-year compensation, and every placement carries a replacement guarantee &mdash; 60, 90 or 120 days, set in your contract.</p></div>
+      <div class="card rv"><h3 class="minor-head">Direct hire</h3><p>Permanent placement, contingency or retained. A percentage of first-year compensation &mdash; 15% to 25% &mdash; and every placement carries a replacement guarantee of 60, 90 or 120 days, tied to the tier you choose and set in your contract.</p></div>
       <div class="card rv"><h3 class="minor-head">Temp&#8209;to&#8209;hire</h3><p>Bring someone in on our payroll, see the work, convert when you are certain. Useful for accounting and back-office roles where fit is hard to read in an interview.</p></div>
       <div class="card rv"><h3 class="minor-head">Interim &amp; temporary</h3><p>Cover for a leave, a close, a build-out, or the gap between leaders &mdash; including interim controllers and fractional finance leadership.</p></div>
     </div>
@@ -709,7 +754,7 @@ def build_clients():
     <div class="steps" style="margin-top:46px">
       <div class="step rv"><div class="step-n">01</div><div><h3>The briefing &mdash; about forty minutes</h3><p>What the role genuinely requires, who it reports to, the compensation you can defend, the interview process and who owns it, and what has gone wrong in this seat before. If the role as written cannot be filled at that number, you hear it on this call and we will tell you what would need to change.</p></div></div>
       <div class="step rv"><div class="step-n">02</div><div><h3>The market map &mdash; days one to five</h3><p>We identify who holds this role across comparable organisations, who is credentialed, and who is quietly open. Then we approach them personally. The strongest people in our practices are not applying to anything; they are employed, busy, and take the call because they know one of us.</p></div></div>
-      <div class="step rv"><div class="step-n">03</div><div><h3>The slate &mdash; typically inside two weeks</h3><p>Three to five candidates with written assessment of each: the fit, the risk, the motivation, and what it will take to close them. No volume submissions. If the market produced only two genuine candidates, you receive two and an explanation.</p></div></div>
+      <div class="step rv"><div class="step-n">03</div><div><h3>The slate &mdash; in under 10 days</h3><p>Three to five candidates with written assessment of each: the fit, the risk, the motivation, and what it will take to close them. No volume submissions. If the market produced only two genuine candidates, you receive two and an explanation.</p></div></div>
       <div class="step rv"><div class="step-n">04</div><div><h3>Interviews and offer</h3><p>We coordinate scheduling, debrief both sides after each round, and hold candidates engaged through the slow weeks. At offer we manage the compensation conversation and pre-empt the counter-offer &mdash; a candidate surprised by one is a candidate you lose.</p></div></div>
       <div class="step rv"><div class="step-n">05</div><div><h3>Thirty days on</h3><p>We check in with both parties at week one and week four. If it is not working the guarantee applies and we return to the market. If it is working, we ask who else you need.</p></div></div>
     </div>
@@ -735,7 +780,7 @@ def build_clients():
       <div class="grid" style="gap:20px">
         <div class="card rv"><div class="icn">{SEARCH}</div><h3 class="minor-head">We screen on the work</h3><p>Each practice page sets out exactly what we ask candidates in that field. It is the clearest picture of how we assess &mdash; read the one that matches your role.</p><a class="tlink" style="margin-top:auto;padding-top:22px" href="index.html#industries">See the practices {ARROW}</a></div>
         <div class="card rv"><div class="icn">{LOCK}</div><h3 class="minor-head">Confidential searches</h3><p>Replacing someone who still holds the seat is delicate. We run those quietly and never approach a candidate through a channel their employer can see.</p></div>
-        <div class="card rv"><div class="icn">{SHIELD}</div><h3 class="minor-head">Up to a 120-day guarantee</h3><p>Every direct hire is guaranteed for 60, 90 or 120 days depending on your contract. Should the placement leave inside that window, we run the search again at no further fee.</p></div>
+        <div class="card rv"><div class="icn">{SHIELD}</div><h3 class="minor-head">A guarantee you choose</h3><p>Every direct hire carries a replacement guarantee, and its length is tied to the fee tier you choose: 60 days at 15%, 90 days at 20%, 120 days at 25%. The tier is set in your contract. Should the placement leave inside that window, we run the search again at no further fee.</p></div>
       </div>
     </div>
   </div>
@@ -770,7 +815,7 @@ def build_clients():
 
 CLIENT_FAQ = [
  ("What does a placement cost?",
-  "A percentage of the candidate's first-year compensation, structured to the level of the role and the volume of work, and agreed in writing before the search begins. We would rather have that conversation on the first call than at offer stage."),
+  "A percentage of the candidate's first-year compensation, agreed in writing before the search begins. Our band is 15–25%, and where you land inside it is your choice: a lower fee carries a shorter replacement guarantee, a higher one carries longer cover. Most clients sit at 20% with a 90-day guarantee. We would rather have that conversation on the first call than at offer stage."),
  ("Are you retained or contingency?",
   "Mostly contingency, with retained or engaged arrangements for confidential and executive searches where the work has to happen quietly and thoroughly. We recommend the structure that fits the role, not the one that pays us best."),
  ("How many candidates will I see?",
@@ -778,7 +823,7 @@ CLIENT_FAQ = [
  ("What do you need from us to start?",
   "Roughly an hour: a proper briefing, the compensation band you can defend, and one named decision maker who can move candidates through the process. Searches stall on scheduling far more often than on sourcing."),
  ("What is the guarantee?",
-  "Every direct hire carries a replacement guarantee of 60, 90 or 120 days &mdash; the term is negotiated and set in your contract. Should the placement leave inside that window, we run the search again at no further fee. We have written about why replacement guarantees matter <a href=\"https://sublimepersonnel.com/blog/f/how-replacement-guarantees-reduce-hiring-risk-for-texas-employers\" target=\"_blank\" rel=\"noopener\">here</a>."),
+  "Every direct hire carries a replacement guarantee, and its length is tied to the fee tier you choose: 60 days at 15%, 90 days at 20%, 120 days at 25%. The tier is set in your contract. Should the placement leave inside that window, we run the search again at no further fee. We have written about why replacement guarantees matter <a href=\"https://sublimepersonnel.com/blog/f/how-replacement-guarantees-reduce-hiring-risk-for-texas-employers\" target=\"_blank\" rel=\"noopener\">here</a>."),
  ("Will you sign our NDA or vendor agreement?",
   "Yes. Send it across with the role and we will turn it around quickly."),
 ]
@@ -835,6 +880,10 @@ def build_candidates():
         <div class="card rv"><div class="icn">{LOCK}</div><h3 class="minor-head">Confidential by default</h3><p>Particularly for insurance producers and senior operators. Nothing moves without your approval, company by company.</p></div>
         <div class="card rv"><div class="icn">{CHECK}</div><h3 class="minor-head">No cost to you</h3><p>The hiring company pays our fee. Candidates are never charged, at any stage.</p></div>
         <div class="card rv"><div class="icn">{USER}</div><h3 class="minor-head">A principal reads it</h3><p>Not a coordinator and not a keyword filter. Pete or Terry reads what you send and replies personally.</p></div>
+        <!-- Pete's own candidate-facing site. The only outbound link on the site,
+             and it sits on the candidate path deliberately: it helps someone
+             preparing for a move, and it keeps every employer page exit-free. -->
+        <div class="card rv"><div class="icn">{SEARCH}</div><h3 class="minor-head">Check your r&eacute;sum&eacute; first</h3><p>Pete runs a free ATS r&eacute;sum&eacute; review at Influence of Your 7 &mdash; it shows you how an applicant tracking system reads your r&eacute;sum&eacute; before a person ever sees it.</p><a class="tlink" style="margin-top:auto;padding-top:22px" href="https://influenceofyour7.com" target="_blank" rel="noopener">Run the review {ARROW}</a></div>
       </div>
     </div>
   </div>
@@ -1127,8 +1176,8 @@ def build_industry(i):
         </div>
       </div>
       <div class="grid" style="gap:20px">
-        <div class="card rv"><div class="icn">{CLOCK}</div><h3 class="minor-head">First slate in about two weeks</h3><p>Three to five candidates with written assessment of fit, risk and what it will take to close them.</p></div>
-        <div class="card rv"><div class="icn">{SHIELD}</div><h3 class="minor-head">Up to a 120-day guarantee</h3><p>Every direct hire is guaranteed for 60, 90 or 120 days depending on your contract. Leave inside that window and we run the search again at no further fee.</p></div>
+        <div class="card rv"><div class="icn">{CLOCK}</div><h3 class="minor-head">First slate in under 10 days</h3><p>Three to five candidates with written assessment of fit, risk and what it will take to close them.</p></div>
+        <div class="card rv"><div class="icn">{SHIELD}</div><h3 class="minor-head">A guarantee you choose</h3><p>Every direct hire carries a replacement guarantee &mdash; 60, 90 or 120 days, tied to the fee tier you choose and set in your contract. Leave inside that window and we run the search again at no further fee.</p></div>
       </div>
     </div>
   </div>
@@ -1150,11 +1199,222 @@ def build_industry(i):
     body += footer(d=1)
     write(f"industries/{slug}.html", body)
 
+
+# ============================================================ JOB BOARD
+# Sample rows. Pete asked for a board the old site promised and never delivered:
+# open/close control, sanitized descriptions, search by region, salary, practice.
+# These are ILLUSTRATIVE and the page says so in a banner — the prototype is on a
+# public URL and a plausible-looking fake opening is a job someone would apply to.
+# Replace wholesale when Pete sends real cleared roles, then set JOBS_LIVE = True.
+JOBS_LIVE = False
+
+# (title, practice-slug, city, state, salary_low, salary_high, benefits, brief)
+JOBS = [
+ ("Portfolio Manager, High&#8209;Rise", "hoa-property-management", "Nashville", "TN", 95, 115,
+  "Health, dental, 401(k) match, vehicle allowance",
+  "Mixed-use high-rise with commercial on the back of the property. Governance experience and board meeting facilitation are non-negotiable; the board interviews the shortlist."),
+ ("Community Association Manager", "hoa-property-management", "Houston", "TX", 72, 88,
+  "Health, dental, 401(k), mileage reimbursement",
+  "Portfolio of six associations for a national management company. CMCA held or in progress."),
+ ("Director of Operations", "hospitality-restaurant", "Houston", "TX", 130, 160,
+  "Health, dental, bonus to 20%, vehicle allowance",
+  "Multi-unit group opening four locations over eighteen months. Reports to the principal; owns P&amp;L across the portfolio."),
+ ("Executive Chef", "hospitality-restaurant", "Austin", "TX", 95, 120,
+  "Health, dental, 401(k), quarterly bonus",
+  "Chef-driven independent doing 180 covers a night. Scratch kitchen, seasonal menu, full authority over the line."),
+ ("Commercial Lines Producer", "insurance", "Dallas", "TX", 90, 140,
+  "Health, dental, 401(k), uncapped commission",
+  "Established agency with a book to inherit alongside new business. Property and casualty licence required."),
+ ("Commercial Lines Account Manager", "insurance", "Houston", "TX", 68, 85,
+  "Health, dental, 401(k), licence sponsorship",
+  "Middle-market book, roughly forty accounts. Applied Epic experience preferred."),
+ ("Director of Nursing", "healthcare", "San Antonio", "TX", 115, 140,
+  "Health, dental, 401(k), CEU allowance",
+  "Multi-site outpatient group. Active RN licence and prior multi-site clinical leadership required."),
+ ("Controller", "accounting-finance", "Houston", "TX", 125, 150,
+  "Health, dental, 401(k) match, bonus",
+  "Privately held company approaching $80M revenue. Month-end close, audit liaison, and a team of four. CPA preferred, not required."),
+ ("Project Executive", "commercial-construction", "Houston", "TX", 160, 200,
+  "Health, dental, 401(k), vehicle, bonus",
+  "Ground-up commercial general contractor. Owns two to three concurrent projects in the $20&ndash;60M range."),
+ ("Superintendent", "commercial-construction", "The Woodlands", "TX", 110, 135,
+  "Health, dental, 401(k), truck and fuel",
+  "Interior and ground-up commercial. Self-perform concrete background is an advantage."),
+ ("Area Coach, Multi&#8209;Unit", "qsr-franchise", "Phoenix", "AZ", 78, 95,
+  "Health, dental, 401(k), vehicle allowance, bonus",
+  "Franchisee operating eleven units across two brands. Twelve to fourteen restaurant span of control."),
+ ("Drilling Engineer", "oil-gas", "Midland", "TX", 145, 185,
+  "Health, dental, 401(k) match, rotation schedule",
+  "Permian operator, horizontal programme. Well planning through execution; some field presence expected."),
+]
+
+
+def build_jobs():
+    prac = {slug: nav for slug, nav, _ in VERTICALS}
+    states = sorted({j[3] for j in JOBS})
+
+    rows = []
+    for title, slug, city, st, lo, hi, benefits, brief in JOBS:
+        band = "under100" if hi <= 100 else ("100to150" if hi <= 150 else "over150")
+        rows.append(f"""      <article class="job" data-state="{st}" data-practice="{slug}" data-band="{band}">
+        <div class="job-hd">
+          <h3 class="minor-head">{title}</h3>
+          <p class="job-pay">${lo}k &ndash; ${hi}k</p>
+        </div>
+        <p class="job-meta"><span>{city}, {st}</span><i>&middot;</i><a href="industries/{slug}.html">{prac[slug]}</a></p>
+        <p class="job-brief">{brief}</p>
+        <p class="job-ben">{benefits}</p>
+        <a class="tlink" href="talent-network.html">Ask us about this role {ARROW}</a>
+      </article>""")
+
+    state_opts = "".join(f'<option value="{st}">{st}</option>' for st in states)
+    prac_opts = "".join(f'<option value="{slug}">{nav}</option>' for slug, nav, _ in VERTICALS)
+
+    banner = "" if JOBS_LIVE else """
+    <div class="notice" role="status">
+      <strong>Preview.</strong> Sample roles are shown here so you can see the board work &mdash;
+      the filters, the counts and the enquiry route are all live. Real openings replace them
+      as soon as Sublime publishes them, and nothing below is currently recruiting.
+    </div>
+"""
+
+    body = head("Open Roles | Sublime Personnel",
+                "Leadership and professional roles Sublime Personnel is currently recruiting across HOA, hospitality, insurance, healthcare, accounting, construction, franchise and energy. Most of our work is never advertised.")
+    body += header()
+    body += f"""
+<main id="main">
+<section class="phead">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><i>/</i>Open Roles</nav>
+    <p class="eyebrow center">Currently recruiting</p>
+    <h1 class="phead-display">The roles we can <span class="fill">talk about</span></h1>
+    <p class="lede">Most of what we fill is confidential and never reaches a board. These are the searches our clients have cleared for posting. If none of them is yours, speak to us anyway &mdash; the right role usually arrives before it is advertised.</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">{banner}
+    <h2 class="sec-head">Currently open</h2>
+    <div class="job-filters" data-jobs>
+      <div class="jf">
+        <label for="f-state">Location</label>
+        <select id="f-state" data-filter="state"><option value="">Any state</option>{state_opts}</select>
+      </div>
+      <div class="jf">
+        <label for="f-practice">Practice</label>
+        <select id="f-practice" data-filter="practice"><option value="">All practices</option>{prac_opts}</select>
+      </div>
+      <div class="jf">
+        <label for="f-band">Salary</label>
+        <select id="f-band" data-filter="band">
+          <option value="">Any salary</option>
+          <option value="under100">Up to $100k</option>
+          <option value="100to150">$100k &ndash; $150k</option>
+          <option value="over150">$150k and above</option>
+        </select>
+      </div>
+      <p class="jf-count"><b data-jobs-count>{len(JOBS)}</b> <span data-jobs-noun>roles</span> shown</p>
+    </div>
+
+    <div class="jobs" data-jobs-list>
+{chr(10).join(rows)}
+    </div>
+
+    <p class="jobs-empty" data-jobs-empty hidden>Nothing open under those filters at the moment. Most of our searches never reach this page &mdash; <a href="talent-network.html">tell us what you are looking for</a> and we will come to you when it appears.</p>
+  </div>
+</section>
+
+{cta_band("Not seeing your role?",
+          body="The strongest opportunities we run are confidential. A twenty-minute conversation puts you in front of them before they are advertised, and it costs you nothing.")}
+</main>
+"""
+    body += footer()
+    write("jobs.html", body)
+
+
+def build_llms():
+    """llms.txt — a plain-text brief for AI crawlers.
+
+    Two jobs. It states the facts a model needs to answer a question about
+    Sublime correctly (practices, fees, guarantee, geography, contact), and it
+    carries the HOA glossary that Pete did not want as a page for humans. Models
+    will happily read a wall of definitions; visitors will not.
+    """
+    def clean(t):
+        return re.sub(r"<[^>]+>", "", html.unescape(t)).replace("\u2011", "-")
+
+    L = []
+    L.append("# Sublime Personnel")
+    L.append("")
+    L.append("> Boutique executive search and recruiting firm, founded 2010 and based in the "
+             "Greater Houston Area, placing leadership and professional talent nationwide. "
+             "Every search is run personally by one of the two partners.")
+    L.append("")
+    L.append("Contact: Pete Proctor, Vice President of Operations - pete@sublimepersonnel.com - 713-396-0944")
+    L.append("Terry Stevenson, Partner - terry@sublimepersonnel.com")
+    L.append("")
+
+    L.append("## How the firm works")
+    L.append("")
+    L.append("- Fees are a percentage of first-year compensation and are published rather than "
+             "withheld until a sales call. The band is 15% to 25%.")
+    L.append("- The fee is tied to the replacement guarantee: 15% carries a 60-day guarantee, "
+             "20% carries 90 days, 25% carries 120 days. The tier is set in the client's contract. "
+             "If a placement leaves inside the window the search is run again at no further fee.")
+    L.append("- The first slate reaches a client in under 10 days from the briefing: three "
+             "candidates, then a tighter four after feedback. Three to five candidates with a "
+             "written assessment of fit, risk, motivation and what it will take to close them.")
+    L.append("- Engagement types: direct hire (contingency or retained), temp-to-hire, and "
+             "interim or temporary placement.")
+    L.append("- Candidates are never charged, at any stage. A resume is never sent to a company "
+             "without the candidate's approval of that specific company.")
+    L.append("- Client names are not published. Candidates who learn a client's identity go "
+             "direct, so confidentiality is a condition of the work rather than a preference.")
+    L.append("")
+
+    L.append("## Practices")
+    L.append("")
+    for i in INDUSTRIES:
+        L.append(f"- [{clean(i['nav'])}](industries/{i['slug']}.html): {clean(i['desc'])}")
+    L.append("")
+
+    L.append("## Pages")
+    L.append("")
+    for path, title, desc in [
+        ("index.html", "Home", "The firm, the practices, the partners."),
+        ("clients.html", "For Employers", "How a search is run, engagement types, fees and guarantee."),
+        ("candidates.html", "For Candidates", "How candidates are represented, and what it costs them (nothing)."),
+        ("jobs.html", "Open Roles", "Roles cleared for posting. Most searches are confidential and never appear here."),
+        ("cost-of-vacancy.html", "What It Costs", "A calculator for the cost of an open seat, and the published fee and guarantee tiers."),
+        ("start-a-search.html", "Start a Search", "Employer intake."),
+        ("talent-network.html", "Talent Network", "Confidential candidate intake."),
+        ("blog.html", "Insights", "Hiring intelligence: market trends, fee structures, guarantees, assessment."),
+    ]:
+        L.append(f"- [{title}]({path}): {desc}")
+    L.append("")
+
+    L.append("## HOA and community association management glossary")
+    L.append("")
+    L.append("Sublime Personnel's deepest practice is HOA and property management recruiting. "
+             "These are the firm's own published definitions of the terms used in that field.")
+    L.append("")
+    for term, definition in GLOSSARY:
+        L.append(f"- **{term}**: {definition}")
+    L.append("")
+
+    L.append("## Recruiting terms")
+    L.append("")
+    for term, definition in RECRUITING_TERMS:
+        L.append(f"- **{term}**: {definition}")
+    L.append("")
+
+    write("llms.txt", "\n".join(L) + "\n")
+
 # ============================================================ entry point
 if __name__ == "__main__":
     print("Building ->", ROOT)
     build_intake(); build_calc(); build_talent()
-    build_clients(); build_candidates(); build_blog()
+    build_clients(); build_candidates(); build_blog(); build_jobs(); build_llms()
     for i in INDUSTRIES:
         build_industry(i)
     print("Done.")
