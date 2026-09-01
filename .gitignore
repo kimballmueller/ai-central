@@ -8,12 +8,11 @@ clients/*
 !clients/powerhouse-roofing
 clients/powerhouse-roofing/*
 !clients/powerhouse-roofing/website
-# Exception: estimator/proposal tool, published to GitHub Pages.
-# NOTE: this folder contains material costs, labor rates and margin structure.
-# It is publicly readable at kimballmueller.github.io. Published knowingly.
-!clients/powerhouse-roofing/deliverables
-clients/powerhouse-roofing/deliverables/*
-!clients/powerhouse-roofing/deliverables/proposal-maker
+# NO exception for deliverables/. The estimator/proposal-maker carries PowerHouse
+# material costs, labor rates, margin divisors and commission logic. It was tracked
+# and served publicly from this repo's GitHub Pages until 2026-08-31; untracked now.
+# Its own README says "The tool is internal - it exposes cost and margin. Do not put
+# it on the public site." Estimator work moves to a private powerhouse-estimator repo.
 
 # Exception: Sublime Personnel. Whole client folder is tracked and PUBLIC.
 # NOTE: this includes design/README.md, which carries internal notes — SOW clause
