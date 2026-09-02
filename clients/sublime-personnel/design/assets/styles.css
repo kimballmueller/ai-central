@@ -931,3 +931,34 @@ a.card:hover .shot img { transform: scale(1.05); }
 .prac-row a:hover { border-color: var(--blue); color: var(--blue); background: var(--paper-2); }
 /* the gallery follows the article cluster directly — no stacked section padding */
 .gal-sec { padding-top: 0; }
+
+/* ---------------- Fee table (cost-of-vacancy) ----------------
+   The published fee/guarantee tiers as real HTML, not only as the JS array in
+   funnel.js. An answer engine that does not execute script could not read the
+   single most differentiating fact on this site until this table existed. */
+.feetable { width: 100%; border-collapse: collapse; margin-top: 30px; font-size: .94rem; }
+.feetable caption { caption-side: bottom; margin-top: 12px; text-align: left; }
+.feetable th, .feetable td { border-bottom: 1px solid var(--line); padding: 14px 12px; text-align: left; vertical-align: top; }
+.feetable thead th { font-size: .74rem; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.feetable tbody th { font-family: var(--display); font-size: 1.35rem; color: var(--head); font-weight: 600; width: 5.5em; }
+.feetable tbody td { color: var(--body); }
+.feetable tbody tr:last-child th, .feetable tbody tr:last-child td { border-bottom: 0; }
+
+/* ---------------- Role pages: what the role owns ---------------- */
+.ticks-list { display: grid; gap: 14px; }
+.ticks-list li { position: relative; padding-left: 26px; color: var(--body); }
+.ticks-list li::before {
+  content: ""; position: absolute; left: 0; top: .55em;
+  width: 11px; height: 2px; background: var(--green);
+}
+
+/* ---------------- Industries hub rows ---------------- */
+.hub-rows { display: grid; gap: 0; }
+.hub-row {
+  display: grid; grid-template-columns: minmax(0,.34fr) minmax(0,1fr);
+  gap: clamp(20px,4vw,56px); padding: 34px 0; border-top: 1px solid var(--line);
+}
+.hub-row:last-child { border-bottom: 1px solid var(--line); }
+.hub-row .eyebrow { margin-bottom: 8px; }
+.hub-row p { color: var(--body); }
+@media (max-width: 760px) { .hub-row { grid-template-columns: 1fr; gap: 14px; } }

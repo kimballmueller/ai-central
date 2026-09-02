@@ -12,16 +12,20 @@ the site's shape.
 - `start-a-search.html` — four-step employer intake (the primary conversion path)
 - `cost-of-vacancy.html` — live fee/vacancy calculator
 - `talent-network.html` — candidate capture
-- `industries/*.html` — all seven practice areas
+- `industries.html` — the practice-area hub (the crawlable pillar)
+- `industries/*.html` — all eight practice areas
+- `roles/*.html` — one role page per practice, eight in all
+- `locations/houston.html` — the entire local cluster, quarantined to one page
 
 Everything except `index.html` is generated:
 
 ```bash
-python3 _build/pages.py && python3 _build/bust.py
+python3 _build/pages.py && python3 _build/sync_index.py && python3 _build/bust.py
 ```
 
 `_build/pages.py` owns the markup, `_build/industries.py` owns the practice-area copy
-(that file is the one Pete edits). Both `head()`/`header()`/`footer()`/`cta_band()` take
+(that file is the one Pete edits), and `_build/roles.py` owns the role-page copy.
+**`sync_index.py` is not optional** — see *The homepage twins* below. Both `head()`/`header()`/`footer()`/`cta_band()` take
 `d=` — the directory depth — so pages inside `industries/` get `../` prefixes. Practice
 pages link to each other with no prefix at all, since they are siblings; that was a real
 bug the link crawler caught, so if you add a depth-2 directory, re-run the crawler.
@@ -90,6 +94,111 @@ stop is ≥3:1 on white (verified — the large-text bar), and there's a solid-b
 Swapping in real photography later is **one line** — replace the `background-image` on
 `.hero h1 .fill` with a `url()`. A letterform mask hides ~90% of the source image, which
 is why even mediocre stock reads as intentional here.
+
+## Nationwide SEO — what changed and why (Sept 2026)
+
+Pete's Aug 28 call left one item open: *"research and finalize whether the SEO
+strategy should focus on Texas, nationwide terms, or specific industry niches."*
+Terry wanted the language not limited to Texas; Pete said Texas was "a big enough
+market to get us boosted and running". Kimball named the real problem on the call:
+go nationwide and you corner nothing, because there is no modifier left to rank for.
+
+**The resolution: nationwide is not a keyword strategy, it is the absence of a
+geographic modifier — so the modifier moves axis.**
+
+| | Modifier | Term |
+|---|---|---|
+| Before | city | `executive search firm Houston` |
+| Now | vertical + role | `community association manager recruiters` |
+
+Same narrowness, no geography. That is what `roles/` exists for.
+
+### The three layers
+
+1. **National, vertical-led.** Every title, description, H1 and `areaServed` is
+   geographically neutral. `industries.html` is the pillar; the eight practice
+   pages are the verticals; `roles/*.html` are the terms that actually rank.
+2. **The local cluster, contained.** `locations/houston.html` carries every local
+   term and the only `LocalBusiness` node on the site. The local pack is the one
+   surface a two-partner firm ranks on immediately, so it is kept — just kept in
+   one place, where it cannot drag on the national terms. Pete's position and
+   Terry's are both satisfied by this.
+3. **The pricing wedge.** Kimball chose to weight all eight practices equally
+   rather than pick a flagship vertical, which means differentiation cannot come
+   from vertical depth. It comes from published pricing instead — see below.
+
+### Why the fee table is HTML and not just JavaScript
+
+`assets/funnel.js` holds the tiers as a JS array. Until this pass that array was
+the *only* place the fee table existed, so an answer engine that does not execute
+script could not read the single most differentiating fact on the site.
+
+It is now also a static `<table class="feetable">` on `cost-of-vacancy.html`,
+alongside `FEE_FAQ` — seven questions covering *what do recruiters charge*, *what
+is a placement fee*, *what is a replacement guarantee*. We checked the field in
+Sept 2026: Blue Castle Agency (48 states), Horizon Hospitality, GSI, Executive
+Property Staffing and HOA Talent all state a guarantee in the abstract and **none
+publishes a fee**. Those queries are currently answered by recruiting-SaaS blogs
+and by ZipRecruiter. That is the opening, and competitors will not close it,
+because publishing a price costs them their negotiating position.
+
+**Three numbers, one meaning: 15/60, 20/90, 25/120.** They appear in
+`funnel.js`, in the `.feetable`, in `FEE_FAQ`, in `CLIENT_FAQ` and in `llms.txt`.
+If one moves, all five move.
+
+### Geographic terms that are allowed to stay
+
+Everything defensible is about the **Gulf Coast industrial and subsea network** —
+a factual claim about where the firm's relationships physically are, not a
+keyword. Four sentences carry it and must survive any future rewrite:
+`industries.py:201`, `:216`, `:268`, `:287`. Plus `:277` ("Permian unconventional
+and deepwater Gulf are different jobs with the same job title") — that is industry
+vocabulary, and changing it would make the page read as written by an outsider.
+
+Also untouched, deliberately: **the live blog post titles in `POSTS`.** Six of
+their ten published posts carry `texas`/`tx` in the title *and* the slug, and they
+live off-site at `sublimepersonnel.com/blog/f/...`. Rewriting a published post's
+title to drop "Texas" would misrepresent their own content. New content is written
+national; those six become the local cluster's content.
+
+`_build/tests/geo.py` enforces all of the above. Nothing else in the suite asserts
+on titles, descriptions or `areaServed`, so without it a stray "Houston" could
+reappear in a title and no test would notice.
+
+### The homepage twins — now fixed properly
+
+`index.html` is hand-maintained and used to hold hand-copied twins of the util bar,
+the nav dropdown, the mobile drawer and all four footer columns. Those drifted
+every time the generated pages changed. **`_build/sync_index.py` now splices
+`header()` and `footer()` straight into `index.html`**, so the twins cannot exist.
+The hero, stats, practice grid, partners and FAQ between them stay hand-maintained.
+
+Run it after `pages.py` and before `bust.py`. It asserts the splice took.
+
+### Two traps this pass hit, both worth knowing
+
+- **`header(d=1)` used to infer "depth 1 means inside `industries/`"** and dropped
+  the path prefix on that basis. `roles/` and `locations/` are also depth 1 and are
+  *not* siblings of the practice pages — that inference broke 56 links in one
+  build. It is now an explicit `in_industries=` argument. `links.py` caught it;
+  nothing else would have.
+- **The test roster derived `industries/` off disk but nothing else**, so the
+  suite reported "16 passed" while silently skipping the ten new pages. `_cdp.mjs`
+  now derives `roles/` and `locations/` the same way. This is the fourth time a
+  list in this project has drifted — the standing rule holds: **derive it, never
+  type it.**
+
+### Still not done
+
+- **`CFG.ENDPOINT` in `assets/funnel.js` is still `""`.** Every form and every
+  partial step logs to the console and posts nowhere. Pete asked for leads to go
+  to `pete@sublimepersonnel.com`. This is worth more in the next thirty days than
+  the whole SEO pass and it needs one URL pasted in.
+- **`SITE` in `pages.py`** is `https://sublimepersonnel.com`. Canonicals, `og:url`
+  and `sitemap.xml` are absolute and point there. Correct for launch, wrong for
+  the staging link — do not let staging get indexed before the DNS cutover.
+- The GBP service area still needs setting to nationwide with Houston primary,
+  linked to `locations/houston.html` (SOW §2.3d).
 
 ## Positioning & voice
 

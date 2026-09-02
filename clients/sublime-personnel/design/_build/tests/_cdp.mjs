@@ -43,10 +43,15 @@ import { readdirSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 const DESIGN = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
-const practices = readdirSync(join(DESIGN, 'industries'))
+// Same reasoning for roles/ and locations/, added with the nationwide SEO pass.
+// They arrived as new depth-1 directories and were silently outside the roster
+// for exactly one build — which is how the drift always starts.
+const under = d => readdirSync(join(DESIGN, d))
   .filter(f => f.endsWith('.html'))
-  .map(f => `industries/${f.slice(0, -5)}`)
+  .map(f => `${d}/${f.slice(0, -5)}`)
   .sort();
+const practices = under('industries');
 export const PAGES = ['index','clients','candidates','blog','start-a-search','cost-of-vacancy','talent-network','jobs',
-  ...practices];
+  'industries',
+  ...practices, ...under('roles'), ...under('locations')];
 export const SLUGS = PAGES.filter(p => p.startsWith('industries/')).map(p => p.split('/')[1]);

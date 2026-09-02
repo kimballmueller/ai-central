@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Answer engines: llms.txt carries the firm's facts in full — practices,
+# published fees, guarantee tiers, and the HOA glossary.
+Sitemap: https://sublimepersonnel.com/sitemap.xml

@@ -4,8 +4,14 @@ Run from design/:  python3 _build/pages.py && python3 _build/bust.py"""
 import os, sys, re, html
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from industries import INDUSTRIES, STANDARD_FAQ
+from roles import ROLES
 from glossary import GLOSSARY, RECRUITING_TERMS
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Production origin. Canonicals, og:url and sitemap.xml are all absolute URLs, which
+# means they must point at where the site will actually live — not at the staging
+# link. If the domain changes, this is the only line to edit.
+SITE = "https://sublimepersonnel.com"
 
 ARROW = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg>'
 PHONE = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 11.3v2a1.3 1.3 0 0 1-1.5 1.3 13 13 0 0 1-5.7-2 12.8 12.8 0 0 1-4-4 13 13 0 0 1-2-5.8A1.3 1.3 0 0 1 2.7 1.3h2A1.3 1.3 0 0 1 6 2.5c.1.6.2 1.3.5 1.9a1.3 1.3 0 0 1-.3 1.4l-.9.8a10.7 10.7 0 0 0 4 4l.8-.8a1.3 1.3 0 0 1 1.4-.3c.6.2 1.2.4 1.9.4a1.3 1.3 0 0 1 1.1 1.4z"/></svg>'
@@ -24,8 +30,17 @@ VERTICALS = [(i["slug"], i["nav"], i["navsub"]) for i in INDUSTRIES]
 IND_NUM = {slug: f"{n+1:02d}" for n, (slug, _, _) in enumerate(VERTICALS)}
 
 # d = directory depth below the site root, so industries/ pages get "../".
-def head(title, desc, d=0, schema=""):
+# path = this page's URL relative to the site root ("clients.html",
+# "industries/healthcare.html"). It drives the canonical and og:url, both of which
+# must be absolute, so it cannot be derived from the "../" prefix. PAGES registers
+# it once per page and the sitemap reads the same list — see build_sitemap().
+def head(title, desc, d=0, schema="", path=""):
     r = "../" * d
+    url = f"{SITE}/{path}"
+    # Strip entities out of the title for og/twitter: those are plain-text fields and
+    # a raw &amp; renders literally in a link preview.
+    plain = html.unescape(re.sub(r"<[^>]+>", "", title)).replace("‑", "-")
+    pdesc = html.unescape(re.sub(r"<[^>]+>", "", desc)).replace("‑", "-")
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,29 +48,43 @@ def head(title, desc, d=0, schema=""):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc}">
+<link rel="canonical" href="{url}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sublime Personnel">
+<meta property="og:title" content="{html.escape(plain, quote=True)}">
+<meta property="og:description" content="{html.escape(pdesc, quote=True)}">
+<meta property="og:url" content="{url}">
+<meta property="og:image" content="{SITE}/assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="{r}assets/favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#0C1A2E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{r}assets/styles.css?v=7cf2e454">
+<link rel="stylesheet" href="{r}assets/styles.css?v=19271c0c">
 {schema}</head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 """
 
-def header(d=0):
+def header(d=0, in_industries=False):
     r = "../" * d
-    # practice pages are siblings at depth 1, so they take no prefix at all
-    ind = f"{r}industries/" if d == 0 else ""
-    items = "".join(
+    # Practice pages are siblings of each other, so they link with no prefix at
+    # all. Everything else needs the full path. This used to be inferred from
+    # d == 1, which was fine until roles/ and locations/ arrived at depth 1 and
+    # were not siblings — that inference broke 56 links at once. Pass it.
+    ind = "" if in_industries else f"{r}industries/"
+    items = (f'<a href="{r}industries.html"><strong>All practice areas</strong>'
+             f'<span>The eight industries we recruit for</span></a>'
+             + "".join(
         f'<a href="{ind}{slug}.html"><strong>{name}</strong><span>{sub}</span></a>'
-        for slug, name, sub in VERTICALS)
-    drawer = "".join(
-        f'<a href="{ind}{slug}.html">{name}</a>' for slug, name, _ in VERTICALS)
+        for slug, name, sub in VERTICALS))
+    drawer = (f'<a href="{r}industries.html">All practice areas</a>'
+              + "".join(
+        f'<a href="{ind}{slug}.html">{name}</a>' for slug, name, _ in VERTICALS))
     return f"""<div class="util">
   <div class="wrap">
-    <span class="util-tag">Greater Houston &middot; Recruiting nationwide</span>
+    <span class="util-tag">Executive search &middot; Recruiting nationwide</span>
     <span class="util-right">
       <a class="quiet" href="{r}candidates.html">Looking for a role?</a>
       <a href="tel:+17133960944">{PHONE} 713-396-0944</a>
@@ -104,12 +133,17 @@ def header(d=0):
 </div>
 """
 
-def footer(d=0):
+def footer(d=0, in_industries=False):
     r = "../" * d
-    ind_dir = f"{r}industries/" if d == 0 else ""
-    ind = "".join(
+    ind_dir = "" if in_industries else f"{r}industries/"
+    ind = (f'<li><a href="{r}industries.html"><b>All practice areas</b></a></li>'
+           + "".join(
         f'<li><a href="{ind_dir}{slug}.html">{name}</a></li>'
-        for slug, name, _ in VERTICALS)
+        for slug, name, _ in VERTICALS))
+    # Role pages are the national ranking layer — they need a crawlable link from
+    # every page, not only from their own practice.
+    rle = "".join(
+        f'<li><a href="{r}roles/{x["slug"]}.html">{x["nav"]}</a></li>' for x in ROLES)
     return f"""<footer class="ftr">
   <div class="wrap">
     <div class="ftr-top">
@@ -117,9 +151,10 @@ def footer(d=0):
         <a class="brand" href="{r}index.html">
           <img src="{r}assets/logo-flat-light.png" alt="Sublime Personnel" width="460" height="176">
         </a>
-        <p class="blurb">A boutique executive search and recruiting firm in the Greater Houston Area, placing leadership across hospitality, property management, insurance, accounting, construction and franchise operations since 2010.</p>
+        <p class="blurb">A boutique executive search and recruiting firm placing leadership nationwide across hospitality, property management, insurance, healthcare, accounting, construction and franchise operations since 2010.</p>
       </div>
       <div><h3 class="minor-head">Industries</h3><ul>{ind}</ul></div>
+      <div><h3 class="minor-head">Roles we recruit</h3><ul>{rle}</ul></div>
       <div><h3 class="minor-head">Company</h3><ul>
         <li><a href="{r}clients.html">For Employers</a></li>
         <li><a href="{r}candidates.html">For Candidates</a></li>
@@ -128,17 +163,18 @@ def footer(d=0):
         <li><a href="{r}cost-of-vacancy.html">What It Costs</a></li>
         <li><a href="{r}blog.html">Insights</a></li>
         <li><a href="{r}index.html#partners">About</a></li>
+        <li><a href="{r}locations/houston.html">Houston</a></li>
       </ul></div>
       <div><h3 class="minor-head">Contact</h3><ul>
         <li><a href="tel:+17133960944">713-396-0944</a></li>
         <li><a href="mailto:pete@sublimepersonnel.com">pete@sublimepersonnel.com</a></li>
         <li><a href="mailto:terry@sublimepersonnel.com">terry@sublimepersonnel.com</a></li>
-        <li>Greater Houston Area<br>Recruiting nationwide</li>
+        <li>Recruiting nationwide<br>Every search run by a partner</li>
       </ul></div>
     </div>
     <div class="ftr-bot">
       <p>&copy; <span data-year>2026</span> Sublime Personnel LLC. All rights reserved.</p>
-      <ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Sitemap</a></li></ul>
+      <ul><li><a href="{r}sitemap.xml">Sitemap</a></li></ul>
     </div>
   </div>
 </footer>
@@ -210,7 +246,7 @@ def faq_schema(items):
     return ('<script type="application/ld+json">'
             '{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[%s]}</script>\n' % qs)
 
-def service_schema(name, desc, area="Houston, Texas"):
+def service_schema(name, desc, area="United States"):
     return ('<script type="application/ld+json">'
             '{"@context":"https://schema.org","@type":"Service",'
             '"serviceType":"%s","provider":{"@type":"EmploymentAgency","name":"Sublime Personnel",'
@@ -248,7 +284,7 @@ def cluster_block(slug, nav, d=1):
   <div class="wrap">
     <div class="split-hd" style="margin-bottom:40px">
       <div><p class="eyebrow rv">Reading</p><h2 class="rv">Written for people<br>hiring in {nav}.</h2></div>
-      <div><p class="lede rv">Where a vacancy actually costs you money, how fee structures differ, and what the Texas market is paying now. <a class="tlink" href="{r}blog.html" style="margin-top:14px">All insights {ARROW}</a></p></div>
+      <div><p class="lede rv">Where a vacancy actually costs you money, how fee structures differ, and what the market is paying now. <a class="tlink" href="{r}blog.html" style="margin-top:14px">All insights {ARROW}</a></p></div>
     </div>
     <div class="post-grid rv">{cards}</div>
   </div>
@@ -286,7 +322,8 @@ def build_intake():
     ) + '<label class="choice"><input type="radio" name="industry" value="Something else"><span>Something else<small>Describe it and we will tell you candidly whether we can fill it</small></span></label>'
 
     body = head("Start a Search | Sublime Personnel",
-                "Tell us the role you are hiring for. Four short questions, and Pete or Terry come back within one business day on whether we can fill it and what it costs.")
+                "Tell us the role you are hiring for. Four short questions, and Pete or Terry come back within one business day on whether we can fill it and what it costs.",
+                path="start-a-search.html")
     body += header()
     body += f"""
 <main id="main">
@@ -442,9 +479,35 @@ def build_intake():
     write("start-a-search.html", body)
 
 # ============================================================ 2. CALCULATOR
+# The national head terms nobody in this field answers. Every competitor page we
+# looked at — Blue Castle, Horizon, GSI, Executive Property Staffing — states a
+# guarantee in the abstract and no fee at all, so the query "what do recruiters
+# charge" is answered today by recruiting-SaaS blogs and job boards rather than by
+# any recruiting firm. Sublime publishes the actual numbers, which is the one
+# differentiator a competitor will not copy: publishing a price costs them their
+# negotiating position. These answers must stay numerically identical to the tiers
+# in assets/funnel.js and in llms.txt.
+FEE_FAQ = [
+ ("What do recruiters charge?",
+  "Most contingency recruiters charge 15–30% of the hire's first-year compensation, and retained executive search typically runs 25–33% with a minimum. Our own band is 15–25%, published rather than withheld until a sales call, and the percentage you pay is tied to the length of the replacement guarantee you want."),
+ ("What is a placement fee?",
+  "A one-time fee paid by the hiring company when a candidate you hire starts. It is calculated as a percentage of that candidate's first-year compensation, so a 20% fee on a $120,000 role is $24,000. Candidates never pay anything, at any stage."),
+ ("What is a replacement guarantee?",
+  "A contractual window during which, if the placement leaves, the firm runs the search again at no further fee. Ours is tied to the fee tier: 60 days at 15%, 90 days at 20%, 120 days at 25%. The tier is written into your contract rather than negotiated after something goes wrong."),
+ ("Why would I pay more for a longer guarantee?",
+  "Because the risk moves with it. A new hire is most likely to fail between day 60 and day 90 — a 120-day guarantee carries them through onboarding, the first quarter and the first time they are genuinely under pressure. If you want the lower fee we will write the shorter guarantee; we would simply rather you chose it knowingly."),
+ ("How long should a search take?",
+  "Our first slate reaches you in under 10 days from the briefing: three candidates with written assessment, then a tighter four once you have given feedback. Time to offer after that depends far more on your interview process than on ours."),
+ ("Do you charge a retainer or an upfront fee?",
+  "Mostly no — our work is contingency, so the fee is due when someone starts. We use retained or engaged arrangements for confidential and executive searches where the work has to happen quietly and thoroughly, and we will tell you which structure fits the role rather than which one pays us best."),
+ ("Is a recruiting fee worth it?",
+  "That depends on what the seat is costing you empty, which is what the calculator on this page works out. A role paying $120,000 that drives revenue typically costs more per day open than the fee amortised across the year — the calculator shows you the day on which the vacancy has cost you more than the placement would have."),
+]
+
 def build_calc():
-    body = head("What Does a Vacancy Cost? | Sublime Personnel",
-                "Work out what an empty seat costs you per day and what a placement fee is against it. Adjustable inputs, transparent assumptions, no email required.")
+    body = head("What Does a Recruiter Cost? Fees, Guarantees &amp; Vacancy Calculator",
+                "Our recruiting fees in full: 15% with a 60-day guarantee, 20% with 90 days, 25% with 120 days. Plus a calculator for what an empty seat costs you per day. No email required.",
+                schema=faq_schema(FEE_FAQ), path="cost-of-vacancy.html")
     body += header()
     body += f"""
 <main id="main">
@@ -579,6 +642,19 @@ def build_calc():
         <h2>Why we publish our fees.</h2>
         <p class="lede" style="margin-top:22px">Look at the largest hospitality, insurance and construction recruiters. Not one publishes a fee. You are expected to sit through a sales conversation before anyone will name a figure.</p>
         <p style="margin-top:16px">We take the opposite view. Tell us what you are able to invest in hiring across a year and we will tell you whether we can work within it. Sometimes the answer is no &mdash; which is a five-minute conversation rather than a wasted quarter.</p>
+
+        <table class="feetable">
+          <caption class="hint">Sublime Personnel direct-hire fees, as written into your contract.</caption>
+          <thead>
+            <tr><th scope="col">Fee</th><th scope="col">Replacement guarantee</th><th scope="col">When it fits</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">15%</th><td>60 days</td><td>You need the lower fee and will carry the shorter cover.</td></tr>
+            <tr><th scope="row">20%</th><td>90 days</td><td>Standard. Where most clients sit.</td></tr>
+            <tr><th scope="row">25%</th><td>120 days</td><td>Premium search. Cover through onboarding and the first quarter.</td></tr>
+          </tbody>
+        </table>
+        <p class="hint" style="margin-top:14px">Percentage of the candidate&rsquo;s first&#8209;year compensation, agreed in writing before a search begins. Candidates are never charged, at any stage.</p>
       </div>
       <div>
         <form class="form-card" data-simple="vacancy_report" data-calc-context novalidate style="background:#fff;border:1px solid var(--line);padding:clamp(26px,3.4vw,40px)">
@@ -606,6 +682,8 @@ def build_calc():
     </div>
   </div>
 </section>
+
+{faq_block(FEE_FAQ, "Recruiting fees, answered.")}
 </main>
 """
     body += footer()
@@ -615,7 +693,8 @@ def build_calc():
 def build_talent():
     opts = "".join(f"<option>{name.replace('&amp;','&')}</option>" for _, name, _ in VERTICALS) + "<option>Something else</option>"
     body = head("Join the Talent Network | Sublime Personnel",
-                "A confidential conversation with a Houston executive recruiter. Free for candidates, always. Your r&eacute;sum&eacute; never reaches a company without your approval.")
+                "A confidential conversation with an executive recruiter who runs the search personally. Free for candidates, always. Your r&eacute;sum&eacute; never reaches a company without your approval.",
+                path="talent-network.html")
     body += header()
     body += f"""
 <main id="main">
@@ -666,7 +745,7 @@ def build_talent():
           </div>
           <div class="field">
             <label for="tloc">Where you are &mdash; and would you move?</label>
-            <input id="tloc" name="location" type="text" placeholder="Houston, open to relocate">
+            <input id="tloc" name="location" type="text" placeholder="City, state &mdash; or open to relocate">
           </div>
         </div>
         <div class="field">
@@ -714,9 +793,9 @@ def build_talent():
 
 # ============================================================ 4. FOR EMPLOYERS
 def build_clients():
-    body = head("Executive Search for Houston Employers | Sublime Personnel",
+    body = head("Executive Search for Employers | Nationwide | Sublime Personnel",
                 "How we run a search: a proper briefing, a mapped market, a short assessed slate, fees agreed in writing, and a replacement guarantee of 60, 90 or 120 days on every direct hire, tied to the fee tier you choose.",
-                schema=faq_schema(CLIENT_FAQ))
+                schema=faq_schema(CLIENT_FAQ), path="clients.html")
     body += header()
     body += f"""
 <main id="main">
@@ -724,7 +803,7 @@ def build_clients():
   <div class="wrap">
     <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><i>/</i>For Employers</nav>
     <p class="eyebrow center">For employers</p>
-    <h1 class="phead-display">Executive search for <span class="fill">Houston employers</span></h1>
+    <h1 class="phead-display">Executive search, <span class="fill">run by a partner</span></h1>
     <p class="lede">You are not short of r&eacute;sum&eacute;s. You are short of the judgement to know which three are worth your time &mdash; and the hours to find them while the seat sits empty.</p>
     <div class="btns center">
       <a class="btn btn-blue" href="start-a-search.html">Begin a search {ARROW}</a>
@@ -836,8 +915,8 @@ CAND_FAQ = [
   "Not from us. Your résumé is never sent anywhere without your approval of that specific company, and we do not approach you through channels your employer can see. For insurance producers and senior operators, discretion is the entire engagement."),
  ("What if I am not actively looking?",
   "Most of the people we place were not. A twenty-minute conversation costs nothing and means that when the right role appears you hear about it first, rather than reading about it once it is filled."),
- ("Do you have roles outside Houston?",
-  "Yes. We are Houston-based and recruit nationwide, with the deepest reach across Texas and the Gulf Coast."),
+ ("Where do you place people?",
+  "Nationwide. We run searches across the United States and place wherever our clients operate — our HOA and property management work alone spans ten states. Relocation is settled early rather than discovered at offer stage."),
  ("How will you prepare me for an interview?",
   "You get the real context before you walk in: who you are meeting, why the role is open, what went wrong previously, what the organisation is genuinely paying, and the two or three things this manager values most."),
  ("What happens to my information?",
@@ -849,8 +928,8 @@ def build_candidates():
         (f'<li><a class="tlink" href="industries/{slug}.html">' if slug != "#" else '<li><a class="tlink" href="#">')
         + name + f" {ARROW}</a></li>" for slug, name, _ in VERTICALS)
     body = head("For Candidates | Confidential Career Conversations | Sublime",
-                "Confidential representation for Houston professionals in hospitality, property management, insurance, accounting and construction. Never a cost to you.",
-                schema=faq_schema(CAND_FAQ))
+                "Confidential representation for professionals in hospitality, property management, insurance, healthcare, accounting and construction. Never a cost to you.",
+                schema=faq_schema(CAND_FAQ), path="candidates.html")
     body += header()
     body += f"""
 <main id="main">
@@ -1012,7 +1091,8 @@ def build_blog():
     prac_links = "".join(
         f'<a href="industries/{slug}.html">{name}</a>' for slug, name, _ in VERTICALS)
     body = head("Insights | Hiring Intelligence for Employers | Sublime",
-                "Hiring intelligence for Texas employers: market trends, the real cost of a vacant seat, fee structures, guarantees and how to assess beyond the résumé.")
+                "Hiring intelligence for employers: market trends, the real cost of a vacant seat, fee structures, guarantees and how to assess beyond the résumé.",
+                path="blog.html")
     body += header()
     body += f"""
 <main id="main">
@@ -1020,8 +1100,8 @@ def build_blog():
   <div class="wrap">
     <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><i>/</i>Insights</nav>
     <p class="eyebrow center">Insights</p>
-    <h1 class="phead-display">Hiring intelligence for <span class="fill">Texas employers</span></h1>
-    <p class="lede">What a vacancy actually costs. How fee structures differ and when each one is right. What the Texas market is paying now. Written by the partners who run the searches.</p>
+    <h1 class="phead-display">Hiring intelligence for <span class="fill">employers</span></h1>
+    <p class="lede">What a vacancy actually costs. How fee structures differ and when each one is right. What the market is paying now. Written by the partners who run the searches.</p>
   </div>
 </section>
 
@@ -1114,8 +1194,9 @@ def build_industry(i):
 
     schema = (faq_schema(i["faq"] + STANDARD_FAQ)
               + service_schema(f'{i["nav"]} recruiting', i["desc"]))
-    body  = head(i["title"], i["desc"], d=1, schema=schema)
-    body += header(d=1)
+    body  = head(i["title"], i["desc"], d=1, schema=schema,
+                 path=f'industries/{i["slug"]}.html')
+    body += header(d=1, in_industries=True)
     body += f"""
 <main id="main">
 
@@ -1196,7 +1277,7 @@ def build_industry(i):
 {cta_band(d=1)}
 </main>
 """
-    body += footer(d=1)
+    body += footer(d=1, in_industries=True)
     write(f"industries/{slug}.html", body)
 
 
@@ -1213,25 +1294,25 @@ JOBS = [
  ("Portfolio Manager, High&#8209;Rise", "hoa-property-management", "Nashville", "TN", 95, 115,
   "Health, dental, 401(k) match, vehicle allowance",
   "Mixed-use high-rise with commercial on the back of the property. Governance experience and board meeting facilitation are non-negotiable; the board interviews the shortlist."),
- ("Community Association Manager", "hoa-property-management", "Houston", "TX", 72, 88,
+ ("Community Association Manager", "hoa-property-management", "Denver", "CO", 72, 88,
   "Health, dental, 401(k), mileage reimbursement",
   "Portfolio of six associations for a national management company. CMCA held or in progress."),
- ("Director of Operations", "hospitality-restaurant", "Houston", "TX", 130, 160,
+ ("Director of Operations", "hospitality-restaurant", "Las Vegas", "NV", 130, 160,
   "Health, dental, bonus to 20%, vehicle allowance",
   "Multi-unit group opening four locations over eighteen months. Reports to the principal; owns P&amp;L across the portfolio."),
  ("Executive Chef", "hospitality-restaurant", "Austin", "TX", 95, 120,
   "Health, dental, 401(k), quarterly bonus",
   "Chef-driven independent doing 180 covers a night. Scratch kitchen, seasonal menu, full authority over the line."),
- ("Commercial Lines Producer", "insurance", "Dallas", "TX", 90, 140,
+ ("Commercial Lines Producer", "insurance", "Charlotte", "NC", 90, 140,
   "Health, dental, 401(k), uncapped commission",
   "Established agency with a book to inherit alongside new business. Property and casualty licence required."),
- ("Commercial Lines Account Manager", "insurance", "Houston", "TX", 68, 85,
+ ("Commercial Lines Account Manager", "insurance", "Chicago", "IL", 68, 85,
   "Health, dental, 401(k), licence sponsorship",
   "Middle-market book, roughly forty accounts. Applied Epic experience preferred."),
- ("Director of Nursing", "healthcare", "San Antonio", "TX", 115, 140,
+ ("Director of Nursing", "healthcare", "Scottsdale", "AZ", 115, 140,
   "Health, dental, 401(k), CEU allowance",
   "Multi-site outpatient group. Active RN licence and prior multi-site clinical leadership required."),
- ("Controller", "accounting-finance", "Houston", "TX", 125, 150,
+ ("Controller", "accounting-finance", "Atlanta", "GA", 125, 150,
   "Health, dental, 401(k) match, bonus",
   "Privately held company approaching $80M revenue. Month-end close, audit liaison, and a team of four. CPA preferred, not required."),
  ("Project Executive", "commercial-construction", "Houston", "TX", 160, 200,
@@ -1279,7 +1360,8 @@ def build_jobs():
 """
 
     body = head("Open Roles | Sublime Personnel",
-                "Leadership and professional roles Sublime Personnel is currently recruiting across HOA, hospitality, insurance, healthcare, accounting, construction, franchise and energy. Most of our work is never advertised.")
+                "Leadership and professional roles Sublime Personnel is currently recruiting across HOA, hospitality, insurance, healthcare, accounting, construction, franchise and energy. Most of our work is never advertised.",
+                path="jobs.html")
     body += header()
     body += f"""
 <main id="main">
@@ -1346,9 +1428,9 @@ def build_llms():
     L = []
     L.append("# Sublime Personnel")
     L.append("")
-    L.append("> Boutique executive search and recruiting firm, founded 2010 and based in the "
-             "Greater Houston Area, placing leadership and professional talent nationwide. "
-             "Every search is run personally by one of the two partners.")
+    L.append("> Boutique executive search and recruiting firm, founded 2010, placing leadership "
+             "and professional talent nationwide across the United States. Every search is run "
+             "personally by one of the two partners.")
     L.append("")
     L.append("Contact: Pete Proctor, Vice President of Operations - pete@sublimepersonnel.com - 713-396-0944")
     L.append("Terry Stevenson, Partner - terry@sublimepersonnel.com")
@@ -1370,6 +1452,10 @@ def build_llms():
              "without the candidate's approval of that specific company.")
     L.append("- Client names are not published. Candidates who learn a client's identity go "
              "direct, so confidentiality is a condition of the work rather than a preference.")
+    L.append("- Searches are run nationwide across the United States. The firm's HOA and "
+             "property management practice alone covers ten states. Its deepest regional "
+             "network is the Gulf Coast, which is where the industrial, subsea and ROV "
+             "technical roles come from.")
     L.append("")
 
     L.append("## Practices")
@@ -1389,8 +1475,21 @@ def build_llms():
         ("start-a-search.html", "Start a Search", "Employer intake."),
         ("talent-network.html", "Talent Network", "Confidential candidate intake."),
         ("blog.html", "Insights", "Hiring intelligence: market trends, fee structures, guarantees, assessment."),
+        ("industries.html", "Industries", "Hub page for all eight practice areas."),
+        ("locations/houston.html", "Houston", "The firm's home market and its Gulf Coast and Permian network. The firm recruits nationwide; this page covers the local practice only."),
     ]:
         L.append(f"- [{title}]({path}): {desc}")
+    L.append("")
+
+    L.append("## Roles")
+    L.append("")
+    L.append("One page per role, covering what the role owns, how the firm screens "
+             "for it, and the compensation range currently seen nationally.")
+    L.append("")
+    for x in ROLES:
+        lo, hi = x["salary"]
+        L.append(f"- [{clean(x['nav'])}](roles/{x['slug']}.html): {clean(x['desc'])} "
+                 f"Range currently seen: ${lo},000-${hi},000.")
     L.append("")
 
     L.append("## HOA and community association management glossary")
@@ -1410,11 +1509,298 @@ def build_llms():
 
     write("llms.txt", "\n".join(L) + "\n")
 
+
+
+# ============================================================ 9. INDUSTRIES HUB
+def build_industries_hub():
+    """The crawlable pillar the site never had.
+
+    Before this, the practice pages' "All practice areas" card pointed at
+    index.html#industries — a fragment, which cannot rank, cannot be linked to and
+    cannot appear in a sitemap. With the site targeting vertical+role terms rather
+    than a city, the hub is the page that collects that internal link equity."""
+    cards = "".join(
+        f'<a class="card rv" href="industries/{slug}.html">'
+        f'<span class="num">{IND_NUM[slug]}</span><h3>{name}</h3>'
+        f'<p>{sub}</p><span class="tlink">View practice {ARROW}</span></a>'
+        for slug, name, sub in VERTICALS)
+
+    rows = "".join(
+        f'''<div class="hub-row rv">
+          <div><p class="eyebrow">{IND_NUM[i["slug"]]}</p>
+            <h3 class="minor-head"><a class="tlink" href="industries/{i["slug"]}.html">{i["nav"]} {ARROW}</a></h3></div>
+          <div><p>{i["lede"]}</p>
+            <p class="hint" style="margin-top:12px"><b>Roles we place:</b> {", ".join(r.replace("&#8209;", "-") for r in i["roles"][:6])}.</p></div>
+        </div>''' for i in INDUSTRIES)
+
+    body = head("Recruiting by Industry | 8 Practice Areas | Sublime Personnel",
+                "The eight industries Sublime Personnel recruits for nationwide &mdash; HOA and property management, hospitality, insurance, healthcare, accounting, construction, franchise and energy. Each practice is led by a partner with operating experience in it.",
+                schema=service_schema("Executive search and recruiting",
+                                      "Executive search and professional recruiting across eight industry practices, placed nationwide across the United States."),
+                path="industries.html")
+    body += header()
+    body += f"""
+<main id="main">
+<section class="phead">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><i>/</i>Industries</nav>
+    <p class="eyebrow center">Practice areas</p>
+    <h1 class="phead-display">Eight industries, <span class="fill">recruited nationwide</span></h1>
+    <p class="lede">We do not recruit for everything. We recruit for eight industries our partners have actually worked inside &mdash; and we say so plainly when a role sits outside them.</p>
+    <div class="btns center"><a class="btn btn-green" href="start-a-search.html">Start a search {ARROW}</a></div>
+    <a class="alt-path" href="cost-of-vacancy.html">Not sure yet? <b>See what the seat is costing you</b> {ARROW}</a>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="split-hd" style="margin-bottom:44px">
+      <div><p class="eyebrow rv">The practices</p><h2 class="rv">Where we<br>actually work.</h2></div>
+      <div><p class="lede rv">Each practice is led by a partner with direct operating experience in it &mdash; thirty years of restaurant operations, an insurance desk since 2006, two years recruiting inside a high&#8209;rise property management firm.</p></div>
+    </div>
+    <div class="grid g3">{cards}</div>
+  </div>
+</section>
+
+<section class="sec tint">
+  <div class="wrap">
+    <div class="split-hd" style="margin-bottom:44px">
+      <div><p class="eyebrow rv">In detail</p><h2 class="rv">What each<br>practice covers.</h2></div>
+      <div><p class="lede rv">Every practice page carries the roles we place, how we screen for them, and the questions employers in that industry actually ask.</p></div>
+    </div>
+    <div class="hub-rows">{rows}</div>
+  </div>
+</section>
+{cta_band()}
+</main>
+"""
+    body += footer()
+    write("industries.html", body)
+
+
+# ============================================================ 10. SITEMAP + ROBOTS
+# Derived from the same lists everything else reads, so a new practice or role page
+# cannot be missing from the sitemap. README's standing warning applies: three
+# hardcoded copies of the practice list have drifted here already — never type a
+# fourth.
+def site_urls():
+    urls = [("", "1.0"), ("clients.html", "0.9"), ("industries.html", "0.9"),
+            ("cost-of-vacancy.html", "0.9"), ("start-a-search.html", "0.8"),
+            ("candidates.html", "0.7"), ("jobs.html", "0.7"),
+            ("talent-network.html", "0.6"), ("blog.html", "0.6"),
+            ("locations/houston.html", "0.6")]
+    urls += [(f'industries/{i["slug"]}.html', "0.8") for i in INDUSTRIES]
+    urls += [(f'roles/{r["slug"]}.html', "0.7") for r in ROLES]
+    return urls
+
+def build_sitemap():
+    from datetime import date
+    today = date.today().isoformat()
+    entries = "".join(
+        f"  <url><loc>{SITE}/{path}</loc><lastmod>{today}</lastmod>"
+        f"<priority>{pri}</priority></url>\n" for path, pri in site_urls())
+    write("sitemap.xml",
+          '<?xml version="1.0" encoding="UTF-8"?>\n'
+          '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+          f"{entries}</urlset>\n")
+
+def build_robots():
+    write("robots.txt",
+          "User-agent: *\n"
+          "Allow: /\n"
+          "\n"
+          "# Answer engines: llms.txt carries the firm's facts in full — practices,\n"
+          "# published fees, guarantee tiers, and the HOA glossary.\n"
+          f"Sitemap: {SITE}/sitemap.xml\n")
+
+
+# ============================================================ 11. ROLE PAGES
+def build_role(r):
+    """One role page. See _build/roles.py for why these exist: the geographic
+    modifier is gone, so the role name is what makes the page narrow enough to
+    rank. Links up to its practice (the pillar) and down into the calculator."""
+    prac = next(i for i in INDUSTRIES if i["slug"] == r["practice"])
+    lo, hi = r["salary"]
+
+    does = "".join(f"<li>{d}</li>" for d in r["does"])
+    screen = "".join(
+        f'<div class="step rv"><div class="step-n">{n+1:02d}</div>'
+        f'<div><h3>{t}</h3><p>{b}</p></div></div>'
+        for n, (t, b) in enumerate(r["screen"]))
+
+    # Sibling roles, capped at three so the block reads as a suggestion rather
+    # than a second nav. Rotated by position so the eight pages do not all point
+    # at the same three — same reasoning as posts_for() on the practice pages.
+    others = [o for o in ROLES if o["slug"] != r["slug"]]
+    start = ROLES.index(r)
+    picks = [others[(start + n) % len(others)] for n in range(3)]
+    siblings = "".join(
+        f'<a class="card rv" href="{o["slug"]}.html"><span class="num">&mdash;</span>'
+        f'<h3>{o["nav"]}</h3><p>{NAV_BY_SLUG[o["practice"]]}</p>'
+        f'<span class="tlink">View role {ARROW}</span></a>' for o in picks)
+
+    schema = (faq_schema(r["faq"] + STANDARD_FAQ)
+              + service_schema(f'{r["nav"]} recruiting', r["desc"]))
+    body  = head(r["title"], r["desc"], d=1, schema=schema,
+                 path=f'roles/{r["slug"]}.html')
+    body += header(d=1)
+    body += f"""
+<main id="main">
+<section class="phead">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a><i>/</i><a href="../industries.html">Industries</a><i>/</i><a href="../industries/{prac['slug']}.html">{prac['nav']}</a><i>/</i>{r['nav']}</nav>
+    <p class="eyebrow center">{prac['nav']} &middot; Recruiting nationwide</p>
+    <h1 class="phead-display">{r['h1_main']} <span class="fill">{r['h1_fill']}</span></h1>
+    <p class="lede">{r['lede']}</p>
+    <div class="btns center"><a class="btn btn-green" href="../start-a-search.html">Start a search {ARROW}</a></div>
+    <a class="alt-path" href="../cost-of-vacancy.html">First, <b>see what this seat is costing you</b> {ARROW}</a>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="split-hd">
+      <div><p class="eyebrow rv">The role</p><h2 class="rv">{r['does_head']}</h2></div>
+      <div><ul class="ticks-list rv">{does}</ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec tint">
+  <div class="wrap">
+    <p class="eyebrow center rv">Our screen</p>
+    <h2 class="center rv" style="margin-bottom:52px">{r['screen_head']}</h2>
+    <div class="steps">{screen}</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="split" style="align-items:start;gap:clamp(32px,5vw,64px)">
+      <div>
+        <p class="eyebrow">Compensation</p>
+        <h2>What this role pays.</h2>
+        <p class="lede" style="margin-top:22px">The range we are currently seeing nationally for this role is <b>${lo},000&ndash;${hi},000</b>. It moves with market, scope and credentials &mdash; and we will tell you plainly when the band you have set will not attract the person you have described.</p>
+        <p style="margin-top:16px">Our fee against that hire is 15%, 20% or 25% of first&#8209;year compensation, and the percentage you choose sets the length of the replacement guarantee. <a class="tlink" href="../cost-of-vacancy.html" style="margin-top:14px">Work out the numbers {ARROW}</a></p>
+      </div>
+      <div>
+        <div class="card" style="background:var(--paper-2);border:1px solid var(--line);padding:clamp(26px,3.4vw,40px)">
+          <p class="eyebrow">Part of our {prac['nav']} practice</p>
+          <h3 class="minor-head" style="margin-top:10px">{prac['nav']}</h3>
+          <p style="margin-top:14px">{prac['lede']}</p>
+          <a class="tlink" style="margin-top:20px" href="../industries/{prac['slug']}.html">View the full practice {ARROW}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{faq_block(r['faq'] + STANDARD_FAQ, "Common questions.")}
+
+<section class="sec tint">
+  <div class="wrap">
+    <p class="eyebrow center rv">Other roles we recruit</p>
+    <h2 class="center rv" style="margin-bottom:52px">Hiring for something else?</h2>
+    <div class="grid g3">{siblings}</div>
+  </div>
+</section>
+{cta_band(d=1)}
+</main>
+"""
+    body += footer(d=1)
+    write(f'roles/{r["slug"]}.html', body)
+
+
+# ============================================================ 12. HOUSTON / LOCAL
+def build_houston():
+    """The local cluster, contained to one page.
+
+    The rest of the site went national, which is right for the eight practices and
+    wrong for the local pack — the one surface a two-partner firm ranks on
+    immediately. Rather than lose that, every Houston/Texas term is quarantined
+    here, together with the only LocalBusiness node on the site. Pete's "Texas is
+    a big enough market to get us running" and Terry's "not limited to Texas" are
+    both true at once this way."""
+    local_faq = [
+      ("Are you a Houston-based recruiting firm?",
+       "Yes. Sublime Personnel was founded in Houston in 2010 and both partners are here. We recruit nationwide &mdash; our HOA and property management practice alone spans ten states &mdash; but the firm is Houston-based and our deepest regional network is the Gulf Coast."),
+      ("What industries do you recruit for in Houston?",
+       "All eight of our practices: HOA and property management, hospitality and restaurant, insurance, healthcare, accounting and finance, commercial construction, QSR and franchise, and energy. The Gulf Coast industrial and energy work &mdash; including subsea and ROV roles &mdash; is specifically a Houston-network practice."),
+      ("Do you recruit in the Permian Basin and West Texas?",
+       "Yes. Midland and Odessa are an active market for us on the drilling, completions and production side, and the screen there is different from the offshore and downstream work on the coast."),
+      ("How much does a Houston recruiter charge?",
+       "The same as everywhere else we work, because we publish it: 15% of first-year compensation with a 60-day replacement guarantee, 20% with 90 days, or 25% with 120 days. The tier is written into your contract before the search begins."),
+    ]
+    schema = (faq_schema(local_faq) + '''<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness",
+ "@id":"https://sublimepersonnel.com/locations/houston.html#local",
+ "parentOrganization":{"@id":"https://sublimepersonnel.com/#organization"},
+ "name":"Sublime Personnel",
+ "url":"https://sublimepersonnel.com/locations/houston.html",
+ "telephone":"+1-713-396-0944",
+ "email":"pete@sublimepersonnel.com",
+ "priceRange":"15-25% of first-year compensation",
+ "address":{"@type":"PostalAddress","addressLocality":"Houston","addressRegion":"TX","addressCountry":"US"},
+ "areaServed":[{"@type":"City","name":"Houston"},{"@type":"State","name":"Texas"},{"@type":"Country","name":"United States"}]}
+</script>
+''')
+    body = head("Houston Executive Recruiters &amp; Search Firm | Sublime Personnel",
+                "Houston-based executive search and recruiting since 2010, placing nationwide. Fees published: 15/20/25% tied to a 60, 90 or 120-day guarantee. Both partners recruit; nobody sits between you and the work.",
+                d=1, schema=schema, path="locations/houston.html")
+    body += header(d=1)
+    body += f"""
+<main id="main">
+<section class="phead">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a><i>/</i>Houston</nav>
+    <p class="eyebrow center">Houston, Texas &middot; Since 2010</p>
+    <h1 class="phead-display">Houston executive <span class="fill">recruiters</span></h1>
+    <p class="lede">Sublime Personnel was founded in Houston in 2010 and has been run the same way since: two partners, both of whom recruit, and nobody between you and the work. We place nationwide &mdash; but this is where the firm is, and where its deepest network sits.</p>
+    <div class="btns center"><a class="btn btn-green" href="../start-a-search.html">Start a search {ARROW}</a>
+      <a class="btn btn-out" href="tel:+17133960944">Call 713-396-0944</a></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="split" style="align-items:start;gap:clamp(32px,5vw,64px)">
+      <div>
+        <p class="eyebrow">The local network</p>
+        <h2>Where being here<br>actually matters.</h2>
+        <p class="lede" style="margin-top:22px">For most of our practices, location is irrelevant &mdash; a controller search runs the same way in Atlanta as in Houston. For two of them it is the entire advantage.</p>
+        <p style="margin-top:16px">The Gulf Coast industrial and energy network is ours because we are on it. That includes the hard&#8209;to&#8209;fill technical roles &mdash; subsea and ROV operators among them &mdash; where the candidate pool is a set of relationships rather than a job board. The same people who know which superintendent can hold a jobsite know which turnaround lead can hold a shutdown.</p>
+        <p style="margin-top:16px">West Texas is the other one. Midland and Odessa are an active market for us on the drilling, completions and production side, and Permian unconventional is a different screen from deepwater work on the coast.</p>
+      </div>
+      <div>
+        <div class="card" style="background:var(--paper-2);border:1px solid var(--line);padding:clamp(26px,3.4vw,40px)">
+          <p class="eyebrow">Local, not limited</p>
+          <h3 class="minor-head" style="margin-top:10px">We place nationwide</h3>
+          <p style="margin-top:14px">Our HOA and property management practice alone covers ten states. Clients bring us wherever they need us, and we build networks in their markets ahead of the search rather than after it.</p>
+          <a class="tlink" style="margin-top:20px" href="../industries.html">All eight practices {ARROW}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{faq_block(local_faq, "Houston questions.")}
+{cta_band(d=1)}
+</main>
+"""
+    body += footer(d=1)
+    write("locations/houston.html", body)
+
+
 # ============================================================ entry point
 if __name__ == "__main__":
     print("Building ->", ROOT)
     build_intake(); build_calc(); build_talent()
-    build_clients(); build_candidates(); build_blog(); build_jobs(); build_llms()
+    build_clients(); build_candidates(); build_blog(); build_jobs()
+    build_industries_hub(); build_houston()
     for i in INDUSTRIES:
         build_industry(i)
+    for r in ROLES:
+        build_role(r)
+    # llms.txt and the sitemap enumerate everything above, so they go last.
+    build_llms(); build_sitemap(); build_robots()
     print("Done.")

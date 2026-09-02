@@ -1,6 +1,6 @@
 # Sublime Personnel
 
-> Boutique executive search and recruiting firm, founded 2010 and based in the Greater Houston Area, placing leadership and professional talent nationwide. Every search is run personally by one of the two partners.
+> Boutique executive search and recruiting firm, founded 2010, placing leadership and professional talent nationwide across the United States. Every search is run personally by one of the two partners.
 
 Contact: Pete Proctor, Vice President of Operations - pete@sublimepersonnel.com - 713-396-0944
 Terry Stevenson, Partner - terry@sublimepersonnel.com
@@ -13,17 +13,18 @@ Terry Stevenson, Partner - terry@sublimepersonnel.com
 - Engagement types: direct hire (contingency or retained), temp-to-hire, and interim or temporary placement.
 - Candidates are never charged, at any stage. A resume is never sent to a company without the candidate's approval of that specific company.
 - Client names are not published. Candidates who learn a client's identity go direct, so confidentiality is a condition of the work rather than a preference.
+- Searches are run nationwide across the United States. The firm's HOA and property management practice alone covers ten states. Its deepest regional network is the Gulf Coast, which is where the industrial, subsea and ROV technical roles come from.
 
 ## Practices
 
-- [HOA & Property Management](industries/hoa-property-management.html): Houston HOA and property management recruiters who understand governance. Community managers, portfolio managers and high-rise GMs — CMCA, AMS, PCAM.
-- [Hospitality & Restaurant](industries/hospitality-restaurant.html): Restaurant and hospitality recruiters who ran the floor first. GM, multi-unit, executive chef and F&B leadership searches out of Houston, placing nationwide.
+- [HOA & Property Management](industries/hoa-property-management.html): Nationwide HOA and community association management recruiters who understand governance. Community managers, portfolio managers and high-rise GMs — CMCA, AMS, PCAM.
+- [Hospitality & Restaurant](industries/hospitality-restaurant.html): Restaurant and hospitality recruiters who ran the floor first. GM, multi-unit, executive chef and F&B leadership searches, placed nationwide.
 - [Insurance Sales, Account Management & Leadership](industries/insurance.html): Insurance recruiting for agencies, brokers and carriers — producers with a portable book, account managers, underwriters, claims and agency leadership, personal and commercial lines.
 - [Healthcare](industries/healthcare.html): Healthcare recruiting for clinics, specialty practices, physician groups and patient-focused organisations — clinical providers, practice leadership, operations and executives.
-- [Accounting & Finance](industries/accounting-finance.html): Accounting and finance recruiting in Houston — controllers, assistant controllers, staff and senior accountants, AP/AR leadership, FP&A and fractional CFOs.
-- [Construction Management and Operations](industries/commercial-construction.html): Commercial construction recruiting in Houston for general contractors and specialty trades — project managers, superintendents, estimators, preconstruction.
-- [QSR & Franchise](industries/qsr-franchise.html): QSR and franchise recruiting in Houston — area coaches, franchise business consultants, directors of operations and multi-unit leadership for both sides.
-- [Energy, Oil & Gas](industries/oil-gas.html): Oil and gas recruiting out of Houston — drilling and completions, HSE, turnaround and project controls, across upstream, midstream and downstream.
+- [Accounting & Finance](industries/accounting-finance.html): Nationwide accounting and finance recruiting — controllers, assistant controllers, staff and senior accountants, AP/AR leadership, FP&A and fractional CFOs.
+- [Construction Management and Operations](industries/commercial-construction.html): Commercial construction recruiting nationwide for general contractors and specialty trades — project managers, superintendents, estimators, preconstruction.
+- [QSR & Franchise](industries/qsr-franchise.html): Nationwide QSR and franchise recruiting — area coaches, franchise business consultants, directors of operations and multi-unit leadership for both sides.
+- [Energy, Oil & Gas](industries/oil-gas.html): Oil and gas recruiting nationwide — drilling and completions, HSE, turnaround and project controls, across upstream, midstream and downstream.
 
 ## Pages
 
@@ -35,6 +36,21 @@ Terry Stevenson, Partner - terry@sublimepersonnel.com
 - [Start a Search](start-a-search.html): Employer intake.
 - [Talent Network](talent-network.html): Confidential candidate intake.
 - [Insights](blog.html): Hiring intelligence: market trends, fee structures, guarantees, assessment.
+- [Industries](industries.html): Hub page for all eight practice areas.
+- [Houston](locations/houston.html): The firm's home market and its Gulf Coast and Permian network. The firm recruits nationwide; this page covers the local practice only.
+
+## Roles
+
+One page per role, covering what the role owns, how the firm screens for it, and the compensation range currently seen nationally.
+
+- [Community Association Manager](roles/community-association-manager-recruiters.html): Nationwide recruiters for community association managers — CMCA, AMS and PCAM holders screened on governance, portfolio complexity and board temperament, not résumé keywords. Range currently seen: $72,000-$115,000.
+- [Multi-Unit Restaurant GM](roles/restaurant-general-manager-recruiters.html): Restaurant GM and multi-unit recruiters who ran the floor first. We screen on unit economics, span of control and retention — not on a résumé that reads like a general manager. Range currently seen: $95,000-$160,000.
+- [Commercial Lines Producer](roles/commercial-lines-producer-recruiters.html): Insurance producer recruiters who separate a portable book from a story about one. Renewal retention, carrier appointments, class concentration and restrictive covenants raised before you spend a quarter. Range currently seen: $90,000-$140,000.
+- [Nurse Practitioner](roles/nurse-practitioner-recruiters.html): Nurse practitioner and physician assistant recruiters screening on prescribing authority state by state, supervision arrangements and licensure — not on the résumé. Range currently seen: $110,000-$145,000.
+- [Controller](roles/controller-recruiters.html): Controller and assistant controller recruiters who screen on close ownership, industry accounting and systems — because a technically sound accountant in the wrong industry leaves in month nine. Range currently seen: $110,000-$150,000.
+- [Superintendent](roles/construction-superintendent-recruiters.html): Commercial construction superintendent recruiters screening on project profile, delivery method and dollar value — because a $12M tilt-wall super and a $90M healthcare super are not interchangeable. Range currently seen: $110,000-$145,000.
+- [Franchise Business Consultant](roles/franchise-business-consultant-recruiters.html): Franchise business consultant and area coach recruiters for both sides of the relationship — franchisors staffing field support and multi-unit franchisees building an operations bench. Range currently seen: $78,000-$110,000.
+- [Drilling & Completions Engineer](roles/drilling-engineer-recruiters.html): Drilling and completions engineer recruiters who screen on the cycle — what a candidate did in 2015 and 2020 tells you more about the next five years than anything on the résumé. Range currently seen: $145,000-$185,000.
 
 ## HOA and community association management glossary
 
