@@ -113,8 +113,25 @@ function renderResources(root, data) {
     return String(b.publishedAt || '').localeCompare(String(a.publishedAt || ''));
   });
 
+  // Standalone promo card. Sits above the video list, so it survives an empty feed.
+  const spotlightHtml = (() => {
+    const s = data.spotlight;
+    if (!s || !s.url) return '';
+    return `
+      <section class="spotlight">
+        ${s.eyebrow ? `<p class="spotlight-eyebrow">${escapeHtml(s.eyebrow)}</p>` : ''}
+        ${s.title ? `<h2 class="spotlight-title">${escapeHtml(s.title)}</h2>` : ''}
+        ${s.description ? `<p class="spotlight-desc">${escapeHtml(s.description)}</p>` : ''}
+        <a class="spotlight-cta" href="${escapeHtml(s.url)}" target="_blank" rel="noopener sponsored">
+          <span class="label">${escapeHtml(s.ctaLabel || 'Open')}</span>
+          ${svg('chevron', { class: 'chevron' })}
+        </a>
+        ${s.note ? `<p class="spotlight-note">${escapeHtml(s.note)}</p>` : ''}
+      </section>`;
+  })();
+
   if (videos.length === 0) {
-    root.innerHTML = `<p class="empty">No resources posted yet. Check back soon.</p>`;
+    root.innerHTML = `${spotlightHtml}<p class="empty">No resources posted yet. Check back soon.</p>`;
     return;
   }
 
@@ -158,7 +175,7 @@ function renderResources(root, data) {
       </article>`;
   }).join('');
 
-  root.innerHTML = `<div class="videos">${cards}</div>`;
+  root.innerHTML = `${spotlightHtml}<div class="videos">${cards}</div>`;
 }
 
 // ---------- Bootstrap ----------

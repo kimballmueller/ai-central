@@ -1,4 +1,12 @@
 {
+  "spotlight": {
+    "eyebrow": "Tool I Use",
+    "title": "Higgsfield",
+    "description": "The AI video tool I use to make ads for real client businesses \u2014 image-to-video, motion and camera presets, and a full model lineup in one place.",
+    "ctaLabel": "Try Higgsfield",
+    "url": "https://higgsfield.ai/s/hf-comparisons-ig-kimball.ai-HxmwhP",
+    "note": "Partner link \u2014 signing up through it supports the channel."
+  },
   "videos": [
     {
       "title": "Jarvis Runs 85% of My Business — Here's the Exact 6-Layer Stack",
@@ -11,11 +19,6 @@
           "label": "Get the 6-layer build checklist + SOP templates",
           "url": "guides/jarvis-six-layer-stack.html",
           "type": "Guide"
-        },
-        {
-          "label": "Higgsfield \u2014 the AI video tool I use for client ads (partner link)",
-          "url": "https://higgsfield.ai/s/hf-comparisons-ig-kimball.ai-HxmwhP",
-          "type": "Tool"
         },
         {
           "label": "Book a free 30-minute AI systems audit",
