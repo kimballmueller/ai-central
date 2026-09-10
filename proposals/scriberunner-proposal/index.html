@@ -1,0 +1,996 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Proposal · ScribeRunner × Kimball AI</title>
+<meta name="description" content="An AI revenue system that takes ScribeRunner from forty clients to eighty in twelve months." />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  :root {
+    --ink: #EDEBFF;
+    --paper: #0A0A1A;
+    --paper-cream: #141C3D;
+    --surface: rgba(255, 255, 255, 0.045);
+    --surface-2: rgba(255, 255, 255, 0.075);
+    --rule: rgba(255, 255, 255, 0.10);
+    --rule-strong: rgba(255, 255, 255, 0.17);
+    --muted: rgba(255, 255, 255, 0.60);
+    --muted-strong: rgba(255, 255, 255, 0.82);
+    --gold: #3B82F6;
+    --gold-soft: rgba(59, 130, 246, 0.14);
+    --gold-line: rgba(59, 130, 246, 0.34);
+    --violet: #A78BFA;
+    --indigo: #6366F1;
+    --green: #6EE7B7;
+    --max: 1240px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--paper); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+  }
+  .display { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; letter-spacing: -0.035em; line-height: 0.96; }
+  .label { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 3px; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 clamp(24px, 5vw, 56px); }
+  section { padding: clamp(80px, 12vh, 150px) 0; position: relative; }
+
+  /* NAV */
+  .nav { position: fixed; top: 0; left: 0; right: 0; padding: 16px clamp(20px, 5vw, 56px); display: flex; justify-content: space-between; align-items: center; z-index: 50; backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); background: rgba(250, 250, 247, 0.78); border-bottom: 1px solid var(--rule); }
+  .nav .brand { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 15px; letter-spacing: -0.015em; display: flex; align-items: center; gap: 10px; }
+  .nav .brand .dot { width: 8px; height: 8px; border-radius: 999px; background: var(--gold); }
+  .nav .brand .x { color: var(--muted); font-weight: 400; }
+  .nav .links { display: flex; gap: 22px; align-items: center; font-size: 13px; color: var(--muted-strong); }
+  .nav .links a { text-decoration: none; transition: color 0.2s ease; }
+  .nav .links a:hover { color: var(--ink); }
+  .nav .cta { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; background: var(--ink); color: var(--paper); border-radius: 999px; text-decoration: none; font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 500; font-size: 13px; letter-spacing: -0.005em; transition: transform 0.2s ease, background 0.2s ease; }
+  .nav .cta:hover { background: var(--gold); transform: translateY(-1px); }
+  @media (max-width: 1150px) { .nav .links { display: none; } }
+
+  /* HERO */
+  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; padding-top: clamp(120px, 15vh, 170px); padding-bottom: clamp(48px, 8vh, 80px); }
+  .hero .top { text-align: center; }
+  .hero .mark { display: block; width: clamp(84px, 11vw, 128px); height: auto; margin: 0 auto 28px; }
+  .hero h1 { font-size: clamp(38px, 7vw, 96px); max-width: 19ch; margin: 0 auto; }
+  .hero h1 .accent { color: var(--gold); }
+  .hero .sub { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 500; font-size: clamp(18px, 2.1vw, 24px); letter-spacing: -0.015em; color: var(--muted-strong); max-width: 66ch; margin: clamp(28px, 4vh, 46px) auto 0; line-height: 1.4; }
+  .hero .meta { margin-top: clamp(40px, 7vh, 80px); display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+  .hero .meta > div .label { display: block; margin-bottom: 8px; color: var(--muted); }
+  .hero .meta > div p { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-size: 16px; font-weight: 500; letter-spacing: -0.01em; }
+  .hero .scroll-hint { display: flex; align-items: center; gap: 12px; font-size: 11px; color: var(--muted); letter-spacing: 0.16em; text-transform: uppercase; justify-content: center; }
+  .hero .scroll-hint span { width: 32px; height: 1px; background: var(--ink); opacity: 0.4; }
+
+  /* SECTION HEAD */
+  .sec-head { display: flex; gap: 80px; align-items: baseline; margin-bottom: clamp(40px, 7vh, 80px); flex-wrap: wrap; }
+  .sec-head .num { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-size: 13px; font-weight: 500; color: var(--gold); letter-spacing: 0.04em; min-width: 80px; }
+  .sec-head .ht { flex: 1; min-width: 280px; }
+  .sec-head h2 { font-size: clamp(36px, 5.4vw, 76px); max-width: 20ch; }
+  .sec-head h2 .accent { color: var(--gold); }
+  .sec-head .lede { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 500; font-size: clamp(19px, 2.3vw, 27px); letter-spacing: -0.015em; line-height: 1.3; color: var(--muted-strong); max-width: 50ch; margin-top: 18px; }
+
+  /* PULL QUOTE */
+  .pull { margin: clamp(36px,5vh,56px) 0; padding: clamp(26px,3.4vw,40px) clamp(28px,4vw,48px); background: var(--paper-cream); color: var(--ink); border-left: 3px solid var(--gold); border-radius: 0 20px 20px 0; }
+  .pull .q { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 500; font-size: clamp(20px, 2.6vw, 31px); letter-spacing: -0.02em; line-height: 1.3; color: var(--ink); }
+  .pull .attr { font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 16px; }
+  .dark .pull { background: var(--surface); color: var(--ink); border-left-color: var(--gold); }
+  .dark .pull .q { color: var(--ink); }
+  .dark .pull .attr { color: rgba(255,255,255,0.5); }
+
+  /* ASK BLOCK — the open questions in §01/§02 */
+  .ask { background: var(--paper-cream); color: var(--ink); border: 1px solid var(--gold-line); border-radius: 22px; padding: clamp(28px,3.6vw,42px); margin-top: 40px; }
+  .ask h4 { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: clamp(19px,2.2vw,25px); letter-spacing: -0.02em; color: var(--ink); margin-bottom: 8px; }
+  .ask .lead { font-size: 15px; color: var(--muted-strong); line-height: 1.6; margin-bottom: 22px; max-width: 76ch; }
+  .ask ol { list-style: none; counter-reset: q; padding: 0; }
+  .ask ol li { counter-increment: q; position: relative; padding: 14px 0 14px 46px; border-top: 1px solid var(--gold-line); font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 500; font-size: clamp(15.5px,1.7vw,18px); letter-spacing: -0.01em; color: var(--ink); line-height: 1.45; }
+  .ask ol li::before { content: "Q" counter(q, decimal-leading-zero); position: absolute; left: 0; top: 16px; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; color: var(--gold); }
+  .ask ol li span { display: block; font-family: 'Inter', sans-serif; font-weight: 400; font-size: 14px; color: var(--muted); margin-top: 5px; line-height: 1.55; letter-spacing: 0; }
+  .dark .ask { background: var(--surface); color: var(--ink); border-color: rgba(255,255,255,0.16); }
+  .dark .ask h4 { color: var(--ink); }
+  .dark .ask .lead { color: rgba(255,255,255,0.68); }
+  .dark .ask ol li { color: var(--ink); border-top-color: rgba(255,255,255,0.12); }
+  .dark .ask ol li span { color: rgba(255,255,255,0.5); }
+
+  /* GOAL OPTION CARDS */
+  .goals { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .goals.two { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 900px) { .goals { grid-template-columns: 1fr; } }
+  .goal { background: var(--paper); color: var(--ink); border: 1px solid var(--rule); border-radius: 22px; padding: clamp(28px,3.2vw,38px); display: flex; flex-direction: column; transition: transform 0.28s cubic-bezier(0.2,0.7,0.2,1), box-shadow 0.28s, border-color 0.28s ease; }
+  .goal:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -20px rgba(10,10,10,0.18); border-color: var(--gold-line); }
+  .goal .gk { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  .goal h3 { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: clamp(21px,2.3vw,26px); letter-spacing: -0.02em; line-height: 1.15; color: var(--ink); margin-bottom: 12px; }
+  .goal p { color: var(--muted-strong); font-size: 14.5px; line-height: 1.6; }
+  .goal p b { color: var(--ink); font-weight: 600; }
+  .goal .tie { margin-top: auto; padding-top: 20px; border-top: 1px solid var(--rule); font-size: 13.5px; color: var(--muted-strong); line-height: 1.5; }
+  .goal .tie strong { display: block; font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 14.5px; color: var(--gold); margin-bottom: 4px; }
+
+  /* ARITHMETIC */
+  .arith { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 20px; overflow: hidden; margin-bottom: 20px; }
+  .arith .a { background: var(--paper); color: var(--ink); padding: 34px 30px; }
+  .arith .a.bad { background: var(--paper-cream); }
+  .arith .a .k { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .arith .a .v { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: clamp(34px, 4.2vw, 52px); letter-spacing: -0.035em; line-height: 1; color: var(--ink); }
+  .arith .a.bad .v { color: var(--gold); }
+  .arith .a .cap { font-size: 14px; color: var(--muted-strong); margin-top: 12px; line-height: 1.5; }
+  @media (max-width: 860px) { .arith { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .arith { grid-template-columns: 1fr; } }
+  .arith-line { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 500; font-size: clamp(18px, 2vw, 24px); letter-spacing: -0.015em; color: var(--ink); text-align: center; padding: 8px 0 4px; line-height: 1.35; }
+  .arith-line b { color: var(--gold); }
+  .dark .arith { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.12); }
+  .dark .arith .a { background: var(--surface); color: var(--ink); }
+  .dark .arith .a.bad { background: var(--surface-2); }
+  .dark .arith .a .k { color: rgba(255,255,255,0.44); }
+  .dark .arith .a .v { color: var(--ink); }
+  .dark .arith .a.bad .v { color: var(--gold); }
+  .dark .arith .a .cap { color: rgba(255,255,255,0.62); }
+  .dark .arith-line { color: var(--ink); }
+
+  /* CARDS */
+  .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 16px; margin-top: 16px; }
+  .card { background: var(--paper); color: var(--ink); border: 1px solid var(--rule); border-radius: 18px; padding: 32px 28px; min-height: 170px; display: flex; flex-direction: column; gap: 12px; transition: transform 0.28s cubic-bezier(0.2,0.7,0.2,1), box-shadow 0.28s, border-color 0.28s ease; }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -20px rgba(10,10,10,0.18), 0 0 0 1px var(--gold-line) inset; border-color: var(--gold-line); }
+  .card .num { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-size: 13px; color: var(--gold); letter-spacing: 0.06em; }
+  .card h3 { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 20px; letter-spacing: -0.015em; line-height: 1.2; color: var(--ink); }
+  .card p { color: var(--muted-strong); font-size: 14.5px; line-height: 1.55; }
+  .card p b { color: var(--ink); font-weight: 600; }
+  .card code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; background: var(--gold-soft); color: var(--gold); padding: 1px 6px; border-radius: 5px; }
+  .card.good { background: var(--paper-cream); border-color: var(--gold-line); }
+  .dark .card { background: var(--surface); color: var(--ink); border-color: rgba(255,255,255,0.1); }
+  .dark .card:hover { border-color: var(--gold-line); box-shadow: 0 18px 40px -20px rgba(0,0,0,0.5), 0 0 0 1px var(--gold-line) inset; }
+  .dark .card h3 { color: var(--ink); }
+  .dark .card p { color: rgba(255,255,255,0.66); }
+  .dark .card p b { color: var(--ink); }
+  .closer { margin-top: 52px; padding-top: 40px; border-top: 1px solid var(--rule); font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 500; font-size: clamp(22px, 2.6vw, 34px); letter-spacing: -0.02em; line-height: 1.25; max-width: 56ch; }
+  .closer .accent { color: var(--gold); }
+  .dark .closer { border-top-color: rgba(255,255,255,0.12); color: var(--ink); }
+
+  /* CALLOUT */
+  .callout { margin-top: 40px; background: var(--paper-cream); color: var(--ink); border: 1px solid var(--gold-line); border-radius: 20px; padding: clamp(28px, 4vw, 44px); display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start; }
+  .callout .icon { width: 44px; height: 44px; border-radius: 999px; background: var(--gold); color: var(--paper); display: inline-flex; align-items: center; justify-content: center; font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 20px; flex: none; }
+  .callout h3 { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: clamp(20px, 2.2vw, 26px); letter-spacing: -0.015em; line-height: 1.2; margin-bottom: 10px; color: var(--ink); }
+  .callout p { color: var(--muted-strong); font-size: 15px; line-height: 1.6; }
+  .callout p + p { margin-top: 12px; }
+  .callout p b { color: var(--ink); font-weight: 600; }
+  @media (max-width: 600px) { .callout { grid-template-columns: 1fr; gap: 16px; } }
+  .dark .callout { background: var(--surface); color: var(--ink); border-color: var(--gold-line); }
+  .dark .callout h3 { color: var(--ink); }
+  .dark .callout p { color: rgba(255,255,255,0.68); }
+  .dark .callout p b { color: var(--ink); }
+
+  /* HONEST NOTE */
+  .honest { margin-top: 40px; background: var(--paper); color: var(--ink); border: 1px solid var(--rule-strong); border-radius: 20px; padding: clamp(28px,4vw,42px); }
+  .honest .hh { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: clamp(19px,2.2vw,25px); letter-spacing: -0.02em; color: var(--ink); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+  .honest .hh::before { content: ""; width: 10px; height: 10px; border-radius: 999px; background: var(--gold); flex: none; }
+  .honest p { font-size: 16px; line-height: 1.68; color: var(--muted-strong); margin-bottom: 16px; max-width: 78ch; }
+  .honest p:last-child { margin-bottom: 0; }
+  .honest p b { color: var(--ink); font-weight: 600; }
+  .honest p .g { color: var(--gold); font-weight: 600; }
+  .dark .honest { background: var(--surface); color: var(--ink); border-color: rgba(255,255,255,0.14); }
+  .dark .honest .hh { color: var(--ink); }
+  .dark .honest p { color: rgba(255,255,255,0.68); }
+  .dark .honest p b { color: var(--ink); }
+
+  /* TABLE */
+  .tablewrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 18px; margin-top: 16px; background: var(--paper); color: var(--ink); }
+  .dark .tablewrap { border-color: rgba(255,255,255,0.12); background: var(--surface); color: var(--ink); }
+  table.t { width: 100%; border-collapse: collapse; min-width: 680px; font-family: 'Inter', sans-serif; }
+  table.t th, table.t td { text-align: left; padding: 17px 22px; border-bottom: 1px solid var(--rule); font-size: 14.5px; vertical-align: top; line-height: 1.55; }
+  table.t thead th { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); background: var(--paper-cream); border-bottom: 1px solid var(--rule-strong); }
+  table.t tbody tr:last-child td { border-bottom: none; }
+  table.t td { color: var(--muted-strong); }
+  table.t td.k { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; color: var(--ink); }
+  table.t td.tgt { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; color: var(--gold); white-space: nowrap; }
+  table.t td b { color: var(--gold); font-weight: 600; }
+  table.t td.yes { color: var(--green); font-weight: 600; font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; white-space: nowrap; }
+  table.t td.no { color: var(--muted); font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; white-space: nowrap; }
+  table.t th.ctr, table.t td.ctr { text-align: center; }
+  table.t col.hi, table.t td.hi { background: var(--gold-soft); }
+  table.t thead th.hi { background: var(--gold); color: var(--paper); }
+  table.t td.chk { text-align: center; color: var(--green); font-weight: 700; font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; }
+  table.t td.dash { text-align: center; color: rgba(255,255,255,0.34); font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; }
+  table.t tr.money td { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; color: var(--ink); font-size: 15.5px; }
+  .dark table.t th, .dark table.t td { border-bottom-color: rgba(255,255,255,0.10); color: rgba(255,255,255,0.72); }
+  .dark table.t thead th { background: var(--surface-2); color: var(--gold); border-bottom-color: rgba(255,255,255,0.16); }
+  .dark table.t td.k { color: var(--ink); }
+  .dark table.t td.tgt { color: var(--gold); }
+  .dark table.t td.yes { color: #6FCB86; }
+  .dark table.t td.no { color: rgba(255,255,255,0.42); }
+  .dark table.t tbody tr:hover td { background: rgba(255,255,255,0.035); }
+  .costs-note { color: var(--muted); font-size: 13.5px; margin-top: 18px; max-width: 82ch; line-height: 1.65; }
+  .dark .costs-note { color: rgba(255,255,255,0.5); }
+
+  /* SYSTEMS (phase rows) */
+  .phases { display: flex; flex-direction: column; }
+  .phase { display: grid; grid-template-columns: 170px 1fr 1.5fr; gap: 40px; padding: 36px 0; border-top: 1px solid var(--rule); align-items: start; }
+  .phase:last-child { border-bottom: 1px solid var(--rule); }
+  .phase .stage .n { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-size: 13px; color: var(--gold); letter-spacing: 0.06em; display: block; }
+  .phase .stage .status { font-size: 11px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 4px; }
+  .phase h3 { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: clamp(21px, 2.6vw, 28px); letter-spacing: -0.02em; line-height: 1.15; color: var(--ink); }
+  .phase h3 .sp { display: block; font-size: 13px; font-weight: 500; letter-spacing: 0; color: var(--gold); margin-top: 8px; line-height: 1.4; }
+  .phase .body ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  /* bullets absolutely positioned — a flex <li> shreds any <b> into its own column */
+  .phase .body ul li { position: relative; padding-left: 20px; color: var(--muted-strong); font-size: 15px; line-height: 1.55; }
+  .phase .body ul li::before { content: ""; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; border-radius: 999px; background: var(--gold); }
+  .phase .body ul li b { color: var(--ink); font-weight: 600; }
+  @media (max-width: 860px) { .phase { grid-template-columns: 1fr; gap: 14px; padding: 30px 0; } }
+  .dark .phase { border-top-color: rgba(255,255,255,0.1); }
+  .dark .phase:last-child { border-bottom-color: rgba(255,255,255,0.1); }
+  .dark .phase h3 { color: var(--ink); }
+  .dark .phase .stage .status { color: rgba(255,255,255,0.48); }
+  .dark .phase .body ul li { color: rgba(255,255,255,0.66); }
+  .dark .phase .body ul li b { color: var(--ink); }
+
+  /* PILLARS */
+  .pillars { display: flex; flex-direction: column; gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 20px; overflow: hidden; }
+  .pillar { background: var(--paper); color: var(--ink); padding: clamp(24px,3vw,32px) clamp(24px,3.2vw,38px); display: grid; grid-template-columns: 56px 1fr; gap: clamp(16px,2.6vw,30px); align-items: start; transition: background 0.25s ease; }
+  .pillar:hover { background: var(--paper-cream); }
+  /* was --gold-line (0.32 alpha) — 1.39:1, effectively invisible. Still subtle, now legible. */
+  .pillar .pn { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: clamp(24px,2.8vw,31px); letter-spacing: -0.03em; color: var(--gold); line-height: 1; }
+  .pillar h3 { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: clamp(18px,2vw,23px); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 8px; color: var(--ink); }
+  .pillar p { color: var(--muted-strong); font-size: 15px; line-height: 1.6; max-width: 70ch; }
+  .pillar p b { color: var(--ink); font-weight: 600; }
+  @media (max-width: 620px) { .pillar { grid-template-columns: 1fr; gap: 8px; } }
+  .dark .pillars { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.14); }
+
+  /* DARK */
+  .dark { background: #0F1738; color: var(--ink); }
+  .dark .sec-head h2 { color: var(--ink); }
+  .dark .sec-head .lede { color: rgba(255,255,255,0.66); }
+  .dark .label { color: var(--gold); }
+
+  /* TIME / OUTPUT PANELS */
+  .timegrid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 16px; align-items: stretch; margin-top: 44px; }
+  @media (max-width: 900px) { .timegrid { grid-template-columns: 1fr; } }
+  .timepanel { background: var(--paper-cream); color: var(--ink); border: 1px solid var(--gold-line); border-radius: 22px; padding: clamp(30px,3.6vw,42px); }
+  .timepanel h4 { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: clamp(20px,2.3vw,26px); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 8px; color: var(--ink); }
+  .timepanel .lead { font-size: 15px; color: var(--muted-strong); line-height: 1.6; margin-bottom: 24px; }
+  .tline { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 15px 0; border-top: 1px solid var(--gold-line); }
+  .tline .tk { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 15px; color: var(--ink); }
+  .tline .ts { font-size: 12.5px; color: var(--muted); line-height: 1.45; margin-top: 3px; max-width: 44ch; }
+  .tline .tv { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 17px; color: var(--gold); white-space: nowrap; }
+  .tline.tot { border-top: 2px solid var(--gold); margin-top: 6px; }
+  .tline.tot .tk { font-size: 17px; }
+  .tline.tot .tv { font-size: 26px; letter-spacing: -0.02em; }
+  .outbox { background: var(--paper); color: var(--ink); border: 1px solid var(--rule); border-radius: 22px; padding: clamp(30px,3.6vw,42px); display: flex; flex-direction: column; }
+  .outbox h4 { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: clamp(20px,2.3vw,26px); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 8px; color: var(--ink); }
+  .outbox .lead { font-size: 15px; color: var(--muted-strong); line-height: 1.6; margin-bottom: 22px; }
+  .oline { display: flex; gap: 16px; align-items: baseline; padding: 14px 0; border-top: 1px solid var(--rule); }
+  .oline .ov { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 24px; letter-spacing: -0.025em; color: var(--gold); line-height: 1; min-width: 64px; }
+  .oline .ok { font-size: 14.5px; color: var(--muted-strong); line-height: 1.5; }
+  .oline .ok b { color: var(--ink); font-weight: 600; }
+
+  /* CALCULATOR */
+  .calc { margin-top: 44px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: stretch; }
+  @media (max-width: 900px) { .calc { grid-template-columns: 1fr; } }
+  .calc-inputs { background: var(--paper); color: var(--ink); border: 1px solid var(--rule); border-radius: 22px; padding: clamp(28px,3.4vw,40px); }
+  .calc-inputs h4, .calc-out h4 { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: clamp(19px,2.2vw,24px); letter-spacing: -0.02em; margin-bottom: 6px; color: var(--ink); }
+  .calc-inputs .lead, .calc-out .lead { font-size: 14.5px; color: var(--muted-strong); line-height: 1.6; margin-bottom: 26px; }
+  .ctrl { padding: 16px 0; border-top: 1px solid var(--rule); }
+  .ctrl .crow { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 12px; }
+  .ctrl label { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 14.5px; color: var(--ink); }
+  .ctrl .cval { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 19px; color: var(--gold); letter-spacing: -0.02em; white-space: nowrap; }
+  .ctrl .chint { font-size: 12.5px; color: var(--muted); line-height: 1.45; margin-top: 8px; }
+  input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 4px; border-radius: 999px; background: var(--rule-strong); outline: none; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; border-radius: 999px; background: var(--gold); border: 3px solid var(--paper); box-shadow: 0 2px 8px rgba(10,10,10,0.22); cursor: pointer; }
+  input[type=range]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 999px; background: var(--gold); border: 3px solid var(--paper); box-shadow: 0 2px 8px rgba(10,10,10,0.22); cursor: pointer; }
+  .calc-out { background: var(--paper-cream); color: var(--ink); border: 1px solid var(--gold-line); border-radius: 22px; padding: clamp(28px,3.4vw,40px); display: flex; flex-direction: column; }
+  .oresult { border-top: 1px solid var(--gold-line); padding: 16px 0; display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  .oresult .rk { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 15px; color: var(--ink); }
+  .oresult .rs { font-size: 12.5px; color: var(--muted); margin-top: 3px; max-width: 42ch; line-height: 1.45; }
+  .oresult .rv { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 20px; color: var(--ink); white-space: nowrap; letter-spacing: -0.02em; }
+  .oresult.hero-line { border-top: 2px solid var(--gold); margin-top: 6px; padding-top: 22px; }
+  .oresult.hero-line .rk { font-size: 17px; }
+  .oresult.hero-line .rv { font-size: clamp(26px,3.2vw,36px); color: var(--gold); }
+  .assump { margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--gold-line); font-size: 12.5px; color: var(--muted); line-height: 1.65; }
+  .assump b { color: var(--muted-strong); font-weight: 600; }
+
+  /* TIERS */
+  .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch; margin-top: 26px; }
+  .tier { background: var(--paper); color: var(--ink); border: 1px solid var(--rule); border-radius: 22px; padding: 40px 32px; display: flex; flex-direction: column; position: relative; transition: transform 0.28s cubic-bezier(0.2,0.7,0.2,1), box-shadow 0.28s, border-color 0.28s ease; }
+  .tier:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -20px rgba(10,10,10,0.18); border-color: var(--gold-line); }
+  .tier.rec { background: var(--paper-cream); border: 1.5px solid var(--gold); box-shadow: 0 32px 80px -44px rgba(184,134,11,0.5); }
+  .tier .badge { position: absolute; top: -13px; left: 32px; background: var(--gold); color: var(--paper); font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; padding: 7px 14px; border-radius: 999px; }
+  .tier .tname { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 25px; letter-spacing: -0.02em; color: var(--ink); }
+  .tier .price { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: clamp(36px, 4.2vw, 48px); letter-spacing: -0.035em; line-height: 1; margin-top: 14px; color: var(--ink); }
+  .tier .price sup { font-size: 0.42em; font-weight: 500; vertical-align: top; position: relative; top: 0.45em; margin-right: 0.04em; }
+  .tier .price .cadence { font-size: 0.3em; font-weight: 500; color: var(--muted); margin-left: 4px; letter-spacing: -0.005em; }
+  .tier .build { font-size: 12.5px; color: var(--muted); margin-top: 10px; line-height: 1.45; }
+  .tier .build b { color: var(--gold); font-weight: 600; }
+  .tier .tag { margin: 18px 0; padding: 16px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); font-size: 14px; color: var(--muted-strong); line-height: 1.55; min-height: 112px; }
+  .tier .tag b { color: var(--ink); font-weight: 600; }
+  .tier .inc { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+  .tier ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 13px; flex-grow: 1; }
+  /* absolutely-positioned tick, never a flex child */
+  .tier ul li { position: relative; padding-left: 24px; font-size: 14px; color: var(--muted-strong); line-height: 1.5; }
+  .tier ul li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--gold); font-weight: 700; font-size: 13px; }
+  .tier ul li strong { color: var(--ink); font-weight: 600; }
+  .pay-note { text-align: center; color: var(--muted); font-size: 14px; margin-top: 26px; max-width: 82ch; margin-inline: auto; line-height: 1.65; }
+  .pay-note b { color: var(--muted-strong); font-weight: 600; }
+  @media (max-width: 900px) { .tiers { grid-template-columns: 1fr; max-width: 520px; margin: 26px auto 0; } }
+
+  /* STEP LIST */
+  .steplist { list-style: none; counter-reset: st; display: grid; gap: 1px; border: 1px solid var(--rule); border-radius: 18px; overflow: hidden; background: var(--rule); }
+  .steplist li { counter-increment: st; background: var(--paper); color: var(--ink); padding: 24px 30px; display: grid; grid-template-columns: 46px 1fr; gap: 18px; align-items: start; transition: background 0.25s ease; }
+  .steplist li:hover { background: var(--paper-cream); }
+  .steplist li::before { content: counter(st, decimal-leading-zero); font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 13px; color: var(--gold); letter-spacing: 0.06em; line-height: 1.7; }
+  .steplist li .t { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 17.5px; letter-spacing: -0.015em; line-height: 1.35; display: block; margin-bottom: 5px; color: var(--ink); }
+  .steplist li p { color: var(--muted-strong); font-size: 14.5px; line-height: 1.6; max-width: 82ch; }
+  .steplist li .when { display: inline-block; margin-left: 10px; font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); background: var(--gold-soft); padding: 3px 9px; border-radius: 999px; vertical-align: 2px; }
+  @media (max-width: 600px) { .steplist li { grid-template-columns: 1fr; gap: 6px; padding: 20px 22px; } }
+
+  /* FAQ */
+  .faqs { display: flex; flex-direction: column; }
+  .faq { border-top: 1px solid var(--rule); padding: 28px 0; display: grid; grid-template-columns: 60px 1fr 1.4fr; gap: 32px; }
+  .faq:last-child { border-bottom: 1px solid var(--rule); }
+  .faq .qnum { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-size: 13px; color: var(--gold); letter-spacing: 0.06em; }
+  .faq h3 { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: clamp(18px, 2vw, 22px); letter-spacing: -0.015em; line-height: 1.3; color: var(--ink); }
+  /* answers can run past one <p> — pin them to col 3 so they stack instead of wrapping into the num gutter */
+  .faq p { grid-column: 3; color: var(--muted-strong); font-size: 15px; line-height: 1.6; }
+  .faq p + p { margin-top: 12px; }
+  .faq p b { color: var(--ink); font-weight: 600; }
+  @media (max-width: 760px) { .faq { grid-template-columns: 1fr; gap: 8px; } .faq p { grid-column: 1; } }
+  .dark .faq { border-top-color: rgba(255,255,255,0.1); }
+  .dark .faq:last-child { border-bottom-color: rgba(255,255,255,0.1); }
+  .dark .faq h3 { color: var(--ink); }
+  .dark .faq p { color: rgba(255,255,255,0.68); }
+  .dark .faq p b { color: var(--ink); }
+
+  /* ACCEPT */
+  .accept-section { background: linear-gradient(180deg, var(--paper) 0%, var(--paper-cream) 100%); }
+  .accept-panel { background: var(--paper); color: var(--ink); border: 1px solid var(--gold-line); border-radius: 24px; padding: clamp(36px, 6vw, 64px); box-shadow: 0 32px 80px -40px rgba(184,134,11,0.4); margin-top: 48px; }
+  .accept-panel .step { margin-bottom: 36px; }
+  .accept-panel .step:last-of-type { margin-bottom: 0; }
+  .accept-panel .step-label { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 500; font-size: 14px; color: var(--muted-strong); letter-spacing: -0.005em; margin-bottom: 16px; }
+  .accept-panel .step-label .n { color: var(--gold); font-weight: 600; margin-right: 8px; }
+  .tier-select { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 840px; }
+  @media (max-width: 680px) { .tier-select { grid-template-columns: 1fr; } }
+  .tier-opt { cursor: pointer; background: var(--paper-cream); color: var(--ink); border: 1.5px solid var(--rule-strong); border-radius: 16px; padding: 20px; transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease; }
+  .tier-opt:hover { border-color: var(--gold-line); }
+  .tier-opt.sel { border-color: var(--gold); background: rgba(59,130,246,0.16); box-shadow: 0 0 0 3px var(--gold-soft); }
+  .tier-opt .to-name { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 16px; letter-spacing: -0.01em; }
+  .tier-opt .to-price { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 22px; letter-spacing: -0.02em; margin-top: 6px; }
+  .tier-opt .to-price .c { font-size: 13px; font-weight: 500; color: var(--muted); margin-left: 2px; }
+  .tier-opt .to-build { font-size: 12px; color: var(--muted-strong); margin-top: 4px; }
+  .goal-select { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 840px; }
+  @media (max-width: 680px) { .goal-select { grid-template-columns: 1fr; } }
+  .goal-opt { cursor: pointer; background: var(--paper-cream); color: var(--ink); border: 1.5px solid var(--rule-strong); border-radius: 16px; padding: 18px 20px; transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease; font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 15px; letter-spacing: -0.01em; }
+  .goal-opt span { display: block; font-family: 'Inter', sans-serif; font-weight: 400; font-size: 12.5px; color: var(--muted); margin-top: 5px; line-height: 1.45; letter-spacing: 0; }
+  .goal-opt:hover { border-color: var(--gold-line); }
+  .goal-opt.sel { border-color: var(--gold); background: #fff; box-shadow: 0 0 0 3px var(--gold-soft); }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .field-row + .field-row { margin-top: 16px; }
+  .field { display: flex; flex-direction: column; gap: 8px; }
+  .field label { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-strong); }
+  .field input { appearance: none; background: var(--paper); border: 1.5px solid var(--rule-strong); border-radius: 12px; padding: 15px 18px; font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-size: 16px; letter-spacing: -0.01em; color: var(--ink); transition: border-color 0.2s ease, background 0.2s ease; }
+  .field input:focus { outline: none; border-color: var(--gold); background: var(--paper-cream); }
+  .signature-line { border-top: 1px solid var(--rule); margin-top: 32px; padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .signature-line .date { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-size: 14px; color: var(--muted-strong); }
+  .signature-line .date strong { color: var(--ink); font-weight: 600; }
+  @media (max-width: 600px) { .field-row { grid-template-columns: 1fr; } }
+  .btn-accept { appearance: none; background: var(--ink); color: var(--paper); border: none; border-radius: 999px; padding: 18px 34px; font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 500; font-size: 16px; letter-spacing: -0.005em; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; transition: background 0.2s ease, transform 0.2s ease, opacity 0.2s ease; }
+  .btn-accept:hover:not(:disabled) { background: var(--gold); transform: translateY(-1px); }
+  .btn-accept:disabled { opacity: 0.4; cursor: not-allowed; }
+  .overlay { position: fixed; inset: 0; background: rgba(255,255,255,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); display: none; align-items: center; justify-content: center; z-index: 100; padding: 24px; }
+  .overlay.show { display: flex; animation: fadeIn 0.4s ease; }
+  .overlay .panel { background: var(--paper); color: var(--ink); border: 1px solid var(--gold-line); border-radius: 24px; padding: clamp(40px, 6vw, 64px); text-align: center; max-width: 560px; box-shadow: 0 40px 100px -40px rgba(184,134,11,0.5); }
+  .overlay .check { width: 56px; height: 56px; border-radius: 999px; background: var(--gold); color: var(--paper); display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 26px; margin-bottom: 24px; }
+  .overlay h3 { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: clamp(28px, 4vw, 42px); letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 20px; color: var(--ink); }
+  .overlay p { color: var(--muted-strong); font-size: 16px; line-height: 1.55; }
+  .overlay .book { display: inline-flex; margin-top: 26px; align-items: center; gap: 8px; padding: 15px 28px; background: var(--ink); color: var(--paper); border-radius: 999px; text-decoration: none; font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-weight: 500; font-size: 15px; transition: background 0.2s ease; }
+  .overlay .book:hover { background: var(--gold); }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  /* FOOTER */
+  footer { padding: 56px 0 72px; border-top: 1px solid var(--rule); background: var(--paper); color: var(--ink); }
+  footer .row { display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+  footer .col h4 { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  footer .col p, footer .col a { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif; font-size: 15px; font-weight: 500; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; display: block; line-height: 1.6; transition: color 0.2s ease; }
+  footer .col a:hover { color: var(--gold); }
+  footer .legal { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--rule); font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.9s cubic-bezier(0.2,0.7,0.2,1), transform 0.9s cubic-bezier(0.2,0.7,0.2,1); transition-delay: var(--d, 0ms); }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+    .card, .tier, .pillar, .goal { transition: none; }
+  }
+
+  /* --- Kimball AI surface system: frosted glass on ink --- */
+  .card, .goal, .arith .a, .tablewrap, .honest, .tier, .accept-panel, .ask {
+    background: var(--surface); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-color: var(--rule);
+  }
+  .arith { background: var(--rule); border-color: var(--rule); }
+  .arith .a.bad { background: var(--paper-cream); }
+  .pull { background: var(--paper-cream); border-left-color: var(--gold); }
+  .callout { background: var(--paper-cream); border-color: var(--gold-line); }
+  .tier.rec { background: var(--paper-cream); border-color: var(--gold-line); }
+  .dark .card, .dark .goal, .dark .arith .a, .dark .tablewrap, .dark .honest { background: rgba(255,255,255,0.05); }
+  .dark .pull, .dark .callout { background: rgba(255,255,255,0.06); }
+  table.t thead th { background: var(--surface-2); color: var(--gold); }
+  table.t tbody tr:hover td { background: rgba(255,255,255,0.035); }
+  footer { background: var(--paper); color: var(--ink); border-top-color: var(--rule); }
+  .nav { background: rgba(10,10,26,0.82); backdrop-filter: saturate(160%) blur(18px); -webkit-backdrop-filter: saturate(160%) blur(18px); border-bottom: 1px solid var(--rule); }
+  /* Blue leads. Violet supports. The accent is the brand gradient. */
+  .accent { background: linear-gradient(120deg, #3B82F6 0%, #6366F1 60%, #A78BFA 100%);
+            -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .nav .cta, .btn-accept { background: linear-gradient(120deg, #3B82F6 0%, #6366F1 60%, #A78BFA 100%); color: #fff; border: none; }
+  .nav .cta:hover, .btn-accept:hover:not(:disabled) { filter: brightness(1.12); background: linear-gradient(120deg, #3B82F6 0%, #6366F1 60%, #A78BFA 100%); }
+  /* The K mark, per brand kit: rounded square, radius 22%, gradient fill, glow */
+  .kmark { width: 54px; height: 54px; border-radius: 22%; display: block; margin: 0 auto 22px;
+           box-shadow: 0 10px 30px rgba(59,130,246,0.5); }
+  /* Headings tighten to -0.02em; uppercase labels open to +0.08em. */
+  .display { letter-spacing: -0.02em; }
+  .label, .sec-head .num, .gk, .inc, .step-label { letter-spacing: 0.08em; }
+
+  .diagram { margin: clamp(34px,4.6vh,52px) 0 clamp(28px,4vh,44px); }
+  .diagram-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; }
+  .diagram-scroll svg { width: 100%; min-width: 880px; height: auto; display: block; }
+  .diagram-cap { margin-top: 20px; text-align: center; font-size: 14.5px; color: var(--muted); }
+  .diagram-cap b { color: var(--ink); font-weight: 600; }
+</style></head>
+<body>
+
+<div class="nav">
+  <div class="brand"><span class="dot"></span> Kimball AI <span class="x">× ScribeRunner</span></div>
+  <div class="links">
+    <a href="#goal">Goal</a>
+    <a href="#way">What's in the way</a>
+    <a href="#why">Why us</a>
+    <a href="#audience">Audiences</a>
+    <a href="#systems">Systems</a>
+    <a href="#investment">Investment</a>
+  </div>
+  <a class="cta" href="#next">Get started →</a>
+</div>
+
+<header class="hero wrap">
+  <div class="top">
+    <svg class="kmark" viewBox="0 0 64 64" role="img" aria-label="Kimball AI">
+      <defs><linearGradient id="kg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#3b82f6"/><stop offset="60%" stop-color="#6366f1"/><stop offset="100%" stop-color="#a78bfa"/>
+      </linearGradient></defs>
+      <rect width="64" height="64" rx="14" fill="url(#kg)"/>
+      <text x="50%" y="54%" text-anchor="middle" dominant-baseline="middle"
+            font-family="-apple-system, Inter, Segoe UI, sans-serif" font-size="38" font-weight="800" fill="#fff">K</text>
+    </svg>
+    <div class="label" style="margin-bottom:24px">AI revenue systems · New York, NY</div>
+    <h1 class="display">Forty clients found you. <span class="accent">The next forty won't.</span></h1>
+    <p class="sub">Referrals took ScribeRunner from fifteen clients to forty in two years. Doubling again in twelve months means reaching practices that have never heard your name — and today that is one email, sent by hand, whenever someone has a spare minute.</p>
+  </div>
+  <div class="meta">
+    <div><span class="label">Prepared for</span><p>Juan Sanchez, Business Development</p></div>
+    <div><span class="label">Engagement</span><p>AI revenue systems</p></div>
+    <div><span class="label">Terms</span><p>Phased build · You own everything</p></div>
+    <div class="scroll-hint"><span></span> Scroll</div>
+  </div>
+</header>
+
+<!-- 01 THE GOAL -->
+<section id="goal">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">01</div>
+      <div class="ht">
+        <h2 class="display">The <span class="accent">goal</span></h2>
+        <p class="lede">Eighty clients in twelve months, against a $1.2 million a year gap.</p>
+      </div>
+    </div>
+    <div class="pull reveal">
+      <div class="q">"Think of it like I'm losing 100k a month with salaries, with operational. I need to be making at least 100k a month more."</div>
+      <div class="attr">Juan Sanchez · Discovery call, September 2026</div>
+    </div>
+    <p style="font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',Roboto,sans-serif;font-weight:500;font-size:clamp(19px,2.1vw,25px);letter-spacing:-0.015em;line-height:1.45;color:var(--muted-strong);max-width:64ch">That is <b style="color:var(--ink);font-weight:600">$1.2 million a year</b>, and it runs whether or not anything on this page happens. Everything below is built to close it and nothing else. You have delivery capacity across four countries, a service line for nearly every problem a practice has, and a first offer every physician's office in America already needs. <b style="color:var(--ink);font-weight:600">What you do not have is a way to reach the practices that have never heard your name.</b></p>
+  </div>
+</section>
+
+<!-- 02 WHAT'S IN THE WAY -->
+<section id="way">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">02</div>
+      <div class="ht">
+        <h2 class="display">What's <span class="accent">in the way</span></h2>
+        <p class="lede">Three constraints, in the order they cost you the most.</p>
+      </div>
+    </div>
+
+    <div class="pull reveal">
+      <div class="q">"I want my agenda full every day. Every day."</div>
+      <div class="attr">Juan Sanchez · Discovery call, September 2026</div>
+    </div>
+
+    <div class="grid-cards">
+      <div class="card reveal">
+        <div class="num">01</div>
+        <h3>Outreach happens one email at a time, when somebody remembers.</h3>
+        <p>You described it yourself: someone spots a practice, goes and finds the email, writes it, sends it. Maybe one a day. Forty new clients in a year is roughly one yes every nine days, every week, without a gap. <b>There is no version of one-at-a-time that arrives at that number.</b></p>
+      </div>
+      <div class="card reveal" style="--d:80ms">
+        <div class="num">02</div>
+        <h3>Every client you have came from someone who already knew you.</h3>
+        <p>Fifteen to forty in two years, almost entirely on referrals and connections. Referrals are the best leads you will ever get and they are the one source you cannot turn up on command. Growth stays capped at the size of the room that already knows your name.</p>
+      </div>
+      <div class="card reveal" style="--d:160ms">
+        <div class="num">03</div>
+        <h3>HubSpot is new, empty, and nobody has been trained on it yet.</h3>
+        <p>There are no pipelines, so there is no way to see which of your service lines an account is actually a fit for, which conversations have gone cold, or what any of it is worth. Until that exists, more leads would just be more things to lose track of.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 WHY DISRUPTORS MEDIA -->
+<section id="why" class="dark">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">03</div>
+      <div class="ht">
+        <h2 class="display">Why <span class="accent">Kimball AI</span></h2>
+        <p class="lede">The gap between forty clients and eighty is not effort. You are already working hard. It is machinery.</p>
+      </div>
+    </div>
+
+    <div class="pull reveal">
+      <div class="q">"You do not rise to the level of your goals. You fall to the level of your systems."</div>
+      <div class="attr">James Clear</div>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar reveal">
+        <div class="pn">01</div>
+        <div>
+          <h3>We build systems, not campaigns</h3>
+          <p>Every line in this proposal is a machine that runs whether or not anyone remembers to run it. <b>A campaign ends. A system compounds.</b> You told us you tried building agents yourself and they ran slowly and produced little. That is what happens when the work is left as a conversation instead of built into a machine.</p>
+        </div>
+      </div>
+      <div class="pillar reveal" style="--d:60ms">
+        <div class="pn">02</div>
+        <div>
+          <h3>You own every account</h3>
+          <p>HubSpot, sending domains, data, automations, every key: all created in ScribeRunner's name. <b>Nothing is held hostage and nothing needs migrating if we part ways.</b> You have your own engineering team — if they want to run this in month twelve, everything is documented and handed over.</p>
+        </div>
+      </div>
+      <div class="pillar reveal" style="--d:120ms">
+        <div class="pn">03</div>
+        <div>
+          <h3>Software at cost</h3>
+          <p>Sending infrastructure, contact data and model usage are billed directly to ScribeRunner at the published rate. No markup, no reselling, nothing sitting on our account. You see the same invoice we do and you keep every login.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 WHO WE'RE REACHING -->
+<section id="audience">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">04</div>
+      <div class="ht">
+        <h2 class="display">Who we're <span class="accent">reaching</span></h2>
+        <p class="lede">Two groups. One of them you have never spoken to. The other is already paying you.</p>
+      </div>
+    </div>
+
+    <div class="goals two">
+      <div class="goal reveal">
+        <div class="gk">Audience one</div>
+        <h3>The practice whose patients are already complaining</h3>
+        <p>A practice manager or administrator at a three-to-eight physician group. They are not searching for a back-office partner. But their patients are writing about the phones in public reviews this week — the hold times, the appointments nobody called back about, the front desk that never picks up.</p>
+        <div class="tie"><strong>Reached through direct email</strong>Because they will never go looking. The opening is not a pitch — it is the thing their own patients said, and what you would do about it.</div>
+      </div>
+      <div class="goal reveal" style="--d:80ms">
+        <div class="gk">Audience two</div>
+        <h3>The forty clients you already have</h3>
+        <p>They have already trusted you with something. Most of them are buying one service line out of the several you sell, usually the phones. Nobody has systematically asked which of the others fits — because until now there has been no list telling you which account is a candidate for what.</p>
+        <div class="tie"><strong>Reached through you, on the phone</strong>This is the shortest distance to revenue in this entire document, and it does not depend on a single new relationship.</div>
+      </div>
+    </div>
+
+    <h3 style="font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',Roboto,sans-serif;font-weight:600;font-size:clamp(22px,2.4vw,30px);letter-spacing:-0.02em;margin:clamp(52px,7vh,80px) 0 8px">Forty clients is the whole job</h3>
+    <p style="color:var(--muted-strong);font-size:15.5px;line-height:1.6;max-width:72ch">Your numbers, not ours. We are only doing the arithmetic.</p>
+
+    <div class="arith reveal">
+      <div class="a">
+        <div class="k">Demos per month</div>
+        <div class="v">22</div>
+        <div class="cap">Roughly five a week. You are running two or three now, so this is double — not ten times.</div>
+      </div>
+      <div class="a">
+        <div class="k">New clients per year</div>
+        <div class="v">40</div>
+        <div class="cap">At the close rate you already get on a live demo. Forty is what takes you to eighty.</div>
+      </div>
+      <div class="a bad">
+        <div class="k">Added monthly revenue</div>
+        <div class="v">$100,000</div>
+        <div class="cap">Forty clients at your own $2,000 floor per service line. Accounts that land like the five-resource ones you described are worth several times that.</div>
+      </div>
+    </div>
+    <p class="arith-line">Twenty-two conversations a month. <b>That is one working day in five.</b></p>
+    <p class="arith-line" style="margin-top:10px;font-size:clamp(15px,1.6vw,18.5px);color:var(--muted-strong);max-width:78ch;margin-left:auto;margin-right:auto;line-height:1.5">That is revenue, not profit. At the 35% margin you quoted, forty clients at your floor price covers roughly a third of the gap — <b>which is exactly why every account in here gets scored for more than one service.</b> The gap closes on account size, not only on account count.</p>
+
+    <div class="callout reveal">
+      <div class="icon">!</div>
+      <div>
+        <h3>The bottleneck is your calendar, not the leads</h3>
+        <p>This is the part most people selling you an outreach system will not say. Once the machine is running, it can produce far more interested practices than twenty-two a month. <b>That is not a good thing.</b> Booking fifty demos into a calendar that can hold twenty-two means half of them get a rushed call or a rescheduling email, and both of those cost you the deal and the reputation.</p>
+        <p>So volume gets set backwards, from what you can actually take. We start at the number that hits forty clients, measure what the replies actually do, and turn it up only if your calendar and your delivery teams have room. <b>You should expect us to argue for sending less, not more.</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 SYSTEMS WE'D RECOMMEND -->
+<section id="systems">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">05</div>
+      <div class="ht">
+        <h2 class="display">Systems we'd <span class="accent">recommend</span></h2>
+        <p class="lede">Laid out on the thirty, sixty, ninety day structure your CEO asks for. <b style="color:var(--ink);font-weight:600">Every system here is optional.</b> The tiers below are the combinations we would pick, but any one of these can be switched on, left off, or added later.</p>
+      </div>
+    </div>
+<div class="diagram reveal">
+  <div class="diagram-scroll">
+  <svg viewBox="0 0 1158 250" role="img" aria-label="How a practice becomes a client: find, qualify, reach and answer all run without you; you take the call; the client is signed.">
+    <defs>
+      <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(255,255,255,0.34)"/>
+      </marker>
+      <marker id="ahb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(59,130,246,0.7)"/>
+      </marker>
+    </defs>
+
+    <line x1="0" y1="32" x2="762" y2="32" stroke="rgba(255,255,255,0.16)" stroke-width="1"/>
+    <line x1="0" y1="32" x2="0" y2="40" stroke="rgba(255,255,255,0.16)" stroke-width="1"/>
+    <line x1="762" y1="32" x2="762" y2="40" stroke="rgba(255,255,255,0.16)" stroke-width="1"/>
+    <text x="381.0" y="22" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="10.5" font-weight="600" letter-spacing="0.08em">RUNS WITHOUT YOU · DAY AND NIGHT</text>
+
+    <line x1="792" y1="32" x2="960" y2="32" stroke="rgba(59,130,246,0.5)" stroke-width="1"/>
+    <line x1="792" y1="32" x2="792" y2="40" stroke="rgba(59,130,246,0.5)" stroke-width="1"/>
+    <line x1="960" y1="32" x2="960" y2="40" stroke="rgba(59,130,246,0.5)" stroke-width="1"/>
+    <text x="876.0" y="22" text-anchor="middle" fill="#3B82F6" font-size="10.5" font-weight="600" letter-spacing="0.08em">THE ONLY PART THAT IS YOU</text>
+
+    <line x1="174" y1="102" x2="188" y2="102" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" marker-end="url(#ah)"/>
+    <line x1="372" y1="102" x2="386" y2="102" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" marker-end="url(#ah)"/>
+    <line x1="570" y1="102" x2="584" y2="102" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" marker-end="url(#ah)"/>
+    <line x1="768" y1="102" x2="782" y2="102" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" marker-end="url(#ah)"/>
+    <line x1="966" y1="102" x2="980" y2="102" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" marker-end="url(#ah)"/>
+    <g>
+      <rect x="0" y="52" width="168" height="100" rx="14" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.13)" stroke-width="1.25"/>
+      <text x="84.0" y="84" text-anchor="middle" fill="#EDEBFF" font-size="15" font-weight="600" letter-spacing="-0.01em">Find</text>
+      <text x="84.0" y="108" text-anchor="middle" fill="rgba(255,255,255,0.58)" font-size="11">Practices matched</text>
+      <text x="84.0" y="124" text-anchor="middle" fill="rgba(255,255,255,0.58)" font-size="11">to what you sell</text>
+    </g>
+    <g>
+      <rect x="198" y="52" width="168" height="100" rx="14" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.13)" stroke-width="1.25"/>
+      <text x="282.0" y="84" text-anchor="middle" fill="#EDEBFF" font-size="15" font-weight="600" letter-spacing="-0.01em">Qualify</text>
+      <text x="282.0" y="108" text-anchor="middle" fill="rgba(255,255,255,0.58)" font-size="11">Scored before anyone</text>
+      <text x="282.0" y="124" text-anchor="middle" fill="rgba(255,255,255,0.58)" font-size="11">is ever contacted</text>
+    </g>
+    <g>
+      <rect x="396" y="52" width="168" height="100" rx="14" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.13)" stroke-width="1.25"/>
+      <text x="480.0" y="84" text-anchor="middle" fill="#EDEBFF" font-size="15" font-weight="600" letter-spacing="-0.01em">Send</text>
+      <text x="480.0" y="108" text-anchor="middle" fill="rgba(255,255,255,0.58)" font-size="11">A personal email about</text>
+      <text x="480.0" y="124" text-anchor="middle" fill="rgba(255,255,255,0.58)" font-size="11">their actual problem</text>
+    </g>
+    <g>
+      <rect x="594" y="52" width="168" height="100" rx="14" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.13)" stroke-width="1.25"/>
+      <text x="678.0" y="84" text-anchor="middle" fill="#EDEBFF" font-size="15" font-weight="600" letter-spacing="-0.01em">Answer</text>
+      <text x="678.0" y="108" text-anchor="middle" fill="rgba(255,255,255,0.58)" font-size="11">Every reply handled</text>
+      <text x="678.0" y="124" text-anchor="middle" fill="rgba(255,255,255,0.58)" font-size="11">and qualified, same day</text>
+    </g>
+    <g>
+      <rect x="792" y="52" width="168" height="100" rx="14" fill="rgba(59,130,246,0.18)" stroke="#3B82F6" stroke-width="1.25"/>
+      <text x="876.0" y="84" text-anchor="middle" fill="#EDEBFF" font-size="15" font-weight="600" letter-spacing="-0.01em">You</text>
+      <text x="876.0" y="108" text-anchor="middle" fill="rgba(255,255,255,0.58)" font-size="11">The call.</text>
+      <text x="876.0" y="124" text-anchor="middle" fill="rgba(255,255,255,0.58)" font-size="11">You pitch. You close.</text>
+    </g>
+    <g>
+      <rect x="990" y="52" width="168" height="100" rx="14" fill="rgba(110,231,183,0.14)" stroke="#6EE7B7" stroke-width="1.25"/>
+      <text x="1074.0" y="84" text-anchor="middle" fill="#EDEBFF" font-size="15" font-weight="600" letter-spacing="-0.01em">Client</text>
+      <text x="1074.0" y="108" text-anchor="middle" fill="rgba(255,255,255,0.58)" font-size="11">Signed, and already</text>
+      <text x="1074.0" y="124" text-anchor="middle" fill="rgba(255,255,255,0.58)" font-size="11">in your pipeline</text>
+    </g>
+
+    <path d="M 678.0 152 C 678.0 212, 480.0 212, 480.0 158" fill="none" stroke="rgba(59,130,246,0.5)"
+          stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#ahb)"/>
+    <text x="579.0" y="236" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="11">"Not right now" comes back on the date they gave you</text>
+  </svg>
+  </div>
+  <p class="diagram-cap">Four of the six steps happen whether or not anyone is at a desk. <b>You are in one of them.</b><br>Where that line sits is the whole difference between the tiers below.</p>
+</div>
+    <div class="tablewrap reveal">
+      <table class="t">
+        <thead><tr><th>Workstream</th><th>What it does for you</th><th>When</th></tr></thead>
+        <tbody>
+          <tr><td class="k">CRM foundation</td><td>Your HubSpot built out properly: one pipeline per service line, so every account shows what it already buys, what else it could, and what the next step is. Nothing lives in an inbox or in somebody's memory.</td><td class="tgt">Days 1 to 30</td></tr>
+          <tr><td class="k">Cross-sell map</td><td>All forty current clients scored against every service you sell, with a reason attached. You already have the relationship — this tells you which account is a candidate for what, and who to call first.</td><td class="tgt">Days 1 to 30</td></tr>
+          <tr><td class="k">Target list</td><td>Practices matched to your services before anyone is contacted: size, specialty, number of locations, languages spoken, and what their own patients are saying publicly right now. Weak fits never get contacted at all.</td><td class="tgt">Days 1 to 30</td></tr>
+          <tr><td class="k">Sending setup</td><td>Dedicated sending addresses, established over four weeks so your corporate domain is never the one at risk. This is the reason email volume starts in month two and not month one.</td><td class="tgt">Days 1 to 30</td></tr>
+          <tr><td class="k">Outreach</td><td>Personalised email to the practices that scored, opening on the specific thing wrong at that specific office. Volume set by how many demos you can take.</td><td class="tgt">Days 31 to 60</td></tr>
+          <tr><td class="k">Reply handling</td><td>Every reply answered the same day. Interested ones qualified on size, pain, decision-maker and timing before they ever reach your calendar. Anyone who says stop is never contacted again, anywhere.</td><td class="tgt">Days 31 to 60</td></tr>
+          <tr><td class="k">Follow-up</td><td>Nobody gets forgotten. The ones who said "not right now, call me in January" come back to you in January, with what they told you the first time still attached.</td><td class="tgt">Days 31 to 60</td></tr>
+          <tr><td class="k">Pipeline converts</td><td>The demos booked in month two turn into signed clients in month three. This is the window where the outreach stops being a cost line and starts being revenue, and it is the first month the whole thing can be judged on money rather than activity.</td><td class="tgt">Days 61 to 90</td></tr>
+          <tr><td class="k">Follow-up harvest</td><td>Every "not right now, call me after the new year" from month two comes back on the date they named, with everything they told you the first time still attached. This pile closes at a higher rate than any first email ever will.</td><td class="tgt">Days 61 to 90</td></tr>
+          <tr><td class="k">Second service line</td><td>Clients signed in month one get looked at again. Someone who bought phone coverage in January is a documented candidate for scheduling, audits or billing by March, and the system already knows which one and why.</td><td class="tgt">Days 61 to 90</td></tr>
+          <tr><td class="k">Cost per client</td><td>You learn what a client actually costs to acquire, split by service line and by specialty. <b>That number is what turns this from an experiment into a budget line you can scale on purpose</b> — and it is the number your CEO will ask for first.</td><td class="tgt">Days 61 to 90</td></tr>
+          <tr><td class="k">Your daily brief</td><td>Every morning: who to call, why, what they have already told you, and which service to lead with. After the call you say what happened in plain language and the CRM updates itself. This exists to buy back the hours that become demos.</td><td class="tgt">Days 61 to 90</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',Roboto,sans-serif;font-weight:600;font-size:clamp(22px,2.4vw,30px);letter-spacing:-0.02em;margin:clamp(52px,7vh,80px) 0 8px">Where the money actually shows up</h3>
+    <p style="color:var(--muted-strong);font-size:15.5px;line-height:1.6;max-width:72ch">Three months, three different kinds of revenue. Only one of them arrives immediately, and we would rather tell you that now than in week six.</p>
+    <div class="grid-cards">
+      <div class="card reveal">
+        <div class="num">MONTH ONE</div>
+        <h3>Revenue from the book you already have</h3>
+        <p>The cross-sell map lands in week two. These are practices that already trust you and already pay you — no warm-up, no new relationship, no waiting on an inbox to establish. <b>It is the only revenue in this plan that does not have to wait for anything.</b></p>
+      </div>
+      <div class="card reveal" style="--d:80ms">
+        <div class="num">MONTH TWO</div>
+        <h3>Demos, not yet signatures</h3>
+        <p>Sending addresses have finished establishing and outreach goes live. Your calendar starts filling with practices you have never spoken to. <b>Expect pipeline this month, not revenue</b> — and be suspicious of anyone who promises you otherwise.</p>
+      </div>
+      <div class="card reveal" style="--d:160ms">
+        <div class="num">MONTH THREE</div>
+        <h3>Cold outreach becomes clients</h3>
+        <p>The demos booked in month two close, the January follow-ups come back, and the month-one clients get looked at for a second service line. <b>By the end of it you know your cost per client</b> — which is what makes month four a decision instead of a hope.</p>
+      </div>
+    </div>
+
+    <h3 style="font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',Roboto,sans-serif;font-weight:600;font-size:clamp(22px,2.4vw,30px);letter-spacing:-0.02em;margin:clamp(52px,7vh,80px) 0 8px">What keeps it working</h3>
+    <p style="color:var(--muted-strong);font-size:15.5px;line-height:1.6;max-width:72ch">Three things drift on their own: what lands in an inbox, who is worth reaching, and what the system believes a reply means. Left alone, outreach that worked in month two is quietly worse by month six — not broken, just less right. So there is a standing review, weekly at first and monthly once the numbers settle.</p>
+    <ol class="steplist" style="margin-top:26px">
+      <li class="reveal"><div><span class="t">Read what actually went out<span class="when">Every review</span></span><p>Not a sample of templates — the real emails, sent to real practices, and the replies they got back. Copy that has gone stale gets rewritten, and anything that reads like a robot wrote it gets cut before your name is attached to it twice.</p></div></li>
+      <li class="reveal"><div><span class="t">Check who is being reached<span class="when">Every review</span></span><p>The accounts that scored well and the ones that didn't, side by side against the clients you actually signed. Your definition of a good practice will move as you learn which ones close — the scoring has to move with it, or you spend month six chasing month one's idea of a good fit.</p></div></li>
+      <li class="reveal"><div><span class="t">Audit what the system decided<span class="when">Every review</span></span><p>Spot-check the replies it classified. If it called something interested that wasn't, or filed a real opportunity as a polite no, that gets corrected and the rule behind it changes. <b>This is the check that protects your calendar</b> — a system that misreads replies wastes your time before it wastes anything else.</p></div></li>
+      <li class="reveal"><div><span class="t">Cut, and double down<span class="when">Monthly</span></span><p>Specialties, service lines and messages that are producing get more volume. The ones that are not get stopped. Every month the system should be pointed slightly more precisely than it was the month before.</p></div></li>
+    </ol>
+    <div class="callout reveal">
+      <div class="icon">↻</div>
+      <div>
+        <h3>This is what the monthly is for</h3>
+        <p>The build is a one-time piece of work and it ends. Keeping it right does not. <b>An outreach system is not a thing you install, it is a thing you run</b> — and the difference between one that works for a quarter and one that still works in year two is entirely this review.</p>
+        <p>You are also welcome in it. These reviews are a working session, not a report that arrives in your inbox — you know things about these practices that no amount of public data will tell us, and the fastest improvements in the first few months will come from you saying "that one was never going to buy, and here is why."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 THE INVESTMENT -->
+<section id="investment">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">06</div>
+      <div class="ht">
+        <h2 class="display">The <span class="accent">investment</span></h2>
+        <p class="lede">The build is one-time, invoiced in three parts: at kickoff, at day thirty and at day sixty. Each one is a gate — if the phase before it did not deliver, the next does not start. The monthly begins in month two, once there is a system running to support.</p>
+      </div>
+    </div>
+
+    <div class="callout reveal" style="margin-top:0;margin-bottom:clamp(34px,4.6vh,52px)">
+      <div class="icon">$</div>
+      <div>
+        <h3>Read every number below against the one you already gave us</h3>
+        <p>You put it plainly on the call: <b>$100,000 a month, on salaries and operations.</b> That is $1.2 million over a year, and it is running right now, this month, whether or not anything on this page ever gets built.</p>
+        <p><b>The recommended tier is $100,000 for the entire first year.</b> One month of that gap, spent once, to go after the other eleven. That is the comparison that matters — not what an agency charges for a website, and not whether forty-five thousand dollars is a lot of money in isolation.</p>
+      </div>
+    </div>
+
+    <div class="tiers">
+      <div class="tier reveal">
+        <div class="tname">Reach</div>
+        <div class="price"><sup>$</sup>25,000<span class="cadence">build</span></div>
+        <div class="build">One-time, split across the three phases · <b>then $3,500 / mo</b> from month two</div>
+        <div class="tag">We find the right practices and get your email in front of them. <b>Every reply lands in your HubSpot against the right record</b> — and from there your team reads it, qualifies it, chases it and books it.</div>
+        <div class="inc">Includes</div>
+        <ul>
+          <li><strong>Target list</strong>: practices sourced and scored against your services, built for you rather than bought</li>
+          <li><strong>Sending setup</strong>: dedicated addresses, established over four weeks, your corporate domain never at risk</li>
+          <li><strong>Outreach</strong>: personalised email opening on the specific thing wrong at that specific office</li>
+          <li><strong>CRM foundation</strong>: HubSpot built out, one pipeline per service line</li>
+          <li><strong>Replies routed</strong>: every response filed against the right practice, nothing lost in an inbox</li>
+        </ul>
+      </div>
+      <div class="tier rec reveal" style="--d:80ms">
+        <div class="badge">Recommended</div>
+        <div class="tname">Engine</div>
+        <div class="price"><sup>$</sup>45,000<span class="cadence">build</span></div>
+        <div class="build">One-time, split across the three phases · <b>then $5,000 / mo</b> from month two</div>
+        <div class="tag"><b>The recommended place to start</b>, because this is where the replies stop being your problem. <b>Reach fills your CRM. This one fills your calendar.</b> It is also the only tier carrying the cross-sell map of your existing forty — the fastest revenue in this document, and the only revenue here that waits on nothing.</div>
+        <div class="inc">Adds</div>
+        <ul>
+          <li><strong>Everything in Reach</strong></li>
+          <li><strong>Reply handling</strong>: every reply answered same day and qualified on size, pain and decision-maker before it reaches you</li>
+          <li><strong>Follow-up</strong>: nobody forgotten, and "not right now" comes back on the date they named</li>
+          <li><strong>Cross-sell map</strong>: your existing book scored for every service line, ranked by who to call first</li>
+          <li><strong>Your daily brief</strong>: who to call, why, and what to sell them, every morning</li>
+          <li><strong>Post-call capture and reporting</strong>: you say what happened, the CRM updates itself, cost per client by service line</li>
+        </ul>
+      </div>
+      <div class="tier reveal" style="--d:160ms">
+        <div class="tname">Command</div>
+        <div class="price"><sup>$</sup>60,000<span class="cadence">build</span></div>
+        <div class="build">One-time, split across the three phases · <b>then $10,000 / mo</b> from month two</div>
+        <div class="tag">For when the question stops being who to call and becomes <b>where the money should go.</b> You asked for agents watching your competition and watching the market — this is the tier that carries them.</div>
+        <div class="inc">Adds</div>
+        <ul>
+          <li><strong>Everything in Engine</strong></li>
+          <li><strong>Competitor tracking</strong>: what Freed, Heidi, Sully and Suno are pricing, shipping and claiming, watched continuously</li>
+          <li><strong>Campaign and spend strategy</strong>: where the marketing budget goes each month, and what the last one actually returned</li>
+          <li><strong>Structured testing</strong>: offers, segments and timing tested properly rather than guessed at</li>
+          <li><strong>Team rollout</strong>: the rest of your business development group on the same system, with ownership rules so two people never work the same practice</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tablewrap reveal">
+      <table class="t">
+        <thead><tr><th>Included</th><th class="ctr">Reach</th><th class="ctr hi">Engine</th><th class="ctr">Command</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Target list, sourced and scored</td><td class="chk">✓</td><td class="chk hi">✓</td><td class="chk">✓</td></tr>
+          <tr><td class="k">Sending setup and outreach</td><td class="chk">✓</td><td class="chk hi">✓</td><td class="chk">✓</td></tr>
+          <tr><td class="k">CRM foundation, replies routed in</td><td class="chk">✓</td><td class="chk hi">✓</td><td class="chk">✓</td></tr>
+          <tr><td class="k">Replies read, answered and qualified for you</td><td class="dash">—</td><td class="chk hi">✓</td><td class="chk">✓</td></tr>
+          <tr><td class="k">Follow-up, handled without you</td><td class="dash">—</td><td class="chk hi">✓</td><td class="chk">✓</td></tr>
+          <tr><td class="k">Cross-sell map of your existing book</td><td class="dash">—</td><td class="chk hi">✓</td><td class="chk">✓</td></tr>
+          <tr><td class="k">Daily brief and post-call capture</td><td class="dash">—</td><td class="chk hi">✓</td><td class="chk">✓</td></tr>
+          <tr><td class="k">Reporting by service line</td><td class="dash">—</td><td class="chk hi">✓</td><td class="chk">✓</td></tr>
+          <tr><td class="k">Competitor tracking, spend strategy, team rollout</td><td class="dash">—</td><td class="dash hi">—</td><td class="chk">✓</td></tr>
+          <tr class="money"><td class="k">First twelve months, all in</td><td class="ctr">$63,500</td><td class="ctr hi">$100,000</td><td class="ctr">$170,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="costs-note"><b>The other way to judge it:</b> against a single client. By your own figure a client is about $2,000 a month per service line, so roughly $24,000 a year. <b>The recommended tier pays for itself at four of them</b> — and the target is forty. Sending infrastructure, contact data and model usage are billed directly to ScribeRunner at cost, in your name, with no markup — expect roughly $900 to $1,800 a month at the volumes above. <b>Not included:</b> ad spend, third-party software, travel, legal fees.</p>
+
+    <div class="honest reveal">
+      <div class="hh">What this does not do</div>
+      <p>We are not going to tell you that an outreach system closes anyone. You close. Every demo on that calendar is still yours to run, and revenue cycle management — the line you said is hardest to win because nobody hands over their billing to a stranger — will stay a relationship sale for as long as you are in business. Nothing here shortens that trust. <b>What changes is which conversations reach you, and what condition they arrive in.</b></p>
+      <p>On the agents you tried yourself, the ones that ran slowly and burned through your tokens without impressing you: that is the normal result of asking a chatbot to do a machine's job. Most of what you described does not need a model at all. Checking whether a practice is already in your CRM is a database question, not a reasoning one, and answered that way it costs a fraction of a cent instead of a minute of thinking. The expensive reasoning gets spent in the two places it earns its keep — deciding which of your services to lead with, and writing the email that opens the conversation.</p>
+      <p>Two numbers in this document are yours rather than ours, and they should be settled at kickoff rather than assumed here: <b>what your margin actually is</b>, and <b>what a typical account is worth once it is buying more than one service.</b> Both move the arithmetic in section 04 considerably, and both are knowable in an afternoon with your own books open.</p>
+      <p>And one thing worth saying plainly before you sign anything: <b>nothing in here touches patient information.</b> This system works with public practice data, business contacts, your CRM and your outbound. It is never connected to the SAY app, to any EHR, or to anything carrying clinical records — not in month three and not later. That boundary is a design decision, not a limitation, and it is what keeps this out of your compliance team's way entirely.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 07 NEXT STEP -->
+<section id="next" class="accept-section">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">07</div>
+      <div class="ht">
+        <h2 class="display">Next <span class="accent">step</span></h2>
+        <p class="lede">Three things, and the first one is the only one that needs a decision.</p>
+      </div>
+    </div>
+    <ol class="steplist">
+      <li class="reveal"><div><span class="t">Pick a tier and commit to it<span class="when">This week</span></span><p>Choose which systems you want running and at what level. The thing that kills growth at your stage is not picking the wrong one, it is switching every quarter before any of them have had time to compound.</p></div></li>
+      <li class="reveal"><div><span class="t">Kickoff and access<span class="when">Week 1</span></span><p>HubSpot admin access, your service catalogue and pricing, and thirty minutes recording how you actually pitch a practice. That is the entire ask — everything else we build from public information.</p></div></li>
+      <li class="reveal"><div><span class="t">First build sprint<span class="when">Days 1 to 30</span></span><p>CRM foundation, the cross-sell map of your existing forty, and the first scored target list. Sending addresses go up in week one and establish through week four, which is why outreach volume starts in month two — and why starting the clock now is the reason it can.</p></div></li>
+    </ol>
+
+    <div class="accept-panel reveal">
+      <div class="step">
+        <div class="step-label"><span class="n">01</span> Which tier are you weighing?</div>
+        <div class="tier-select" id="tierSelect">
+          <div class="tier-opt" data-tier="Reach ($25,000 build + $3,500 / mo)"><div class="to-name">Reach</div><div class="to-price">$25,000<span class="c">build</span></div><div class="to-build">then $3,500 / mo</div></div>
+          <div class="tier-opt sel" data-tier="Engine ($45,000 build + $5,000 / mo)"><div class="to-name">Engine</div><div class="to-price">$45,000<span class="c">build</span></div><div class="to-build">Recommended</div></div>
+          <div class="tier-opt" data-tier="Command ($60,000 build + $10,000 / mo)"><div class="to-name">Command</div><div class="to-price">$60,000<span class="c">build</span></div><div class="to-build">then $10,000 / mo</div></div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-label"><span class="n">02</span> Your details</div>
+        <div class="field-row">
+          <div class="field"><label for="fn">Full name</label><input id="fn" type="text" placeholder="Juan Sanchez" autocomplete="name"></div>
+          <div class="field"><label for="co">Company</label><input id="co" type="text" placeholder="ScribeRunner" autocomplete="organization"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="em">Email</label><input id="em" type="email" placeholder="juan.sanchez@scriberunner.com" autocomplete="email"></div>
+          <div class="field"><label for="pr">Anything you want scoped differently</label><input id="pr" type="text" placeholder="e.g. start with the existing book only"></div>
+        </div>
+      </div>
+      <div class="signature-line">
+        <div class="date">Proposal valid through <strong id="validDate">30 days from today</strong></div>
+        <button class="btn-accept" id="acceptBtn" disabled>Start the engagement →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <div class="col">
+        <h4>Kimball AI</h4>
+        <p>AI so simple your mom gets it.</p>
+        <p style="color:var(--muted)">Your Chief AI Officer</p>
+      </div>
+      <div class="col">
+        <h4>Prepared for</h4>
+        <p>Juan Sanchez</p>
+        <a href="https://scriberunner.com" target="_blank" rel="noopener">scriberunner.com</a>
+      </div>
+      <div class="col">
+        <h4>Contact</h4>
+        <p>Kimball Mueller</p>
+        <a href="mailto:kimball@disruptorsmedia.com">kimball@disruptorsmedia.com</a>
+        <a href="tel:+12089097765">(208) 909-7765</a>
+      </div>
+      <div class="col">
+        <h4>Office</h4>
+        <p>650 N Main Street</p>
+        <p style="color:var(--muted)">North Salt Lake, UT 84054</p>
+      </div>
+    </div>
+    <div class="legal">
+      <span>Prepared September 2026 · Valid 30 days</span>
+      <span>Built in your name. You own everything.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay">
+  <div class="panel">
+    <div class="check">✓</div>
+    <h3 class="display">Let's fill that calendar.</h3>
+    <p id="overlayMsg">Thank you. Kimball will reach out within one business day.</p>
+    <a class="book" href="https://api.leadconnectorhq.com/widget/bookings/meeting-with-the-disruptors" target="_blank" rel="noopener">Pick a time now →</a>
+  </div>
+</div>
+
+<script>
+  (function () {
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    } else {
+      document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+    }
+    try {
+      var d = new Date(); d.setDate(d.getDate() + 30);
+      document.getElementById('validDate').textContent = d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    } catch (e) {}
+    var selected = document.querySelector('#tierSelect .tier-opt.sel').getAttribute('data-tier');
+    var opts = document.querySelectorAll('#tierSelect .tier-opt');
+    opts.forEach(function (o) {
+      o.addEventListener('click', function () {
+        opts.forEach(function (x) { x.classList.remove('sel'); });
+        o.classList.add('sel'); selected = o.getAttribute('data-tier');
+      });
+    });
+    var fn = document.getElementById('fn'), em = document.getElementById('em'), btn = document.getElementById('acceptBtn');
+    function check() { btn.disabled = !(fn.value.trim().length > 1 && /.+@.+\..+/.test(em.value.trim())); }
+    [fn, em].forEach(function (i) { i.addEventListener('input', check); });
+    btn.addEventListener('click', function () {
+      if (btn.disabled) return;
+      var name = fn.value.trim().split(' ')[0];
+      document.getElementById('overlayMsg').textContent =
+        'Thank you' + (name ? ', ' + name : '') + '. Noted: ' + selected +
+        '. Kimball will reach out within one business day, or grab a time directly below.';
+      document.getElementById('overlay').classList.add('show');
+    });
+    document.getElementById('overlay').addEventListener('click', function (e) {
+      if (e.target === this) this.classList.remove('show');
+    });
+  })();
+</script>
+
+</body>
+</html>

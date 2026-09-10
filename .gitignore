@@ -31,3 +31,8 @@ transcripts/
 
 __pycache__/
 *.pyc
+
+# Prospect strategy docs. These carry internal pricing floors, margin analysis,
+# "room to move" negotiation notes and candid read-outs on the buyer. This repo is
+# PUBLIC and the proposal URLs reveal it, so a prospect can find anything tracked here.
+prospects/
