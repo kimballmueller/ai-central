@@ -493,16 +493,7 @@
 
     <p style="font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',Roboto,sans-serif;font-weight:500;font-size:clamp(19px,2.1vw,25px);letter-spacing:-0.015em;line-height:1.45;color:var(--muted-strong);max-width:64ch">That is <b style="color:var(--ink);font-weight:600">$1.2 million a year</b>, and it runs whether or not anything in this document ever gets built. Everything below is pointed at closing it.</p>
 
-    <div class="callout reveal">
-      <div class="icon">i</div>
-      <div>
-        <h3>A note on how this document is written</h3>
-        <p>Dr. Kazmi asked for this to be readable by people who are not in healthcare and not in technology — <b>"explain it like we're 10."</b> So every term is defined the first time it appears, there is no jargon left unexplained, and nothing is described as "AI-powered" without saying exactly what that means in practice.</p>
-        <p>It is longer than a normal proposal because it was asked to be. <b>Section 02 is a complete summary</b> for anyone who only has two minutes. Everything after it is the detail behind that summary.</p>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
 <!-- 02 THE SHORT VERSION -->
 <section id="short" class="dark">
@@ -518,18 +509,18 @@
     <div class="grid-cards">
       <div class="card reveal">
         <div class="num">THE PROBLEM</div>
-        <h3>You sell to facilities in trouble, but you have no way to find out who is in trouble.</h3>
-        <p>There are roughly 15,000 nursing homes in America. Ria has identified about 1,200 worth approaching. Finding them, one at a time, by hand, is a full-time job nobody currently has. <b>So today you mostly wait for referrals.</b></p>
+        <h3>You already do this. It just isn't a system.</h3>
+        <p>Ria finds these facilities today — reads the surveys, spots the citations, writes the email. She is good at it, which is the entire reason this can be built at all. <b>The problem is that it runs on her hands, and she also runs the clinical department.</b> One person researching one facility at a time is not a pipeline. It is a bottleneck with a very capable person stuck inside it.</p>
       </div>
       <div class="card reveal" style="--d:80ms">
         <div class="num">THE FIX</div>
-        <h3>A system that watches for trouble and writes the first email.</h3>
-        <p>It reads the public government reports every morning, finds facilities that were just cited, researches them the way Ria researches them, and drafts an email in Ria's own voice about that facility's specific problem. <b>Ria approves it. It sends.</b></p>
+        <h3>A system that qualifies leads out of any source you point it at.</h3>
+        <p>Star Pro, the public government records, a purchased list, your own past clients — it pulls from any source of truth, researches each one the way Ria would, <b>scores whether they are even worth approaching</b>, writes the first email, handles the reply and books the meeting. A new database next year is a new source, not a new project.</p>
       </div>
       <div class="card reveal" style="--d:160ms">
         <div class="num">THE RESULT</div>
         <h3>Six demos a week instead of three.</h3>
-        <p>Roughly 22 conversations a month, three to four new clients a month, 40 to 50 over the year. Omer thinks that number is low. <b>It is meant to be a floor, not a ceiling.</b></p>
+        <p>Roughly 22 conversations a month, three to four new clients a month, 40 to 50 across the year. <b>That is deliberately the conservative number.</b> Omer's reaction on the call was that it is low — and I would rather be held to a floor we clear than a ceiling we miss.</p>
       </div>
     </div>
 
@@ -623,8 +614,20 @@
 
       <li class="reveal"><div><span class="t">9:05 a.m. — it sends, then it handles what comes back<span class="when">Step 5 · Send &amp; reply</span></span><p>The email goes out from a dedicated ScribeRunner address. When the administrator replies, the system reads the reply and sorts it: genuinely interested, asking a question, wrong person, not right now, or no.</p><p>Interested replies get an answer the same day and a link to book time. Someone who says <em>"call me after the new year"</em> is filed and <b>automatically comes back in January</b> with everything they said the first time still attached. Anyone who says stop is never contacted again, anywhere.</p></div></li>
 
+      <li class="reveal"><div><span class="t">Meanwhile — everything is being written down<span class="when">Throughout · HubSpot</span></span><p>None of the above lives in somebody's inbox. From the moment Maple Grove is picked up, HubSpot has a record: the facility as a company, the administrator as a contact, and the citation details on their own fields — <b>F-tag, severity level, penalty amount, survey cycle, special-focus status.</b></p><p>As things happen the record moves itself: <em>found</em> → <em>researched</em> → <em>approved by Ria</em> → <em>emailed</em> → <em>replied</em> → <em>qualified</em> → <em>demo booked</em> → <em>won or lost.</em> Every email sent and received is attached to it.</p><p><b>This is what makes the reporting possible.</b> Because every stage is stamped, you can later ask which severity levels convert best, which citations produce the fastest replies, and what a client from this channel actually cost you.</p></div></li>
+
       <li class="reveal"><div><span class="t">Thursday, 2:00 p.m. — Juan takes the call<span class="when">Step 6 · Close</span></span><p>Maple Grove's administrator is on the calendar. Waiting for Juan is a one-page brief: what they were cited for, what it cost them, what they have already said in email, and which ScribeRunner service to lead with.</p><p><b>Juan closes it.</b> Nothing in this system pitches, negotiates, or signs anybody. It gets the right conversation onto the right calendar with the right context, and then it gets out of the way.</p></div></li>
     </ol>
+
+    <div class="callout reveal">
+      <div class="icon">→</div>
+      <div>
+        <h3>Step 4 is a choice, not a permanent requirement</h3>
+        <p>The walkthrough above shows Ria approving that email, and in the early months she approves every single one. <b>That is on purpose, and it is temporary.</b></p>
+        <p>As the record builds — hundreds of drafts she approved without changing a word — the review moves from every email, to a sample, to only the unusual ones. <b>By the end of month twelve the intent is that Ria can look if she wants to, not because anything is waiting on her.</b> A citation gets published and a researched, written, personalised email goes out the same morning with no person in the loop at all.</p>
+        <p>She keeps the switch either way. Turning review back on for a new service line, a new facility type, or a message she has not seen before is a setting, not a rebuild.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -783,7 +786,7 @@
       <div class="icon">=</div>
       <div>
         <h3>No overlap with your other technical team</h3>
-        <p>Dr. Kazmi raised this directly and it is a fair thing to pin down. <b>This system never touches the SAY app, any EHR, or any patient record.</b> Not in month one, not in month twelve, not at all.</p>
+        <p>Dr. Kazmi raised this directly and it is a fair thing to pin down. <b>This system never touches your clinical software, any EHR, or any patient record.</b> Not in month one, not in month twelve, not at all.</p>
         <p>It works with public government reports, business contact details, your CRM, and outbound email. That is a deliberate boundary, and it does two things: it keeps this entirely clear of anything the clinical technology team owns, and it keeps the whole project out of your compliance team's way, because <b>there is no patient information anywhere in it.</b></p>
         <p>If your team would rather own a piece of this — the Star Pro connection, for instance — that is easy to hand over. Everything is built in ScribeRunner's accounts, on ScribeRunner's keys, and documented as it goes.</p>
       </div>
@@ -806,12 +809,16 @@
       <table class="t">
         <thead><tr><th>When</th><th>What gets built</th><th>What you can judge it on</th></tr></thead>
         <tbody>
-          <tr><td class="k">Days 1–30</td><td><b>The foundation.</b> HubSpot built out so every lead has a place and every person knows how to read it. The company brain assembled. Ria's training sessions. The CMS watcher running. Sending addresses purchased and warming.</td><td class="tgt">A working CRM, a real target list, and Ria signing off on drafts</td></tr>
-          <tr><td class="k">Days 31–60</td><td><b>It goes live.</b> First real emails, small volume, every one reviewed. Reply handling switched on. Follow-up sequences running. Volume rises only as the numbers justify it.</td><td class="tgt">Emails delivered, replies received, <b>first demos booked</b></td></tr>
-          <tr><td class="k">Days 61–90</td><td><b>It becomes revenue.</b> Month two's demos become signed clients. The daily chat interface goes in. Reporting shows what a client actually costs to acquire.</td><td class="tgt">Signed clients, and a real cost-per-client number</td></tr>
-          <tr><td class="k">Months 4–6</td><td><b>It gets smarter and wider.</b> Automation moves from roughly 60–70% to 80%+. Juan and Omer's commercial voice gets captured the way Ria's was. The second service line goes on the same rails.</td><td class="tgt">Fewer emails needing review; second line producing</td></tr>
-          <tr><td class="k">Months 7–12</td><td><b>It runs, and I make sure it keeps running.</b> Roughly 90% of qualification handled without a person. Outpatient niche added — pain management, physiatry, ortho, internal medicine. Your team trained to operate it without me.</td><td class="tgt">40–50 new clients, and a team that no longer needs me</td></tr>
-        </tbody>
+          <tr><td class="k">Days 1–15</td><td><b>Learning your business.</b> The two-hour session with Ria, recorded, then three to five repeats across different citation types. Your company brain assembled — service catalogue, Ria's audit tools, pricing, the claims we will and will not make. Star Pro access requested. Sending domains purchased and warm-up started on day one, because it takes four weeks and nothing else waits on it.</td><td class="tgt">Domains warming on schedule · company brain reviewed by Ria · first drafts in front of her</td></tr>
+          <tr><td class="k">Days 16–30</td><td><b>The lead engine.</b> The CMS watcher built and checking every morning. Star Pro connected. Contact enrichment wired in. Scoring rules built out of Ria's method — which citations matter, which severity levels, which facilities to skip entirely. First scored target list delivered. HubSpot architecture built: pipeline, stages, and the citation fields from section 03.</td><td class="tgt">A real scored list you can read · a working CRM · <b>Ria approving five drafts in a row</b></td></tr>
+          <tr><td class="k">Days 31–45</td><td><b>First contact.</b> Sending begins at low volume with every email reviewed before it goes. Reply classification switched on. Bounce and delivery monitoring running daily. The first corrections from real replies fed back in.</td><td class="tgt">Delivery rate above 95% · first replies arriving · zero facilities contacted twice</td></tr>
+          <tr><td class="k">Days 46–60</td><td><b>The reply machine.</b> Follow-up sequences live for non-responders. Dated re-engagement built, so "call me in January" comes back in January. Booking flow connected to your calendars. Volume raised — but only as far as the measured reply rate and your calendar justify.</td><td class="tgt">Reply rate and positive-reply rate you can see · <b>first demos on the calendar</b></td></tr>
+          <tr><td class="k">Days 61–75</td><td><b>Turning demos into money.</b> Pre-call briefs generated automatically for every booked demo. Post-call capture, so Juan describes what happened in plain language and the record updates itself. Cross-sell map of your existing clients delivered, scored for every service they do not buy yet.</td><td class="tgt">Signed clients from month two's demos · a ranked call list for your existing book</td></tr>
+          <tr><td class="k">Days 76–90</td><td><b>Seeing the whole thing.</b> The chat interface goes in — ask the CRM what happened this week and get a real answer. Reporting built on the stage stamps: cost per demo, cost per client, broken out by citation type, severity and facility size.</td><td class="tgt"><b>A real cost-per-client number</b> — which is what makes month four a decision rather than a hope</td></tr>
+          <tr><td class="k">Months 4–6</td><td><b>The commercial voice, and the second line.</b> I shadow Juan and Omer the way I shadowed Ria, and reply handling learns how you qualify. Automation moves from roughly 60–70% to 80%. Ria's review shifts from every email to a sample. The second service line goes onto the same rails — same watcher, different scoring, different message.</td><td class="tgt">Share of emails needing review falling month over month · second line producing demos</td></tr>
+          <tr><td class="k">Months 7–9</td><td><b>Widening the net.</b> The outpatient niche added — pain management, physiatry, orthopaedics, internal medicine. Interested replies handled without a person. Structured testing on offers and subject lines, with enough volume behind it to actually mean something. The follow-up backlog from months two and three starts converting.</td><td class="tgt">Cost per client trending down · a third line producing · re-engagement closing</td></tr>
+          <tr><td class="k">Months 10–12</td><td><b>Handing it over.</b> Roughly 90% of qualification running without a person. Everything documented. Your team trained to run it, change the messaging, add a source and read the reporting without me. And we scope what the next problem worth solving is.</td><td class="tgt"><b>40–50 new clients</b> · and a team that could keep this running if I disappeared</td></tr>
+        </tbody></tbody>
       </table>
     </div>
 
@@ -834,7 +841,7 @@
       <div class="num">09</div>
       <div class="ht">
         <h2 class="display">The <span class="accent">investment</span></h2>
-        <p class="lede">The build is one-time, invoiced in three parts — at kickoff, at day thirty and at day sixty. Each is a gate: if the phase before it did not deliver, the next does not start.</p>
+        <p class="lede">One build fee in month one, then a monthly that runs until you decide it should not. No contract, no lock-in, no termination fee.</p>
       </div>
     </div>
 
@@ -851,44 +858,56 @@
       <div class="tier reveal">
         <div class="tname">Reach</div>
         <div class="price"><sup>$</sup>25,000<span class="cadence">build</span></div>
-        <div class="build">One-time, across three phases · <b>then $3,500 / mo</b> for an expected 12 months</div>
-        <div class="tag">We find the facilities and get your email in front of them. <b>Every reply lands in your HubSpot</b> — from there your team reads it, qualifies it, chases it and books it.</div>
+        <div class="build">One-time build fee, month one · <b>then $3,500 / mo</b> ongoing, expected 12 months</div>
+        <div class="tag"><b>The list, and the emails.</b> A machine that finds qualified facilities and puts a personalised email in front of them. Everything that happens after that email is yours to handle.</div>
         <div class="inc">Includes</div>
         <ul>
-          <li><strong>The CMS watcher</strong>: new citations found every morning, scored and queued</li>
+          <li><strong>The CMS watcher</strong>: new citations found every morning, parsed and scored</li>
+          <li><strong>Star Pro and enrichment</strong>: facility data joined to real contact details</li>
+          <li><strong>Qualification</strong>: every facility researched and scored before anyone is contacted</li>
           <li><strong>Ria's voice</strong>: the training sessions and the writing system built from them</li>
-          <li><strong>Sending setup</strong>: dedicated addresses, warmed over four weeks, your main domain never at risk</li>
-          <li><strong>HubSpot foundation</strong>: one pipeline per service line, built so your team can actually read it</li>
-          <li><strong>Replies routed in</strong>: every response filed against the right facility, nothing lost in an inbox</li>
+          <li><strong>Sending setup</strong>: dedicated addresses warmed over four weeks, your main domain never at risk</li>
+          <li><strong>A basic CRM landing spot</strong>: one simple pipeline so leads have somewhere to go</li>
+        </ul>
+        <div class="inc" style="margin-top:22px">Not included</div>
+        <ul>
+          <li><strong>The HubSpot build</strong>: no stage design, no citation fields, no reporting structure</li>
+          <li><strong>Replies</strong>: your team reads, qualifies, chases and books every one</li>
+          <li><strong>Follow-up</strong>: no sequences, no "call me in January" memory</li>
+          <li><strong>The chat interface and reporting</strong></li>
         </ul>
       </div>
       <div class="tier rec reveal" style="--d:80ms">
         <div class="badge">Recommended</div>
         <div class="tname">Engine</div>
         <div class="price"><sup>$</sup>45,000<span class="cadence">build</span></div>
-        <div class="build">One-time, across three phases · <b>then $5,000 / mo</b> for an expected 12 months</div>
-        <div class="tag"><b>This is the one I would start with</b>, and the one that matches what we described on the call. It is where the replies stop being your problem — <b>Reach fills your CRM, this one fills your calendar.</b> It is also the only tier that includes the cross-sell work on your existing forty clients.</div>
+        <div class="build">One-time build fee, month one · <b>then $5,000 / mo</b> ongoing, expected 12 months</div>
+        <div class="tag"><b>The whole machine.</b> This is the system described in sections 03 through 08, end to end — and the one I would start with. <b>Reach fills your inbox. This one fills your calendar.</b></div>
         <div class="inc">Adds</div>
         <ul>
           <li><strong>Everything in Reach</strong></li>
+          <li><strong>HubSpot built out properly</strong>: pipeline per service line, every stage, the citation fields, and your team trained to read it — <b>this is the single biggest difference between the two tiers</b></li>
           <li><strong>Reply handling</strong>: every reply answered the same day and qualified before it reaches you</li>
-          <li><strong>Follow-up</strong>: nobody forgotten, and "call me in January" comes back in January</li>
+          <li><strong>Follow-up</strong>: sequences for non-responders, and "call me in January" comes back in January</li>
+          <li><strong>Pre-call briefs and post-call capture</strong>: you talk, the record updates itself</li>
           <li><strong>Cross-sell map</strong>: your existing clients scored for every service they do not buy yet</li>
           <li><strong>The chat interface</strong>: ask your CRM what happened this week and get a real answer</li>
-          <li><strong>Reporting</strong>: cost per demo and per client, by service line and facility type</li>
+          <li><strong>Reporting</strong>: cost per demo and per client, by citation type, severity and facility size</li>
+          <li><strong>Two to three people trained</strong> to run it</li>
         </ul>
       </div>
       <div class="tier reveal" style="--d:160ms">
         <div class="tname">Command</div>
         <div class="price"><sup>$</sup>60,000<span class="cadence">build</span></div>
-        <div class="build">One-time, across three phases · <b>then $10,000 / mo</b> for an expected 12 months</div>
-        <div class="tag">For when the question stops being who to call and becomes <b>where the money should go.</b> Mostly this tier is more of my time, with more of your people, across more channels.</div>
+        <div class="build">One-time build fee, month one · <b>then $10,000 / mo</b> ongoing, expected 12 months</div>
+        <div class="tag"><b>The whole machine, and your whole company running it.</b> Everything in Engine, rolled out across the organisation and beyond email. This is where the question stops being who to call and becomes where the money should go.</div>
         <div class="inc">Adds</div>
         <ul>
           <li><strong>Everything in Engine</strong></li>
-          <li><strong>Ten to fifteen people trained</strong> on the CRM rather than two or three</li>
+          <li><strong>Ten to fifteen people trained</strong> rather than two or three, with ownership rules so nobody works the same facility twice</li>
+          <li><strong>All three service lines</strong> built out at once instead of sequenced across the year</li>
           <li><strong>Beyond email</strong>: paid channels, retargeting, and the funnels behind them</li>
-          <li><strong>Competitor tracking</strong>: what the other compliance vendors are pricing and claiming</li>
+          <li><strong>Competitor tracking</strong>: what other compliance vendors are pricing, shipping and claiming</li>
           <li><strong>Structured testing</strong>: offers and segments tested properly rather than guessed at</li>
         </ul>
       </div>
@@ -898,21 +917,27 @@
       <table class="t">
         <thead><tr><th>Included</th><th class="ctr">Reach</th><th class="ctr hi">Engine</th><th class="ctr">Command</th></tr></thead>
         <tbody>
-          <tr><td class="k">CMS watcher and target list</td><td class="chk">✓</td><td class="chk hi">✓</td><td class="chk">✓</td></tr>
+          <tr><td class="k">CMS watcher, Star Pro, enrichment</td><td class="chk">✓</td><td class="chk hi">✓</td><td class="chk">✓</td></tr>
+          <tr><td class="k">Qualification and scoring</td><td class="chk">✓</td><td class="chk hi">✓</td><td class="chk">✓</td></tr>
           <tr><td class="k">Ria's voice captured and trained</td><td class="chk">✓</td><td class="chk hi">✓</td><td class="chk">✓</td></tr>
           <tr><td class="k">Sending setup and outreach</td><td class="chk">✓</td><td class="chk hi">✓</td><td class="chk">✓</td></tr>
-          <tr><td class="k">HubSpot foundation, replies routed in</td><td class="chk">✓</td><td class="chk hi">✓</td><td class="chk">✓</td></tr>
+          <tr><td class="k"><b>HubSpot built out — stages, fields, reporting structure</b></td><td class="dash">basic only</td><td class="chk hi">✓</td><td class="chk">✓</td></tr>
           <tr><td class="k">Replies answered and qualified for you</td><td class="dash">—</td><td class="chk hi">✓</td><td class="chk">✓</td></tr>
-          <tr><td class="k">Follow-up handled without you</td><td class="dash">—</td><td class="chk hi">✓</td><td class="chk">✓</td></tr>
+          <tr><td class="k">Follow-up and re-engagement</td><td class="dash">—</td><td class="chk hi">✓</td><td class="chk">✓</td></tr>
+          <tr><td class="k">Pre-call briefs and post-call capture</td><td class="dash">—</td><td class="chk hi">✓</td><td class="chk">✓</td></tr>
           <tr><td class="k">Cross-sell map of your existing clients</td><td class="dash">—</td><td class="chk hi">✓</td><td class="chk">✓</td></tr>
           <tr><td class="k">Chat interface and reporting</td><td class="dash">—</td><td class="chk hi">✓</td><td class="chk">✓</td></tr>
-          <tr><td class="k">Whole-team training, paid channels, testing</td><td class="dash">—</td><td class="dash hi">—</td><td class="chk">✓</td></tr>
+          <tr><td class="k">People trained</td><td class="dash">—</td><td class="chk hi">2–3</td><td class="chk">10–15</td></tr>
+          <tr><td class="k">All three service lines at once</td><td class="dash">—</td><td class="dash hi">—</td><td class="chk">✓</td></tr>
+          <tr><td class="k">Paid channels, competitor tracking, testing</td><td class="dash">—</td><td class="dash hi">—</td><td class="chk">✓</td></tr>
           <tr class="money"><td class="k">First twelve months, all in</td><td class="ctr">$63,500</td><td class="ctr hi">$100,000</td><td class="ctr">$170,000</td></tr>
         </tbody>
       </table>
     </div>
 
-    <p class="costs-note"><b>On the monthly, and why it says "expected twelve months."</b> There is no contract, no lock-in and no termination fee, and there never will be. <b>If I am not bringing food to the table, I do not deserve a seat.</b> Twelve months is my honest estimate of what it takes to build this, train it, and hand it over working — not a commitment you are being asked to sign. The monthly begins in month two, once there is a running system to support.</p>
+    <p class="costs-note"><b>How the money actually works.</b> The build fee is charged once, in month one. The monthly begins in month two, once there is a running system to support, and continues until you tell me to stop. <b>There is no contract, no lock-in and no termination fee, and there never will be.</b> If I am not bringing food to the table, I do not deserve a seat at it.</p>
+
+    <p class="costs-note" style="margin-top:18px"><b>Why it says "expected twelve months."</b> Twelve months is my honest estimate of what it takes to build this, train it properly and hand it over working — not a term you are being asked to sign. <b>And I would rather it did not end there.</b> The best version of this engagement is that in twelve months the outreach runs itself and we are sitting down to work out which problem in the business is worth solving next. That is the relationship I am trying to build, not a project with an end date.</p>
 
     <p class="costs-note" style="margin-top:18px"><b>Running costs, billed at cost.</b> Sending addresses, contact data and model usage are billed directly to ScribeRunner at the published rate with no markup — roughly <b>$900 to $1,800 a month</b> at these volumes. You hold every login. <b>Not included:</b> paid advertising spend, third-party software, travel, legal fees.</p>
 
@@ -964,7 +989,7 @@
       </div>
     </div>
     <ol class="steplist">
-      <li class="reveal"><div><span class="t">Pick a tier<span class="when">Monday</span></span><p>Juan and I are speaking Monday at 2:00. The decision at that point is not the full twelve months — it is the first thirty days and the first invoice. At day thirty you will be looking at a working CRM, a live target list and Ria approving real drafts, and you decide then whether the second phase happens.</p></div></li>
+      <li class="reveal"><div><span class="t">Pick a tier<span class="when">Monday</span></span><p>Juan and I are speaking Monday at 2:00. Everything in section 09 is a starting point rather than a fixed menu — if a piece belongs with your team instead of mine, or is not worth doing at all, say so and it comes out. <b>At day thirty you will be looking at a working CRM, a live scored target list and Ria approving real drafts</b>, which is the point this stops being a plan and becomes a thing you can judge.</p></div></li>
       <li class="reveal"><div><span class="t">Two hours of Ria's calendar, and one email to Star Pro<span class="when">Week 1</span></span><p>Those are the only two things I genuinely need from you to start. Everything else — HubSpot access, your service catalogue, sending addresses — I can work around or set up myself.</p></div></li>
       <li class="reveal"><div><span class="t">First build sprint<span class="when">Days 1 to 30</span></span><p>The CMS watcher, the HubSpot foundation, the training sessions with Ria, and sending addresses going up and warming. That warm-up takes four weeks, which is exactly why starting the clock is worth more than getting the scope perfect.</p></div></li>
     </ol>
