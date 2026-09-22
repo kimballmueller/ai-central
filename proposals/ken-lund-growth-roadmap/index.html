@@ -420,6 +420,31 @@
   .funnel .branch { width:100%; display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
   @media(max-width:700px){ .funnel .branch{grid-template-columns:1fr}.funnel .stage{width:100%!important} }
 
+  .expansion-map { margin-top:72px; padding:clamp(28px,4vw,46px); border:1px solid var(--rule); border-radius:24px; background:#fff; box-shadow:0 24px 70px -52px rgba(0,0,0,.35); }
+  .expansion-head { display:flex; justify-content:space-between; align-items:flex-end; gap:28px; flex-wrap:wrap; margin-bottom:30px; }
+  .expansion-head h3 { font-family:'Inter Tight'; font-size:clamp(25px,3vw,38px); letter-spacing:-.03em; margin:0; }
+  .expansion-head p { color:var(--muted-strong); max-width:58ch; font-size:14px; line-height:1.55; }
+  .expansion-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  .expansion-stage { border:1px solid var(--rule); border-radius:18px; padding:24px 22px; background:var(--paper); }
+  .expansion-stage .phase-label { color:var(--gold); font-size:11px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; }
+  .expansion-stage h4 { font-family:'Inter Tight'; font-size:22px; letter-spacing:-.02em; margin:9px 0 18px; }
+  .money-split { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:22px; }
+  .money-box { padding:13px 12px; border-radius:12px; background:#fff; border:1px solid var(--rule); }
+  .money-box span { display:block; color:var(--muted); font-size:10px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; }
+  .money-box b { display:block; font-family:'Inter Tight'; font-size:21px; letter-spacing:-.02em; margin-top:4px; color:var(--ink); }
+  .money-box.retain b { color:var(--green); }
+  .effort-title { color:var(--muted); font-size:10px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; margin-bottom:9px; }
+  .effort-bar { height:16px; border-radius:999px; overflow:hidden; display:flex; background:var(--rule); margin-bottom:13px; }
+  .effort-bar span { height:100%; }
+  .effort-bar .sales { background:var(--gold); }
+  .effort-bar .media { background:#D8B85A; }
+  .effort-bar .products { background:var(--green); }
+  .effort-key { display:flex; flex-wrap:wrap; gap:8px 14px; }
+  .effort-key span { position:relative; padding-left:12px; color:var(--muted-strong); font-size:11px; line-height:1.35; }
+  .effort-key span::before { content:""; position:absolute; left:0; top:4px; width:7px; height:7px; border-radius:50%; background:var(--key); }
+  .expansion-note { margin-top:18px; color:var(--muted); font-size:11px; line-height:1.5; }
+  @media(max-width:900px){ .expansion-grid{grid-template-columns:1fr}.expansion-stage{padding:24px} }
+
   .invest { margin-top:26px; border:1.5px solid var(--gold); border-radius:24px; overflow:hidden; background:var(--paper-cream); color:var(--ink); box-shadow:0 32px 80px -44px rgba(184,134,11,.5); }
   .invest-head { background:var(--ink); color:var(--paper); padding:clamp(30px,4vw,48px); display:flex; justify-content:space-between; align-items:flex-end; gap:28px; flex-wrap:wrap; }
   .invest-head .iname { font-family:'Inter Tight'; font-weight:600; font-size:clamp(22px,2.6vw,30px); color:var(--paper); }
@@ -508,6 +533,31 @@
     <div class="road-step reveal" style="--d:60ms"><div class="day">Days 31–60</div><h3>Launch and learn</h3><p>Run focused LinkedIn outreach, respond personally to interested prospects, book calls, and refine the list and messages based on real conversations.</p><div class="money">$0–$10K<small>First revenue is most likely here</small></div></div>
     <div class="road-step reveal" style="--d:120ms"><div class="day">Days 61–90</div><h3>Close and document</h3><p>Convert qualified conversations, publish proof from the early pipeline, document objections, and stabilize a repeatable weekly rhythm.</p><div class="money">$10K target<small>Two $5K clients or equivalent</small></div></div>
     <div class="road-step reveal" style="--d:180ms"><div class="day">Days 91–180</div><h3>Build the second engine</h3><p>Use generated revenue to launch the interview-to-video system, an email nurture path, and one cohort or paid-library pilot. Keep premium mentoring selective.</p><div class="money">$20K target<small>Mentoring plus one scalable offer</small></div></div>
+  </div>
+
+  <div class="expansion-map reveal">
+    <div class="expansion-head"><div><div class="label" style="margin-bottom:10px">Money + effort map</div><h3>Revenue funds the next layer.</h3></div><p>We begin with the work closest to cash. As the revenue benchmarks are reached, effort shifts into content, nurture, and products that can grow without adding more of Ken's hours.</p></div>
+    <div class="expansion-grid">
+      <div class="expansion-stage">
+        <div class="phase-label">Stage 1 · Build</div><h4>Before the $10K benchmark</h4>
+        <div class="money-split"><div class="money-box"><span>Our fee</span><b>$1.5K/mo</b></div><div class="money-box retain"><span>Revenue focus</span><b>First $10K</b></div></div>
+        <div class="effort-title">Illustrative effort mix</div><div class="effort-bar"><span class="sales" style="width:70%"></span><span class="media" style="width:20%"></span><span class="products" style="width:10%"></span></div>
+        <div class="effort-key"><span style="--key:var(--gold)">70% offer + pipeline</span><span style="--key:#D8B85A">20% proof + content</span><span style="--key:var(--green)">10% product groundwork</span></div>
+      </div>
+      <div class="expansion-stage">
+        <div class="phase-label">Stage 2 · Grow</div><h4>At $10K in 30 days</h4>
+        <div class="money-split"><div class="money-box"><span>Our fee</span><b>$3.5K/mo*</b></div><div class="money-box retain"><span>Ken retains</span><b>$6.5K+</b></div></div>
+        <div class="effort-title">Illustrative effort mix</div><div class="effort-bar"><span class="sales" style="width:50%"></span><span class="media" style="width:30%"></span><span class="products" style="width:20%"></span></div>
+        <div class="effort-key"><span style="--key:var(--gold)">50% pipeline + proof</span><span style="--key:#D8B85A">30% video + email</span><span style="--key:var(--green)">20% pilot offer</span></div>
+      </div>
+      <div class="expansion-stage">
+        <div class="phase-label">Stage 3 · Scale</div><h4>At $20K in 30 days</h4>
+        <div class="money-split"><div class="money-box"><span>Our fee</span><b>$8K/mo</b></div><div class="money-box retain"><span>Ken retains</span><b>$12K+</b></div></div>
+        <div class="effort-title">Illustrative effort mix</div><div class="effort-bar"><span class="sales" style="width:35%"></span><span class="media" style="width:35%"></span><span class="products" style="width:30%"></span></div>
+        <div class="effort-key"><span style="--key:var(--gold)">35% premium pipeline</span><span style="--key:#D8B85A">35% media engine</span><span style="--key:var(--green)">30% cohort + library</span></div>
+      </div>
+    </div>
+    <p class="expansion-note">*The $10K-stage fee is a $3,500 monthly minimum and may increase to $5,000 only by written agreement. “Ken retains” is shown before taxes and approved software or outside costs. Effort percentages are a planning guide, not fixed time commitments.</p>
   </div>
 
   <h3 style="font-family:'Inter Tight';font-size:clamp(25px,3vw,38px);letter-spacing:-.03em;margin:80px 0 8px">The full business we are building toward</h3>
