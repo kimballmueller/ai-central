@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Proposal · Zack Schober × Disruptors Media</title>
+<meta name="description" content="A standalone lead funnel — landing page, Google Ads and CRM automation — that gets Hallmark Homecare Scottsdale found by local searches the franchise site doesn't reach." />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+<link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+  :root {
+    --ink: #0A0A0A;
+    --paper: #FAFAF7;
+    --paper-cream: #FDF6E3;
+    --rule: rgba(10, 10, 10, 0.08);
+    --rule-strong: rgba(10, 10, 10, 0.14);
+    --muted: rgba(10, 10, 10, 0.52);
+    --muted-strong: rgba(10, 10, 10, 0.72);
+    --gold: #B8860B;
+    --gold-soft: rgba(184, 134, 11, 0.12);
+    --gold-line: rgba(184, 134, 11, 0.32);
+    --green: #2F7A3F;
+    --max: 1240px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--paper); color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+  }
+  .display { font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 600; letter-spacing: -0.035em; line-height: 0.96; }
+  .label { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 3px; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 clamp(24px, 5vw, 56px); }
+  section { padding: clamp(80px, 12vh, 150px) 0; position: relative; }
+
+  /* NAV */
+  .nav { position: fixed; top: 0; left: 0; right: 0; padding: 16px clamp(20px, 5vw, 56px); display: flex; justify-content: space-between; align-items: center; z-index: 50; backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); background: rgba(250, 250, 247, 0.78); border-bottom: 1px solid var(--rule); }
+  .nav .brand { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 15px; letter-spacing: -0.015em; display: flex; align-items: center; gap: 10px; }
+  .nav .brand .dot { width: 8px; height: 8px; border-radius: 999px; background: var(--gold); }
+  .nav .brand .x { color: var(--muted); font-weight: 400; }
+  .nav .links { display: flex; gap: 22px; align-items: center; font-size: 13px; color: var(--muted-strong); }
+  .nav .links a { text-decoration: none; transition: color 0.2s ease; }
+  .nav .links a:hover { color: var(--ink); }
+  .nav .cta { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; background: var(--ink); color: var(--paper); border-radius: 999px; text-decoration: none; font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: 13px; letter-spacing: -0.005em; transition: transform 0.2s ease, background 0.2s ease; }
+  .nav .cta:hover { background: var(--gold); transform: translateY(-1px); }
+  @media (max-width: 1150px) { .nav .links { display: none; } }
+
+  /* HERO */
+  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; padding-top: clamp(120px, 15vh, 170px); padding-bottom: clamp(48px, 8vh, 80px); }
+  .hero .top { text-align: center; }
+  .hero .mark { display: block; width: clamp(84px, 11vw, 128px); height: auto; margin: 0 auto 28px; }
+  .hero h1 { font-size: clamp(38px, 7vw, 96px); max-width: 19ch; margin: 0 auto; }
+  .hero h1 .accent { color: var(--gold); }
+  .hero .sub { font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(18px, 2.1vw, 24px); letter-spacing: -0.015em; color: var(--muted-strong); max-width: 66ch; margin: clamp(28px, 4vh, 46px) auto 0; line-height: 1.4; }
+  .hero .meta { margin-top: clamp(40px, 7vh, 80px); display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+  .hero .meta > div .label { display: block; margin-bottom: 8px; color: var(--muted); }
+  .hero .meta > div p { font-family: 'Inter Tight', sans-serif; font-size: 16px; font-weight: 500; letter-spacing: -0.01em; }
+  .hero .scroll-hint { display: flex; align-items: center; gap: 12px; font-size: 11px; color: var(--muted); letter-spacing: 0.16em; text-transform: uppercase; justify-content: center; }
+  .hero .scroll-hint span { width: 32px; height: 1px; background: var(--ink); opacity: 0.4; }
+
+  /* SECTION HEAD */
+  .sec-head { display: flex; gap: 80px; align-items: baseline; margin-bottom: clamp(40px, 7vh, 80px); flex-wrap: wrap; }
+  .sec-head .num { font-family: 'Inter Tight', sans-serif; font-size: 13px; font-weight: 500; color: var(--gold); letter-spacing: 0.04em; min-width: 80px; }
+  .sec-head .ht { flex: 1; min-width: 280px; }
+  .sec-head h2 { font-size: clamp(36px, 5.4vw, 76px); max-width: 20ch; }
+  .sec-head h2 .accent { color: var(--gold); }
+  .sec-head .lede { font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(19px, 2.3vw, 27px); letter-spacing: -0.015em; line-height: 1.3; color: var(--muted-strong); max-width: 50ch; margin-top: 18px; }
+
+  /* PULL QUOTE */
+  .pull { margin: clamp(36px,5vh,56px) 0; padding: clamp(26px,3.4vw,40px) clamp(28px,4vw,48px); background: var(--paper-cream); color: var(--ink); border-left: 3px solid var(--gold); border-radius: 0 20px 20px 0; }
+  .pull .q { font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(20px, 2.6vw, 31px); letter-spacing: -0.02em; line-height: 1.3; color: var(--ink); }
+  .pull .attr { font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 16px; }
+  .dark .pull { background: #131313; color: var(--paper); border-left-color: var(--gold); }
+  .dark .pull .q { color: var(--paper); }
+  .dark .pull .attr { color: rgba(250,250,247,0.5); }
+
+  /* GOAL OPTION CARDS */
+  .goals { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .goals.two { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 900px) { .goals { grid-template-columns: 1fr; } }
+  .goal { background: var(--paper); color: var(--ink); border: 1px solid var(--rule); border-radius: 22px; padding: clamp(28px,3.2vw,38px); display: flex; flex-direction: column; transition: transform 0.28s cubic-bezier(0.2,0.7,0.2,1), box-shadow 0.28s, border-color 0.28s ease; }
+  .goal:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -20px rgba(10,10,10,0.18); border-color: var(--gold-line); }
+  .goal .gk { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  .goal h3 { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(21px,2.3vw,26px); letter-spacing: -0.02em; line-height: 1.15; color: var(--ink); margin-bottom: 12px; }
+  .goal p { color: var(--muted-strong); font-size: 14.5px; line-height: 1.6; }
+  .goal p b { color: var(--ink); font-weight: 600; }
+  .goal .tie { margin-top: auto; padding-top: 20px; border-top: 1px solid var(--rule); font-size: 13.5px; color: var(--muted-strong); line-height: 1.5; }
+  .goal .tie strong { display: block; font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 14.5px; color: var(--gold); margin-bottom: 4px; }
+
+  /* CARDS */
+  .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 16px; margin-top: 16px; }
+  .card { background: var(--paper); color: var(--ink); border: 1px solid var(--rule); border-radius: 18px; padding: 32px 28px; min-height: 170px; display: flex; flex-direction: column; gap: 12px; transition: transform 0.28s cubic-bezier(0.2,0.7,0.2,1), box-shadow 0.28s, border-color 0.28s ease; }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -20px rgba(10,10,10,0.18), 0 0 0 1px var(--gold-line) inset; border-color: var(--gold-line); }
+  .card .num { font-family: 'Inter Tight', sans-serif; font-size: 13px; color: var(--gold); letter-spacing: 0.06em; }
+  .card h3 { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 20px; letter-spacing: -0.015em; line-height: 1.2; color: var(--ink); }
+  .card p { color: var(--muted-strong); font-size: 14.5px; line-height: 1.55; }
+  .card p b { color: var(--ink); font-weight: 600; }
+  .card code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; background: var(--gold-soft); color: var(--gold); padding: 1px 6px; border-radius: 5px; }
+  .card.good { background: var(--paper-cream); border-color: var(--gold-line); }
+  .dark .card { background: #131313; color: var(--paper); border-color: rgba(250,250,247,0.1); }
+  .dark .card:hover { border-color: var(--gold-line); box-shadow: 0 18px 40px -20px rgba(0,0,0,0.5), 0 0 0 1px var(--gold-line) inset; }
+  .dark .card h3 { color: var(--paper); }
+  .dark .card p { color: rgba(250,250,247,0.66); }
+  .dark .card p b { color: var(--paper); }
+  .closer { margin-top: 52px; padding-top: 40px; border-top: 1px solid var(--rule); font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(22px, 2.6vw, 34px); letter-spacing: -0.02em; line-height: 1.25; max-width: 56ch; }
+  .closer .accent { color: var(--gold); }
+  .dark .closer { border-top-color: rgba(250,250,247,0.12); color: var(--paper); }
+
+  /* CALLOUT */
+  .callout { margin-top: 40px; background: var(--paper-cream); color: var(--ink); border: 1px solid var(--gold-line); border-radius: 20px; padding: clamp(28px, 4vw, 44px); display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start; }
+  .callout .icon { width: 44px; height: 44px; border-radius: 999px; background: var(--gold); color: var(--paper); display: inline-flex; align-items: center; justify-content: center; font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 20px; flex: none; }
+  .callout h3 { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(20px, 2.2vw, 26px); letter-spacing: -0.015em; line-height: 1.2; margin-bottom: 10px; color: var(--ink); }
+  .callout p { color: var(--muted-strong); font-size: 15px; line-height: 1.6; }
+  .callout p + p { margin-top: 12px; }
+  .callout p b { color: var(--ink); font-weight: 600; }
+  @media (max-width: 600px) { .callout { grid-template-columns: 1fr; gap: 16px; } }
+  .dark .callout { background: #131313; color: var(--paper); border-color: var(--gold-line); }
+  .dark .callout h3 { color: var(--paper); }
+  .dark .callout p { color: rgba(250,250,247,0.68); }
+  .dark .callout p b { color: var(--paper); }
+
+  /* HONEST NOTE */
+  .honest { margin-top: 40px; background: var(--paper); color: var(--ink); border: 1px solid var(--rule-strong); border-radius: 20px; padding: clamp(28px,4vw,42px); }
+  .honest .hh { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(19px,2.2vw,25px); letter-spacing: -0.02em; color: var(--ink); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+  .honest .hh::before { content: ""; width: 10px; height: 10px; border-radius: 999px; background: var(--gold); flex: none; }
+  .honest p { font-size: 16px; line-height: 1.68; color: var(--muted-strong); margin-bottom: 16px; max-width: 78ch; }
+  .honest p:last-child { margin-bottom: 0; }
+  .honest p b { color: var(--ink); font-weight: 600; }
+  .honest p .g { color: var(--gold); font-weight: 600; }
+  .dark .honest { background: #131313; color: var(--paper); border-color: rgba(250,250,247,0.14); }
+  .dark .honest .hh { color: var(--paper); }
+  .dark .honest p { color: rgba(250,250,247,0.68); }
+  .dark .honest p b { color: var(--paper); }
+
+  /* TABLE */
+  .tablewrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 18px; margin-top: 16px; background: var(--paper); color: var(--ink); }
+  .dark .tablewrap { border-color: rgba(250,250,247,0.12); background: #131313; color: var(--paper); }
+  table.t { width: 100%; border-collapse: collapse; min-width: 680px; font-family: 'Inter', sans-serif; }
+  table.t th, table.t td { text-align: left; padding: 17px 22px; border-bottom: 1px solid var(--rule); font-size: 14.5px; vertical-align: top; line-height: 1.55; }
+  table.t thead th { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); background: var(--paper-cream); border-bottom: 1px solid var(--rule-strong); }
+  table.t tbody tr:last-child td { border-bottom: none; }
+  table.t td { color: var(--muted-strong); }
+  table.t td.k { font-family: 'Inter Tight', sans-serif; font-weight: 600; color: var(--ink); }
+  table.t td.tgt { font-family: 'Inter Tight', sans-serif; font-weight: 600; color: var(--gold); white-space: nowrap; }
+  table.t td b { color: var(--gold); font-weight: 600; }
+  table.t td.yes { color: var(--green); font-weight: 600; font-family: 'Inter Tight', sans-serif; white-space: nowrap; }
+  table.t td.no { color: var(--muted); font-family: 'Inter Tight', sans-serif; white-space: nowrap; }
+  table.t th.ctr, table.t td.ctr { text-align: center; }
+  table.t col.hi, table.t td.hi { background: var(--gold-soft); }
+  table.t thead th.hi { background: var(--gold); color: var(--paper); }
+  table.t td.chk { text-align: center; color: var(--green); font-weight: 700; font-family: 'Inter Tight', sans-serif; }
+  table.t td.dash { text-align: center; color: rgba(10,10,10,0.28); font-family: 'Inter Tight', sans-serif; }
+  table.t tr.money td { font-family: 'Inter Tight', sans-serif; font-weight: 600; color: var(--ink); font-size: 15.5px; }
+  .dark table.t th, .dark table.t td { border-bottom-color: rgba(250,250,247,0.10); color: rgba(250,250,247,0.72); }
+  .dark table.t thead th { background: #1c1c1c; color: var(--gold); border-bottom-color: rgba(250,250,247,0.16); }
+  .dark table.t td.k { color: var(--paper); }
+  .dark table.t td.tgt { color: var(--gold); }
+  .dark table.t td.yes { color: #6FCB86; }
+  .dark table.t td.no { color: rgba(250,250,247,0.42); }
+  .dark table.t tbody tr:hover td { background: rgba(250,250,247,0.035); }
+  .costs-note { color: var(--muted); font-size: 13.5px; margin-top: 18px; max-width: 82ch; line-height: 1.65; }
+  .dark .costs-note { color: rgba(250,250,247,0.5); }
+
+  /* PILLARS */
+  .pillars { display: flex; flex-direction: column; gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 20px; overflow: hidden; }
+  .pillar { background: var(--paper); color: var(--ink); padding: clamp(24px,3vw,32px) clamp(24px,3.2vw,38px); display: grid; grid-template-columns: 56px 1fr; gap: clamp(16px,2.6vw,30px); align-items: start; transition: background 0.25s ease; }
+  .pillar:hover { background: var(--paper-cream); }
+  .pillar .pn { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(24px,2.8vw,31px); letter-spacing: -0.03em; color: var(--gold); line-height: 1; }
+  .pillar h3 { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(18px,2vw,23px); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 8px; color: var(--ink); }
+  .pillar p { color: var(--muted-strong); font-size: 15px; line-height: 1.6; max-width: 70ch; }
+  .pillar p b { color: var(--ink); font-weight: 600; }
+  @media (max-width: 620px) { .pillar { grid-template-columns: 1fr; gap: 8px; } }
+  .dark .pillars { background: rgba(250,250,247,0.14); border-color: rgba(250,250,247,0.14); }
+  .dark .pillar { background: #131313; color: var(--paper); }
+  .dark .pillar:hover { background: #1c1c1c; }
+  .dark .pillar h3 { color: var(--paper); }
+  .dark .pillar p { color: rgba(250,250,247,0.66); }
+  .dark .pillar p b { color: var(--paper); }
+
+  /* DARK */
+  .dark { background: var(--ink); color: var(--paper); }
+  .dark .sec-head h2 { color: var(--paper); }
+  .dark .sec-head .lede { color: rgba(250,250,247,0.66); }
+  .dark .label { color: var(--gold); }
+
+  /* TIERS */
+  .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch; margin-top: 26px; }
+  .tiers.two { grid-template-columns: repeat(2, 1fr); max-width: 780px; }
+  .tier { background: var(--paper); color: var(--ink); border: 1px solid var(--rule); border-radius: 22px; padding: 40px 32px; display: flex; flex-direction: column; position: relative; transition: transform 0.28s cubic-bezier(0.2,0.7,0.2,1), box-shadow 0.28s, border-color 0.28s ease; }
+  .tier:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -20px rgba(10,10,10,0.18); border-color: var(--gold-line); }
+  .tier.rec { background: var(--paper-cream); border: 1.5px solid var(--gold); box-shadow: 0 32px 80px -44px rgba(184,134,11,0.5); }
+  .tier .badge { position: absolute; top: -13px; left: 32px; background: var(--gold); color: var(--paper); font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; padding: 7px 14px; border-radius: 999px; }
+  .tier .tname { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 25px; letter-spacing: -0.02em; color: var(--ink); }
+  .tier .price { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(36px, 4.2vw, 48px); letter-spacing: -0.035em; line-height: 1; margin-top: 14px; color: var(--ink); }
+  .tier .price sup { font-size: 0.42em; font-weight: 500; vertical-align: top; position: relative; top: 0.45em; margin-right: 0.04em; }
+  .tier .price .cadence { font-size: 0.3em; font-weight: 500; color: var(--muted); margin-left: 4px; letter-spacing: -0.005em; }
+  .tier .build { font-size: 12.5px; color: var(--muted); margin-top: 10px; line-height: 1.45; }
+  .tier .build b { color: var(--gold); font-weight: 600; }
+  .tier .tag { margin: 18px 0; padding: 16px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); font-size: 14px; color: var(--muted-strong); line-height: 1.55; min-height: 92px; }
+  .tier .tag b { color: var(--ink); font-weight: 600; }
+  .tier .inc { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+  .tier ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 13px; flex-grow: 1; }
+  .tier ul li { position: relative; padding-left: 24px; font-size: 14px; color: var(--muted-strong); line-height: 1.5; }
+  .tier ul li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--gold); font-weight: 700; font-size: 13px; }
+  .tier ul li strong { color: var(--ink); font-weight: 600; }
+  .pay-note { text-align: center; color: var(--muted); font-size: 14px; margin-top: 26px; max-width: 82ch; margin-inline: auto; line-height: 1.65; }
+  .pay-note b { color: var(--muted-strong); font-weight: 600; }
+  @media (max-width: 900px) { .tiers, .tiers.two { grid-template-columns: 1fr; max-width: 520px; margin: 26px auto 0; } }
+
+  /* STEP LIST */
+  .steplist { list-style: none; counter-reset: st; display: grid; gap: 1px; border: 1px solid var(--rule); border-radius: 18px; overflow: hidden; background: var(--rule); }
+  .steplist li { counter-increment: st; background: var(--paper); color: var(--ink); padding: 24px 30px; display: grid; grid-template-columns: 46px 1fr; gap: 18px; align-items: start; transition: background 0.25s ease; }
+  .steplist li:hover { background: var(--paper-cream); }
+  .steplist li::before { content: counter(st, decimal-leading-zero); font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 13px; color: var(--gold); letter-spacing: 0.06em; line-height: 1.7; }
+  .steplist li .t { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 17.5px; letter-spacing: -0.015em; line-height: 1.35; display: block; margin-bottom: 5px; color: var(--ink); }
+  .steplist li p { color: var(--muted-strong); font-size: 14.5px; line-height: 1.6; max-width: 82ch; }
+  .steplist li .when { display: inline-block; margin-left: 10px; font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); background: var(--gold-soft); padding: 3px 9px; border-radius: 999px; vertical-align: 2px; }
+  @media (max-width: 600px) { .steplist li { grid-template-columns: 1fr; gap: 6px; padding: 20px 22px; } }
+
+  /* ACCEPT */
+  .accept-section { background: linear-gradient(180deg, var(--paper) 0%, var(--paper-cream) 100%); }
+  .accept-panel { background: var(--paper); color: var(--ink); border: 1px solid var(--gold-line); border-radius: 24px; padding: clamp(36px, 6vw, 64px); box-shadow: 0 32px 80px -40px rgba(184,134,11,0.4); margin-top: 48px; }
+  .accept-panel .step { margin-bottom: 36px; }
+  .accept-panel .step:last-of-type { margin-bottom: 0; }
+  .accept-panel .step-label { font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: 14px; color: var(--muted-strong); letter-spacing: -0.005em; margin-bottom: 16px; }
+  .accept-panel .step-label .n { color: var(--gold); font-weight: 600; margin-right: 8px; }
+  .tier-select { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 560px; }
+  @media (max-width: 680px) { .tier-select { grid-template-columns: 1fr; } }
+  .tier-opt { cursor: pointer; background: var(--paper-cream); color: var(--ink); border: 1.5px solid var(--rule-strong); border-radius: 16px; padding: 20px; transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease; }
+  .tier-opt:hover { border-color: var(--gold-line); }
+  .tier-opt.sel { border-color: var(--gold); background: #fff; box-shadow: 0 0 0 3px var(--gold-soft); }
+  .tier-opt .to-name { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: -0.01em; }
+  .tier-opt .to-price { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 22px; letter-spacing: -0.02em; margin-top: 6px; }
+  .tier-opt .to-price .c { font-size: 13px; font-weight: 500; color: var(--muted); margin-left: 2px; }
+  .tier-opt .to-build { font-size: 12px; color: var(--muted-strong); margin-top: 4px; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .field-row + .field-row { margin-top: 16px; }
+  .field { display: flex; flex-direction: column; gap: 8px; }
+  .field label { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-strong); }
+  .field input { appearance: none; background: var(--paper); border: 1.5px solid var(--rule-strong); border-radius: 12px; padding: 15px 18px; font-family: 'Inter Tight', sans-serif; font-size: 16px; letter-spacing: -0.01em; color: var(--ink); transition: border-color 0.2s ease, background 0.2s ease; }
+  .field input:focus { outline: none; border-color: var(--gold); background: var(--paper-cream); }
+  .signature-line { border-top: 1px solid var(--rule); margin-top: 32px; padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .signature-line .date { font-family: 'Inter Tight', sans-serif; font-size: 14px; color: var(--muted-strong); }
+  .signature-line .date strong { color: var(--ink); font-weight: 600; }
+  @media (max-width: 600px) { .field-row { grid-template-columns: 1fr; } }
+  .btn-accept { appearance: none; background: var(--ink); color: var(--paper); border: none; border-radius: 999px; padding: 18px 34px; font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: 16px; letter-spacing: -0.005em; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; transition: background 0.2s ease, transform 0.2s ease, opacity 0.2s ease; }
+  .btn-accept:hover:not(:disabled) { background: var(--gold); transform: translateY(-1px); }
+  .btn-accept:disabled { opacity: 0.4; cursor: not-allowed; }
+  .overlay { position: fixed; inset: 0; background: rgba(250,250,247,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); display: none; align-items: center; justify-content: center; z-index: 100; padding: 24px; }
+  .overlay.show { display: flex; animation: fadeIn 0.4s ease; }
+  .overlay .panel { background: var(--paper); color: var(--ink); border: 1px solid var(--gold-line); border-radius: 24px; padding: clamp(40px, 6vw, 64px); text-align: center; max-width: 560px; box-shadow: 0 40px 100px -40px rgba(184,134,11,0.5); }
+  .overlay .check { width: 56px; height: 56px; border-radius: 999px; background: var(--gold); color: var(--paper); display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 26px; margin-bottom: 24px; }
+  .overlay h3 { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(28px, 4vw, 42px); letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 20px; color: var(--ink); }
+  .overlay p { color: var(--muted-strong); font-size: 16px; line-height: 1.55; }
+  .overlay .book { display: inline-flex; margin-top: 26px; align-items: center; gap: 8px; padding: 15px 28px; background: var(--ink); color: var(--paper); border-radius: 999px; text-decoration: none; font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: 15px; transition: background 0.2s ease; }
+  .overlay .book:hover { background: var(--gold); }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  /* FOOTER */
+  footer { padding: 56px 0 72px; border-top: 1px solid var(--rule); background: var(--paper); color: var(--ink); }
+  footer .row { display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+  footer .col h4 { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  footer .col p, footer .col a { font-family: 'Inter Tight', sans-serif; font-size: 15px; font-weight: 500; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; display: block; line-height: 1.6; transition: color 0.2s ease; }
+  footer .col a:hover { color: var(--gold); }
+  footer .legal { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--rule); font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.9s cubic-bezier(0.2,0.7,0.2,1), transform 0.9s cubic-bezier(0.2,0.7,0.2,1); transition-delay: var(--d, 0ms); }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+    .card, .tier, .pillar, .goal { transition: none; }
+  }
+
+  .body-lg { font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(19px,2.1vw,25px); letter-spacing: -0.015em; line-height: 1.45; color: var(--muted-strong); max-width: 64ch; }
+  .body-lg b { color: var(--ink); font-weight: 600; }
+</style></head>
+<body>
+
+<div class="nav">
+  <div class="brand"><span class="dot"></span> Disruptors Media <span class="x">× Zack Schober</span></div>
+  <div class="links">
+    <a href="#goal">Goal</a>
+    <a href="#way">What's in the way</a>
+    <a href="#why">Why us</a>
+    <a href="#audience">Audience</a>
+    <a href="#systems">Systems</a>
+    <a href="#investment">Investment</a>
+  </div>
+  <a class="cta" href="#next">Get started →</a>
+</div>
+
+<header class="hero wrap">
+  <div class="top">
+    <img class="mark" src="logo.png" alt="Disruptors Media" />
+    <div class="label" style="margin-bottom:24px">Lead funnel · Scottsdale, AZ</div>
+    <h1 class="display">Up to 10,000 people a month search for home care near you. <span class="accent">Your page isn't one of the ones they find.</span></h1>
+    <p class="sub">The referral relationships are working. What's missing is anywhere for a search to land — a page you own, built and running without waiting on corporate.</p>
+  </div>
+  <div class="meta">
+    <div><span class="label">Prepared for</span><p>Zack Schober, Owner — Hallmark Homecare, Scottsdale</p></div>
+    <div><span class="label">Engagement</span><p>Landing page · Google Ads · CRM automation</p></div>
+    <div><span class="label">Terms</span><p>Month to month · You own the domain</p></div>
+    <div class="scroll-hint"><span></span> Scroll</div>
+  </div>
+</header>
+
+<!-- 01 THE GOAL -->
+<section id="goal">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">01</div>
+      <div class="ht">
+        <h2 class="display">The <span class="accent">goal</span></h2>
+        <p class="lede">Get found by the people searching for home care in Scottsdale right now, since your own page currently isn't.</p>
+      </div>
+    </div>
+    <p class="body-lg reveal">Your sales team already runs the relationships that build trust with doctors and hospitals. <b>What you don't have is a way for the person who's searching online, tonight, to find you before they find someone else.</b></p>
+    <div class="pull reveal">
+      <div class="q">"I have never, in all the customers we've spoken to on the phone, had a single one who found us online. I think just having an online presence where people can find us is helpful."</div>
+      <div class="attr">Zack Schober · September 24, 2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 WHAT'S IN THE WAY -->
+<section id="way">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">02</div>
+      <div class="ht">
+        <h2 class="display">What's <span class="accent">in the way</span></h2>
+        <p class="lede">Three constraints, in the order they cost you the most.</p>
+      </div>
+    </div>
+    <div class="grid-cards">
+      <div class="card reveal">
+        <div class="num">01</div>
+        <h3>There's no page worth sending anyone to.</h3>
+        <p>Your Scottsdale page on the franchise site takes four clicks to reach, and it briefly mislabels your location as Mesa along the way. <b>Right now the only person clicking through to it is you.</b></p>
+      </div>
+      <div class="card reveal" style="--d:80ms">
+        <div class="num">02</div>
+        <h3>Corporate's fix has no date on it.</h3>
+        <p>Corporate owns the domain and is "either hiring or outsourcing" to rebuild SEO across all ~150 locations, with no timeline you've been given. Search "home care Scottsdale" and your page doesn't appear in the first four pages of Google.</p>
+      </div>
+      <div class="card reveal" style="--d:160ms">
+        <div class="num">03</div>
+        <h3>Anything customer-facing needs corporate sign-off first.</h3>
+        <p>Brand colors, logo, and messaging all have to clear the same marketing team that hasn't delivered the usage report you've been asking for over the past year and a half.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 WHY DISRUPTORS MEDIA -->
+<section id="why" class="dark">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">03</div>
+      <div class="ht">
+        <h2 class="display">Why Disruptors <span class="accent">Media</span></h2>
+        <p class="lede">You don't need corporate's permission to build a system that finds you leads. You need one that runs entirely on your own account.</p>
+      </div>
+    </div>
+
+    <div class="pull reveal">
+      <div class="q">"You do not rise to the level of your goals. You fall to the level of your systems."</div>
+      <div class="attr">James Clear</div>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar reveal">
+        <div class="pn">01</div>
+        <div>
+          <h3>We build systems, not campaigns</h3>
+          <p>The landing page, the ad campaign and the CRM handoff run as one connected machine, not a one-off page. <b>A campaign ends. A system compounds</b> — every lead gets tagged, tracked, and handed to your team the same way, every time.</p>
+        </div>
+      </div>
+      <div class="pillar reveal" style="--d:60ms">
+        <div class="pn">02</div>
+        <div>
+          <h3>You own the domain and the landing page</h3>
+          <p>It's registered and built in your name, separate from hallmarkhomecare.com. <b>Nothing about it touches the franchise's website</b>, and nothing needs migrating if we ever part ways.</p>
+        </div>
+      </div>
+      <div class="pillar reveal" style="--d:120ms">
+        <div class="pn">03</div>
+        <div>
+          <h3>Ad spend at cost</h3>
+          <p>Google Ads budget is billed directly to your own ad account at whatever you set it at. No markup, no reselling — you see the same numbers we do.</p>
+        </div>
+      </div>
+      <div class="pillar reveal" style="--d:180ms">
+        <div class="pn">04</div>
+        <div>
+          <h3>Month to month</h3>
+          <p>No annual contract, no termination fee. <b>We keep the account by producing</b>, reviewed with you on calls every other week, not a report you get without a conversation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 WHO WE'RE REACHING -->
+<section id="audience">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">04</div>
+      <div class="ht">
+        <h2 class="display">Who we're <span class="accent">reaching</span></h2>
+        <p class="lede">The same buyer, at two different moments — and almost nobody's bidding on either one yet.</p>
+      </div>
+    </div>
+
+    <div class="goals two">
+      <div class="goal reveal">
+        <div class="gk">The majority, today</div>
+        <h3>The adult child, searching after the fall</h3>
+        <p>You told us it's rarely the senior who looks for care — it's their child, usually in their 60s, searching the moment a parent is discharged from the hospital and told they can't go home alone. <b>It's urgent, it's same-day, and it's a phone call or a form, not a browse.</b></p>
+        <div class="tie"><strong>Reached through zip-targeted Google Search Ads</strong>Ads on exactly the keywords they'd type in that moment, restricted to your service area so spend never bleeds into a neighboring franchise's territory.</div>
+      </div>
+      <div class="goal reveal" style="--d:80ms">
+        <div class="gk">Smaller today, worth capturing</div>
+        <h3>The adult child, searching ahead of time</h3>
+        <p>Fewer people search before the crisis hits, but they're higher-intent when they do — and right now they land on nothing built for them either.</p>
+        <div class="tie"><strong>Reached through the same landing page</strong>This group is where local SEO and AI-answer visibility compound over time — a longer play than this build funds, but one your own domain is finally positioned to run, unlike the franchise's.</div>
+      </div>
+    </div>
+
+    <div class="callout reveal">
+      <div class="icon">=</div>
+      <div>
+        <h3>The keyword research backs it up</h3>
+        <p>Across roughly 1,600 keywords in your service area, several are seeing 1,000 to 10,000 searches a month at $3 to $10 a click — with almost no other advertiser bidding on them. <b>Your own math says $50,000 more a month by December is about 12 to 13 new clients</b> at your $4,000 to $5,000 average. That math works before we've optimized anything.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 SYSTEMS WE'D RECOMMEND -->
+<section id="systems">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">05</div>
+      <div class="ht">
+        <h2 class="display">Systems we'd <span class="accent">recommend</span></h2>
+        <p class="lede">The build lands first, because nothing else is measurable until it does. <b style="color:var(--ink);font-weight:600">Every system here is optional</b> — the plans in Section 06 are just the combinations we'd pick.</p>
+      </div>
+    </div>
+    <div class="tablewrap reveal">
+      <table class="t">
+        <thead><tr><th>Workstream</th><th>What it does</th><th>When</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Landing page</td><td>A single dedicated page, built to your spec from this week's call: what makes Hallmark different, who you serve, one clear call to action. Uses your franchise branding and logo, but lives on its own domain.</td><td class="tgt">Week 1</td></tr>
+          <tr><td class="k">Google Ads campaign</td><td>One search campaign, 2 to 4 ad groups, 20 to 30 keywords, targeted to your exact service zip codes so spend stays inside your territory. Calls and form fills as the primary conversions.</td><td class="tgt">Week 1–2</td></tr>
+          <tr><td class="k">CRM handoff</td><td>Every form fill or call is webhooked straight into your CRM, tagged with source, and triggers an alert to your team so the fastest response wins the lead.</td><td class="tgt">Week 1–2</td></tr>
+          <tr><td class="k">Landing page iteration</td><td>If ads are converting but the page isn't, we test and adjust the page itself — copy, layout, the offer — until it does. Included in either monthly plan.</td><td class="tgt">Ongoing</td></tr>
+          <tr><td class="k">Bi-weekly review calls</td><td>We look at real lead flow together: what's converting, what corporate would flag, what to test next.</td><td class="tgt">Every other week</td></tr>
+          <tr><td class="k">VSL video production <i style="color:var(--muted);font-style:normal;font-size:12px">(optional add-on)</i></td><td>A short video for the landing page — you on camera, or a client story — scripted and edited by us.</td><td class="tgt">As needed</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 06 THE INVESTMENT -->
+<section id="investment">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">06</div>
+      <div class="ht">
+        <h2 class="display">The <span class="accent">investment</span></h2>
+        <p class="lede">A one-time build, then a monthly plan for managing it. Month to month, no lock-in.</p>
+      </div>
+    </div>
+
+    <div class="tiers two">
+      <div class="tier rec reveal">
+        <div class="badge">Where you'd start</div>
+        <div class="tname">Ads Managed</div>
+        <div class="price"><sup>$</sup>850<span class="cadence">/ mo</span></div>
+        <div class="build"><b>+ $3,500</b> one-time build, month one</div>
+        <div class="tag">You told us: <b>"If I don't have to use a CRM, I don't care."</b> This plan covers exactly what you need — the campaign managed and the page kept converting — without paying for CRM depth you're not using yet.</div>
+        <div class="inc">Includes</div>
+        <ul>
+          <li><strong>Landing page + build</strong>: page, campaign setup, and CRM webhook, all live in week one to two</li>
+          <li><strong>Google Ads management</strong>: keyword and bid optimization, ongoing</li>
+          <li><strong>Landing page iteration</strong>: copy and layout changes as conversion data comes in</li>
+          <li><strong>Bi-weekly review calls</strong></li>
+        </ul>
+      </div>
+      <div class="tier reveal" style="--d:80ms">
+        <div class="tname">Ads + CRM Growth</div>
+        <div class="price"><sup>$</sup>1,500<span class="cadence">/ mo</span></div>
+        <div class="build"><b>+ $3,500</b> one-time build, month one</div>
+        <div class="tag">Everything in Ads Managed, plus the automation to make the CRM worth using — the right move once your team starts actually working leads inside it, not just getting the alert.</div>
+        <div class="inc">Includes everything above, plus</div>
+        <ul>
+          <li><strong>Nurture sequences</strong>: automated follow-up for leads that don't convert on the first call</li>
+          <li><strong>Deeper CRM build-out</strong>: pipeline stages, lead scoring, and reporting tied to source</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="pay-note"><b>Not included in either plan:</b> Google Ads spend itself. We'd recommend starting around <b>$100 a day</b>, which Google calculates to roughly <b>$3,000 a month</b> — paid directly to your own Google Ads account, not to us.</p>
+
+    <div class="callout reveal">
+      <div class="icon">+</div>
+      <div>
+        <h3>Add-on: VSL video production</h3>
+        <p><b>$500 per video, scripting included.</b> Optional, and only billed when you want one made — whether that's an on-camera introduction or a client story. No monthly commitment attached to it.</p>
+      </div>
+    </div>
+
+    <div class="honest reveal">
+      <div class="hh">What this won't do</div>
+      <p>It won't fix the franchise's national SEO, and it isn't trying to outrank hallmarkhomecare.com — that's corporate's twelve-month project to run, not yours to fund. <b>What it does is give you a lead source the franchise doesn't touch</b>: a page, a phone number, and a form that are entirely yours, filling a channel that currently produces zero clicks a month.</p>
+      <p><span class="g">If ads are running and the page isn't converting, that's on us to fix — it's included, not a change order.</span></p>
+    </div>
+
+    <p class="costs-note"><b>Not included:</b> Google Ads spend (~$3,000/mo estimated, billed to your account), third-party software beyond what's listed, and video production unless added.</p>
+  </div>
+</section>
+
+<!-- 07 NEXT STEP -->
+<section id="next" class="accept-section">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">07</div>
+      <div class="ht">
+        <h2 class="display">Next <span class="accent">step</span></h2>
+        <p class="lede">Nothing here needs corporate's approval to start — it runs on its own domain from day one.</p>
+      </div>
+    </div>
+    <ol class="steplist">
+      <li class="reveal"><div><span class="t">Confirm the plan and your service zip codes<span class="when">This week</span></span><p>Pick a plan below, and send over anything corporate has told you is off-limits on branding or claims, so the page and ads stay inside those lines from the start.</p></div></li>
+      <li class="reveal"><div><span class="t">Landing page, campaign, and CRM webhook built<span class="when">Week 1–2</span></span><p>Built to what we mapped out on this week's call — your differentiators, your logo and colors, one clear form.</p></div></li>
+      <li class="reveal"><div><span class="t">Campaign goes live, calls begin<span class="when">Week 2</span></span><p>Ads launch and leads start hitting your CRM. First bi-weekly review call to see what's converting.</p></div></li>
+    </ol>
+
+    <div class="accept-panel reveal">
+      <div class="step">
+        <div class="step-label"><span class="n">01</span> The plan</div>
+        <div class="tier-select" id="tierSelect">
+          <div class="tier-opt sel" data-tier="Ads Managed ($850/mo + $3,500 build)"><div class="to-name">Ads Managed</div><div class="to-price">$850<span class="c">/ mo</span></div><div class="to-build">+ $3,500 build</div></div>
+          <div class="tier-opt" data-tier="Ads + CRM Growth ($1,500/mo + $3,500 build)"><div class="to-name">Ads + CRM Growth</div><div class="to-price">$1,500<span class="c">/ mo</span></div><div class="to-build">+ $3,500 build</div></div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-label"><span class="n">02</span> Your details</div>
+        <div class="field-row">
+          <div class="field"><label for="fn">Full name</label><input id="fn" type="text" placeholder="Zack Schober" autocomplete="name"></div>
+          <div class="field"><label for="co">Company</label><input id="co" type="text" placeholder="Hallmark Homecare — Scottsdale" autocomplete="organization"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="em">Email</label><input id="em" type="email" placeholder="zschober@hallmarkhomecare.com" autocomplete="email"></div>
+          <div class="field"><label for="pr">Anything you want scoped differently</label><input id="pr" type="text" placeholder="e.g. add a VSL video to the first build"></div>
+        </div>
+      </div>
+      <div class="signature-line">
+        <div class="date">Proposal valid through <strong id="validDate">30 days from today</strong></div>
+        <button class="btn-accept" id="acceptBtn" disabled>Start the build →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <div class="col">
+        <h4>Disruptors Media</h4>
+        <p>Stay Human.</p>
+        <p style="color:var(--muted)">Fractional Chief AI Officer</p>
+      </div>
+      <div class="col">
+        <h4>Prepared for</h4>
+        <p>Zack Schober</p>
+        <a href="https://hallmarkhomecare.com" target="_blank" rel="noopener">hallmarkhomecare.com</a>
+      </div>
+      <div class="col">
+        <h4>Contact</h4>
+        <p>Kimball Mueller</p>
+        <a href="mailto:kimball@disruptorsmedia.com">kimball@disruptorsmedia.com</a>
+        <a href="tel:+12089097765">(208) 909-7765</a>
+      </div>
+      <div class="col">
+        <h4>Office</h4>
+        <p>650 N Main Street</p>
+        <p style="color:var(--muted)">North Salt Lake, UT 84054</p>
+      </div>
+    </div>
+    <div class="legal">
+      <span>Prepared September 2026 · Valid 30 days</span>
+      <span>Built in your name. You own the domain.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay">
+  <div class="panel">
+    <div class="check">✓</div>
+    <h3 class="display">Let's get you found.</h3>
+    <p id="overlayMsg">Thank you. Kimball will reach out within one business day.</p>
+    <a class="book" href="https://api.leadconnectorhq.com/widget/bookings/meeting-with-the-disruptors" target="_blank" rel="noopener">Pick a time now →</a>
+  </div>
+</div>
+
+<script>
+  (function () {
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    } else {
+      document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+    }
+    try {
+      var d = new Date(); d.setDate(d.getDate() + 30);
+      document.getElementById('validDate').textContent = d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    } catch (e) {}
+    var selected = document.querySelector('#tierSelect .tier-opt.sel').getAttribute('data-tier');
+    var opts = document.querySelectorAll('#tierSelect .tier-opt');
+    opts.forEach(function (o) {
+      o.addEventListener('click', function () {
+        opts.forEach(function (x) { x.classList.remove('sel'); });
+        o.classList.add('sel'); selected = o.getAttribute('data-tier');
+      });
+    });
+    var fn = document.getElementById('fn'), em = document.getElementById('em'), btn = document.getElementById('acceptBtn');
+    function check() { btn.disabled = !(fn.value.trim().length > 1 && /.+@.+\..+/.test(em.value.trim())); }
+    [fn, em].forEach(function (i) { i.addEventListener('input', check); });
+    btn.addEventListener('click', function () {
+      if (btn.disabled) return;
+      var name = fn.value.trim().split(' ')[0];
+      document.getElementById('overlayMsg').textContent =
+        'Thank you' + (name ? ', ' + name : '') + '. Noted: ' + selected +
+        '. Kimball will reach out within one business day, or grab a time directly below.';
+      document.getElementById('overlay').classList.add('show');
+    });
+    document.getElementById('overlay').addEventListener('click', function (e) {
+      if (e.target === this) this.classList.remove('show');
+    });
+  })();
+</script>
+
+</body>
+</html>
