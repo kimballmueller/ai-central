@@ -1,0 +1,849 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Proposal · Assisting Hands Chicago North × Disruptors Media</title>
+<meta name="description" content="Fractional Chief AI Officer engagement for Assisting Hands Chicago North: making nine months of existing content findable, and crossing 700 billable hours." />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+<link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+  :root {
+    --ink: #0A0A0A;
+    --paper: #FAFAF7;
+    --paper-cream: #FDF6E3;
+    --rule: rgba(10, 10, 10, 0.08);
+    --rule-strong: rgba(10, 10, 10, 0.14);
+    --muted: rgba(10, 10, 10, 0.52);
+    --muted-strong: rgba(10, 10, 10, 0.72);
+    --gold: #B8860B;
+    --gold-soft: rgba(184, 134, 11, 0.12);
+    --gold-line: rgba(184, 134, 11, 0.32);
+    --green: #2F7A3F;
+    --max: 1240px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--paper); color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+  }
+  .display { font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 600; letter-spacing: -0.035em; line-height: 0.96; }
+  .label { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 3px; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 clamp(24px, 5vw, 56px); }
+  section { padding: clamp(80px, 12vh, 150px) 0; position: relative; }
+
+  /* NAV */
+  .nav { position: fixed; top: 0; left: 0; right: 0; padding: 16px clamp(20px, 5vw, 56px); display: flex; justify-content: space-between; align-items: center; z-index: 50; backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); background: rgba(250, 250, 247, 0.78); border-bottom: 1px solid var(--rule); }
+  .nav .brand { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 15px; letter-spacing: -0.015em; display: flex; align-items: center; gap: 10px; }
+  .nav .brand .dot { width: 8px; height: 8px; border-radius: 999px; background: var(--gold); }
+  .nav .brand .x { color: var(--muted); font-weight: 400; }
+  .nav .links { display: flex; gap: 22px; align-items: center; font-size: 13px; color: var(--muted-strong); }
+  .nav .links a { text-decoration: none; transition: color 0.2s ease; }
+  .nav .links a:hover { color: var(--ink); }
+  .nav .cta { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; background: var(--ink); color: var(--paper); border-radius: 999px; text-decoration: none; font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: 13px; letter-spacing: -0.005em; transition: transform 0.2s ease, background 0.2s ease; }
+  .nav .cta:hover { background: var(--gold); transform: translateY(-1px); }
+  @media (max-width: 1150px) { .nav .links { display: none; } }
+
+  /* HERO */
+  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; padding-top: clamp(120px, 15vh, 170px); padding-bottom: clamp(48px, 8vh, 80px); }
+  .hero .top { text-align: center; }
+  .hero .mark { display: block; width: clamp(84px, 11vw, 128px); height: auto; margin: 0 auto 28px; }
+  .hero h1 { font-size: clamp(38px, 7vw, 96px); max-width: 19ch; margin: 0 auto; }
+  .hero h1 .accent { color: var(--gold); }
+  .hero .sub { font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(18px, 2.1vw, 24px); letter-spacing: -0.015em; color: var(--muted-strong); max-width: 66ch; margin: clamp(28px, 4vh, 46px) auto 0; line-height: 1.4; }
+  .hero .meta { margin-top: clamp(40px, 7vh, 80px); display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+  .hero .meta > div .label { display: block; margin-bottom: 8px; color: var(--muted); }
+  .hero .meta > div p { font-family: 'Inter Tight', sans-serif; font-size: 16px; font-weight: 500; letter-spacing: -0.01em; }
+  .hero .scroll-hint { display: flex; align-items: center; gap: 12px; font-size: 11px; color: var(--muted); letter-spacing: 0.16em; text-transform: uppercase; justify-content: center; }
+  .hero .scroll-hint span { width: 32px; height: 1px; background: var(--ink); opacity: 0.4; }
+
+  /* SECTION HEAD */
+  .sec-head { display: flex; gap: 80px; align-items: baseline; margin-bottom: clamp(40px, 7vh, 80px); flex-wrap: wrap; }
+  .sec-head .num { font-family: 'Inter Tight', sans-serif; font-size: 13px; font-weight: 500; color: var(--gold); letter-spacing: 0.04em; min-width: 80px; }
+  .sec-head .ht { flex: 1; min-width: 280px; }
+  .sec-head h2 { font-size: clamp(36px, 5.4vw, 76px); max-width: 20ch; }
+  .sec-head h2 .accent { color: var(--gold); }
+  .sec-head .lede { font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(19px, 2.3vw, 27px); letter-spacing: -0.015em; line-height: 1.3; color: var(--muted-strong); max-width: 50ch; margin-top: 18px; }
+
+  /* PULL QUOTE */
+  .pull { margin: clamp(36px,5vh,56px) 0; padding: clamp(26px,3.4vw,40px) clamp(28px,4vw,48px); background: var(--paper-cream); color: var(--ink); border-left: 3px solid var(--gold); border-radius: 0 20px 20px 0; }
+  .pull .q { font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(20px, 2.6vw, 31px); letter-spacing: -0.02em; line-height: 1.3; color: var(--ink); }
+  .pull .attr { font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 16px; }
+  .dark .pull { background: #131313; color: var(--paper); border-left-color: var(--gold); }
+  .dark .pull .q { color: var(--paper); }
+  .dark .pull .attr { color: rgba(250,250,247,0.5); }
+
+  /* ASK BLOCK — the open questions in §01/§02 */
+  .ask { background: var(--paper-cream); color: var(--ink); border: 1px solid var(--gold-line); border-radius: 22px; padding: clamp(28px,3.6vw,42px); margin-top: 40px; }
+  .ask h4 { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(19px,2.2vw,25px); letter-spacing: -0.02em; color: var(--ink); margin-bottom: 8px; }
+  .ask .lead { font-size: 15px; color: var(--muted-strong); line-height: 1.6; margin-bottom: 22px; max-width: 76ch; }
+  .ask ol { list-style: none; counter-reset: q; padding: 0; }
+  .ask ol li { counter-increment: q; position: relative; padding: 14px 0 14px 46px; border-top: 1px solid var(--gold-line); font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(15.5px,1.7vw,18px); letter-spacing: -0.01em; color: var(--ink); line-height: 1.45; }
+  .ask ol li::before { content: "Q" counter(q, decimal-leading-zero); position: absolute; left: 0; top: 16px; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; color: var(--gold); }
+  .ask ol li span { display: block; font-family: 'Inter', sans-serif; font-weight: 400; font-size: 14px; color: var(--muted); margin-top: 5px; line-height: 1.55; letter-spacing: 0; }
+  .dark .ask { background: #131313; color: var(--paper); border-color: rgba(250,250,247,0.16); }
+  .dark .ask h4 { color: var(--paper); }
+  .dark .ask .lead { color: rgba(250,250,247,0.68); }
+  .dark .ask ol li { color: var(--paper); border-top-color: rgba(250,250,247,0.12); }
+  .dark .ask ol li span { color: rgba(250,250,247,0.5); }
+
+  /* GOAL OPTION CARDS */
+  .goals { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .goals.two { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 900px) { .goals { grid-template-columns: 1fr; } }
+  .goal { background: var(--paper); color: var(--ink); border: 1px solid var(--rule); border-radius: 22px; padding: clamp(28px,3.2vw,38px); display: flex; flex-direction: column; transition: transform 0.28s cubic-bezier(0.2,0.7,0.2,1), box-shadow 0.28s, border-color 0.28s ease; }
+  .goal:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -20px rgba(10,10,10,0.18); border-color: var(--gold-line); }
+  .goal .gk { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  .goal h3 { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(21px,2.3vw,26px); letter-spacing: -0.02em; line-height: 1.15; color: var(--ink); margin-bottom: 12px; }
+  .goal p { color: var(--muted-strong); font-size: 14.5px; line-height: 1.6; }
+  .goal p b { color: var(--ink); font-weight: 600; }
+  .goal .tie { margin-top: auto; padding-top: 20px; border-top: 1px solid var(--rule); font-size: 13.5px; color: var(--muted-strong); line-height: 1.5; }
+  .goal .tie strong { display: block; font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 14.5px; color: var(--gold); margin-bottom: 4px; }
+
+  /* ARITHMETIC */
+  .arith { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 20px; overflow: hidden; margin-bottom: 20px; }
+  .arith .a { background: var(--paper); color: var(--ink); padding: 34px 30px; }
+  .arith .a.bad { background: var(--paper-cream); }
+  .arith .a .k { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .arith .a .v { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(34px, 4.2vw, 52px); letter-spacing: -0.035em; line-height: 1; color: var(--ink); }
+  .arith .a.bad .v { color: var(--gold); }
+  .arith .a .cap { font-size: 14px; color: var(--muted-strong); margin-top: 12px; line-height: 1.5; }
+  @media (max-width: 860px) { .arith { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .arith { grid-template-columns: 1fr; } }
+  .arith-line { font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(18px, 2vw, 24px); letter-spacing: -0.015em; color: var(--ink); text-align: center; padding: 8px 0 4px; line-height: 1.35; }
+  .arith-line b { color: var(--gold); }
+  .dark .arith { background: rgba(250,250,247,0.12); border-color: rgba(250,250,247,0.12); }
+  .dark .arith .a { background: #131313; color: var(--paper); }
+  .dark .arith .a.bad { background: #1c1c1c; }
+  .dark .arith .a .k { color: rgba(250,250,247,0.44); }
+  .dark .arith .a .v { color: var(--paper); }
+  .dark .arith .a.bad .v { color: var(--gold); }
+  .dark .arith .a .cap { color: rgba(250,250,247,0.62); }
+  .dark .arith-line { color: var(--paper); }
+
+  /* CARDS */
+  .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 16px; margin-top: 16px; }
+  .card { background: var(--paper); color: var(--ink); border: 1px solid var(--rule); border-radius: 18px; padding: 32px 28px; min-height: 170px; display: flex; flex-direction: column; gap: 12px; transition: transform 0.28s cubic-bezier(0.2,0.7,0.2,1), box-shadow 0.28s, border-color 0.28s ease; }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -20px rgba(10,10,10,0.18), 0 0 0 1px var(--gold-line) inset; border-color: var(--gold-line); }
+  .card .num { font-family: 'Inter Tight', sans-serif; font-size: 13px; color: var(--gold); letter-spacing: 0.06em; }
+  .card h3 { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 20px; letter-spacing: -0.015em; line-height: 1.2; color: var(--ink); }
+  .card p { color: var(--muted-strong); font-size: 14.5px; line-height: 1.55; }
+  .card p b { color: var(--ink); font-weight: 600; }
+  .card code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; background: var(--gold-soft); color: var(--gold); padding: 1px 6px; border-radius: 5px; }
+  .card.good { background: var(--paper-cream); border-color: var(--gold-line); }
+  .dark .card { background: #131313; color: var(--paper); border-color: rgba(250,250,247,0.1); }
+  .dark .card:hover { border-color: var(--gold-line); box-shadow: 0 18px 40px -20px rgba(0,0,0,0.5), 0 0 0 1px var(--gold-line) inset; }
+  .dark .card h3 { color: var(--paper); }
+  .dark .card p { color: rgba(250,250,247,0.66); }
+  .dark .card p b { color: var(--paper); }
+  .closer { margin-top: 52px; padding-top: 40px; border-top: 1px solid var(--rule); font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(22px, 2.6vw, 34px); letter-spacing: -0.02em; line-height: 1.25; max-width: 56ch; }
+  .closer .accent { color: var(--gold); }
+  .dark .closer { border-top-color: rgba(250,250,247,0.12); color: var(--paper); }
+
+  /* CALLOUT */
+  .callout { margin-top: 40px; background: var(--paper-cream); color: var(--ink); border: 1px solid var(--gold-line); border-radius: 20px; padding: clamp(28px, 4vw, 44px); display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start; }
+  .callout .icon { width: 44px; height: 44px; border-radius: 999px; background: var(--gold); color: var(--paper); display: inline-flex; align-items: center; justify-content: center; font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 20px; flex: none; }
+  .callout h3 { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(20px, 2.2vw, 26px); letter-spacing: -0.015em; line-height: 1.2; margin-bottom: 10px; color: var(--ink); }
+  .callout p { color: var(--muted-strong); font-size: 15px; line-height: 1.6; }
+  .callout p + p { margin-top: 12px; }
+  .callout p b { color: var(--ink); font-weight: 600; }
+  @media (max-width: 600px) { .callout { grid-template-columns: 1fr; gap: 16px; } }
+  .dark .callout { background: #131313; color: var(--paper); border-color: var(--gold-line); }
+  .dark .callout h3 { color: var(--paper); }
+  .dark .callout p { color: rgba(250,250,247,0.68); }
+  .dark .callout p b { color: var(--paper); }
+
+  /* HONEST NOTE */
+  .honest { margin-top: 40px; background: var(--paper); color: var(--ink); border: 1px solid var(--rule-strong); border-radius: 20px; padding: clamp(28px,4vw,42px); }
+  .honest .hh { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(19px,2.2vw,25px); letter-spacing: -0.02em; color: var(--ink); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+  .honest .hh::before { content: ""; width: 10px; height: 10px; border-radius: 999px; background: var(--gold); flex: none; }
+  .honest p { font-size: 16px; line-height: 1.68; color: var(--muted-strong); margin-bottom: 16px; max-width: 78ch; }
+  .honest p:last-child { margin-bottom: 0; }
+  .honest p b { color: var(--ink); font-weight: 600; }
+  .honest p .g { color: var(--gold); font-weight: 600; }
+  .dark .honest { background: #131313; color: var(--paper); border-color: rgba(250,250,247,0.14); }
+  .dark .honest .hh { color: var(--paper); }
+  .dark .honest p { color: rgba(250,250,247,0.68); }
+  .dark .honest p b { color: var(--paper); }
+
+  /* TABLE */
+  .tablewrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 18px; margin-top: 16px; background: var(--paper); color: var(--ink); }
+  .dark .tablewrap { border-color: rgba(250,250,247,0.12); background: #131313; color: var(--paper); }
+  table.t { width: 100%; border-collapse: collapse; min-width: 680px; font-family: 'Inter', sans-serif; }
+  table.t th, table.t td { text-align: left; padding: 17px 22px; border-bottom: 1px solid var(--rule); font-size: 14.5px; vertical-align: top; line-height: 1.55; }
+  table.t thead th { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); background: var(--paper-cream); border-bottom: 1px solid var(--rule-strong); }
+  table.t tbody tr:last-child td { border-bottom: none; }
+  table.t td { color: var(--muted-strong); }
+  table.t td.k { font-family: 'Inter Tight', sans-serif; font-weight: 600; color: var(--ink); }
+  table.t td.tgt { font-family: 'Inter Tight', sans-serif; font-weight: 600; color: var(--gold); white-space: nowrap; }
+  table.t td b { color: var(--gold); font-weight: 600; }
+  table.t td.yes { color: var(--green); font-weight: 600; font-family: 'Inter Tight', sans-serif; white-space: nowrap; }
+  table.t td.no { color: var(--muted); font-family: 'Inter Tight', sans-serif; white-space: nowrap; }
+  table.t th.ctr, table.t td.ctr { text-align: center; }
+  table.t col.hi, table.t td.hi { background: var(--gold-soft); }
+  table.t thead th.hi { background: var(--gold); color: var(--paper); }
+  table.t td.chk { text-align: center; color: var(--green); font-weight: 700; font-family: 'Inter Tight', sans-serif; }
+  table.t td.dash { text-align: center; color: rgba(10,10,10,0.28); font-family: 'Inter Tight', sans-serif; }
+  table.t tr.money td { font-family: 'Inter Tight', sans-serif; font-weight: 600; color: var(--ink); font-size: 15.5px; }
+  .dark table.t th, .dark table.t td { border-bottom-color: rgba(250,250,247,0.10); color: rgba(250,250,247,0.72); }
+  .dark table.t thead th { background: #1c1c1c; color: var(--gold); border-bottom-color: rgba(250,250,247,0.16); }
+  .dark table.t td.k { color: var(--paper); }
+  .dark table.t td.tgt { color: var(--gold); }
+  .dark table.t td.yes { color: #6FCB86; }
+  .dark table.t td.no { color: rgba(250,250,247,0.42); }
+  .dark table.t tbody tr:hover td { background: rgba(250,250,247,0.035); }
+  .costs-note { color: var(--muted); font-size: 13.5px; margin-top: 18px; max-width: 82ch; line-height: 1.65; }
+  .dark .costs-note { color: rgba(250,250,247,0.5); }
+
+  /* SYSTEMS (phase rows) */
+  .phases { display: flex; flex-direction: column; }
+  .phase { display: grid; grid-template-columns: 170px 1fr 1.5fr; gap: 40px; padding: 36px 0; border-top: 1px solid var(--rule); align-items: start; }
+  .phase:last-child { border-bottom: 1px solid var(--rule); }
+  .phase .stage .n { font-family: 'Inter Tight', sans-serif; font-size: 13px; color: var(--gold); letter-spacing: 0.06em; display: block; }
+  .phase .stage .status { font-size: 11px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 4px; }
+  .phase h3 { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(21px, 2.6vw, 28px); letter-spacing: -0.02em; line-height: 1.15; color: var(--ink); }
+  .phase h3 .sp { display: block; font-size: 13px; font-weight: 500; letter-spacing: 0; color: var(--gold); margin-top: 8px; line-height: 1.4; }
+  .phase .body ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  /* bullets absolutely positioned — a flex <li> shreds any <b> into its own column */
+  .phase .body ul li { position: relative; padding-left: 20px; color: var(--muted-strong); font-size: 15px; line-height: 1.55; }
+  .phase .body ul li::before { content: ""; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; border-radius: 999px; background: var(--gold); }
+  .phase .body ul li b { color: var(--ink); font-weight: 600; }
+  @media (max-width: 860px) { .phase { grid-template-columns: 1fr; gap: 14px; padding: 30px 0; } }
+  .dark .phase { border-top-color: rgba(250,250,247,0.1); }
+  .dark .phase:last-child { border-bottom-color: rgba(250,250,247,0.1); }
+  .dark .phase h3 { color: var(--paper); }
+  .dark .phase .stage .status { color: rgba(250,250,247,0.48); }
+  .dark .phase .body ul li { color: rgba(250,250,247,0.66); }
+  .dark .phase .body ul li b { color: var(--paper); }
+
+  /* PILLARS */
+  .pillars { display: flex; flex-direction: column; gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 20px; overflow: hidden; }
+  .pillar { background: var(--paper); color: var(--ink); padding: clamp(24px,3vw,32px) clamp(24px,3.2vw,38px); display: grid; grid-template-columns: 56px 1fr; gap: clamp(16px,2.6vw,30px); align-items: start; transition: background 0.25s ease; }
+  .pillar:hover { background: var(--paper-cream); }
+  /* was --gold-line (0.32 alpha) — 1.39:1, effectively invisible. Still subtle, now legible. */
+  .pillar .pn { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(24px,2.8vw,31px); letter-spacing: -0.03em; color: var(--gold); line-height: 1; }
+  .pillar h3 { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(18px,2vw,23px); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 8px; color: var(--ink); }
+  .pillar p { color: var(--muted-strong); font-size: 15px; line-height: 1.6; max-width: 70ch; }
+  .pillar p b { color: var(--ink); font-weight: 600; }
+  @media (max-width: 620px) { .pillar { grid-template-columns: 1fr; gap: 8px; } }
+  .dark .pillars { background: rgba(250,250,247,0.14); border-color: rgba(250,250,247,0.14); }
+  /* .pillar has no colour of its own in .dark — same bug class as .card: without this it inherits
+     the light --paper background and renders progressively less legible down the stack. */
+  .dark .pillar { background: #131313; color: var(--paper); }
+  .dark .pillar:hover { background: #1c1c1c; }
+  .dark .pillar h3 { color: var(--paper); }
+  .dark .pillar p { color: rgba(250,250,247,0.66); }
+  .dark .pillar p b { color: var(--paper); }
+
+  /* DARK */
+  .dark { background: var(--ink); color: var(--paper); }
+  .dark .sec-head h2 { color: var(--paper); }
+  .dark .sec-head .lede { color: rgba(250,250,247,0.66); }
+  .dark .label { color: var(--gold); }
+
+  /* TIME / OUTPUT PANELS */
+  .timegrid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 16px; align-items: stretch; margin-top: 44px; }
+  @media (max-width: 900px) { .timegrid { grid-template-columns: 1fr; } }
+  .timepanel { background: var(--paper-cream); color: var(--ink); border: 1px solid var(--gold-line); border-radius: 22px; padding: clamp(30px,3.6vw,42px); }
+  .timepanel h4 { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(20px,2.3vw,26px); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 8px; color: var(--ink); }
+  .timepanel .lead { font-size: 15px; color: var(--muted-strong); line-height: 1.6; margin-bottom: 24px; }
+  .tline { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 15px 0; border-top: 1px solid var(--gold-line); }
+  .tline .tk { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 15px; color: var(--ink); }
+  .tline .ts { font-size: 12.5px; color: var(--muted); line-height: 1.45; margin-top: 3px; max-width: 44ch; }
+  .tline .tv { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 17px; color: var(--gold); white-space: nowrap; }
+  .tline.tot { border-top: 2px solid var(--gold); margin-top: 6px; }
+  .tline.tot .tk { font-size: 17px; }
+  .tline.tot .tv { font-size: 26px; letter-spacing: -0.02em; }
+  .outbox { background: var(--paper); color: var(--ink); border: 1px solid var(--rule); border-radius: 22px; padding: clamp(30px,3.6vw,42px); display: flex; flex-direction: column; }
+  .outbox h4 { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(20px,2.3vw,26px); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 8px; color: var(--ink); }
+  .outbox .lead { font-size: 15px; color: var(--muted-strong); line-height: 1.6; margin-bottom: 22px; }
+  .oline { display: flex; gap: 16px; align-items: baseline; padding: 14px 0; border-top: 1px solid var(--rule); }
+  .oline .ov { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 24px; letter-spacing: -0.025em; color: var(--gold); line-height: 1; min-width: 64px; }
+  .oline .ok { font-size: 14.5px; color: var(--muted-strong); line-height: 1.5; }
+  .oline .ok b { color: var(--ink); font-weight: 600; }
+
+  /* CALCULATOR */
+  .calc { margin-top: 44px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: stretch; }
+  @media (max-width: 900px) { .calc { grid-template-columns: 1fr; } }
+  .calc-inputs { background: var(--paper); color: var(--ink); border: 1px solid var(--rule); border-radius: 22px; padding: clamp(28px,3.4vw,40px); }
+  .calc-inputs h4, .calc-out h4 { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(19px,2.2vw,24px); letter-spacing: -0.02em; margin-bottom: 6px; color: var(--ink); }
+  .calc-inputs .lead, .calc-out .lead { font-size: 14.5px; color: var(--muted-strong); line-height: 1.6; margin-bottom: 26px; }
+  .ctrl { padding: 16px 0; border-top: 1px solid var(--rule); }
+  .ctrl .crow { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 12px; }
+  .ctrl label { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 14.5px; color: var(--ink); }
+  .ctrl .cval { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 19px; color: var(--gold); letter-spacing: -0.02em; white-space: nowrap; }
+  .ctrl .chint { font-size: 12.5px; color: var(--muted); line-height: 1.45; margin-top: 8px; }
+  input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 4px; border-radius: 999px; background: var(--rule-strong); outline: none; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; border-radius: 999px; background: var(--gold); border: 3px solid var(--paper); box-shadow: 0 2px 8px rgba(10,10,10,0.22); cursor: pointer; }
+  input[type=range]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 999px; background: var(--gold); border: 3px solid var(--paper); box-shadow: 0 2px 8px rgba(10,10,10,0.22); cursor: pointer; }
+  .calc-out { background: var(--paper-cream); color: var(--ink); border: 1px solid var(--gold-line); border-radius: 22px; padding: clamp(28px,3.4vw,40px); display: flex; flex-direction: column; }
+  .oresult { border-top: 1px solid var(--gold-line); padding: 16px 0; display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  .oresult .rk { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 15px; color: var(--ink); }
+  .oresult .rs { font-size: 12.5px; color: var(--muted); margin-top: 3px; max-width: 42ch; line-height: 1.45; }
+  .oresult .rv { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 20px; color: var(--ink); white-space: nowrap; letter-spacing: -0.02em; }
+  .oresult.hero-line { border-top: 2px solid var(--gold); margin-top: 6px; padding-top: 22px; }
+  .oresult.hero-line .rk { font-size: 17px; }
+  .oresult.hero-line .rv { font-size: clamp(26px,3.2vw,36px); color: var(--gold); }
+  .assump { margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--gold-line); font-size: 12.5px; color: var(--muted); line-height: 1.65; }
+  .assump b { color: var(--muted-strong); font-weight: 600; }
+
+  /* TIERS */
+  .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch; margin-top: 26px; }
+  .tier { background: var(--paper); color: var(--ink); border: 1px solid var(--rule); border-radius: 22px; padding: 40px 32px; display: flex; flex-direction: column; position: relative; transition: transform 0.28s cubic-bezier(0.2,0.7,0.2,1), box-shadow 0.28s, border-color 0.28s ease; }
+  .tier:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -20px rgba(10,10,10,0.18); border-color: var(--gold-line); }
+  .tier.rec { background: var(--paper-cream); border: 1.5px solid var(--gold); box-shadow: 0 32px 80px -44px rgba(184,134,11,0.5); }
+  .tier .badge { position: absolute; top: -13px; left: 32px; background: var(--gold); color: var(--paper); font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; padding: 7px 14px; border-radius: 999px; }
+  .tier .tname { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 25px; letter-spacing: -0.02em; color: var(--ink); }
+  .tier .price { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(36px, 4.2vw, 48px); letter-spacing: -0.035em; line-height: 1; margin-top: 14px; color: var(--ink); }
+  .tier .price sup { font-size: 0.42em; font-weight: 500; vertical-align: top; position: relative; top: 0.45em; margin-right: 0.04em; }
+  .tier .price .cadence { font-size: 0.3em; font-weight: 500; color: var(--muted); margin-left: 4px; letter-spacing: -0.005em; }
+  .tier .build { font-size: 12.5px; color: var(--muted); margin-top: 10px; line-height: 1.45; }
+  .tier .build b { color: var(--gold); font-weight: 600; }
+  .tier .tag { margin: 18px 0; padding: 16px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); font-size: 14px; color: var(--muted-strong); line-height: 1.55; min-height: 112px; }
+  .tier .tag b { color: var(--ink); font-weight: 600; }
+  .tier .inc { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+  .tier ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 13px; flex-grow: 1; }
+  /* absolutely-positioned tick, never a flex child */
+  .tier ul li { position: relative; padding-left: 24px; font-size: 14px; color: var(--muted-strong); line-height: 1.5; }
+  .tier ul li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--gold); font-weight: 700; font-size: 13px; }
+  .tier ul li strong { color: var(--ink); font-weight: 600; }
+  .pay-note { text-align: center; color: var(--muted); font-size: 14px; margin-top: 26px; max-width: 82ch; margin-inline: auto; line-height: 1.65; }
+  .pay-note b { color: var(--muted-strong); font-weight: 600; }
+  @media (max-width: 900px) { .tiers { grid-template-columns: 1fr; max-width: 520px; margin: 26px auto 0; } }
+
+  /* STEP LIST */
+  .steplist { list-style: none; counter-reset: st; display: grid; gap: 1px; border: 1px solid var(--rule); border-radius: 18px; overflow: hidden; background: var(--rule); }
+  .steplist li { counter-increment: st; background: var(--paper); color: var(--ink); padding: 24px 30px; display: grid; grid-template-columns: 46px 1fr; gap: 18px; align-items: start; transition: background 0.25s ease; }
+  .steplist li:hover { background: var(--paper-cream); }
+  .steplist li::before { content: counter(st, decimal-leading-zero); font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 13px; color: var(--gold); letter-spacing: 0.06em; line-height: 1.7; }
+  .steplist li .t { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 17.5px; letter-spacing: -0.015em; line-height: 1.35; display: block; margin-bottom: 5px; color: var(--ink); }
+  .steplist li p { color: var(--muted-strong); font-size: 14.5px; line-height: 1.6; max-width: 82ch; }
+  .steplist li .when { display: inline-block; margin-left: 10px; font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); background: var(--gold-soft); padding: 3px 9px; border-radius: 999px; vertical-align: 2px; }
+  @media (max-width: 600px) { .steplist li { grid-template-columns: 1fr; gap: 6px; padding: 20px 22px; } }
+
+  /* FAQ */
+  .faqs { display: flex; flex-direction: column; }
+  .faq { border-top: 1px solid var(--rule); padding: 28px 0; display: grid; grid-template-columns: 60px 1fr 1.4fr; gap: 32px; }
+  .faq:last-child { border-bottom: 1px solid var(--rule); }
+  .faq .qnum { font-family: 'Inter Tight', sans-serif; font-size: 13px; color: var(--gold); letter-spacing: 0.06em; }
+  .faq h3 { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(18px, 2vw, 22px); letter-spacing: -0.015em; line-height: 1.3; color: var(--ink); }
+  /* answers can run past one <p> — pin them to col 3 so they stack instead of wrapping into the num gutter */
+  .faq p { grid-column: 3; color: var(--muted-strong); font-size: 15px; line-height: 1.6; }
+  .faq p + p { margin-top: 12px; }
+  .faq p b { color: var(--ink); font-weight: 600; }
+  @media (max-width: 760px) { .faq { grid-template-columns: 1fr; gap: 8px; } .faq p { grid-column: 1; } }
+  .dark .faq { border-top-color: rgba(250,250,247,0.1); }
+  .dark .faq:last-child { border-bottom-color: rgba(250,250,247,0.1); }
+  .dark .faq h3 { color: var(--paper); }
+  .dark .faq p { color: rgba(250,250,247,0.68); }
+  .dark .faq p b { color: var(--paper); }
+
+  /* ACCEPT */
+  .accept-section { background: linear-gradient(180deg, var(--paper) 0%, var(--paper-cream) 100%); }
+  .accept-panel { background: var(--paper); color: var(--ink); border: 1px solid var(--gold-line); border-radius: 24px; padding: clamp(36px, 6vw, 64px); box-shadow: 0 32px 80px -40px rgba(184,134,11,0.4); margin-top: 48px; }
+  .accept-panel .step { margin-bottom: 36px; }
+  .accept-panel .step:last-of-type { margin-bottom: 0; }
+  .accept-panel .step-label { font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: 14px; color: var(--muted-strong); letter-spacing: -0.005em; margin-bottom: 16px; }
+  .accept-panel .step-label .n { color: var(--gold); font-weight: 600; margin-right: 8px; }
+  .tier-select { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 840px; }
+  @media (max-width: 680px) { .tier-select { grid-template-columns: 1fr; } }
+  .tier-opt { cursor: pointer; background: var(--paper-cream); color: var(--ink); border: 1.5px solid var(--rule-strong); border-radius: 16px; padding: 20px; transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease; }
+  .tier-opt:hover { border-color: var(--gold-line); }
+  .tier-opt.sel { border-color: var(--gold); background: #fff; box-shadow: 0 0 0 3px var(--gold-soft); }
+  .tier-opt .to-name { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: -0.01em; }
+  .tier-opt .to-price { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 22px; letter-spacing: -0.02em; margin-top: 6px; }
+  .tier-opt .to-price .c { font-size: 13px; font-weight: 500; color: var(--muted); margin-left: 2px; }
+  .tier-opt .to-build { font-size: 12px; color: var(--muted-strong); margin-top: 4px; }
+  .goal-select { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 840px; }
+  @media (max-width: 680px) { .goal-select { grid-template-columns: 1fr; } }
+  .goal-opt { cursor: pointer; background: var(--paper-cream); color: var(--ink); border: 1.5px solid var(--rule-strong); border-radius: 16px; padding: 18px 20px; transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease; font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 15px; letter-spacing: -0.01em; }
+  .goal-opt span { display: block; font-family: 'Inter', sans-serif; font-weight: 400; font-size: 12.5px; color: var(--muted); margin-top: 5px; line-height: 1.45; letter-spacing: 0; }
+  .goal-opt:hover { border-color: var(--gold-line); }
+  .goal-opt.sel { border-color: var(--gold); background: #fff; box-shadow: 0 0 0 3px var(--gold-soft); }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .field-row + .field-row { margin-top: 16px; }
+  .field { display: flex; flex-direction: column; gap: 8px; }
+  .field label { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-strong); }
+  .field input { appearance: none; background: var(--paper); border: 1.5px solid var(--rule-strong); border-radius: 12px; padding: 15px 18px; font-family: 'Inter Tight', sans-serif; font-size: 16px; letter-spacing: -0.01em; color: var(--ink); transition: border-color 0.2s ease, background 0.2s ease; }
+  .field input:focus { outline: none; border-color: var(--gold); background: var(--paper-cream); }
+  .signature-line { border-top: 1px solid var(--rule); margin-top: 32px; padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .signature-line .date { font-family: 'Inter Tight', sans-serif; font-size: 14px; color: var(--muted-strong); }
+  .signature-line .date strong { color: var(--ink); font-weight: 600; }
+  @media (max-width: 600px) { .field-row { grid-template-columns: 1fr; } }
+  .btn-accept { appearance: none; background: var(--ink); color: var(--paper); border: none; border-radius: 999px; padding: 18px 34px; font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: 16px; letter-spacing: -0.005em; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; transition: background 0.2s ease, transform 0.2s ease, opacity 0.2s ease; }
+  .btn-accept:hover:not(:disabled) { background: var(--gold); transform: translateY(-1px); }
+  .btn-accept:disabled { opacity: 0.4; cursor: not-allowed; }
+  .overlay { position: fixed; inset: 0; background: rgba(250,250,247,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); display: none; align-items: center; justify-content: center; z-index: 100; padding: 24px; }
+  .overlay.show { display: flex; animation: fadeIn 0.4s ease; }
+  .overlay .panel { background: var(--paper); color: var(--ink); border: 1px solid var(--gold-line); border-radius: 24px; padding: clamp(40px, 6vw, 64px); text-align: center; max-width: 560px; box-shadow: 0 40px 100px -40px rgba(184,134,11,0.5); }
+  .overlay .check { width: 56px; height: 56px; border-radius: 999px; background: var(--gold); color: var(--paper); display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 26px; margin-bottom: 24px; }
+  .overlay h3 { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(28px, 4vw, 42px); letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 20px; color: var(--ink); }
+  .overlay p { color: var(--muted-strong); font-size: 16px; line-height: 1.55; }
+  .overlay .book { display: inline-flex; margin-top: 26px; align-items: center; gap: 8px; padding: 15px 28px; background: var(--ink); color: var(--paper); border-radius: 999px; text-decoration: none; font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: 15px; transition: background 0.2s ease; }
+  .overlay .book:hover { background: var(--gold); }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  /* FOOTER */
+  footer { padding: 56px 0 72px; border-top: 1px solid var(--rule); background: var(--paper); color: var(--ink); }
+  footer .row { display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+  footer .col h4 { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  footer .col p, footer .col a { font-family: 'Inter Tight', sans-serif; font-size: 15px; font-weight: 500; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; display: block; line-height: 1.6; transition: color 0.2s ease; }
+  footer .col a:hover { color: var(--gold); }
+  footer .legal { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--rule); font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.9s cubic-bezier(0.2,0.7,0.2,1), transform 0.9s cubic-bezier(0.2,0.7,0.2,1); transition-delay: var(--d, 0ms); }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+    .card, .tier, .pillar, .goal { transition: none; }
+  }
+
+  /* five purchase options in the selector, not three */
+  .tier-select { grid-template-columns: repeat(5, 1fr); max-width: 1000px; }
+  .tier-opt .to-price { font-size: 19px; }
+  @media (max-width: 1000px) { .tier-select { grid-template-columns: repeat(3, 1fr); max-width: 760px; } }
+  @media (max-width: 680px) { .tier-select { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 460px) { .tier-select { grid-template-columns: 1fr; } }
+</style></head>
+<body>
+
+<div class="nav">
+  <div class="brand"><span class="dot"></span> Disruptors Media <span class="x">× Assisting Hands Chicago North</span></div>
+  <div class="links">
+    <a href="#goal">Goal</a>
+    <a href="#way">What's in the way</a>
+    <a href="#why">Why us</a>
+    <a href="#audience">Audiences</a>
+    <a href="#systems">Systems</a>
+    <a href="#investment">Investment</a>
+  </div>
+  <a class="cta" href="#next">Get started →</a>
+</div>
+
+<header class="hero wrap">
+  <div class="top">
+    <img class="mark" src="logo.png" alt="Disruptors Media" />
+    <div class="label" style="margin-bottom:24px">Fractional Chief AI Officer · Chicago, Illinois</div>
+    <h1 class="display">You are 125 billable hours a week from a million dollars. <span class="accent">Most of the work to get there is already done.</span></h1>
+    <p class="sub">Your team has published every single week for nine months, grounded in Chicago, on time, without an agency. That is more discipline than most of our clients arrive with. Almost none of it is structured so that a search engine or a language model can quote it.</p>
+  </div>
+  <div class="meta">
+    <div><span class="label">Prepared for</span><p>Peter Sotos, Owner</p></div>
+    <div><span class="label">Engagement</span><p>Fractional Chief AI Officer</p></div>
+    <div><span class="label">Terms</span><p>Month to month · You own everything</p></div>
+    <div class="scroll-hint"><span></span> Scroll</div>
+  </div>
+</header>
+
+<!-- 01 THE GOAL -->
+<section id="goal">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">01</div>
+      <div class="ht">
+        <h2 class="display">The <span class="accent">goal</span></h2>
+        <p class="lede">Cross 700 billable hours a week by the end of the year, which is where your revenue passes one million dollars.</p>
+      </div>
+    </div>
+    <p style="font-family:'Inter Tight';font-weight:500;font-size:clamp(19px,2.1vw,25px);letter-spacing:-0.015em;line-height:1.45;color:var(--muted-strong);max-width:64ch">Everything below is built for that and nothing else. You already have a working referral engine, a caregiver bench that can absorb the growth without new hires, and a marketer who ships on schedule. <b style="color:var(--ink);font-weight:600">What you do not have is a reason for a search engine, or ChatGPT, to name Assisting Hands Chicago North when a daughter in Rogers Park asks who should care for her father.</b></p>
+  </div>
+</section>
+
+<!-- 02 WHAT'S IN THE WAY -->
+<section id="way">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">02</div>
+      <div class="ht">
+        <h2 class="display">What's <span class="accent">in the way</span></h2>
+        <p class="lede">Three constraints, in the order they cost you the most. All three are mechanical, and you can verify every number in this section yourself.</p>
+      </div>
+    </div>
+    <div class="grid-cards">
+      <div class="card reveal">
+        <div class="num">01</div>
+        <h3>Nine months of good writing is invisible to the machines that now do the recommending.</h3>
+        <p>Across your last twenty posts there are <b>eleven heading tags in total</b> — roughly one every two articles. Your writer is already writing subheadings; they are just not marked as subheadings. In your September 22nd post, "The Numbers Tell a Real Story" is a paragraph tag. To a human reader the page looks fine. To a crawler or a language model it is an undifferentiated wall of text with nothing to lift out and quote. <b>The work is done. The formatting is throwing it away.</b></p>
+      </div>
+      <div class="card reveal" style="--d:80ms">
+        <div class="num">02</div>
+        <h3>Your site tells Google what it is, but never tells it what you are.</h3>
+        <p>Your location page carries WebPage and Breadcrumb markup and nothing else. There is <b>no LocalBusiness record, no FAQ markup, and no review markup anywhere on the site</b>. Your H1 is "Quality Home Care You Can Trust" — a brand promise with no service and no city in it. Your sister agency in Naperville, on the same corporate WordPress, leads with city, county and phone number.</p>
+      </div>
+      <div class="card reveal" style="--d:160ms">
+        <div class="num">03</div>
+        <h3>Every lead you pay for, four competitors are also paying for.</h3>
+        <p>A Place for Mom sells the same enquiry to up to five agencies. You have built real discipline around mining that list, and it works — you have closed people in June who first called in April. But it is a channel where you compete on response speed forever and never accumulate an advantage. The referral route you actually want, the five or six facilities, has no digital component at all right now.</p>
+      </div>
+    </div>
+    <p class="costs-note">Site audited 30 September 2026 against <b>assistinghands.com/127/illinois/chicagonorth</b> and its public WordPress API. One correction worth having: you said you publish two blogs a month. You are actually publishing <b>weekly — 37 posts, every Tuesday, for nine months straight</b>. That matters, because it means cadence was never your problem, which is exactly why every agency that told you to write more blogs was never going to help you.</p>
+  </div>
+</section>
+
+<!-- 03 WHY DISRUPTORS MEDIA -->
+<section id="why" class="dark">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">03</div>
+      <div class="ht">
+        <h2 class="display">Why Disruptors <span class="accent">Media</span></h2>
+        <p class="lede">You do not have an effort problem. You have a machinery problem, and machinery is the only thing we sell.</p>
+      </div>
+    </div>
+
+    <div class="pull reveal">
+      <div class="q">"You do not rise to the level of your goals. You fall to the level of your systems."</div>
+      <div class="attr">James Clear</div>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar reveal">
+        <div class="pn">01</div>
+        <div>
+          <h3>We build systems, not campaigns</h3>
+          <p>Every line in this proposal is a machine that runs whether or not anyone remembers to run it. <b>A campaign ends. A system compounds.</b> The thing that restructures your posts next Tuesday is the same thing that restructured them last Tuesday, and it does not get bored.</p>
+        </div>
+      </div>
+      <div class="pillar reveal" style="--d:60ms">
+        <div class="pn">02</div>
+        <div>
+          <h3>You own every account</h3>
+          <p>Analytics, automations, content, any ad account: all created in Assisting Hands Chicago North's name. <b>Nothing is held hostage and nothing needs migrating if we part ways.</b> Your digital marketer keeps every login he has today and gains the ones we create.</p>
+        </div>
+      </div>
+      <div class="pillar reveal" style="--d:120ms">
+        <div class="pn">03</div>
+        <div>
+          <h3>Software at cost</h3>
+          <p>Third-party tooling and any advertising spend are billed directly to you at the published rate. No markup, no reselling, nothing sitting on our account. You keep Moz, you keep Mailchimp, you keep your scheduling system. We do not replace tools that are working.</p>
+        </div>
+      </div>
+      <div class="pillar reveal" style="--d:180ms">
+        <div class="pn">04</div>
+        <div>
+          <h3>Month to month</h3>
+          <p>No annual contract and no termination fee. <b>We keep the account by producing.</b> You told us your last SEO firm asked for six to nine months before anything should be judged. We would rather be judged in ninety days, and the structural work shows movement well before that.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 WHO WE'RE REACHING -->
+<section id="audience">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">04</div>
+      <div class="ht">
+        <h2 class="display">Who we're <span class="accent">reaching</span></h2>
+        <p class="lede">Two buyers who could not be less alike. One arrives at midnight through a search box. The other has to be walked in to, in person, and will never click an ad.</p>
+      </div>
+    </div>
+
+    <div class="goals two">
+      <div class="goal reveal">
+        <div class="gk">Audience one</div>
+        <h3>The adult child, usually the daughter</h3>
+        <p>Forty-five to sixty-five, lives in or near your territory, and is researching at eleven at night after a bad phone call with a parent. She does not search "home care." She searches the situation — <b>her father fell, her mother is not eating, the hospital is discharging on Thursday and nobody is ready.</b> She asks in plain sentences, increasingly to an AI rather than to Google.</p>
+        <div class="tie"><strong>Reached through structured answers</strong>Because she asks in questions, the page that wins is the one shaped as a question with the answer directly beneath it. That is a formatting decision, not a writing one, and it is the single cheapest thing on this list to fix.</div>
+      </div>
+      <div class="goal reveal" style="--d:80ms">
+        <div class="gk">Audience two</div>
+        <h3>The discharge planner and case manager</h3>
+        <p>Inside the five or six facilities you have targeted. Overworked, loyal to whoever they already use, and protected by a gatekeeper. <b>There is no digital channel that reaches this person directly, and we will not pretend otherwise.</b> They are not on LinkedIn, you have already tested that, and six accounts is far too small a universe for paid media.</p>
+        <div class="tie"><strong>Reached in person, backed by proof</strong>You walking in is the channel. What we build is what they find when they look you up afterwards, which is the part that decides whether the second visit goes differently from the first.</div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Inter Tight';font-weight:600;font-size:clamp(22px,2.4vw,30px);letter-spacing:-0.02em;margin:clamp(52px,7vh,80px) 0 8px">Three doors into the facilities</h3>
+    <p style="color:var(--muted-strong);font-size:15.5px;line-height:1.6;max-width:72ch">None of these replace your rounds. Each one makes a round land harder, and each is a system we build and run.</p>
+    <div class="grid-cards">
+      <div class="card reveal"><div class="num">DOOR 01</div><h3>A page per facility</h3><p>One private landing page per target, reached by a QR code on whatever you hand them. Named for them, carrying testimonials from families they would recognise. <b>You find out who looked, and when.</b></p></div>
+      <div class="card reveal" style="--d:80ms"><div class="num">DOOR 02</div><h3>The television segment, cut up</h3><p>You paid real money for that authority and it is currently sitting in one place. As-seen-on-TV is the most credible asset you own with this audience, and it should be on the page they land on, in the email you send, and behind you when you walk in.</p></div>
+      <div class="card reveal" style="--d:160ms"><div class="num">DOOR 03</div><h3>Open-tracking you already have</h3><p>Mailchimp is already telling you which case managers open your emails. Right now that data dies in a report. Wired into the system, it tells you who to visit this week rather than who is next in the rotation.</p></div>
+    </div>
+
+    <div class="callout reveal">
+      <div class="icon">=</div>
+      <div>
+        <h3>The arithmetic, using your numbers</h3>
+        <p>You are at roughly 575 hours a week and want 700. That gap is <b>125 hours</b>. At your stated conversion of about twenty hours per new client, that is <b>a little over six new clients</b> — not six hundred. Every system in this proposal is sized for that, and priced against it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 SYSTEMS -->
+<section id="systems">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">05</div>
+      <div class="ht">
+        <h2 class="display">Systems we'd <span class="accent">recommend</span></h2>
+        <p class="lede">Sequenced so the one-time technical work lands first, because nothing else is measurable until it does. <b style="color:var(--ink);font-weight:600">Every system here is optional.</b> The tiers below are the combinations we would pick, but any one of these can be switched on, left off, or added later.</p>
+      </div>
+    </div>
+    <div class="tablewrap reveal">
+      <table class="t">
+        <thead><tr><th>Workstream</th><th>What it does</th><th>When</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Structural repair</td><td>Every one of your 37 existing posts gets real heading tags, a question-shaped title where one fits, and a direct answer in the opening lines. Nothing is rewritten and nothing is deleted. This is nine months of work you have already paid for, made legible.</td><td class="tgt">Days 1 to 30</td></tr>
+          <tr><td class="k">Structured data</td><td>LocalBusiness, Service, FAQ and review markup added to your location page and to every post that carries a question. This is how you appear in the map pack and how a language model verifies you are a real business in a real place.</td><td class="tgt">Days 1 to 30</td></tr>
+          <tr><td class="k">Site Disruptor</td><td>Weekly automated pass over the site: checks where you rank, finds the questions Chicago families are actually asking, and edits headings, copy and markup to answer them. Publishes through your existing WordPress. Nothing moves hosts.</td><td class="tgt">Ongoing, weekly</td></tr>
+          <tr><td class="k">The interview engine</td><td>A recorded twenty-minute call with you each month becomes the month's articles, in your words. This is the only part that needs your time, and it is the part no competitor can copy.</td><td class="tgt">Monthly</td></tr>
+          <tr><td class="k">Video system</td><td>Your television segment and your YouTube channel turned into a standing library of short clips, captioned and scheduled. Your marketer keeps posting; we supply the cut-downs, the hooks and the order.</td><td class="tgt">Week 3 forward</td></tr>
+          <tr><td class="k">Facility kit</td><td>A landing page per target facility, QR-coded leave-behinds, and the open-rate data wired into a weekly "visit these three" list.</td><td class="tgt">Month 2 forward</td></tr>
+          <tr><td class="k">The second brain</td><td>Your spreadsheet, your Mailchimp history, your Moz data and your site analytics unified into one queryable store. Not a CRM. Nothing to log into. You ask it a question in plain English and it answers from your own history.</td><td class="tgt">Month 2 forward</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="honest reveal">
+      <div class="hh">The thing you were right to worry about is not a problem</div>
+      <p>On our call you said the blocker was hosting — that Site Disruptor sounded like it needed to take over a website that corporate controls and you cannot move. <b>It does not.</b> Your franchise runs a WordPress multisite, your location is site 127, and its API is already live and accepting application passwords at <span class="g">assistinghands.com/127/wp-admin/authorize-application.php</span>.</p>
+      <p>In practice that means your digital marketer issues one credential from a screen he already has access to, and the system reads and writes your pages directly. <b>No nameserver change. No moving hosts. No Cloudflare migration. Nothing that needs a conversation with corporate.</b> We verified this on 30 September before writing this page, rather than promising it and finding out later.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 06 THE INVESTMENT -->
+<section id="investment">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">06</div>
+      <div class="ht">
+        <h2 class="display">The <span class="accent">investment</span></h2>
+        <p class="lede">Month to month, no termination fee. Three ways to run it, plus two ways to own it outright further down.</p>
+      </div>
+    </div>
+
+    <div class="tiers">
+      <div class="tier reveal">
+        <div class="tname">Disruptor</div>
+        <div class="price"><sup>$</sup>850<span class="cadence">/ mo</span></div>
+        <div class="build">No build fee · starts week one</div>
+        <div class="tag">Makes nine months of existing writing findable, and keeps it that way every week without anyone remembering to.</div>
+        <div class="inc">Includes</div>
+        <ul>
+          <li><strong>Structural repair</strong>: all 37 posts given real headings, question-shaped titles and direct answers</li>
+          <li><strong>Structured data</strong>: LocalBusiness, Service, FAQ and review markup across the site</li>
+          <li><strong>Site Disruptor, weekly</strong>: automated ranking checks and on-page edits through your WordPress</li>
+          <li><strong>Monthly report</strong>: what moved, what did not, and what we changed because of it</li>
+        </ul>
+      </div>
+      <div class="tier rec reveal" style="--d:80ms">
+        <div class="badge">Recommended</div>
+        <div class="tname">Game-Changer</div>
+        <div class="price"><sup>$</sup>3,000<span class="cadence">/ mo</span></div>
+        <div class="build">No build fee · starts week one</div>
+        <div class="tag"><b>The recommended place to start</b>, because the interview engine is the one asset a competitor cannot copy and the one that takes longest to compound. Everything else can be added in any month. This one wants to start now.</div>
+        <div class="inc">Adds</div>
+        <ul>
+          <li><strong>Everything in Disruptor</strong></li>
+          <li><strong>The interview engine</strong>: one recorded call a month becomes the month's articles, in your voice</li>
+          <li><strong>Video system</strong>: your TV segment and YouTube channel cut into a standing clip library, captioned and scheduled</li>
+          <li><strong>Facility kit</strong>: a landing page per target facility with QR leave-behinds and visit tracking</li>
+        </ul>
+      </div>
+      <div class="tier reveal" style="--d:160ms">
+        <div class="tname">Movement-Maker</div>
+        <div class="price"><sup>$</sup>5,000<span class="cadence">/ mo</span></div>
+        <div class="build">No build fee · starts week one</div>
+        <div class="tag">For when the goal stops being 700 hours and starts being the second million, and you need to see the whole business in one place to steer it.</div>
+        <div class="inc">Adds</div>
+        <ul>
+          <li><strong>Everything in Game-Changer</strong></li>
+          <li><strong>The second brain</strong>: spreadsheet, Mailchimp, Moz and analytics unified into one queryable store</li>
+          <li><strong>Paid amplification</strong>: managed spend behind the segments and pages that have already proven they convert</li>
+          <li><strong>Standing strategy call</strong>: fortnightly, with Kimball, not an account coordinator</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tablewrap reveal">
+      <table class="t">
+        <thead><tr><th>Included</th><th class="ctr">Disruptor</th><th class="ctr hi">Game-Changer</th><th class="ctr">Movement-Maker</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Structural repair of all 37 existing posts</td><td class="chk">✓</td><td class="chk hi">✓</td><td class="chk">✓</td></tr>
+          <tr><td class="k">Structured data and local markup</td><td class="chk">✓</td><td class="chk hi">✓</td><td class="chk">✓</td></tr>
+          <tr><td class="k">Site Disruptor weekly pass</td><td class="chk">✓</td><td class="chk hi">✓</td><td class="chk">✓</td></tr>
+          <tr><td class="k">Interview engine, in your own words</td><td class="dash">—</td><td class="chk hi">✓</td><td class="chk">✓</td></tr>
+          <tr><td class="k">Video and clip system</td><td class="dash">—</td><td class="chk hi">✓</td><td class="chk">✓</td></tr>
+          <tr><td class="k">Facility landing pages and visit tracking</td><td class="dash">—</td><td class="chk hi">✓</td><td class="chk">✓</td></tr>
+          <tr><td class="k">The second brain</td><td class="dash">—</td><td class="dash hi">—</td><td class="chk">✓</td></tr>
+          <tr><td class="k">Managed paid amplification</td><td class="dash">—</td><td class="dash hi">—</td><td class="chk">✓</td></tr>
+          <tr class="money"><td class="k">Year one, all in</td><td class="ctr">$10,200</td><td class="ctr hi">$36,000</td><td class="ctr">$60,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="font-family:'Inter Tight';font-weight:600;font-size:clamp(22px,2.4vw,30px);letter-spacing:-0.02em;margin:clamp(52px,7vh,80px) 0 8px">Or own it outright</h3>
+    <p style="color:var(--muted-strong);font-size:15.5px;line-height:1.6;max-width:72ch">You said on our call that you would rather have the thing than rent it, and you have a digital marketer who could genuinely run it. Both of these are real options, not decoys.</p>
+
+    <div class="goals two">
+      <div class="goal reveal">
+        <div class="gk">Build and hand over</div>
+        <h3>$15,000 once, then $1,000 a month</h3>
+        <p>We build every system in the Game-Changer tier, wire it into your WordPress and your tools, then train your marketer to run it and hand him the keys. The monthly covers maintenance, the weekly Site Disruptor pass and a call when something breaks. <b>Year one is $27,000. Year two is $12,000.</b></p>
+        <div class="tie"><strong>The honest trade</strong>It is cheaper because your team does the work after handover. If your marketer's hours are already full, this becomes the expensive option, because the systems sit idle. That is the only question worth asking before choosing it.</div>
+      </div>
+      <div class="goal reveal" style="--d:80ms">
+        <div class="gk">Orchestration intensive</div>
+        <h3>$5,000 once, nothing monthly</h3>
+        <p>Two days with your digital marketer. We teach him how we would wire your stack together, how the structural and markup work is done, and how to run the interview engine himself. <b>We build nothing and hand over no assets.</b> You leave with the method and your team's own hands on it.</p>
+        <div class="tie"><strong>Who this is for</strong>The smallest possible commitment, and the right one if you want to test whether we actually know something before you hand us anything. It is not a cheaper version of the build; it is a different purchase.</div>
+      </div>
+    </div>
+
+    <div class="honest reveal">
+      <div class="hh">What none of this does</div>
+      <p>It does not put an AI on your phone. You told us your clients say "you actually answered" and that it is a people business, and we agree — <b>we will not propose it now or later.</b> It does not replace your website, which gets compliments and should. It does not sell you a CRM; your spreadsheet and your scheduling system stay exactly where they are. And it does not manufacture demand: families decide to bring in care because something happened at home, not because they saw a post.</p>
+      <p>What it changes is who gets named when that moment arrives. Right now a daughter in your territory asks an AI what to do about her father, and it answers from whoever wrote the most extractable page on the internet. <span class="g">That page should be yours, because the underlying work is already written.</span> It is nine months of honest, locally grounded writing that is simply formatted so nothing can quote it.</p>
+      <p><b>How to judge the price:</b> one new twenty-hour client is worth roughly $28,500 a year at your own stated rates. Game-Changer costs a little over one of them. You are looking for six.</p>
+    </div>
+
+    <p class="costs-note"><b>Not included:</b> advertising spend, third-party software, travel, legal fees. Software and any ad spend are billed directly to Assisting Hands Chicago North at cost, in your name, with no markup. Hourly and revenue figures throughout this document are derived from the numbers you gave on 29 September; we will confirm them together at kickoff before anything is measured against them.</p>
+  </div>
+</section>
+
+<!-- 07 NEXT STEP -->
+<section id="next" class="accept-section">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">07</div>
+      <div class="ht">
+        <h2 class="display">Next <span class="accent">step</span></h2>
+        <p class="lede">We are already speaking on Friday. This is what would need to be true by then.</p>
+      </div>
+    </div>
+    <ol class="steplist">
+      <li class="reveal"><div><span class="t">Read it with your partner<span class="when">Before Friday</span></span><p>You said she will have questions once it is on paper, and that she gets into the weeds. Good — section 02 is the part to push on, because every claim in it is independently checkable and we would rather be corrected now than at month three.</p></div></li>
+      <li class="reveal"><div><span class="t">Pick a strategy and commit to it<span class="when">Friday, 3:00pm Central</span></span><p>Choose which systems you want running and at what tier. The thing that kills growth at your stage is not picking the wrong one, it is switching every quarter before any of them have had time to compound. You have already lived that once with your last SEO firm.</p></div></li>
+      <li class="reveal"><div><span class="t">Kickoff and access<span class="when">Week 1</span></span><p>One application password from your WordPress, generated by your digital marketer, plus read access to Moz and Mailchimp. That is the entire ask. No hosting change and nothing that requires corporate's approval.</p></div></li>
+      <li class="reveal"><div><span class="t">Build sprint<span class="when">Days 1 to 30</span></span><p>Structural repair and markup ship first, because they are the only things that make everything afterwards measurable — and because they act on content you have already paid for, which is the fastest return available to you.</p></div></li>
+    </ol>
+
+    <div class="accept-panel reveal">
+      <div class="step">
+        <div class="step-label"><span class="n">01</span> Which tier are you weighing?</div>
+        <div class="tier-select" id="tierSelect">
+          <div class="tier-opt" data-tier="Disruptor ($850 / mo)"><div class="to-name">Disruptor</div><div class="to-price">$850<span class="c">/ mo</span></div><div class="to-build">No build fee</div></div>
+          <div class="tier-opt sel" data-tier="Game-Changer ($3,000 / mo)"><div class="to-name">Game-Changer</div><div class="to-price">$3,000<span class="c">/ mo</span></div><div class="to-build">Recommended</div></div>
+          <div class="tier-opt" data-tier="Movement-Maker ($5,000 / mo)"><div class="to-name">Movement-Maker</div><div class="to-price">$5,000<span class="c">/ mo</span></div><div class="to-build">No build fee</div></div>
+          <div class="tier-opt" data-tier="Build and hand over ($15,000 + $1,000 / mo)"><div class="to-name">Build &amp; own</div><div class="to-price">$15,000<span class="c">once</span></div><div class="to-build">+ $1,000 / mo</div></div>
+          <div class="tier-opt" data-tier="Orchestration intensive ($5,000 one-time)"><div class="to-name">Intensive</div><div class="to-price">$5,000<span class="c">once</span></div><div class="to-build">Training only</div></div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-label"><span class="n">02</span> Your details</div>
+        <div class="field-row">
+          <div class="field"><label for="fn">Full name</label><input id="fn" type="text" placeholder="Peter Sotos" autocomplete="name"></div>
+          <div class="field"><label for="co">Company</label><input id="co" type="text" placeholder="Assisting Hands Chicago North" autocomplete="organization"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="em">Email</label><input id="em" type="email" placeholder="psotos@assistinghandschicagonorth.com" autocomplete="email"></div>
+          <div class="field"><label for="pr">Anything you want scoped differently</label><input id="pr" type="text" placeholder="e.g. structural repair only, hold the video system"></div>
+        </div>
+      </div>
+      <div class="signature-line">
+        <div class="date">Proposal valid through <strong id="validDate">30 days from today</strong></div>
+        <button class="btn-accept" id="acceptBtn" disabled>Start the engagement →</button>
+      </div>
+    </div>
+
+    <div class="closer reveal">You said you wanted to be known as a resource, not as hours for sale. <span class="accent">You have already written nine months of proof. Let's make it legible.</span></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <div class="col">
+        <h4>Disruptors Media</h4>
+        <p>Stay Human.</p>
+        <p style="color:var(--muted)">Fractional Chief AI Officer</p>
+      </div>
+      <div class="col">
+        <h4>Prepared for</h4>
+        <p>Peter Sotos</p>
+        <a href="https://assistinghands.com/127/illinois/chicagonorth/" target="_blank" rel="noopener">Assisting Hands Chicago North</a>
+      </div>
+      <div class="col">
+        <h4>Contact</h4>
+        <p>Kimball Mueller</p>
+        <a href="mailto:kimball@disruptorsmedia.com">kimball@disruptorsmedia.com</a>
+        <a href="tel:+12089097765">(208) 909-7765</a>
+      </div>
+      <div class="col">
+        <h4>Office</h4>
+        <p>650 N Main Street</p>
+        <p style="color:var(--muted)">North Salt Lake, UT 84054</p>
+      </div>
+    </div>
+    <div class="legal">
+      <span>Prepared September 2026 · Valid 30 days · Site audit performed 30 September 2026</span>
+      <span>Built in your name. You own everything.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay">
+  <div class="panel">
+    <div class="check">✓</div>
+    <h3 class="display">Let's make nine months of work count.</h3>
+    <p id="overlayMsg">Thank you. Kimball will reach out within one business day.</p>
+    <a class="book" href="https://api.leadconnectorhq.com/widget/bookings/meeting-with-the-disruptors" target="_blank" rel="noopener">Pick a time now →</a>
+  </div>
+</div>
+
+<script>
+  (function () {
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    } else {
+      document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+    }
+    try {
+      var d = new Date(); d.setDate(d.getDate() + 30);
+      document.getElementById('validDate').textContent = d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    } catch (e) {}
+    var selected = document.querySelector('#tierSelect .tier-opt.sel').getAttribute('data-tier');
+    var opts = document.querySelectorAll('#tierSelect .tier-opt');
+    opts.forEach(function (o) {
+      o.addEventListener('click', function () {
+        opts.forEach(function (x) { x.classList.remove('sel'); });
+        o.classList.add('sel'); selected = o.getAttribute('data-tier');
+      });
+    });
+    var fn = document.getElementById('fn'), em = document.getElementById('em'), btn = document.getElementById('acceptBtn');
+    function check() { btn.disabled = !(fn.value.trim().length > 1 && /.+@.+\..+/.test(em.value.trim())); }
+    [fn, em].forEach(function (i) { i.addEventListener('input', check); });
+    btn.addEventListener('click', function () {
+      if (btn.disabled) return;
+      var name = fn.value.trim().split(' ')[0];
+      document.getElementById('overlayMsg').textContent =
+        'Thank you' + (name ? ', ' + name : '') + '. Noted: ' + selected +
+        '. Kimball will reach out within one business day, or grab a time directly below.';
+      document.getElementById('overlay').classList.add('show');
+    });
+    document.getElementById('overlay').addEventListener('click', function (e) {
+      if (e.target === this) this.classList.remove('show');
+    });
+  })();
+</script>
+
+</body>
+</html>
