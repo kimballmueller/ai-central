@@ -1,0 +1,828 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Proposal · UmaHari × Disruptors Media</title>
+<meta name="description" content="LinkedIn, email and SEO systems to take UmaHari from $500,000 a year to $2 to 3 million." />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+<link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+  :root {
+    --ink: #0A0A0A;
+    --paper: #FAFAF7;
+    --paper-cream: #FDF6E3;
+    --rule: rgba(10, 10, 10, 0.08);
+    --rule-strong: rgba(10, 10, 10, 0.14);
+    --muted: rgba(10, 10, 10, 0.52);
+    --muted-strong: rgba(10, 10, 10, 0.72);
+    --gold: #B8860B;
+    --gold-soft: rgba(184, 134, 11, 0.12);
+    --gold-line: rgba(184, 134, 11, 0.32);
+    --green: #2F7A3F;
+    --max: 1240px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--paper); color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+  }
+  .display { font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 600; letter-spacing: -0.035em; line-height: 0.96; }
+  .label { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 3px; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 clamp(24px, 5vw, 56px); }
+  section { padding: clamp(80px, 12vh, 150px) 0; position: relative; }
+
+  /* NAV */
+  .nav { position: fixed; top: 0; left: 0; right: 0; padding: 16px clamp(20px, 5vw, 56px); display: flex; justify-content: space-between; align-items: center; z-index: 50; backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); background: rgba(250, 250, 247, 0.78); border-bottom: 1px solid var(--rule); }
+  .nav .brand { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 15px; letter-spacing: -0.015em; display: flex; align-items: center; gap: 10px; }
+  .nav .brand .dot { width: 8px; height: 8px; border-radius: 999px; background: var(--gold); }
+  .nav .brand .x { color: var(--muted); font-weight: 400; }
+  .nav .links { display: flex; gap: 22px; align-items: center; font-size: 13px; color: var(--muted-strong); }
+  .nav .links a { text-decoration: none; transition: color 0.2s ease; }
+  .nav .links a:hover { color: var(--ink); }
+  .nav .cta { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; background: var(--ink); color: var(--paper); border-radius: 999px; text-decoration: none; font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: 13px; letter-spacing: -0.005em; transition: transform 0.2s ease, background 0.2s ease; }
+  .nav .cta:hover { background: var(--gold); transform: translateY(-1px); }
+  @media (max-width: 1150px) { .nav .links { display: none; } }
+
+  /* HERO */
+  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; padding-top: clamp(120px, 15vh, 170px); padding-bottom: clamp(48px, 8vh, 80px); }
+  .hero .top { text-align: center; }
+  .hero .mark { display: block; width: clamp(84px, 11vw, 128px); height: auto; margin: 0 auto 28px; }
+  .hero h1 { font-size: clamp(38px, 7vw, 96px); max-width: 19ch; margin: 0 auto; }
+  .hero h1 .accent { color: var(--gold); }
+  .hero .sub { font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(18px, 2.1vw, 24px); letter-spacing: -0.015em; color: var(--muted-strong); max-width: 66ch; margin: clamp(28px, 4vh, 46px) auto 0; line-height: 1.4; }
+  .hero .meta { margin-top: clamp(40px, 7vh, 80px); display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+  .hero .meta > div .label { display: block; margin-bottom: 8px; color: var(--muted); }
+  .hero .meta > div p { font-family: 'Inter Tight', sans-serif; font-size: 16px; font-weight: 500; letter-spacing: -0.01em; }
+  .hero .scroll-hint { display: flex; align-items: center; gap: 12px; font-size: 11px; color: var(--muted); letter-spacing: 0.16em; text-transform: uppercase; justify-content: center; }
+  .hero .scroll-hint span { width: 32px; height: 1px; background: var(--ink); opacity: 0.4; }
+
+  /* SECTION HEAD */
+  .sec-head { display: flex; gap: 80px; align-items: baseline; margin-bottom: clamp(40px, 7vh, 80px); flex-wrap: wrap; }
+  .sec-head .num { font-family: 'Inter Tight', sans-serif; font-size: 13px; font-weight: 500; color: var(--gold); letter-spacing: 0.04em; min-width: 80px; }
+  .sec-head .ht { flex: 1; min-width: 280px; }
+  .sec-head h2 { font-size: clamp(36px, 5.4vw, 76px); max-width: 20ch; }
+  .sec-head h2 .accent { color: var(--gold); }
+  .sec-head .lede { font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(19px, 2.3vw, 27px); letter-spacing: -0.015em; line-height: 1.3; color: var(--muted-strong); max-width: 50ch; margin-top: 18px; }
+
+  /* PULL QUOTE */
+  .pull { margin: clamp(36px,5vh,56px) 0; padding: clamp(26px,3.4vw,40px) clamp(28px,4vw,48px); background: var(--paper-cream); color: var(--ink); border-left: 3px solid var(--gold); border-radius: 0 20px 20px 0; }
+  .pull .q { font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(20px, 2.6vw, 31px); letter-spacing: -0.02em; line-height: 1.3; color: var(--ink); }
+  .pull .attr { font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 16px; }
+  .dark .pull { background: #131313; color: var(--paper); border-left-color: var(--gold); }
+  .dark .pull .q { color: var(--paper); }
+  .dark .pull .attr { color: rgba(250,250,247,0.5); }
+
+  /* ASK BLOCK — the open questions in §01/§02 */
+  .ask { background: var(--paper-cream); color: var(--ink); border: 1px solid var(--gold-line); border-radius: 22px; padding: clamp(28px,3.6vw,42px); margin-top: 40px; }
+  .ask h4 { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(19px,2.2vw,25px); letter-spacing: -0.02em; color: var(--ink); margin-bottom: 8px; }
+  .ask .lead { font-size: 15px; color: var(--muted-strong); line-height: 1.6; margin-bottom: 22px; max-width: 76ch; }
+  .ask ol { list-style: none; counter-reset: q; padding: 0; }
+  .ask ol li { counter-increment: q; position: relative; padding: 14px 0 14px 46px; border-top: 1px solid var(--gold-line); font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(15.5px,1.7vw,18px); letter-spacing: -0.01em; color: var(--ink); line-height: 1.45; }
+  .ask ol li::before { content: "Q" counter(q, decimal-leading-zero); position: absolute; left: 0; top: 16px; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; color: var(--gold); }
+  .ask ol li span { display: block; font-family: 'Inter', sans-serif; font-weight: 400; font-size: 14px; color: var(--muted); margin-top: 5px; line-height: 1.55; letter-spacing: 0; }
+  .dark .ask { background: #131313; color: var(--paper); border-color: rgba(250,250,247,0.16); }
+  .dark .ask h4 { color: var(--paper); }
+  .dark .ask .lead { color: rgba(250,250,247,0.68); }
+  .dark .ask ol li { color: var(--paper); border-top-color: rgba(250,250,247,0.12); }
+  .dark .ask ol li span { color: rgba(250,250,247,0.5); }
+
+  /* GOAL OPTION CARDS */
+  .goals { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .goals.two { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 900px) { .goals { grid-template-columns: 1fr; } }
+  .goal { background: var(--paper); color: var(--ink); border: 1px solid var(--rule); border-radius: 22px; padding: clamp(28px,3.2vw,38px); display: flex; flex-direction: column; transition: transform 0.28s cubic-bezier(0.2,0.7,0.2,1), box-shadow 0.28s, border-color 0.28s ease; }
+  .goal:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -20px rgba(10,10,10,0.18); border-color: var(--gold-line); }
+  .goal .gk { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  .goal h3 { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(21px,2.3vw,26px); letter-spacing: -0.02em; line-height: 1.15; color: var(--ink); margin-bottom: 12px; }
+  .goal p { color: var(--muted-strong); font-size: 14.5px; line-height: 1.6; }
+  .goal p b { color: var(--ink); font-weight: 600; }
+  .goal .tie { margin-top: auto; padding-top: 20px; border-top: 1px solid var(--rule); font-size: 13.5px; color: var(--muted-strong); line-height: 1.5; }
+  .goal .tie strong { display: block; font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 14.5px; color: var(--gold); margin-bottom: 4px; }
+
+  /* ARITHMETIC */
+  .arith { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 20px; overflow: hidden; margin-bottom: 20px; }
+  .arith .a { background: var(--paper); color: var(--ink); padding: 34px 30px; }
+  .arith .a.bad { background: var(--paper-cream); }
+  .arith .a .k { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .arith .a .v { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(34px, 4.2vw, 52px); letter-spacing: -0.035em; line-height: 1; color: var(--ink); }
+  .arith .a.bad .v { color: var(--gold); }
+  .arith .a .cap { font-size: 14px; color: var(--muted-strong); margin-top: 12px; line-height: 1.5; }
+  @media (max-width: 860px) { .arith { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .arith { grid-template-columns: 1fr; } }
+  .arith-line { font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(18px, 2vw, 24px); letter-spacing: -0.015em; color: var(--ink); text-align: center; padding: 8px 0 4px; line-height: 1.35; }
+  .arith-line b { color: var(--gold); }
+  .dark .arith { background: rgba(250,250,247,0.12); border-color: rgba(250,250,247,0.12); }
+  .dark .arith .a { background: #131313; color: var(--paper); }
+  .dark .arith .a.bad { background: #1c1c1c; }
+  .dark .arith .a .k { color: rgba(250,250,247,0.44); }
+  .dark .arith .a .v { color: var(--paper); }
+  .dark .arith .a.bad .v { color: var(--gold); }
+  .dark .arith .a .cap { color: rgba(250,250,247,0.62); }
+  .dark .arith-line { color: var(--paper); }
+
+  /* CARDS */
+  .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 16px; margin-top: 16px; }
+  .card { background: var(--paper); color: var(--ink); border: 1px solid var(--rule); border-radius: 18px; padding: 32px 28px; min-height: 170px; display: flex; flex-direction: column; gap: 12px; transition: transform 0.28s cubic-bezier(0.2,0.7,0.2,1), box-shadow 0.28s, border-color 0.28s ease; }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -20px rgba(10,10,10,0.18), 0 0 0 1px var(--gold-line) inset; border-color: var(--gold-line); }
+  .card .num { font-family: 'Inter Tight', sans-serif; font-size: 13px; color: var(--gold); letter-spacing: 0.06em; }
+  .card h3 { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 20px; letter-spacing: -0.015em; line-height: 1.2; color: var(--ink); }
+  .card p { color: var(--muted-strong); font-size: 14.5px; line-height: 1.55; }
+  .card p b { color: var(--ink); font-weight: 600; }
+  .card code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; background: var(--gold-soft); color: var(--gold); padding: 1px 6px; border-radius: 5px; }
+  .card.good { background: var(--paper-cream); border-color: var(--gold-line); }
+  .dark .card { background: #131313; color: var(--paper); border-color: rgba(250,250,247,0.1); }
+  .dark .card:hover { border-color: var(--gold-line); box-shadow: 0 18px 40px -20px rgba(0,0,0,0.5), 0 0 0 1px var(--gold-line) inset; }
+  .dark .card h3 { color: var(--paper); }
+  .dark .card p { color: rgba(250,250,247,0.66); }
+  .dark .card p b { color: var(--paper); }
+  .closer { margin-top: 52px; padding-top: 40px; border-top: 1px solid var(--rule); font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: clamp(22px, 2.6vw, 34px); letter-spacing: -0.02em; line-height: 1.25; max-width: 56ch; }
+  .closer .accent { color: var(--gold); }
+  .dark .closer { border-top-color: rgba(250,250,247,0.12); color: var(--paper); }
+
+  /* CALLOUT */
+  .callout { margin-top: 40px; background: var(--paper-cream); color: var(--ink); border: 1px solid var(--gold-line); border-radius: 20px; padding: clamp(28px, 4vw, 44px); display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start; }
+  .callout .icon { width: 44px; height: 44px; border-radius: 999px; background: var(--gold); color: var(--paper); display: inline-flex; align-items: center; justify-content: center; font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 20px; flex: none; }
+  .callout h3 { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(20px, 2.2vw, 26px); letter-spacing: -0.015em; line-height: 1.2; margin-bottom: 10px; color: var(--ink); }
+  .callout p { color: var(--muted-strong); font-size: 15px; line-height: 1.6; }
+  .callout p + p { margin-top: 12px; }
+  .callout p b { color: var(--ink); font-weight: 600; }
+  @media (max-width: 600px) { .callout { grid-template-columns: 1fr; gap: 16px; } }
+  .dark .callout { background: #131313; color: var(--paper); border-color: var(--gold-line); }
+  .dark .callout h3 { color: var(--paper); }
+  .dark .callout p { color: rgba(250,250,247,0.68); }
+  .dark .callout p b { color: var(--paper); }
+
+  /* HONEST NOTE */
+  .honest { margin-top: 40px; background: var(--paper); color: var(--ink); border: 1px solid var(--rule-strong); border-radius: 20px; padding: clamp(28px,4vw,42px); }
+  .honest .hh { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(19px,2.2vw,25px); letter-spacing: -0.02em; color: var(--ink); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+  .honest .hh::before { content: ""; width: 10px; height: 10px; border-radius: 999px; background: var(--gold); flex: none; }
+  .honest p { font-size: 16px; line-height: 1.68; color: var(--muted-strong); margin-bottom: 16px; max-width: 78ch; }
+  .honest p:last-child { margin-bottom: 0; }
+  .honest p b { color: var(--ink); font-weight: 600; }
+  .honest p .g { color: var(--gold); font-weight: 600; }
+  .dark .honest { background: #131313; color: var(--paper); border-color: rgba(250,250,247,0.14); }
+  .dark .honest .hh { color: var(--paper); }
+  .dark .honest p { color: rgba(250,250,247,0.68); }
+  .dark .honest p b { color: var(--paper); }
+
+  /* TABLE */
+  .tablewrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 18px; margin-top: 16px; background: var(--paper); color: var(--ink); }
+  .dark .tablewrap { border-color: rgba(250,250,247,0.12); background: #131313; color: var(--paper); }
+  table.t { width: 100%; border-collapse: collapse; min-width: 680px; font-family: 'Inter', sans-serif; }
+  table.t th, table.t td { text-align: left; padding: 17px 22px; border-bottom: 1px solid var(--rule); font-size: 14.5px; vertical-align: top; line-height: 1.55; }
+  table.t thead th { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); background: var(--paper-cream); border-bottom: 1px solid var(--rule-strong); }
+  table.t tbody tr:last-child td { border-bottom: none; }
+  table.t td { color: var(--muted-strong); }
+  table.t td.k { font-family: 'Inter Tight', sans-serif; font-weight: 600; color: var(--ink); }
+  table.t td.tgt { font-family: 'Inter Tight', sans-serif; font-weight: 600; color: var(--gold); white-space: nowrap; }
+  table.t td b { color: var(--gold); font-weight: 600; }
+  table.t td.yes { color: var(--green); font-weight: 600; font-family: 'Inter Tight', sans-serif; white-space: nowrap; }
+  table.t td.no { color: var(--muted); font-family: 'Inter Tight', sans-serif; white-space: nowrap; }
+  table.t th.ctr, table.t td.ctr { text-align: center; }
+  table.t col.hi, table.t td.hi { background: var(--gold-soft); }
+  table.t thead th.hi { background: var(--gold); color: var(--paper); }
+  table.t td.chk { text-align: center; color: var(--green); font-weight: 700; font-family: 'Inter Tight', sans-serif; }
+  table.t td.dash { text-align: center; color: rgba(10,10,10,0.28); font-family: 'Inter Tight', sans-serif; }
+  table.t tr.money td { font-family: 'Inter Tight', sans-serif; font-weight: 600; color: var(--ink); font-size: 15.5px; }
+  .dark table.t th, .dark table.t td { border-bottom-color: rgba(250,250,247,0.10); color: rgba(250,250,247,0.72); }
+  .dark table.t thead th { background: #1c1c1c; color: var(--gold); border-bottom-color: rgba(250,250,247,0.16); }
+  .dark table.t td.k { color: var(--paper); }
+  .dark table.t td.tgt { color: var(--gold); }
+  .dark table.t td.yes { color: #6FCB86; }
+  .dark table.t td.no { color: rgba(250,250,247,0.42); }
+  .dark table.t tbody tr:hover td { background: rgba(250,250,247,0.035); }
+  .costs-note { color: var(--muted); font-size: 13.5px; margin-top: 18px; max-width: 82ch; line-height: 1.65; }
+  .dark .costs-note { color: rgba(250,250,247,0.5); }
+
+  /* SYSTEMS (phase rows) */
+  .phases { display: flex; flex-direction: column; }
+  .phase { display: grid; grid-template-columns: 170px 1fr 1.5fr; gap: 40px; padding: 36px 0; border-top: 1px solid var(--rule); align-items: start; }
+  .phase:last-child { border-bottom: 1px solid var(--rule); }
+  .phase .stage .n { font-family: 'Inter Tight', sans-serif; font-size: 13px; color: var(--gold); letter-spacing: 0.06em; display: block; }
+  .phase .stage .status { font-size: 11px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 4px; }
+  .phase h3 { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(21px, 2.6vw, 28px); letter-spacing: -0.02em; line-height: 1.15; color: var(--ink); }
+  .phase h3 .sp { display: block; font-size: 13px; font-weight: 500; letter-spacing: 0; color: var(--gold); margin-top: 8px; line-height: 1.4; }
+  .phase .body ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  /* bullets absolutely positioned — a flex <li> shreds any <b> into its own column */
+  .phase .body ul li { position: relative; padding-left: 20px; color: var(--muted-strong); font-size: 15px; line-height: 1.55; }
+  .phase .body ul li::before { content: ""; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; border-radius: 999px; background: var(--gold); }
+  .phase .body ul li b { color: var(--ink); font-weight: 600; }
+  @media (max-width: 860px) { .phase { grid-template-columns: 1fr; gap: 14px; padding: 30px 0; } }
+  .dark .phase { border-top-color: rgba(250,250,247,0.1); }
+  .dark .phase:last-child { border-bottom-color: rgba(250,250,247,0.1); }
+  .dark .phase h3 { color: var(--paper); }
+  .dark .phase .stage .status { color: rgba(250,250,247,0.48); }
+  .dark .phase .body ul li { color: rgba(250,250,247,0.66); }
+  .dark .phase .body ul li b { color: var(--paper); }
+
+  /* PILLARS */
+  .pillars { display: flex; flex-direction: column; gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 20px; overflow: hidden; }
+  .pillar { background: var(--paper); color: var(--ink); padding: clamp(24px,3vw,32px) clamp(24px,3.2vw,38px); display: grid; grid-template-columns: 56px 1fr; gap: clamp(16px,2.6vw,30px); align-items: start; transition: background 0.25s ease; }
+  .pillar:hover { background: var(--paper-cream); }
+  /* was --gold-line (0.32 alpha) — 1.39:1, effectively invisible. Still subtle, now legible. */
+  .pillar .pn { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(24px,2.8vw,31px); letter-spacing: -0.03em; color: var(--gold); line-height: 1; }
+  .pillar h3 { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(18px,2vw,23px); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 8px; color: var(--ink); }
+  .pillar p { color: var(--muted-strong); font-size: 15px; line-height: 1.6; max-width: 70ch; }
+  .pillar p b { color: var(--ink); font-weight: 600; }
+  @media (max-width: 620px) { .pillar { grid-template-columns: 1fr; gap: 8px; } }
+  .dark .pillars { background: rgba(250,250,247,0.14); border-color: rgba(250,250,247,0.14); }
+  /* .pillar has no colour of its own in .dark — same bug class as .card: without this it inherits
+     the light --paper background and renders progressively less legible down the stack. */
+  .dark .pillar { background: #131313; color: var(--paper); }
+  .dark .pillar:hover { background: #1c1c1c; }
+  .dark .pillar h3 { color: var(--paper); }
+  .dark .pillar p { color: rgba(250,250,247,0.66); }
+  .dark .pillar p b { color: var(--paper); }
+
+  /* DARK */
+  .dark { background: var(--ink); color: var(--paper); }
+  .dark .sec-head h2 { color: var(--paper); }
+  .dark .sec-head .lede { color: rgba(250,250,247,0.66); }
+  .dark .label { color: var(--gold); }
+
+  /* TIME / OUTPUT PANELS */
+  .timegrid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 16px; align-items: stretch; margin-top: 44px; }
+  @media (max-width: 900px) { .timegrid { grid-template-columns: 1fr; } }
+  .timepanel { background: var(--paper-cream); color: var(--ink); border: 1px solid var(--gold-line); border-radius: 22px; padding: clamp(30px,3.6vw,42px); }
+  .timepanel h4 { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(20px,2.3vw,26px); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 8px; color: var(--ink); }
+  .timepanel .lead { font-size: 15px; color: var(--muted-strong); line-height: 1.6; margin-bottom: 24px; }
+  .tline { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 15px 0; border-top: 1px solid var(--gold-line); }
+  .tline .tk { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 15px; color: var(--ink); }
+  .tline .ts { font-size: 12.5px; color: var(--muted); line-height: 1.45; margin-top: 3px; max-width: 44ch; }
+  .tline .tv { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 17px; color: var(--gold); white-space: nowrap; }
+  .tline.tot { border-top: 2px solid var(--gold); margin-top: 6px; }
+  .tline.tot .tk { font-size: 17px; }
+  .tline.tot .tv { font-size: 26px; letter-spacing: -0.02em; }
+  .outbox { background: var(--paper); color: var(--ink); border: 1px solid var(--rule); border-radius: 22px; padding: clamp(30px,3.6vw,42px); display: flex; flex-direction: column; }
+  .outbox h4 { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(20px,2.3vw,26px); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 8px; color: var(--ink); }
+  .outbox .lead { font-size: 15px; color: var(--muted-strong); line-height: 1.6; margin-bottom: 22px; }
+  .oline { display: flex; gap: 16px; align-items: baseline; padding: 14px 0; border-top: 1px solid var(--rule); }
+  .oline .ov { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 24px; letter-spacing: -0.025em; color: var(--gold); line-height: 1; min-width: 64px; }
+  .oline .ok { font-size: 14.5px; color: var(--muted-strong); line-height: 1.5; }
+  .oline .ok b { color: var(--ink); font-weight: 600; }
+
+  /* CALCULATOR */
+  .calc { margin-top: 44px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: stretch; }
+  @media (max-width: 900px) { .calc { grid-template-columns: 1fr; } }
+  .calc-inputs { background: var(--paper); color: var(--ink); border: 1px solid var(--rule); border-radius: 22px; padding: clamp(28px,3.4vw,40px); }
+  .calc-inputs h4, .calc-out h4 { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(19px,2.2vw,24px); letter-spacing: -0.02em; margin-bottom: 6px; color: var(--ink); }
+  .calc-inputs .lead, .calc-out .lead { font-size: 14.5px; color: var(--muted-strong); line-height: 1.6; margin-bottom: 26px; }
+  .ctrl { padding: 16px 0; border-top: 1px solid var(--rule); }
+  .ctrl .crow { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 12px; }
+  .ctrl label { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 14.5px; color: var(--ink); }
+  .ctrl .cval { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 19px; color: var(--gold); letter-spacing: -0.02em; white-space: nowrap; }
+  .ctrl .chint { font-size: 12.5px; color: var(--muted); line-height: 1.45; margin-top: 8px; }
+  input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 4px; border-radius: 999px; background: var(--rule-strong); outline: none; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; border-radius: 999px; background: var(--gold); border: 3px solid var(--paper); box-shadow: 0 2px 8px rgba(10,10,10,0.22); cursor: pointer; }
+  input[type=range]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 999px; background: var(--gold); border: 3px solid var(--paper); box-shadow: 0 2px 8px rgba(10,10,10,0.22); cursor: pointer; }
+  .calc-out { background: var(--paper-cream); color: var(--ink); border: 1px solid var(--gold-line); border-radius: 22px; padding: clamp(28px,3.4vw,40px); display: flex; flex-direction: column; }
+  .oresult { border-top: 1px solid var(--gold-line); padding: 16px 0; display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  .oresult .rk { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 15px; color: var(--ink); }
+  .oresult .rs { font-size: 12.5px; color: var(--muted); margin-top: 3px; max-width: 42ch; line-height: 1.45; }
+  .oresult .rv { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 20px; color: var(--ink); white-space: nowrap; letter-spacing: -0.02em; }
+  .oresult.hero-line { border-top: 2px solid var(--gold); margin-top: 6px; padding-top: 22px; }
+  .oresult.hero-line .rk { font-size: 17px; }
+  .oresult.hero-line .rv { font-size: clamp(26px,3.2vw,36px); color: var(--gold); }
+  .assump { margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--gold-line); font-size: 12.5px; color: var(--muted); line-height: 1.65; }
+  .assump b { color: var(--muted-strong); font-weight: 600; }
+
+  /* TIERS */
+  .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch; margin-top: 26px; }
+  .tier { background: var(--paper); color: var(--ink); border: 1px solid var(--rule); border-radius: 22px; padding: 40px 32px; display: flex; flex-direction: column; position: relative; transition: transform 0.28s cubic-bezier(0.2,0.7,0.2,1), box-shadow 0.28s, border-color 0.28s ease; }
+  .tier:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -20px rgba(10,10,10,0.18); border-color: var(--gold-line); }
+  .tier.rec { background: var(--paper-cream); border: 1.5px solid var(--gold); box-shadow: 0 32px 80px -44px rgba(184,134,11,0.5); }
+  .tier .badge { position: absolute; top: -13px; left: 32px; background: var(--gold); color: var(--paper); font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; padding: 7px 14px; border-radius: 999px; }
+  .tier .tname { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 25px; letter-spacing: -0.02em; color: var(--ink); }
+  .tier .price { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(36px, 4.2vw, 48px); letter-spacing: -0.035em; line-height: 1; margin-top: 14px; color: var(--ink); }
+  .tier .price sup { font-size: 0.42em; font-weight: 500; vertical-align: top; position: relative; top: 0.45em; margin-right: 0.04em; }
+  .tier .price .cadence { font-size: 0.3em; font-weight: 500; color: var(--muted); margin-left: 4px; letter-spacing: -0.005em; }
+  .tier .build { font-size: 12.5px; color: var(--muted); margin-top: 10px; line-height: 1.45; }
+  .tier .build b { color: var(--gold); font-weight: 600; }
+  .tier .tag { margin: 18px 0; padding: 16px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); font-size: 14px; color: var(--muted-strong); line-height: 1.55; min-height: 112px; }
+  .tier .tag b { color: var(--ink); font-weight: 600; }
+  .tier .inc { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+  .tier ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 13px; flex-grow: 1; }
+  /* absolutely-positioned tick, never a flex child */
+  .tier ul li { position: relative; padding-left: 24px; font-size: 14px; color: var(--muted-strong); line-height: 1.5; }
+  .tier ul li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--gold); font-weight: 700; font-size: 13px; }
+  .tier ul li strong { color: var(--ink); font-weight: 600; }
+  .pay-note { text-align: center; color: var(--muted); font-size: 14px; margin-top: 26px; max-width: 82ch; margin-inline: auto; line-height: 1.65; }
+  .pay-note b { color: var(--muted-strong); font-weight: 600; }
+  @media (max-width: 900px) { .tiers { grid-template-columns: 1fr; max-width: 520px; margin: 26px auto 0; } }
+
+  /* STEP LIST */
+  .steplist { list-style: none; counter-reset: st; display: grid; gap: 1px; border: 1px solid var(--rule); border-radius: 18px; overflow: hidden; background: var(--rule); }
+  .steplist li { counter-increment: st; background: var(--paper); color: var(--ink); padding: 24px 30px; display: grid; grid-template-columns: 46px 1fr; gap: 18px; align-items: start; transition: background 0.25s ease; }
+  .steplist li:hover { background: var(--paper-cream); }
+  .steplist li::before { content: counter(st, decimal-leading-zero); font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 13px; color: var(--gold); letter-spacing: 0.06em; line-height: 1.7; }
+  .steplist li .t { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 17.5px; letter-spacing: -0.015em; line-height: 1.35; display: block; margin-bottom: 5px; color: var(--ink); }
+  .steplist li p { color: var(--muted-strong); font-size: 14.5px; line-height: 1.6; max-width: 82ch; }
+  .steplist li .when { display: inline-block; margin-left: 10px; font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); background: var(--gold-soft); padding: 3px 9px; border-radius: 999px; vertical-align: 2px; }
+  @media (max-width: 600px) { .steplist li { grid-template-columns: 1fr; gap: 6px; padding: 20px 22px; } }
+
+  /* FAQ */
+  .faqs { display: flex; flex-direction: column; }
+  .faq { border-top: 1px solid var(--rule); padding: 28px 0; display: grid; grid-template-columns: 60px 1fr 1.4fr; gap: 32px; }
+  .faq:last-child { border-bottom: 1px solid var(--rule); }
+  .faq .qnum { font-family: 'Inter Tight', sans-serif; font-size: 13px; color: var(--gold); letter-spacing: 0.06em; }
+  .faq h3 { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(18px, 2vw, 22px); letter-spacing: -0.015em; line-height: 1.3; color: var(--ink); }
+  /* answers can run past one <p> — pin them to col 3 so they stack instead of wrapping into the num gutter */
+  .faq p { grid-column: 3; color: var(--muted-strong); font-size: 15px; line-height: 1.6; }
+  .faq p + p { margin-top: 12px; }
+  .faq p b { color: var(--ink); font-weight: 600; }
+  @media (max-width: 760px) { .faq { grid-template-columns: 1fr; gap: 8px; } .faq p { grid-column: 1; } }
+  .dark .faq { border-top-color: rgba(250,250,247,0.1); }
+  .dark .faq:last-child { border-bottom-color: rgba(250,250,247,0.1); }
+  .dark .faq h3 { color: var(--paper); }
+  .dark .faq p { color: rgba(250,250,247,0.68); }
+  .dark .faq p b { color: var(--paper); }
+
+  /* ACCEPT */
+  .accept-section { background: linear-gradient(180deg, var(--paper) 0%, var(--paper-cream) 100%); }
+  .accept-panel { background: var(--paper); color: var(--ink); border: 1px solid var(--gold-line); border-radius: 24px; padding: clamp(36px, 6vw, 64px); box-shadow: 0 32px 80px -40px rgba(184,134,11,0.4); margin-top: 48px; }
+  .accept-panel .step { margin-bottom: 36px; }
+  .accept-panel .step:last-of-type { margin-bottom: 0; }
+  .accept-panel .step-label { font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: 14px; color: var(--muted-strong); letter-spacing: -0.005em; margin-bottom: 16px; }
+  .accept-panel .step-label .n { color: var(--gold); font-weight: 600; margin-right: 8px; }
+  .tier-select { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 840px; }
+  @media (max-width: 680px) { .tier-select { grid-template-columns: 1fr; } }
+  .tier-opt { cursor: pointer; background: var(--paper-cream); color: var(--ink); border: 1.5px solid var(--rule-strong); border-radius: 16px; padding: 20px; transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease; }
+  .tier-opt:hover { border-color: var(--gold-line); }
+  .tier-opt.sel { border-color: var(--gold); background: #fff; box-shadow: 0 0 0 3px var(--gold-soft); }
+  .tier-opt .to-name { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: -0.01em; }
+  .tier-opt .to-price { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 22px; letter-spacing: -0.02em; margin-top: 6px; }
+  .tier-opt .to-price .c { font-size: 13px; font-weight: 500; color: var(--muted); margin-left: 2px; }
+  .tier-opt .to-build { font-size: 12px; color: var(--muted-strong); margin-top: 4px; }
+  .goal-select { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 840px; }
+  @media (max-width: 680px) { .goal-select { grid-template-columns: 1fr; } }
+  .goal-opt { cursor: pointer; background: var(--paper-cream); color: var(--ink); border: 1.5px solid var(--rule-strong); border-radius: 16px; padding: 18px 20px; transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease; font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 15px; letter-spacing: -0.01em; }
+  .goal-opt span { display: block; font-family: 'Inter', sans-serif; font-weight: 400; font-size: 12.5px; color: var(--muted); margin-top: 5px; line-height: 1.45; letter-spacing: 0; }
+  .goal-opt:hover { border-color: var(--gold-line); }
+  .goal-opt.sel { border-color: var(--gold); background: #fff; box-shadow: 0 0 0 3px var(--gold-soft); }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .field-row + .field-row { margin-top: 16px; }
+  .field { display: flex; flex-direction: column; gap: 8px; }
+  .field label { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-strong); }
+  .field input { appearance: none; background: var(--paper); border: 1.5px solid var(--rule-strong); border-radius: 12px; padding: 15px 18px; font-family: 'Inter Tight', sans-serif; font-size: 16px; letter-spacing: -0.01em; color: var(--ink); transition: border-color 0.2s ease, background 0.2s ease; }
+  .field input:focus { outline: none; border-color: var(--gold); background: var(--paper-cream); }
+  .signature-line { border-top: 1px solid var(--rule); margin-top: 32px; padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .signature-line .date { font-family: 'Inter Tight', sans-serif; font-size: 14px; color: var(--muted-strong); }
+  .signature-line .date strong { color: var(--ink); font-weight: 600; }
+  @media (max-width: 600px) { .field-row { grid-template-columns: 1fr; } }
+  .btn-accept { appearance: none; background: var(--ink); color: var(--paper); border: none; border-radius: 999px; padding: 18px 34px; font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: 16px; letter-spacing: -0.005em; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; transition: background 0.2s ease, transform 0.2s ease, opacity 0.2s ease; }
+  .btn-accept:hover:not(:disabled) { background: var(--gold); transform: translateY(-1px); }
+  .btn-accept:disabled { opacity: 0.4; cursor: not-allowed; }
+  .overlay { position: fixed; inset: 0; background: rgba(250,250,247,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); display: none; align-items: center; justify-content: center; z-index: 100; padding: 24px; }
+  .overlay.show { display: flex; animation: fadeIn 0.4s ease; }
+  .overlay .panel { background: var(--paper); color: var(--ink); border: 1px solid var(--gold-line); border-radius: 24px; padding: clamp(40px, 6vw, 64px); text-align: center; max-width: 560px; box-shadow: 0 40px 100px -40px rgba(184,134,11,0.5); }
+  .overlay .check { width: 56px; height: 56px; border-radius: 999px; background: var(--gold); color: var(--paper); display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 26px; margin-bottom: 24px; }
+  .overlay h3 { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: clamp(28px, 4vw, 42px); letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 20px; color: var(--ink); }
+  .overlay p { color: var(--muted-strong); font-size: 16px; line-height: 1.55; }
+  .overlay .book { display: inline-flex; margin-top: 26px; align-items: center; gap: 8px; padding: 15px 28px; background: var(--ink); color: var(--paper); border-radius: 999px; text-decoration: none; font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: 15px; transition: background 0.2s ease; }
+  .overlay .book:hover { background: var(--gold); }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  /* FOOTER */
+  footer { padding: 56px 0 72px; border-top: 1px solid var(--rule); background: var(--paper); color: var(--ink); }
+  footer .row { display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+  footer .col h4 { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  footer .col p, footer .col a { font-family: 'Inter Tight', sans-serif; font-size: 15px; font-weight: 500; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; display: block; line-height: 1.6; transition: color 0.2s ease; }
+  footer .col a:hover { color: var(--gold); }
+  footer .legal { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--rule); font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.9s cubic-bezier(0.2,0.7,0.2,1), transform 0.9s cubic-bezier(0.2,0.7,0.2,1); transition-delay: var(--d, 0ms); }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+    .card, .tier, .pillar, .goal { transition: none; }
+  }
+  table.t td.dash { color: rgba(10,10,10,0.5); }
+  .steplist li .when { color: #7A5A06; }
+  /* Mix-and-match picker: options toggle and the running total sits under them */
+  .pick-total { margin-top: 18px; font-family: 'Inter Tight', sans-serif; font-size: 14px; color: var(--muted-strong); }
+  .pick-total strong { color: var(--ink); font-weight: 600; font-size: 19px; letter-spacing: -0.015em; margin-left: 6px; }
+</style></head>
+<body>
+
+<div class="nav">
+  <div class="brand"><span class="dot"></span> Disruptors Media <span class="x">× UmaHari</span></div>
+  <div class="links">
+    <a href="#goal">Goal</a>
+    <a href="#way">What's in the way</a>
+    <a href="#why">Why us</a>
+    <a href="#audience">Who we reach</a>
+    <a href="#systems">Systems</a>
+    <a href="#investment">Investment</a>
+  </div>
+  <a class="cta" href="#next">Get started →</a>
+</div>
+
+<header class="hero wrap">
+  <div class="top">
+    <img class="mark" src="logo.png" alt="Disruptors Media" />
+    <div class="label" style="margin-bottom:24px">Outreach &amp; Search · St. Louis, Missouri</div>
+    <h1 class="display">You've chosen the top 50 in each space. <span class="accent">Let's go reach them.</span></h1>
+    <p class="sub">UmaHari already serves about 25 customers across the US, Europe and Australia, most of them through referrals. What it doesn't have is a system that reaches the organizations on your list every week.</p>
+  </div>
+  <div class="meta">
+    <div><span class="label">Prepared for</span><p>Alok Adholeya, UmaHari</p></div>
+    <div><span class="label">Engagement</span><p>LinkedIn, email and SEO</p></div>
+    <div><span class="label">Terms</span><p>Month to month · You own everything</p></div>
+    <div class="scroll-hint"><span></span> Scroll</div>
+  </div>
+</header>
+
+<!-- 01 THE GOAL -->
+<section id="goal">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">01</div>
+      <div class="ht">
+        <h2 class="display">The <span class="accent">goal</span></h2>
+        <p class="lede">Take UmaHari from about $500,000 a year to $2 to 3 million within a year.</p>
+      </div>
+    </div>
+    <p style="font-family:'Inter Tight';font-weight:500;font-size:clamp(19px,2.1vw,25px);letter-spacing:-0.015em;line-height:1.45;color:var(--muted-strong);max-width:64ch">Everything below is built for that and nothing else. You already have the technologies, the labs, the team in New Delhi and customers on three continents. <b style="color:var(--ink);font-weight:600">What's missing is a steady way to start conversations with the organizations you've decided to go after.</b></p>
+    <div class="pull reveal">
+      <div class="q">"We want to be at 2 to 3 million dollars."</div>
+      <div class="attr">Alok Adholeya · October 2, 2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 WHAT'S IN THE WAY -->
+<section id="way">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">02</div>
+      <div class="ht">
+        <h2 class="display">What's <span class="accent">in the way</span></h2>
+        <p class="lede">Three constraints, in the order they cost you the most.</p>
+      </div>
+    </div>
+    <div class="grid-cards">
+      <div class="card reveal">
+        <div class="num">01</div>
+        <h3>Your best customers come from referrals.</h3>
+        <p>Referrals have given you the highest return, but you can't turn them up when you want more. <b>Growing four to six times in a year can't depend on who happens to mention you.</b></p>
+      </div>
+      <div class="card reveal" style="--d:80ms">
+        <div class="num">02</div>
+        <h3>The top-50 strategy has no system behind it yet.</h3>
+        <p>A few months ago you decided to go after the top 20 to 50 organizations in each space. Today the outreach is a website and occasional LinkedIn posts. <b>That's a lot of accounts for a small US team to reach by hand.</b></p>
+      </div>
+      <div class="card reveal" style="--d:160ms">
+        <div class="num">03</div>
+        <h3>The website works, but few people find it.</h3>
+        <p>Since the rebuild, visits went from 4 or 5 a month to 30 to 50, and some have become serious business discussions. SEO hasn't started and the inquiry form sits low on the page. <b>Each visitor is worth a lot, and there aren't many of them.</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 WHY DISRUPTORS MEDIA -->
+<section id="why" class="dark">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">03</div>
+      <div class="ht">
+        <h2 class="display">Why Disruptors <span class="accent">Media</span></h2>
+        <p class="lede">The strategy is already chosen. What it needs is a system that carries it out every day.</p>
+      </div>
+    </div>
+
+    <div class="pull reveal">
+      <div class="q">"You do not rise to the level of your goals. You fall to the level of your systems."</div>
+      <div class="attr">James Clear</div>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar reveal">
+        <div class="pn">01</div>
+        <div>
+          <h3>We build systems, not campaigns</h3>
+          <p>A target list, outreach that runs every day and a website that's worked on daily. <b>A campaign ends. A system compounds.</b> This one keeps running on the weeks you're traveling.</p>
+        </div>
+      </div>
+      <div class="pillar reveal" style="--d:60ms">
+        <div class="pn">02</div>
+        <div>
+          <h3>You own every account</h3>
+          <p>Sending domains, inboxes, outreach software, lists and site content are created in UmaHari's name. LinkedIn outreach runs from your own profile. <b>Nothing is held hostage and nothing needs migrating if we part ways.</b></p>
+        </div>
+      </div>
+      <div class="pillar reveal" style="--d:120ms">
+        <div class="pn">03</div>
+        <div>
+          <h3>Software at cost</h3>
+          <p>Outreach and data tools are billed directly to UmaHari at the published rate. No markup and no reselling. You see the same invoice we do and you keep every login.</p>
+        </div>
+      </div>
+      <div class="pillar reveal" style="--d:180ms">
+        <div class="pn">04</div>
+        <div>
+          <h3>Month to month</h3>
+          <p>No annual contract and no termination fee. <b>We keep the account by producing.</b> You'll work with me directly, and your team gets a plain report every month.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 WHO WE'RE REACHING -->
+<section id="audience">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">04</div>
+      <div class="ht">
+        <h2 class="display">Who we're <span class="accent">reaching</span></h2>
+        <p class="lede">Fertilizer, seed, biofertilizer, agri-input and potting soil companies. They range from half a million dollars in size to $5 billion, and the two ends are reached differently.</p>
+      </div>
+    </div>
+
+    <div class="goals two">
+      <div class="goal reveal">
+        <div class="gk">The largest accounts</div>
+        <h3>Companies up to $5 billion</h3>
+        <p>At this size a general inbox goes nowhere. <b>Each account needs a named person, not a company address.</b></p>
+        <div class="tie"><strong>Reached through LinkedIn first, then email</strong>A message from your own profile shows who is asking before they reply. Email follows once there is a name and a reason to write.</div>
+      </div>
+      <div class="goal reveal" style="--d:80ms">
+        <div class="gk">Smaller and mid-size companies</div>
+        <h3>Companies from half a million up</h3>
+        <p>Here the owner or technical lead usually reads their own inbox, and searches for a partner when a need comes up.</p>
+        <div class="tie"><strong>Reached through email and search</strong>Email reaches them directly. SEO makes UmaHari what they find when they go looking, in Google and in AI tools.</div>
+      </div>
+    </div>
+
+    <div class="callout reveal">
+      <div class="icon">=</div>
+      <div>
+        <h3>The math behind the goal</h3>
+        <p>Going from about $500,000 to $2 million a year means adding $1.5 million. By your numbers, a customer is worth anywhere from a few thousand dollars to $100,000. <b>At the top of that range, that's 15 new customers. At the bottom, it's hundreds.</b> That's why your top 20 to 50 list is the right place to aim.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 SYSTEMS -->
+<section id="systems">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">05</div>
+      <div class="ht">
+        <h2 class="display">Systems we'd <span class="accent">recommend</span></h2>
+        <p class="lede">The list comes first, because the outreach depends on it. <b style="color:var(--ink);font-weight:600">Every system here is optional.</b> Each one can be switched on, left off, or added later.</p>
+      </div>
+    </div>
+    <div class="tablewrap reveal">
+      <table class="t">
+        <thead><tr><th>Workstream</th><th>What it does</th><th>When</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Target-account list</td><td>The top 20 to 50 organizations in each space, with the right people at each one and a verified email and LinkedIn profile for every contact. Refreshed monthly.</td><td class="tgt">Weeks 1 to 2</td></tr>
+          <tr><td class="k">LinkedIn outreach</td><td>We tighten your profile, then run connection and message sequences from your account every day. We handle replies and pass you the conversations worth having.</td><td class="tgt">Week 2 forward</td></tr>
+          <tr><td class="k">Email outreach</td><td>We set up and warm separate sending domains so your main address stays protected, then run personalized sequences with follow-ups and triage the replies.</td><td class="tgt">Week 3 forward</td></tr>
+          <tr><td class="k">SEO and AI search</td><td>Your site is worked on daily, not monthly. We check whether UmaHari shows up for the questions your buyers ask in Google and in AI tools, then update pages and keywords against what we find. The inquiry form moves to the top of the page.</td><td class="tgt">Week 1 forward</td></tr>
+          <tr><td class="k">Production automation and SOPs</td><td>You called this a high priority and asked to see the budget before choosing modules. It needs a working session with your team first. After that we'll price it in stages, so you can pick what to do now and what waits.</td><td class="tgt">Next call</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="honest reveal">
+      <div class="hh">What this does, and what it doesn't</div>
+      <p>We're not going to promise a number of new customers. Whether a company adopts a technology depends on your science, their trials and their timing. <b>That part is yours, and we're not replacing it.</b></p>
+      <p>We're also not going to tell you SEO is fast. A site at 30 to 50 visitors a month takes months to grow, which is why outreach carries the first quarter. And we're not proposing short-form video or paid ads. Neither is how a seed or fertilizer company chooses a technology partner.</p>
+      <p>What changes is who hears from you: <span class="g">named people at the accounts you chose, every week, whether or not a referral shows up that month</span>. We'll report on replies and meetings from target accounts and on inquiries from the site. We won't report on followers or open rates.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 06 THE INVESTMENT -->
+<section id="investment">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">06</div>
+      <div class="ht">
+        <h2 class="display">The <span class="accent">investment</span></h2>
+        <p class="lede">You asked for the cost of each function. Each system is priced on its own. Run one, two or all three, and the prices simply add. Month to month.</p>
+      </div>
+    </div>
+
+    <div class="tiers">
+      <div class="tier reveal">
+        <div class="tname">LinkedIn</div>
+        <div class="price"><sup>$</sup>850<span class="cadence">/ mo</span></div>
+        <div class="build">Target-account list included</div>
+        <div class="tag"><b>Outreach from your own profile</b>, so the person at a target company can see who you are before they reply.</div>
+        <div class="inc">Includes</div>
+        <ul>
+          <li><strong>Target-account list</strong>: the top 20 to 50 in each space, with named contacts</li>
+          <li><strong>Profile tune-up</strong> so it matches the company on your site</li>
+          <li><strong>Daily connection and message sequences</strong></li>
+          <li><strong>Replies handled</strong>, and the real conversations sent to you</li>
+          <li><strong>Monthly report</strong> on replies and meetings from target accounts</li>
+        </ul>
+      </div>
+      <div class="tier reveal" style="--d:80ms">
+        <div class="tname">SEO</div>
+        <div class="price"><sup>$</sup>1,200<span class="cadence">/ mo</span></div>
+        <div class="build">Site audit included</div>
+        <div class="tag"><b>The slowest system to start and the longest to last.</b> It turns the site you rebuilt into a steady source of inquiries.</div>
+        <div class="inc">Includes</div>
+        <ul>
+          <li><strong>Site audit and fixes</strong>, including the inquiry form moved to the top of the page</li>
+          <li><strong>Daily site work</strong>: pages and keywords updated every day, not once a month</li>
+          <li><strong>Google and AI search tracking</strong> for the questions your buyers ask</li>
+          <li><strong>New pages</strong> built around what those buyers search for</li>
+          <li><strong>Monthly report</strong> on rankings, visitors and inquiries</li>
+        </ul>
+      </div>
+      <div class="tier reveal" style="--d:160ms">
+        <div class="tname">Email</div>
+        <div class="price"><sup>$</sup>1,750<span class="cadence">/ mo</span></div>
+        <div class="build">Target-account list and domain setup included</div>
+        <div class="tag"><b>The channel with the most reach.</b> It gets to more named contacts each month than LinkedIn allows.</div>
+        <div class="inc">Includes</div>
+        <ul>
+          <li><strong>Target-account list</strong>, verified and refreshed monthly</li>
+          <li><strong>Separate sending domains and inboxes</strong>, set up and warmed</li>
+          <li><strong>Personalized sequences</strong> with follow-ups to every contact</li>
+          <li><strong>Replies triaged</strong>, and the real conversations sent to you</li>
+          <li><strong>Monthly report</strong> on replies and meetings from target accounts</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout reveal">
+      <div class="icon">+</div>
+      <div>
+        <h3>Where we'd start: LinkedIn and Email together</h3>
+        <p>$850 plus $1,750 is <b>$2,600 a month</b>. Both run off the same target-account list, and it's the fastest route to a conversation with the organizations you named. SEO can start alongside or be added in any later month.</p>
+      </div>
+    </div>
+
+    <div class="tablewrap reveal">
+      <table class="t">
+        <thead><tr><th>Included</th><th class="ctr">LinkedIn</th><th class="ctr">SEO</th><th class="ctr">Email</th><th class="ctr hi">LinkedIn + Email</th><th class="ctr">All three</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Target-account list</td><td class="chk">✓</td><td class="dash">—</td><td class="chk">✓</td><td class="chk hi">✓</td><td class="chk">✓</td></tr>
+          <tr><td class="k">LinkedIn outreach</td><td class="chk">✓</td><td class="dash">—</td><td class="dash">—</td><td class="chk hi">✓</td><td class="chk">✓</td></tr>
+          <tr><td class="k">Email outreach</td><td class="dash">—</td><td class="dash">—</td><td class="chk">✓</td><td class="chk hi">✓</td><td class="chk">✓</td></tr>
+          <tr><td class="k">SEO and AI search</td><td class="dash">—</td><td class="chk">✓</td><td class="dash">—</td><td class="dash hi">—</td><td class="chk">✓</td></tr>
+          <tr class="money"><td class="k">Monthly</td><td class="ctr">$850</td><td class="ctr">$1,200</td><td class="ctr">$1,750</td><td class="ctr hi">$2,600</td><td class="ctr">$3,800</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="costs-note"><b>How to judge it:</b> compare it with one customer, not with agency rates. By your numbers a customer is worth up to $100,000. One customer at that size covers all three systems for more than two years. Outreach software and data are billed directly to UmaHari at cost, in your name, with no markup. <b>Not included:</b> third-party software, ad spend, travel. Production automation and SOPs are scoped and priced separately.</p>
+  </div>
+</section>
+
+<!-- 07 NEXT STEP -->
+<section id="next" class="accept-section">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="num">07</div>
+      <div class="ht">
+        <h2 class="display">Next <span class="accent">step</span></h2>
+        <p class="lede">Review it with your team, then we go deeper together.</p>
+      </div>
+    </div>
+    <ol class="steplist">
+      <li class="reveal"><div><span class="t">Review with your colleagues<span class="when">This week</span></span><p>You said you'd share this with your team while you travel. Send questions by email at any point and I'll answer them before we meet.</p></div></li>
+      <li class="reveal"><div><span class="t">A longer call with your team<span class="when">When you're back</span></span><p>We walk through each system in detail. On the same call we start on automation: which production steps and SOPs matter most, so that work can be priced in stages.</p></div></li>
+      <li class="reveal"><div><span class="t">Build and launch<span class="when">Weeks 1 to 3</span></span><p>The target-account list and LinkedIn go first. Email domains take about two weeks to warm before they send at volume. SEO starts with the site audit in week one. We'll need access to your LinkedIn profile and the website, and about one hour of your time.</p></div></li>
+    </ol>
+
+    <div class="accept-panel reveal">
+      <div class="step">
+        <div class="step-label"><span class="n">01</span> Which systems are you weighing? Pick any combination.</div>
+        <div class="tier-select" id="tierSelect">
+          <div class="tier-opt sel" data-name="LinkedIn" data-price="850"><div class="to-name">LinkedIn</div><div class="to-price">$850<span class="c">/ mo</span></div><div class="to-build">Outreach from your profile</div></div>
+          <div class="tier-opt" data-name="SEO" data-price="1200"><div class="to-name">SEO</div><div class="to-price">$1,200<span class="c">/ mo</span></div><div class="to-build">Google and AI search</div></div>
+          <div class="tier-opt sel" data-name="Email" data-price="1750"><div class="to-name">Email</div><div class="to-price">$1,750<span class="c">/ mo</span></div><div class="to-build">Outreach at volume</div></div>
+        </div>
+        <div class="pick-total" id="pickTotal">Your selection: <strong>LinkedIn + Email · $2,600 / mo</strong></div>
+      </div>
+      <div class="step">
+        <div class="step-label"><span class="n">02</span> Your details</div>
+        <div class="field-row">
+          <div class="field"><label for="fn">Full name</label><input id="fn" type="text" placeholder="Alok Adholeya" autocomplete="name"></div>
+          <div class="field"><label for="co">Company</label><input id="co" type="text" placeholder="UmaHari" autocomplete="organization"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="em">Email</label><input id="em" type="email" placeholder="alok@umahari.com" autocomplete="email"></div>
+          <div class="field"><label for="pr">Anything you want scoped differently</label><input id="pr" type="text" placeholder="e.g. start SEO in month two"></div>
+        </div>
+      </div>
+      <div class="signature-line">
+        <div class="date">Proposal valid through <strong id="validDate">30 days from today</strong></div>
+        <button class="btn-accept" id="acceptBtn" disabled>Start the engagement →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <div class="col">
+        <h4>Disruptors Media</h4>
+        <p>Stay Human.</p>
+        <p style="color:var(--muted)">Fractional Chief AI Officer</p>
+      </div>
+      <div class="col">
+        <h4>Prepared for</h4>
+        <p>Alok Adholeya</p>
+        <a href="https://umahari.com" target="_blank" rel="noopener">umahari.com</a>
+      </div>
+      <div class="col">
+        <h4>Contact</h4>
+        <p>Kimball Mueller</p>
+        <a href="mailto:kimball@disruptorsmedia.com">kimball@disruptorsmedia.com</a>
+        <a href="tel:+12089097765">(208) 909-7765</a>
+      </div>
+      <div class="col">
+        <h4>Office</h4>
+        <p>650 N Main Street</p>
+        <p style="color:var(--muted)">North Salt Lake, UT 84054</p>
+      </div>
+    </div>
+    <div class="legal">
+      <span>Prepared October 2026 · Valid 30 days</span>
+      <span>Built in your name. You own everything.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay">
+  <div class="panel">
+    <div class="check">✓</div>
+    <h3 class="display">Let's go reach the top 50.</h3>
+    <p id="overlayMsg">Thank you. Kimball will reach out within one business day.</p>
+    <a class="book" href="https://api.leadconnectorhq.com/widget/bookings/meeting-with-the-disruptors" target="_blank" rel="noopener">Pick a time now →</a>
+  </div>
+</div>
+
+<script>
+  (function () {
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    } else {
+      document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+    }
+    try {
+      var d = new Date(); d.setDate(d.getDate() + 30);
+      document.getElementById('validDate').textContent = d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    } catch (e) {}
+    // Systems are mix and match: each option toggles, and the prices add.
+    var selected = '';
+    var opts = document.querySelectorAll('#tierSelect .tier-opt');
+    var total = document.getElementById('pickTotal');
+    var fn = document.getElementById('fn'), em = document.getElementById('em'), btn = document.getElementById('acceptBtn');
+    function check() { btn.disabled = !(selected && fn.value.trim().length > 1 && /.+@.+\..+/.test(em.value.trim())); }
+    function tally() {
+      var names = [], sum = 0;
+      opts.forEach(function (o) {
+        if (o.classList.contains('sel')) { names.push(o.getAttribute('data-name')); sum += parseInt(o.getAttribute('data-price'), 10); }
+      });
+      selected = names.length ? names.join(' + ') + ' ($' + sum.toLocaleString('en-US') + ' / mo)' : '';
+      total.innerHTML = names.length
+        ? 'Your selection: <strong>' + names.join(' + ') + ' · $' + sum.toLocaleString('en-US') + ' / mo</strong>'
+        : 'Pick at least one system.';
+      check();
+    }
+    opts.forEach(function (o) {
+      o.addEventListener('click', function () { o.classList.toggle('sel'); tally(); });
+    });
+    [fn, em].forEach(function (i) { i.addEventListener('input', check); });
+    tally();
+    btn.addEventListener('click', function () {
+      if (btn.disabled) return;
+      var name = fn.value.trim().split(' ')[0];
+      document.getElementById('overlayMsg').textContent =
+        'Thank you' + (name ? ', ' + name : '') + '. Noted: ' + selected +
+        '. Kimball will reach out within one business day, or grab a time directly below.';
+      document.getElementById('overlay').classList.add('show');
+    });
+    document.getElementById('overlay').addEventListener('click', function (e) {
+      if (e.target === this) this.classList.remove('show');
+    });
+  })();
+</script>
+
+</body>
+</html>
